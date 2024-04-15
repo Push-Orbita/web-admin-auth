@@ -14,7 +14,7 @@ export const TestTable = () => {
                 setLoading(false);
             });
         }, 2000);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []);
     const getCustomers = (data: Customer[]) => {
 
         return [...(data || [])].map((d) => {
@@ -37,8 +37,8 @@ export const TestTable = () => {
                 data={customers}
                 loading={loading}
                 columns={columns}
-                tableTitle='Post NewsLetter'
-                filterDisplay={'menu'}
+                tableTitle='Acciones'
+                filterDisplay={'row'}
                 
             />
         </>
