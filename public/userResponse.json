@@ -1,0 +1,40 @@
+{
+    "userNombre": "Guzman Fernando Nahuel",
+    "tokenUser":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdWlsIjoiMjAzODY5MTQwOTYiLCJzeXN0ZW1fbmFtZSI6IlJhcGlkYXRvcyIsImlhdCI6MTcxMTIzNzcxOCwiZXhwIjoxNzExMjM4MDE4fQ.NLwxJ2_CBKlfcMzM20Tn6gzKUMjGNIh2xGaHYlAj_u0",
+    "organizacion":"Push",
+    "plan":"Basico",
+    "sistema":"Admin Orbita",
+    "activo":true,
+    "userModulos": [
+        {
+            "label": "Inicio",
+            "icon": "pi pi-home",
+            "path": "/home",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V"
+            ],
+            "element": "HomeAdmin"
+        },
+        {
+            "label": "NewsLetter",
+            "icon": "pi pi-cloud",
+            "items": [
+                {
+                    "label": "Orbita Neswletter",
+                    "icon": "pi pi-cloud-download",
+                    "path": "/news-letter",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V"
+                    ],
+                    "element": "NewsLetter"
+                }
+            ]
+        }
+    ]
+}
