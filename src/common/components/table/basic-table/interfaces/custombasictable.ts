@@ -4,5 +4,5 @@ export interface ICustomColumnItem {
     sortable?: boolean,
     filter?: boolean,
     filterPlaceholder?: string,
-    dataType: 'text' | 'date' | 'number'
+    dataType?: 'text' | 'date' | 'number'
 }

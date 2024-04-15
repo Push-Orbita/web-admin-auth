@@ -1,11 +1,9 @@
 import { Form, Formik } from "formik"
 import { t } from "i18next"
+import { lang } from "../../../langs"
 import { Button } from "primereact/button"
 import { Card } from "primereact/card"
-// import { useState } from "react"
-// import { useNavigate } from "react-router-dom"
 import { FormTextInput } from "../../../common/components/forms/FormTextInput"
-import { lang } from "../../../langs"
 import { AuthHeader } from "./AuthHeader"
 import axios from "axios"
 import { useAppDispatch } from "../../../hooks/reduxHook"
@@ -50,11 +48,11 @@ export const AuthForm = () => {
                         <div className="grid col-12 ">
                             <div className="p-fluid formgrid grid">
                                 <div className="field col-12 ">
-                                    <FormTextInput label={'Nombre De Usuario'} name={'userName'}
+                                    <FormTextInput label={t(lang.login.form.usuario)} name={'userName'}
                                     />
                                 </div>
                                 <div className="field col-12">
-                                    <FormTextInput type={'password'} label={'Contraseña'} name={'userPassword'}
+                                    <FormTextInput type={'password'} label={t(lang.login.form.password)} name={'userPassword'}
                                     />
                                 </div>
                             </div>

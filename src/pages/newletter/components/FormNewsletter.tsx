@@ -5,7 +5,8 @@ import { FormEditorInput } from '../../../common/components/forms/FormEditorInpu
 import { FormSelect } from '../../../common/components/forms/FormSelect';
 import { FormTextInput } from '../../../common/components/forms/FormTextInput';
 import { Button } from 'primereact/button';
-
+import { t } from "i18next"
+import { lang } from "../../../langs"
 interface SelectImage {
     temp: string;
     image: File
@@ -99,7 +100,7 @@ export const FormNewsletter = ({setVisible}:Props) => {
                     <Form>
                         <div className="p-fluid formgrid grid">
                             <div className="field col-12 md:col-6">
-                                <FormTextInput label={'Titulo'} name={'title'}
+                                <FormTextInput label={t(lang.newsletter.form.title.fieldTitle)} name={'title'}
                                 />
                             </div>
                             <div className="field col-12 md:col-6">

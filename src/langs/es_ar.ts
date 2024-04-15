@@ -1,10 +1,10 @@
 export const es_ar = {
   system: {
-    name: "Admin-Órbita",
+    name: "Admin-Auth",
   },
   common: {
     welcome: "Bienvenido",
-    appName: "Admin Órbita",
+    appName: "Admin Auth",
     messageWelcome: "Bienvenido al administrador de autenticación",
     actions: {
       detail: "Detalles",
@@ -250,8 +250,8 @@ export const es_ar = {
     },
   },
   login: {
-    common:{
-      welcome_message:"¡Bienvenido a Admin-Órbita! 👋🏻",
+    common: {
+      welcome_message: "¡Bienvenido a Admin-auth! 👋🏻",
     },
     form: {
       usuario: "Nombre de Usuario",
@@ -267,4 +267,14 @@ export const es_ar = {
       errorRegister: "Ha ocurrido un error al intentar registrarse",
     },
   },
+  newsletter: {
+    form: {
+      fieldTitle: "Titulo",
+      title: {
+        fieldTitle: "Titulo",
+        fieldName: "title",
+      }
+
+    }
+  }
 };

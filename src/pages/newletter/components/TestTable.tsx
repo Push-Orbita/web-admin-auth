@@ -29,18 +29,17 @@ export const TestTable = () => {
         { field: 'name', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
         { field: 'company', header: 'Compania', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' }
     ]
+
     console.log(columns)
     return (
         <>
             <CustomBasicTable
                 data={customers}
                 loading={loading}
-                filterDisplay={'row'}
-                rows={10}
-                rowsPerPageOptions={[5, 10, 25, 50, 100]}
-                tableTitle='Post NewsLetter'
-                scrollable={true}
                 columns={columns}
+                tableTitle='Post NewsLetter'
+                filterDisplay={'menu'}
+                
             />
         </>
     )

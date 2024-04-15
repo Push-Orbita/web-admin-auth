@@ -31,6 +31,7 @@ export default function CustomBasicTable({
     loading,
     data,
     columns = []
+
 }: Props) {
     const globalFilterFields = columns.map(column => column.field);
     const filterFields = columns.map(column => column.field);
@@ -98,6 +99,7 @@ export default function CustomBasicTable({
                     filterPlaceholder={column.filterPlaceholder}
                     style={{ minWidth: '12rem' }}
                     dataType={column.dataType}
+                    
                 />
             ))}
             <Column header='Acciones' body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
