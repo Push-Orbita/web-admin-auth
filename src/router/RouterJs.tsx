@@ -8,11 +8,13 @@ import NewsLetterCreate from '../pages/newletter/create';
 const AuthLogin = lazy(() => import('../pages/authentication/AuthLogin'));
 const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
 const NewsLetter = lazy(() => import('../pages/newletter/NewsLetter'));
+const Actions = lazy(() => import('../pages/actions/Actions'));
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
     'HomeAdmin': HomeAdmin,
     'NewsLetter': NewsLetter,
+    'Actions': Actions,
 };
 
 export const RouterJs = () => {

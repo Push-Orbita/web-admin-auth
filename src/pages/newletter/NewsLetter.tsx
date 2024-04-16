@@ -12,7 +12,6 @@ const NewsLetter = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const permisos = usePermisos();
 
-
     const startToolbarTemplate = () => {
         return (
             <>
@@ -25,23 +24,25 @@ const NewsLetter = () => {
     };
     return (
         <DashboardLayout>
-            <div className="card">
-                <div className="grid">
-                    <div className="col-12">
-                        <Toolbar className="mb-4" start={startToolbarTemplate}></Toolbar>
+            {/* <ModulesProvider> */}
+                <div className="card">
+                    <div className="grid">
+                        <div className="col-12">
+                            <Toolbar className="mb-4" start={startToolbarTemplate}></Toolbar>
+                        </div>
+                    </div>
+                    <div>
+                        <TestTable />
                     </div>
                 </div>
-                <div>
-                    <TestTable />
-                </div>
-            </div>
-            <CustomBasicModal
-                visible={visible}
-                setVisible={setVisible}
-            >
-                <FormNewsletter setVisible={setVisible} />
-            </CustomBasicModal>
+                <CustomBasicModal
+                    visible={visible}
+                    setVisible={setVisible}
+                >
+                    <FormNewsletter setVisible={setVisible} />
+                </CustomBasicModal>
 
+            {/* </ModulesProvider> */}
         </DashboardLayout >
     )
 }

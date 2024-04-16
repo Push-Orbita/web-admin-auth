@@ -31,7 +31,7 @@
                         {
                             "label": "Acciones",
                             "icon": "pi pi-bolt",
-                            "path": "/news-letter",
+                            "path": "/acciones",
                             "acciones": [
                                 "A",
                                 "B",
@@ -40,7 +40,7 @@
                                 "R",
                                 "D"
                             ],
-                            "element": "NewsLetter"
+                            "element": "Actions"
                         }
                     ]
                 }
