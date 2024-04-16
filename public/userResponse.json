@@ -14,7 +14,9 @@
                 "A",
                 "B",
                 "M",
-                "V"
+                "V",
+                "R",
+                "D"
             ],
             "element": "HomeAdmin"
         },
@@ -34,7 +36,9 @@
                                 "A",
                                 "B",
                                 "M",
-                                "V"
+                                "V",
+                                "R",
+                                "D"
                             ],
                             "element": "NewsLetter"
                         }

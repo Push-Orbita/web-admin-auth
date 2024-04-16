@@ -6,6 +6,9 @@ import { Column } from 'primereact/column';
 import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import * as React from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../../../hooks/reduxHook';
 
 
 interface Props {
@@ -33,6 +36,35 @@ export default function CustomBasicTable({
     columns = []
 
 }: Props) {
+
+    const { userModulos } = useAppSelector(
+        (state) => state.auth
+    );
+    const { pathname } = useLocation();
+    const [puedeBorrar, setPuedeBorrar] = React.useState(false);
+
+    // Función para buscar recursivamente la acción "B" en la estructura anidada
+    const buscarAccionB = (modulos: any, path: any) => {
+        for (const modulo of modulos) {
+            if (modulo.path === path && modulo.acciones?.includes("B")) {
+                return true;
+            }
+            // Si el módulo tiene items, llamada recursiva para buscar en los submódulos
+            if (modulo.items) {
+                if (buscarAccionB(modulo.items, path)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    React.useEffect(() => {
+        const tieneAccionB = buscarAccionB(userModulos, pathname);
+        setPuedeBorrar(tieneAccionB);
+    }, [pathname, userModulos]);
+
+
     const globalFilterFields = columns.map(column => column.field);
     const filterFields = columns.map(column => column.field);
     const initialFilters = (): DataTableFilterMeta => {
@@ -60,7 +92,8 @@ export default function CustomBasicTable({
         return (
             <React.Fragment>
                 <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-trash" rounded outlined severity="danger" />
+                {puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" />) : ("")}
+
             </React.Fragment>
         );
     };
@@ -99,7 +132,7 @@ export default function CustomBasicTable({
                     filterPlaceholder={column.filterPlaceholder}
                     style={{ minWidth: '12rem' }}
                     dataType={column.dataType}
-                    
+
                 />
             ))}
             <Column header='Acciones' body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
