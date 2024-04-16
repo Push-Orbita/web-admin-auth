@@ -24,10 +24,11 @@ export const TestTable = () => {
             return d;
         });
     };
-
+    
     const columns: ICustomColumnItem[] = [
         { field: 'name', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
-        { field: 'company', header: 'Compania', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' }
+        { field: 'company', header: 'Compania', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
+        { field: 'balance', header: 'Balance', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
     ]
 
     console.log(columns)
@@ -39,7 +40,6 @@ export const TestTable = () => {
                 columns={columns}
                 tableTitle='Acciones'
                 filterDisplay={'row'}
-                
             />
         </>
     )
