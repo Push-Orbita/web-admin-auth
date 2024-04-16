@@ -1,8 +1,8 @@
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
 import { Toolbar } from 'primereact/toolbar';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { CustomBasicModal } from '../../common/components/modal/CustomBasicModal';
+import { usePermisos } from '../../hooks/usePermisos';
 import { DashboardLayout } from '../../layout/DashboardLayout';
 import { FormNewsletter } from './components/FormNewsletter';
 import { TestTable } from './components/TestTable';
@@ -10,17 +10,16 @@ import { TestTable } from './components/TestTable';
 
 const NewsLetter = () => {
     const [visible, setVisible] = useState<boolean>(false);
-    // const navigate = useNavigate()
+    const permisos = usePermisos();
+
 
     const startToolbarTemplate = () => {
         return (
             <>
                 <div className="my-2">
-                    <Button label="Nuevo" icon="pi pi-plus" severity="success" className=" mr-2" onClick={() => setVisible(true)} />
+                    {permisos.puedeAgregar ? (<Button label="Nuevo" icon="pi pi-plus" severity="success" className=" mr-2" onClick={() => setVisible(true)} />) : ""}
                 </div>
-                {/* <div className="my-2">
-                    <Button label="Nuevo En Pantalla" icon="pi pi-plus" severity="success" className=" mr-2" onClick={() => navigate('/news-letter/create')} />
-                </div> */}
+
             </>
         );
     };
@@ -36,15 +35,13 @@ const NewsLetter = () => {
                     <TestTable />
                 </div>
             </div>
-            <Dialog header="Nueva Acción" visible={visible} style={{ width: '80vw' }} onHide={() => setVisible(false)} >
-                <div className="m-0">
-                    <div className="col-12">
-                        <div className="card">
-                            <FormNewsletter setVisible={setVisible} />
-                        </div>
-                    </div>
-                </div>
-            </Dialog>
+            <CustomBasicModal
+                visible={visible}
+                setVisible={setVisible}
+            >
+                <FormNewsletter setVisible={setVisible} />
+            </CustomBasicModal>
+
         </DashboardLayout >
     )
 }

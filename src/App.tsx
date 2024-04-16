@@ -10,6 +10,7 @@ import { persistor, store } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
 // import './themes/lara-dark-purple/theme.css';
 import './themes/lara-light-purple/theme.css';
+import { PermisosProvider } from './hooks/usePermisos';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <PrimeReactProvider >
-            <AppRouter />
+            <PermisosProvider>
+              <AppRouter />
+            </PermisosProvider >
           </PrimeReactProvider>
         </PersistGate>
       </Provider>

@@ -1,14 +1,12 @@
-import { BasicTableHeader } from './components/BasicTableHeader';
-import { ICustomColumnItem } from './interfaces/custombasictable';
 import { FilterMatchMode } from 'primereact/api';
 import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
 import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import * as React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { useAppSelector } from '../../../../hooks/reduxHook';
+import { usePermisos } from '../../../../hooks/usePermisos';
+import { BasicTableHeader } from './components/BasicTableHeader';
+import { ICustomColumnItem } from './interfaces/custombasictable';
 
 
 interface Props {
@@ -36,35 +34,7 @@ export default function CustomBasicTable({
     columns = []
 
 }: Props) {
-
-    const { userModulos } = useAppSelector(
-        (state) => state.auth
-    );
-    const { pathname } = useLocation();
-    const [puedeBorrar, setPuedeBorrar] = React.useState(false);
-
-    // Función para buscar recursivamente la acción "B" en la estructura anidada
-    const buscarAccionB = (modulos: any, path: any) => {
-        for (const modulo of modulos) {
-            if (modulo.path === path && modulo.acciones?.includes("B")) {
-                return true;
-            }
-            // Si el módulo tiene items, llamada recursiva para buscar en los submódulos
-            if (modulo.items) {
-                if (buscarAccionB(modulo.items, path)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-
-    React.useEffect(() => {
-        const tieneAccionB = buscarAccionB(userModulos, pathname);
-        setPuedeBorrar(tieneAccionB);
-    }, [pathname, userModulos]);
-
-
+    const permisos = usePermisos();
     const globalFilterFields = columns.map(column => column.field);
     const filterFields = columns.map(column => column.field);
     const initialFilters = (): DataTableFilterMeta => {
@@ -91,9 +61,8 @@ export default function CustomBasicTable({
     const actionBodyTemplate = (rowData: any) => {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editProduct(rowData)} />
-                {puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" />) : ("")}
-
+                {permisos.puedeModificar ? (<Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editProduct(rowData)} />) : ("")}
+                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" />) : ("")}
             </React.Fragment>
         );
     };
