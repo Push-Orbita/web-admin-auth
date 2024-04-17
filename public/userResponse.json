@@ -21,6 +21,20 @@
             "element": "HomeAdmin"
         },
         {
+            "label": "Inicio",
+            "icon": "pi pi-home",
+            "path": "/news-letter",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V",
+                "R",
+                "D"
+            ],
+            "element": "NewsLetter"
+        },
+        {
             "label": "Configuración",
             "icon": "pi pi-cog",
             "items": [

@@ -6,6 +6,7 @@ import { usePermisos } from '../../hooks/usePermisos';
 import { DashboardLayout } from '../../layout/DashboardLayout';
 import { FormNewsletter } from './components/FormNewsletter';
 import { TestTable } from './components/TestTable';
+import { CustomBreadcrumb } from '../../common/components/ui/CustomBreadcrumb';
 
 
 const NewsLetter = () => {
@@ -24,25 +25,25 @@ const NewsLetter = () => {
     };
     return (
         <DashboardLayout>
-            {/* <ModulesProvider> */}
-                <div className="card">
-                    <div className="grid">
-                        <div className="col-12">
-                            <Toolbar className="mb-4" start={startToolbarTemplate}></Toolbar>
-                        </div>
-                    </div>
-                    <div>
-                        <TestTable />
+          <CustomBreadcrumb />
+            <div className="card">
+                <div className="grid">
+                    <div className="col-12">
+                        <Toolbar className="mb-4" start={startToolbarTemplate}></Toolbar>
                     </div>
                 </div>
-                <CustomBasicModal
-                    visible={visible}
-                    setVisible={setVisible}
-                >
-                    <FormNewsletter setVisible={setVisible} />
-                </CustomBasicModal>
+                <div>
+                    <TestTable />
+                </div>
+            </div>
+            <CustomBasicModal
+                visible={visible}
+                setVisible={setVisible}
+            >
+                <FormNewsletter setVisible={setVisible} />
+            </CustomBasicModal>
 
-            {/* </ModulesProvider> */}
+
         </DashboardLayout >
     )
 }
