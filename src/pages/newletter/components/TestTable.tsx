@@ -29,6 +29,7 @@ export const TestTable = () => {
         { field: 'name', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
         { field: 'company', header: 'Compania', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
         { field: 'balance', header: 'Balance', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
+        { field: 'status', header: 'Estatus', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Estatus', dataType: 'text' },
     ]
 
     console.log(columns)

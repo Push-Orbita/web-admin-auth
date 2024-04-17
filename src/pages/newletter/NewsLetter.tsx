@@ -6,7 +6,6 @@ import { usePermisos } from '../../hooks/usePermisos';
 import { DashboardLayout } from '../../layout/DashboardLayout';
 import { FormNewsletter } from './components/FormNewsletter';
 import { TestTable } from './components/TestTable';
-import { CustomBreadcrumb } from '../../common/components/ui/CustomBreadcrumb';
 
 
 const NewsLetter = () => {
@@ -25,7 +24,7 @@ const NewsLetter = () => {
     };
     return (
         <DashboardLayout>
-          <CustomBreadcrumb />
+          {/* <CustomBreadcrumb /> */}
             <div className="card">
                 <div className="grid">
                     <div className="col-12">

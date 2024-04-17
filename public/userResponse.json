@@ -21,8 +21,8 @@
             "element": "HomeAdmin"
         },
         {
-            "label": "Inicio",
-            "icon": "pi pi-home",
+            "label": "news-letter",
+            "icon": "pi pi-paper",
             "path": "/news-letter",
             "acciones": [
                 "A",
