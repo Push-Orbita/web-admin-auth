@@ -1,27 +1,33 @@
-import { useEffect, useState } from "react";
-import { ICustomColumnItem } from "../../../common/components/table/basic-table/interfaces/custombasictable";
 import CustomBasicTable from "../../../common/components/table/basic-table/CustomBasicTable";
+import { ICustomColumnItem } from "../../../common/components/table/basic-table/interfaces/custombasictable";
 
-
-export const TableAction = () => {
+interface Props {
+    data: any;
+    isFetching: boolean;
+}
+export const TableAction = ({ data, isFetching }: Props) => {
 
     // const [loading, setLoading] = useState<boolean>(true);
 
 
-    // const columns: ICustomColumnItem[] = [
-    //     { field: 'name', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
-    //     { field: 'company', header: 'Compania', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
-    //     { field: 'balance', header: 'Balance', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
-    // ]
+    const columns: ICustomColumnItem[] = [
+        { field: 'nombre', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
+        { field: 'descripcion', header: 'Descripcion', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
+
+    ]
+    console.log('datatable', data)
     return (
         <>
-            {/* <CustomBasicTable
-                data={customers}
-                loading={loading}
+            <CustomBasicTable
+                data={data}
+                loading={isFetching}
                 columns={columns}
                 tableTitle='Acciones'
                 filterDisplay={'row'}
-            /> */}
+                rowsPerPageOptions={[10, 100, 1000]}
+                rows={10}
+
+            />
         </>
     )
 }

@@ -11,19 +11,25 @@ import { AppRouter } from './router/AppRouter';
 // import './themes/lara-dark-purple/theme.css';
 import './themes/lara-light-purple/theme.css';
 import { PermisosProvider } from './hooks/usePermisos';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 function App() {
+  const queryClient = new QueryClient()
   return (
     <HashRouter>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <PrimeReactProvider >
-            <PermisosProvider>
-              <AppRouter />
-            </PermisosProvider >
-          </PrimeReactProvider>
-        </PersistGate>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+
+
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <PrimeReactProvider >
+              <PermisosProvider>
+                <AppRouter />
+              </PermisosProvider >
+            </PrimeReactProvider>
+          </PersistGate>
+        </Provider>
+      </QueryClientProvider>
     </HashRouter>
   )
 }
