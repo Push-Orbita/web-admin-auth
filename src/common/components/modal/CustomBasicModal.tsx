@@ -3,7 +3,7 @@ interface Props {
     children?: React.ReactNode,
     title?: string,
     visible: boolean;
-    setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+    setVisible: any;
 }
 export const CustomBasicModal = ({ children, title,visible,setVisible}: Props) => {
     return (

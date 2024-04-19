@@ -1,3 +1,5 @@
+import { CustomBasicModal } from '../../common/components/modal/CustomBasicModal';
+import { ModuleProvider, useModuleContext } from '../../hooks/useModules';
 import useQueryApi from "../../hooks/useQueryApi";
 import { DashboardLayout } from "../../layout/DashboardLayout";
 import { ActionsApi } from "../../services/actions/actions.service";
@@ -21,14 +23,26 @@ const Actions = () => {
         ActionsApi.getActionsSearch,
     );
     console.log('data:', data, isFetching)
+    const { startToolbarTemplate,visible,setVisible } = useModuleContext();
 
     return (
 
         <DashboardLayout>
+
+            {startToolbarTemplate()}
             <TableAction
                 data={data ?? []}
                 isFetching={isFetching}
             />
+            <CustomBasicModal
+                visible={visible}
+                setVisible={setVisible}
+            >
+               
+            </CustomBasicModal>
+
+
+
         </DashboardLayout >
 
     )

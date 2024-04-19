@@ -12,6 +12,7 @@ import { AppRouter } from './router/AppRouter';
 import './themes/lara-light-purple/theme.css';
 import { PermisosProvider } from './hooks/usePermisos';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { ModuleProvider } from './hooks/useModules';
 
 function App() {
   const queryClient = new QueryClient()
@@ -24,7 +25,9 @@ function App() {
           <PersistGate persistor={persistor}>
             <PrimeReactProvider >
               <PermisosProvider>
-                <AppRouter />
+                <ModuleProvider>
+                  <AppRouter />
+                </ModuleProvider>
               </PermisosProvider >
             </PrimeReactProvider>
           </PersistGate>
