@@ -1,8 +1,10 @@
 import { CustomBasicModal } from '../../common/components/modal/CustomBasicModal';
-import { ModuleProvider, useModuleContext } from '../../hooks/useModules';
+import { useModuleContext } from '../../hooks/useModules';
 import useQueryApi from "../../hooks/useQueryApi";
 import { DashboardLayout } from "../../layout/DashboardLayout";
 import { ActionsApi } from "../../services/actions/actions.service";
+import FormTypeActions from './components/FormTypeActions';
+
 import { TableAction } from "./components/TableAction";
 
 interface Response {
@@ -23,22 +25,30 @@ const Actions = () => {
         ActionsApi.getActionsSearch,
     );
     console.log('data:', data, isFetching)
-    const { startToolbarTemplate,visible,setVisible } = useModuleContext();
+    const { startToolbarTemplate, visible, setVisible } = useModuleContext();
 
     return (
 
         <DashboardLayout>
-
-            {startToolbarTemplate()}
-            <TableAction
-                data={data ?? []}
-                isFetching={isFetching}
-            />
+            {/* <CustomBreadcrumb /> */}
+            <div className="card">
+                <div className="grid">
+                    <div className="col-12">
+                        {startToolbarTemplate()}
+                    </div>
+                </div>
+                <div>
+                    <TableAction
+                        data={data ?? []}
+                        isFetching={isFetching}
+                    />
+                </div>
+            </div>
             <CustomBasicModal
                 visible={visible}
                 setVisible={setVisible}
             >
-               
+                <FormTypeActions />
             </CustomBasicModal>
 
 

@@ -1,6 +1,6 @@
 
 
-import { ActionsDeleteDTO, ActionsPatchDTO } from "../../model/dtos/actions/actions.dto";
+import { ActionsDeleteDTO, ActionsPatchDTO, ActionsPostDTO } from "../../model/dtos/actions/actions.dto";
 
 import { replaceParamId } from "../../utilities/replace-param.utils";
 import { Axios, cancelTokenSource } from '../../config/api/axios.config';
@@ -18,7 +18,11 @@ class Actions {
             cancelToken: cancelTokenSource.token,
         });
     }
-
+    async postActions(req: ActionsPostDTO) {
+        return await Axios.post(url.post, req, {
+            cancelToken: cancelTokenSource.token,
+        })
+    }
     async patchActions(req: ActionsPatchDTO) {
         return await Axios.patch(url.patch, req, { cancelToken: cancelTokenSource.token, });
     }
