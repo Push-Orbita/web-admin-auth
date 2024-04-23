@@ -1,15 +1,14 @@
+import { Formik } from "formik"
+import { FC } from "react"
 import UseQueryMutation from "../../../hooks/useQueryMutation"
 import { ActionsPatchDTO, ActionsPostDTO } from "../../../model/dtos/actions/actions.dto"
-import { FC } from "react"
 import { ActionsApi } from "../../../services/actions/actions.service"
-import { Form, Formik } from "formik"
 import { fieldValidations } from "../fields/field.validations"
 import FormFields from "./FormFields"
-interface PropsEdit {
-    type?: ActionsPatchDTO
-}
-const FormTypeActions: FC<PropsEdit> = ({ type }) => {
+import { useModuleContext } from "../../../hooks/useModules"
 
+const FormTypeActions: FC = () => {
+    const { rowData,visible, setVisible } = useModuleContext();
     const postActions = UseQueryMutation({
         requestFn: ActionsApi.postActions,
         options: {
@@ -18,6 +17,7 @@ const FormTypeActions: FC<PropsEdit> = ({ type }) => {
             },
             onSuccess: () => {
                 alert('exito')
+                setVisible(!visible)
             },
         },
     })
@@ -36,14 +36,14 @@ const FormTypeActions: FC<PropsEdit> = ({ type }) => {
 
 
     const intialValues: ActionsPostDTO = {
-        nombre: type?.nombre ?? "",
-        descripcion: type?.descripcion ?? "",
+        nombre: rowData?.nombre ?? "",
+        descripcion: rowData?.descripcion ?? "",
     }
 
     const onSave = async (values: ActionsPostDTO) => {
-        if (type) {
+        if (rowData) {
             const req: ActionsPatchDTO = {
-                id: type.id,
+                id: rowData.id,
                 ...values,
             }
             return await patchActions.mutateAsync(req)
@@ -60,13 +60,9 @@ const FormTypeActions: FC<PropsEdit> = ({ type }) => {
                 setSubmitting(false)
             }}
         >
-            {({ handleSubmit }) => (
-                <>
-                    <Form onSubmit={handleSubmit}>
-                        <FormFields />
-                    </Form>
-                </>
-            )}
+            <>
+                <FormFields />
+            </>
         </Formik>
     )
 }

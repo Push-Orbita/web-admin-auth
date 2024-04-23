@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { usePermisos } from '../../../../hooks/usePermisos';
 import { BasicTableHeader } from './components/BasicTableHeader';
 import { ICustomColumnItem } from './interfaces/custombasictable';
+import { useModuleContext } from '../../../../hooks/useModules';
 
 
 interface Props {
@@ -34,6 +35,7 @@ export default function CustomBasicTable({
     columns = []
 
 }: Props) {
+    const { setVisible, setRowData } = useModuleContext();
     const permisos = usePermisos();
     const globalFilterFields = columns.map(column => column.field);
     const filterFields = columns.map(column => column.field);
@@ -55,13 +57,14 @@ export default function CustomBasicTable({
         setFilters(_filters);
         setGlobalFilterValue(value);
     };
-    const editProduct = (rowData: any) => {
-        console.log(rowData)
+    const edit = (rowData: any) => {
+        setRowData(rowData);
+        setVisible(true);
     }
     const actionBodyTemplate = (rowData: any) => {
         return (
             <React.Fragment>
-                {permisos.puedeModificar ? (<Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editProduct(rowData)} />) : ("")}
+                {permisos.puedeModificar ? ( <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />) : ("")}
                 {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" />) : ("")}
             </React.Fragment>
         );

@@ -25,7 +25,7 @@ const Actions = () => {
         ActionsApi.getActionsSearch,
     );
     console.log('data:', data, isFetching)
-    const { startToolbarTemplate, visible, setVisible } = useModuleContext();
+    const { startToolbarTemplate} = useModuleContext();
 
     return (
 
@@ -44,10 +44,7 @@ const Actions = () => {
                     />
                 </div>
             </div>
-            <CustomBasicModal
-                visible={visible}
-                setVisible={setVisible}
-            >
+            <CustomBasicModal >
                 <FormTypeActions />
             </CustomBasicModal>
 

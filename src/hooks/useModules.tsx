@@ -5,6 +5,8 @@ interface ModuleContextValue {
     startToolbarTemplate: () => JSX.Element;
     visible: boolean;
     setVisible: (visible: boolean) => void;
+    rowData: any;
+    setRowData: (data: any) => void; 
 }
 
 // Creando el contexto con tipo predeterminado como null que luego será inicializado
@@ -15,6 +17,7 @@ interface ModuleProviderProps {
 
 export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ children }) => {
     const [visible, setVisible] = useState<boolean>(false);
+    const [rowData, setRowData] = useState<any>(null); // Estado para los datos del renglón
     const permisos = usePermisos();
 
     const startToolbarTemplate = (): JSX.Element => (
@@ -32,7 +35,9 @@ export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ childre
     const contextValue: ModuleContextValue = {
         startToolbarTemplate,
         visible,
-        setVisible
+        setVisible,
+        rowData,
+        setRowData
     };
 
     return (

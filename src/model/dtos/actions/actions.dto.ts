@@ -1,10 +1,9 @@
-export type ActionsPostDTO = Omit<ActionsPatchDTO, "id">;
+export type ActionsPatchDTO = Partial<ActionsPostDTO> & { id: number }
 
-export interface ActionsPatchDTO {
-    id: number,
+export interface ActionsPostDTO {
     nombre?: string,
     descripcion?: string
 }
 export interface ActionsDeleteDTO {
-  id: number;
+    id: number
 }

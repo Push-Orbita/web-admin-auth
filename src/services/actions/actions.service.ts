@@ -24,7 +24,8 @@ class Actions {
         })
     }
     async patchActions(req: ActionsPatchDTO) {
-        return await Axios.patch(url.patch, req, { cancelToken: cancelTokenSource.token, });
+        console.log('reqdata',req)
+        return await Axios.patch(`${url.patch}`, req, { cancelToken: cancelTokenSource.token, });
     }
     async deleteActions(ActionsId: ActionsDeleteDTO) {
         return await Axios.delete(url.delete, {
