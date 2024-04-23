@@ -1,7 +1,6 @@
 
 
 import { ActionsDeleteDTO, ActionsPatchDTO, ActionsPostDTO } from "../../model/dtos/actions/actions.dto";
-
 import { replaceParamId } from "../../utilities/replace-param.utils";
 import { Axios, cancelTokenSource } from '../../config/api/axios.config';
 import { ActionsURL } from "../url/actions.url";
@@ -24,14 +23,10 @@ class Actions {
         })
     }
     async patchActions(req: ActionsPatchDTO) {
-        console.log('reqdata',req)
-        return await Axios.patch(`${url.patch}`, req, { cancelToken: cancelTokenSource.token, });
+        return await Axios.patch(replaceParamId(url.patch, req.id),req, { cancelToken: cancelTokenSource.token, });
     }
     async deleteActions(ActionsId: ActionsDeleteDTO) {
-        return await Axios.delete(url.delete, {
-            data: ActionsId,
-            cancelToken: cancelTokenSource.token,
-        });
+        return await Axios.delete(replaceParamId(url.delete, ActionsId.id), { cancelToken: cancelTokenSource.token, });
     }
 }
 

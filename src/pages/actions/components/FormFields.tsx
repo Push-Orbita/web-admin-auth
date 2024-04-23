@@ -6,7 +6,7 @@ import { Form, useFormikContext } from "formik";
 import { ActionsPostDTO } from "../../../model/dtos/actions/actions.dto";
 
 const FormFields: FC = () => {
-    const { setVisible } = useModuleContext();
+    const { setVisible,setRowData } = useModuleContext();
     const { handleSubmit } = useFormikContext<ActionsPostDTO>()
     return (
         <Form onSubmit={handleSubmit}>
@@ -21,7 +21,11 @@ const FormFields: FC = () => {
                 </div>
             </div>
             <div className="flex justify-content-end flex-wrap">
-                <Button label="Cancelar" icon="pi pi-times" onClick={() => setVisible(false)} className="p-button-text" />
+                <Button type="button" label="Cancelar" icon="pi pi-times" 
+                onClick={() =>{ 
+                    setVisible(false), 
+                    setRowData('')}
+                    } className="p-button-text" />
                 <Button type='submit' label="Guardar2" icon="pi pi-save" />
             </div>
 

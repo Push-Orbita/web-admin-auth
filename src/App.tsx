@@ -9,10 +9,11 @@ import './i18n';
 import { persistor, store } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
 // import './themes/lara-dark-purple/theme.css';
-import './themes/lara-light-purple/theme.css';
-import { PermisosProvider } from './hooks/usePermisos';
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ModuleProvider } from './hooks/useModules';
+import { PermisosProvider } from './hooks/usePermisos';
+import './themes/lara-light-purple/theme.css';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const queryClient = new QueryClient()
@@ -26,6 +27,7 @@ function App() {
             <PrimeReactProvider >
               <PermisosProvider>
                 <ModuleProvider>
+                <Toaster position="bottom-right" />
                   <AppRouter />
                 </ModuleProvider>
               </PermisosProvider >

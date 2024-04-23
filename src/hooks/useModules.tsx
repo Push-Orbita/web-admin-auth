@@ -17,7 +17,7 @@ interface ModuleProviderProps {
 
 export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ children }) => {
     const [visible, setVisible] = useState<boolean>(false);
-    const [rowData, setRowData] = useState<any>(null); // Estado para los datos del renglón
+    const [rowData, setRowData] = useState<any>(null);
     const permisos = usePermisos();
 
     const startToolbarTemplate = (): JSX.Element => (

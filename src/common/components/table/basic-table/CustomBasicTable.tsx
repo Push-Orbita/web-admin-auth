@@ -21,6 +21,7 @@ interface Props {
     data: any,
     loading: boolean;
     columns: ICustomColumnItem[],
+    handleDelete:any;
 }
 
 
@@ -32,7 +33,8 @@ export default function CustomBasicTable({
     scrollable = true,
     loading,
     data,
-    columns = []
+    columns = [],
+    handleDelete
 
 }: Props) {
     const { setVisible, setRowData } = useModuleContext();
@@ -65,7 +67,7 @@ export default function CustomBasicTable({
         return (
             <React.Fragment>
                 {permisos.puedeModificar ? ( <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />) : ("")}
-                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" />) : ("")}
+                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(setRowData(rowData)) }/>) : ("")}
             </React.Fragment>
         );
     };

@@ -1,14 +1,17 @@
 import { Formik } from "formik"
 import { FC } from "react"
+import { useModuleContext } from "../../../hooks/useModules"
 import UseQueryMutation from "../../../hooks/useQueryMutation"
 import { ActionsPatchDTO, ActionsPostDTO } from "../../../model/dtos/actions/actions.dto"
 import { ActionsApi } from "../../../services/actions/actions.service"
 import { fieldValidations } from "../fields/field.validations"
 import FormFields from "./FormFields"
-import { useModuleContext } from "../../../hooks/useModules"
+import toast from "react-hot-toast"
 
 const FormTypeActions: FC = () => {
-    const { rowData,visible, setVisible } = useModuleContext();
+    const { setRowData,rowData, visible, setVisible } = useModuleContext();
+
+
     const postActions = UseQueryMutation({
         requestFn: ActionsApi.postActions,
         options: {
@@ -16,7 +19,7 @@ const FormTypeActions: FC = () => {
                 alert('error')
             },
             onSuccess: () => {
-                alert('exito')
+                toast.success('Exito POST')
                 setVisible(!visible)
             },
         },
@@ -29,7 +32,9 @@ const FormTypeActions: FC = () => {
                 alert('error')
             },
             onSuccess: () => {
-                alert('exito')
+                toast.success('Exito PATCH')
+                setVisible(!visible)
+                setRowData('');
             },
         },
     })
@@ -55,7 +60,6 @@ const FormTypeActions: FC = () => {
             initialValues={intialValues}
             validationSchema={fieldValidations}
             onSubmit={(values, { setSubmitting }) => {
-                console.log(values)
                 onSave(values)
                 setSubmitting(false)
             }}

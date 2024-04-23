@@ -4,18 +4,15 @@ import { ICustomColumnItem } from "../../../common/components/table/basic-table/
 interface Props {
     data: any;
     isFetching: boolean;
+    handleDelete: any;
 }
-export const TableAction = ({ data, isFetching }: Props) => {
-
-    // const [loading, setLoading] = useState<boolean>(true);
-
-
+export const TableAction = ({ data, isFetching,handleDelete }: Props) => {
     const columns: ICustomColumnItem[] = [
         { field: 'nombre', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
         { field: 'descripcion', header: 'Descripcion', sortable: true, filter: true, filterPlaceholder: 'Buscar Por compania', dataType: 'text' },
 
     ]
-    console.log('datatable', data)
+  
     return (
         <>
             <CustomBasicTable
@@ -26,6 +23,7 @@ export const TableAction = ({ data, isFetching }: Props) => {
                 filterDisplay={'row'}
                 rowsPerPageOptions={[10, 100, 1000]}
                 rows={10}
+                handleDelete={handleDelete}
 
             />
         </>
