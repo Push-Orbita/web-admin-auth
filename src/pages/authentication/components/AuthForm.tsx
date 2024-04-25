@@ -17,9 +17,7 @@ export const AuthForm = () => {
         userName: '',
         userPassword: ''
     };
-    const handleSubmit = (values: any) => {
-        console.log(values)
-
+    const handleSubmit = () => {
         const loadData = async () => {
             try {
                 // Asegúrate de ajustar la ruta al lugar donde tu archivo está ubicado

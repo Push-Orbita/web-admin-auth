@@ -276,5 +276,29 @@ export const es_ar = {
       }
 
     }
+  },
+  ActionsType: {
+    title: "Tipos de Acciones",
+    subTitle: "Tipos de Acciones de los modúlos",
+    new: "Nuevo tipo de Acción",
+    edit: "Editar tipo de Acción",
+    detail: "Detalle del tipo de Acción",
+    list: "Lista de tipos de secciones",
+    form: {
+      name: "Nombre",
+      description: "Descripción",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
+    },
+    messages: {
+      createdSuccess: "El tipo de acción se creó correctamente",
+      updatedSuccess: "El tipo de acción se actualizó correctamente",
+      deletedSuccess: "El tipo de acción se eliminó correctamente",
+      createdError: "Error al crear el tipo de acción",
+      updatedError: "Error al actualizar el tipo de acción",
+      deletedError: "Error al eliminar el tipo de acción",
+    },
   }
 };

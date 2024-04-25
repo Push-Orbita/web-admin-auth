@@ -1,19 +1,10 @@
 import { Field, useFormikContext } from 'formik';
-import { useRef } from 'react';
-
 interface Props {
     name: string;
 }
 
-const FileUploadWithFormik = ({ name }: Props) => {
-    const toast = useRef(null);
+const FileUploadWithFormik = ({ name }: Props) => { 
     const formik = useFormikContext();
-
-    const onUpload = () => {
-        // toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
-        // Puedes realizar acciones adicionales al cargar el archivo
-    };
-
     return (
         <div className="card flex justify-content-center">
             <Field

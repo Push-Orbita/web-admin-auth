@@ -21,20 +21,6 @@
             "element": "HomeAdmin"
         },
         {
-            "label": "news-letter",
-            "icon": "pi pi-paper",
-            "path": "/news-letter",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "NewsLetter"
-        },
-        {
             "label": "Configuración",
             "icon": "pi pi-cog",
             "items": [

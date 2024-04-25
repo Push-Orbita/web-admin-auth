@@ -6,8 +6,9 @@ import UseQueryMutation from '../../hooks/useQueryMutation';
 import { DashboardLayout } from "../../layout/DashboardLayout";
 import { ActionsApi } from "../../services/actions/actions.service";
 import FormTypeActions from './components/FormTypeActions';
-
+import { t } from "i18next"
 import { TableAction } from "./components/TableAction";
+import { lang } from '../../langs';
 
 interface Response {
     data: ActionsResponse[];
@@ -21,40 +22,37 @@ interface ActionsResponse {
     descripcion: string
 
 }
-const Actions = () => {
+const ActionsType = () => {
     const { rowData, startToolbarTemplate } = useModuleContext();
     const { data, isFetching, refetch } = useQueryApi<Response>(
         "actions",
-        ActionsApi.getActionsSearch,
+        ActionsApi.getActionsSearch
     )
-
     const deleteActions = UseQueryMutation({
         requestFn: ActionsApi.deleteActions,
         options: {
             onError() {
-                toast.error('error')
+                toast.error(t(lang.ActionsType.messages.deletedError))
             },
             onSuccess: () => {
                 refetch()
-                toast.success('Exito')
+                toast.success(t(lang.ActionsType.messages.deletedSuccess))
             },
         },
     })
 
-    const handleDelete = async () => {
+    const handleDelete = async (id: number) => {
         const req = {
-            id: rowData?.id,
+            id
         }
         await deleteActions.mutateAsync(req)
     }
-
-
-
-
     return (
 
         <DashboardLayout>
-            {/* <CustomBreadcrumb /> */}
+            <div className='text-3xl mt-2 mb-2'>
+                {t(lang.ActionsType.title)}
+            </div>
             <div className="card">
                 <div className="grid">
                     <div className="col-12">
@@ -69,18 +67,15 @@ const Actions = () => {
                     />
                 </div>
             </div>
-            <CustomBasicModal
-                title={rowData ? 'Action Editar' : 'Action Alta'}
-            >
-                <FormTypeActions />
+            <CustomBasicModal title={rowData ? `${t(lang.ActionsType.edit)}` : `${t(lang.ActionsType.new)}`} >
+                <FormTypeActions
+                    refetch={refetch}
+                />
             </CustomBasicModal>
-
-
-
         </DashboardLayout >
 
     )
 }
 
 
-export default Actions
+export default ActionsType

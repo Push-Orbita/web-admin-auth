@@ -63,11 +63,13 @@ export default function CustomBasicTable({
         setRowData(rowData);
         setVisible(true);
     }
+
+    
     const actionBodyTemplate = (rowData: any) => {
         return (
             <React.Fragment>
                 {permisos.puedeModificar ? ( <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />) : ("")}
-                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(setRowData(rowData)) }/>) : ("")}
+                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(rowData.id) }/>) : ("")}
             </React.Fragment>
         );
     };

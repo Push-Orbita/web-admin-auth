@@ -1,8 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-// Define a type for the slice state
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 interface IUi {
-  theme: string;
+  theme: boolean;
   borderRadius: number;
   elevation: number;
   isLoadingAplications: boolean;
@@ -11,33 +10,37 @@ interface IUi {
   drawerWidth: number;
 }
 
-// Define the initial state using that type
 const initialState: IUi = {
-  theme: "light",
+  theme: false,
   borderRadius: 1,
   elevation: 4,
   isLoadingAplications: false,
   isCollapsed: false,
   isOpenMenu: false,
-  drawerWidth:240,
+  drawerWidth: 240,
 };
 
 export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    OpenMenu: (state)=>{
-      state.isOpenMenu = !state.isOpenMenu
+    toggleTheme: (state) => {
+      state.theme = !state.theme;
     },
-    ElevationValue: (state, action: PayloadAction<number>)=>{
-      state.elevation =  action.payload;
+    openMenu: (state) => {
+      state.isOpenMenu = !state.isOpenMenu;
     },
-    BorderValue: (state, action: PayloadAction<number>)=>{
+    setElevation: (state, action: PayloadAction<number>) => {
+      state.elevation = action.payload;
+    },
+    setBorderRadius: (state, action: PayloadAction<number>) => {
       state.borderRadius = action.payload;
     }
   },
 });
 
-export const { OpenMenu,ElevationValue,BorderValue } = uiSlice.actions;
+// Export the actions
+export const { toggleTheme, openMenu, setElevation, setBorderRadius } = uiSlice.actions;
 
+// Export the reducer
 export default uiSlice.reducer;

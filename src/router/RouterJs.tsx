@@ -1,16 +1,13 @@
 import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHook';
-import NewsLetterCreate from '../pages/newletter/create';
 const AuthLogin = lazy(() => import('../pages/authentication/AuthLogin'));
 const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
-const NewsLetter = lazy(() => import('../pages/newletter/NewsLetter'));
-const Actions = lazy(() => import('../pages/actions/Actions'));
+const Actions = lazy(() => import('../pages/actions/ActionsType'));
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
     'HomeAdmin': HomeAdmin,
-    'NewsLetter': NewsLetter,
     'Actions': Actions,
 };
 
@@ -44,7 +41,6 @@ export const RouterJs = () => {
     return (
         <div>
             <Routes>
-                <Route key={'/news-letter/create'} path='/news-letter/create' element={<NewsLetterCreate />}></Route>
                 {renderRoutes(userModulos)}
             </Routes>
         </div>

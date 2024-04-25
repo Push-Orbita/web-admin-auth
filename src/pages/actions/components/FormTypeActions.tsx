@@ -1,26 +1,32 @@
 import { Formik } from "formik"
-import { FC } from "react"
+import toast from "react-hot-toast"
 import { useModuleContext } from "../../../hooks/useModules"
 import UseQueryMutation from "../../../hooks/useQueryMutation"
 import { ActionsPatchDTO, ActionsPostDTO } from "../../../model/dtos/actions/actions.dto"
 import { ActionsApi } from "../../../services/actions/actions.service"
 import { fieldValidations } from "../fields/field.validations"
 import FormFields from "./FormFields"
-import toast from "react-hot-toast"
+import { t } from "i18next"
+import { lang } from "../../../langs"
 
-const FormTypeActions: FC = () => {
-    const { setRowData,rowData, visible, setVisible } = useModuleContext();
+interface FormTypeActionsProps {
+    refetch: () => void; // Añadir más tipos si `refetch` recibe parámetros específicos o devuelve algo
+}
+const FormTypeActions: React.FC<FormTypeActionsProps> = ({ refetch }) => {
+
+    const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
 
     const postActions = UseQueryMutation({
         requestFn: ActionsApi.postActions,
         options: {
             onError() {
-                alert('error')
+                toast.error(t(lang.ActionsType.messages.createdSuccess))
             },
             onSuccess: () => {
-                toast.success('Exito POST')
+                toast.success(t(lang.ActionsType.messages.createdSuccess))
                 setVisible(!visible)
+                refetch()
             },
         },
     })
@@ -29,12 +35,13 @@ const FormTypeActions: FC = () => {
         requestFn: ActionsApi.patchActions,
         options: {
             onError() {
-                alert('error')
+                toast.error(t(lang.ActionsType.messages.updatedError))
             },
             onSuccess: () => {
-                toast.success('Exito PATCH')
+                toast.success(t(lang.ActionsType.messages.updatedSuccess))
                 setVisible(!visible)
                 setRowData('');
+                refetch()
             },
         },
     })
