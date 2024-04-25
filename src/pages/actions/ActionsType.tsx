@@ -6,9 +6,9 @@ import UseQueryMutation from '../../hooks/useQueryMutation';
 import { DashboardLayout } from "../../layout/DashboardLayout";
 import { ActionsApi } from "../../services/actions/actions.service";
 import FormTypeActions from './components/FormTypeActions';
+import { lang } from '../../langs';
 import { t } from "i18next"
 import { TableAction } from "./components/TableAction";
-import { lang } from '../../langs';
 
 interface Response {
     data: ActionsResponse[];
