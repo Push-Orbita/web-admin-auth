@@ -12,9 +12,9 @@ import './i18n';
 import { persistor } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
 // import './themes/lara-ligth-purple/theme.css';
-// import './themes/lara-dark-purple/theme.css';
-import { useEffect } from 'react';
-import { useAppSelector } from './hooks/reduxHook';
+import './themes/rhea/theme.css';
+// import { useEffect } from 'react';
+// import { useAppSelector } from './hooks/reduxHook';
 // import { useDispatch } from 'react-redux';
 function App() {
   const queryClient = new QueryClient({
@@ -27,18 +27,18 @@ function App() {
       },
     },
   })
-  const theme = useAppSelector((state) => state.ui.theme)
-  useEffect(() => {
-    const importTheme = async () => {
-      if (!theme) {
-        await import('./themes/lara-light-purple/theme.css');
-      } else {
-        await import('./themes/lara-dark-purple/theme.css');
-      }
-    };
+  // const theme = useAppSelector((state) => state.ui.theme)
+  // useEffect(() => {
+  //   const importTheme = async () => {
+  //     if (!theme) {
+  //       await import('./themes/lara-light-purple/theme.css');
+  //     } else {
+  //       await import('./themes/lara-dark-purple/theme.css');
+  //     }
+  //   };
 
-    importTheme();
-  }, [theme]);
+  //   importTheme();
+  // }, [theme]);
   return (
     <HashRouter>
       <QueryClientProvider client={queryClient}>
