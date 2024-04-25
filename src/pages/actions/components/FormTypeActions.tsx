@@ -10,13 +10,10 @@ import { t } from "i18next"
 import { lang } from "../../../langs"
 
 interface FormTypeActionsProps {
-    refetch: () => void; // Añadir más tipos si `refetch` recibe parámetros específicos o devuelve algo
+    refetch: () => void;
 }
 const FormTypeActions: React.FC<FormTypeActionsProps> = ({ refetch }) => {
-
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
-
-
     const postActions = UseQueryMutation({
         requestFn: ActionsApi.postActions,
         options: {

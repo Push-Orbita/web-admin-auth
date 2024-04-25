@@ -23,7 +23,8 @@ interface ActionsResponse {
 
 }
 const ActionsType = () => {
-    const { rowData, startToolbarTemplate } = useModuleContext();
+
+    const { rowData, startToolbarTemplate, visible } = useModuleContext();
     const { data, isFetching, refetch } = useQueryApi<Response>(
         "actions",
         ActionsApi.getActionsSearch
@@ -68,9 +69,8 @@ const ActionsType = () => {
                 </div>
             </div>
             <CustomBasicModal title={rowData ? `${t(lang.ActionsType.edit)}` : `${t(lang.ActionsType.new)}`} >
-                <FormTypeActions
-                    refetch={refetch}
-                />
+                {visible && (<FormTypeActions refetch={refetch} />)}
+
             </CustomBasicModal>
         </DashboardLayout >
 
