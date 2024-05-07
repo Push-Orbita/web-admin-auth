@@ -9,21 +9,7 @@ import FormTypeActions from './components/FormTypeActions';
 import { lang } from '../../langs';
 import { t } from "i18next"
 import { TableAction } from "./components/TableAction";
-
-interface Response {
-    data: ActionsResponse[];
-}
-interface ActionsResponse {
-    id: number,
-    createdDate: string | null,
-    updatedDate: string | null,
-    deletedDate: string | null,
-    nombre: string,
-    descripcion: string
-
-}
 const ActionsType = () => {
-
     const { rowData, startToolbarTemplate, visible } = useModuleContext();
     const { data, isFetching, refetch } = useQueryApi<Response>(
         "actions",
@@ -41,7 +27,6 @@ const ActionsType = () => {
             },
         },
     })
-
     const handleDelete = async (id: number) => {
         const req = {
             id
@@ -76,6 +61,4 @@ const ActionsType = () => {
 
     )
 }
-
-
 export default ActionsType
