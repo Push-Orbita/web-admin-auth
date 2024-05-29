@@ -1,4 +1,4 @@
-import logo from '../../../assets/img/auth/logo.svg';
+import logo from '../../../assets/img/auth/logo-push.png';
 import { Image } from "primereact/image"
 import { t } from "i18next"
 import { lang } from "../../../langs"

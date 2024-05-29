@@ -15,10 +15,7 @@ export const AuthLayout = ({ Form }: Props) => {
             // backgroundColor: 'black'
         }}>
             <div className="grid">
-                <div className="hidden lg:block lg:col-8 flex  align-items-center ">
-                    {/* <ThreeDRocket2 /> */}
-                </div>
-                <div className="grid col-12 lg:col-4 sm:h-full md:h-auto" >
+                <div className="grid col-12 sm:h-full md:h-auto justify-content-center" >
                     {Form}
                 </div>
             </div>

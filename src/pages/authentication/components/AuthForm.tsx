@@ -11,7 +11,7 @@ import { setUserToken } from "../../../redux/slices/auth/autSlice"
 
 
 export const AuthForm = () => {
-    
+
     const dispatch = useAppDispatch();
     const initialValues = {
         userName: '',
@@ -35,7 +35,7 @@ export const AuthForm = () => {
 
     return (
 
-        <Card className='w-full border-round-2xl' style={{ padding: 30 }}>
+        <Card className='border-round-2xl justify-content-center align-items-center' style={{ padding: 30,width:'25vw' }}>
             <div className="flex flex-column justify-content-center flex-wrap w-full gap-2">
                 <AuthHeader />
             </div>
