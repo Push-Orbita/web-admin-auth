@@ -8,24 +8,25 @@ interface Props {
     isFetching: boolean;
     handleDelete: any;
 }
-export const TableAction = ({ data, isFetching, handleDelete }: Props) => {
+export const TablePresentacion = ({ data, isFetching, handleDelete }: Props) => {
     const columns: ICustomColumnItem[] = [
-        { field: 'nombre', header: 'Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Nombre', dataType: 'text' },
-        { field: 'descripcion', header: 'Descripción', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Descripción', dataType: 'text' },
+        { field: 'id', header: '#ID', sortable: true, filter: true, filterPlaceholder: 'Buscar Por ID', dataType: 'text' },
+        { field: 'nombre', header: '#Nombre', sortable: true, filter: true, filterPlaceholder: 'Buscar Por nombre', dataType: 'text' },
+        { field: 'siglas', header: '#Siglas', sortable: true, filter: true, filterPlaceholder: 'Buscar Por siglas', dataType: 'text' },
 
     ]
 
     return (
         <>
             <CustomBasicTable
-                data={data}
+                data={data.data}
                 loading={isFetching}
                 columns={columns}
-                tableTitle={t(lang.ActionsType.subTitle)}
+                tableTitle={t(lang.PresentacionType.subTitle)}
+                handleDelete={handleDelete}
                 filterDisplay={'row'}
                 rowsPerPageOptions={[10, 100, 1000]}
                 rows={10}
-                handleDelete={handleDelete}
 
             />
         </>

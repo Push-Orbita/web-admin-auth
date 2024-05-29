@@ -4,11 +4,23 @@ import { useAppSelector } from '../hooks/reduxHook';
 const AuthLogin = lazy(() => import('../pages/authentication/AuthLogin'));
 const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
 const Actions = lazy(() => import('../pages/actions/ActionsType'));
+
+const Iva = lazy(() => import('../pages/afip/iva/IvaType'));
+
+const Marca = lazy(() => import('../pages/marca/MarcaType'));
+
+const Presentacion= lazy(() => import('../pages/presentacion/PresentacionType'));
+
+
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
     'HomeAdmin': HomeAdmin,
     'Actions': Actions,
+    'Marca': Marca,
+    'Presentacion':Presentacion,
+    'Iva': Iva,
+
 };
 
 export const RouterJs = () => {

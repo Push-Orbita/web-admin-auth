@@ -51,7 +51,7 @@ export const NavBar = () => {
             label: 'Sesion',
             items: [
                 {
-                    label: 'Cerrar',
+                    label: 'Cerrarasdasd',
                     icon: 'pi pi-power-off',
                     command: () => handleLogOut()
 

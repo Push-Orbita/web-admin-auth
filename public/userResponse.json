@@ -21,6 +21,40 @@
             "element": "HomeAdmin"
         },
         {
+            "label": "Producto",
+            "icon": "pi pi-cog",
+            "items": [
+                {
+                    "label": "Marca",
+                    "icon": "pi pi-bolt",
+                    "path": "/marca",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Marca"
+                },
+                {
+                    "label": "Presentacion",
+                    "icon": "pi pi-star",
+                    "path": "/presentacion",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Presentacion"
+                }
+            ]
+        },
+        {
             "label": "Configuración",
             "icon": "pi pi-cog",
             "items": [
@@ -40,7 +74,33 @@
                                 "R",
                                 "D"
                             ],
-                            "element": "Actions"
+                            "element": "Action"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Afip",
+            "icon": "pi pi-building",
+            "items": [
+                {
+                    "label": "Modulos",
+                    "icon": "pi pi-desktop",
+                    "items": [
+                        {
+                            "label": "Iva",
+                            "icon": "pi pi-bolt",
+                            "path": "/iva",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Iva"
                         }
                     ]
                 }

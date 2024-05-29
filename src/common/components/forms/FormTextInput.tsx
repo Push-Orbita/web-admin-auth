@@ -13,7 +13,7 @@ export const FormTextInput = ({ label, type = 'text', ...props }: Props) => {
     const [field, meta] = useField(props);
     return (
         <>
-            <label htmlFor={props.name}>{label}</label>
+            <label htmlFor={props.name} style={{ paddingTop: '10px' }}>{label}</label>
             <InputText id={props.name} 
             aria-describedby={props.name}
                 {...field}
@@ -21,11 +21,11 @@ export const FormTextInput = ({ label, type = 'text', ...props }: Props) => {
                 value={field.value}
                 type={type}
             />
-            <small id={props.name} style={{
+            <div id={props.name} style={{
                 color: 'var(--red-500)'
             }}>
                 {meta.touched && meta.error ? meta.error : ''}
-            </small>
+            </div>
         </>
     );
 };

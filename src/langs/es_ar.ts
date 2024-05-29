@@ -300,5 +300,81 @@ export const es_ar = {
       updatedError: "Error al actualizar el tipo de acción",
       deletedError: "Error al eliminar el tipo de acción",
     },
+  },
+
+  IvaType: {
+    title: "Tipos de Iva",
+    subTitle: "Tipos de Iva de los modúlos",
+    new: "Nuevo tipo de Iva",
+    edit: "Editar tipo de Iva",
+    detail: "Detalle del tipo de Iva ",
+    list: "Lista de tipos de Iva",
+    form: {
+      description: "Descripcion",
+      percent: "Porcentaje",
+    },
+    validation: {
+      descriptionIsRequired: "La descripcion es requerida",
+      percentIsRequired: "El porcentaje es requerido",
+    },
+    messages: {
+      createdSuccess: "El tipo de Iva se creó correctamente",
+      updatedSuccess: "El tipo de Iva se actualizó correctamente",
+      deletedSuccess: "El tipo de Iva se eliminó correctamente",
+      createdError: "Error al crear el tipo de Iva",
+      updatedError: "Error al actualizar el tipo de Iva",
+      deletedError: "Error al eliminar el tipo de Iva",
+    },
+  },
+  MarcaType: {
+    title: "Tipos de Marca",
+    subTitle: "Tipos de Marca de los modúlos",
+    new: "Nuevo tipo de Marca",
+    edit: "Editar tipo de Marca",
+    detail: "Detalle del tipo de Marca",
+    list: "Lista de tipos de secciones",
+    form: {
+      name: "Nombre",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+    },
+    messages: {
+      createdSuccess: "El tipo de Marca se creó correctamente",
+      updatedSuccess: "El tipo de Marca se actualizó correctamente",
+      deletedSuccess: "El tipo de Marca se eliminó correctamente",
+      createdError: "Error al crear el tipo de Marca",
+      updatedError: "Error al actualizar el tipo de Marca",
+      deletedError: "Error al eliminar el tipo de Marca",
+
+    },
+  },
+  PresentacionType: {
+    title: "Tipos de Presentacion",
+    subTitle: "Tipos de Presentacion",
+    new: "Nuevo tipo de Presentacion",
+    edit: "Editar tipo de Presentacion",
+    detail: "Detalle del tipo de Presentaciona",
+    list: "Lista de tipos de secciones",
+    form: {
+      name: "Nombre",
+      acronym:"Siglas",
+
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      acronymIsRequired: "Las siglas son requridas",
+      nameMinLength:"Minima longitud 3 caracteres",
+      nameUppercase:"El nombre tiene que estar en mayusculas",
+      
+    },
+    messages: {
+      createdSuccess: "La Presentacion se creó correctamente",
+      updatedSuccess: "La Presentacion se actualizó correctamente",
+      deletedSuccess: "La Presentacion se eliminó correctamente",
+      createdError: "Error al crear la Presentacion",
+      updatedError: "Error al actualizar la Presentacion",
+      deletedError: "Error al eliminar la Presentacion",
+    },
   }
 };
