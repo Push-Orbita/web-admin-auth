@@ -349,6 +349,32 @@ export const es_ar = {
 
     },
   },
+  System: {
+    title: "Sistemas",
+    subTitle: "Sistemas Hablitidaos",
+    new: "Nuevo Sistema",
+    edit: "Editar Sistema",
+    detail: "Detalle del Sistema",
+    list: "Lista de Sistema",
+    form: {
+      name: "Nombre",
+      description: "Descripción",
+      url: "URL",
+      icono: "Icono"
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+    },
+    messages: {
+      createdSuccess: "El Sistema se creó correctamente",
+      updatedSuccess: "El Sistema se actualizó correctamente",
+      deletedSuccess: "El Sistema se eliminó correctamente",
+      createdError: "Error al crear el Sistema",
+      updatedError: "Error al actualizar el Sistema",
+      deletedError: "Error al eliminar el Sistema",
+
+    },
+  },
   PresentacionType: {
     title: "Tipos de Presentacion",
     subTitle: "Tipos de Presentacion",
@@ -358,15 +384,15 @@ export const es_ar = {
     list: "Lista de tipos de secciones",
     form: {
       name: "Nombre",
-      acronym:"Siglas",
+      acronym: "Siglas",
 
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
       acronymIsRequired: "Las siglas son requridas",
-      nameMinLength:"Minima longitud 3 caracteres",
-      nameUppercase:"El nombre tiene que estar en mayusculas",
-      
+      nameMinLength: "Minima longitud 3 caracteres",
+      nameUppercase: "El nombre tiene que estar en mayusculas",
+
     },
     messages: {
       createdSuccess: "La Presentacion se creó correctamente",

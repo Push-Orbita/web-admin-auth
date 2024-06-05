@@ -1,34 +1,34 @@
 
 
-import { replaceParamId } from "../../utilities/replace-param.utils";
 import { Axios, cancelTokenSource } from '../../config/api/axios.config';
-import { MarcaDeleteDTO, MarcaPatchDTO, MarcaPostDTO } from "../../model/dtos/marca/marca.dto";
+import { SistemaDeleteDTO, SistemaPatchDTO, SistemaPostDTO } from "../../model/dtos/sistema/sistema.dto";
+import { omitId, replaceParamId } from "../../utilities/replace-param.utils";
 import { SistemaURL } from "../url/sistema.url";
 
 
 const url = SistemaURL;
-class Marca {
-    async getActionsSearch() {
+class Sistema {
+    async getSistemaSearch() {
         return await Axios.get(`${url.get}`, {
             cancelToken: cancelTokenSource.token,
         });
     }
-    async getActionsById(MarcaId: number) {
-        return await Axios.get(replaceParamId(url.getById, MarcaId), {
+    async getSistemaById(SistemaId: number) {
+        return await Axios.get(replaceParamId(url.getById, SistemaId), {
             cancelToken: cancelTokenSource.token,
         });
     }
-    async postActions(req: MarcaPostDTO) {
+    async postSistema(req: SistemaPostDTO) {
         return await Axios.post(url.post, req, {
             cancelToken: cancelTokenSource.token,
         })
     }
-    async patchActions(req: MarcaPatchDTO) {
-        return await Axios.patch(replaceParamId(url.patch, req.id), req, { cancelToken: cancelTokenSource.token, });
+    async patchSistema(req: SistemaPatchDTO) {
+        return await Axios.patch(replaceParamId(url.patch, req.id), omitId(req), { cancelToken: cancelTokenSource.token, });
     }
-    async deleteActions(MarcaId: MarcaDeleteDTO) {
-        return await Axios.delete(replaceParamId(url.delete, MarcaId.id), { cancelToken: cancelTokenSource.token, });
+    async deleteSistema(SistemaId:SistemaDeleteDTO) {
+        return await Axios.delete(replaceParamId(url.delete, SistemaId.id), { cancelToken: cancelTokenSource.token, });
     }
 }
 
-export const MarcaApi = new Marca();
+export const SistemaApi = new Sistema();

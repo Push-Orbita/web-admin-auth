@@ -11,8 +11,8 @@ import { PermisosProvider } from './hooks/usePermisos';
 import './i18n';
 import { persistor } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
-// import './themes/lara-ligth-purple/theme.css';
-import './themes/nova/theme.css';
+import './themes/lara-light-teal/theme.css';
+// import './themes/nova/theme.css';
 // import { useEffect } from 'react';
 // import { useAppSelector } from './hooks/reduxHook';
 // import { useDispatch } from 'react-redux';
@@ -30,7 +30,6 @@ function App() {
   return (
     <HashRouter>
       <QueryClientProvider client={queryClient}>
-
         <PersistGate persistor={persistor}>
           <PrimeReactProvider >
             <PermisosProvider>
