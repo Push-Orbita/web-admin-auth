@@ -375,6 +375,41 @@ export const es_ar = {
 
     },
   },
+  Organization: {
+    title: "Organización",
+    subTitle: "Organizaciones Hablitidas",
+    new: "Nueva Organización",
+    edit: "Editar Organización",
+    detail: "Detalle de la Organización",
+    list: "Lista de Organizaciones",
+    form: {
+      name: "Nombre",
+      dataBase: "Nombre De la Base de datos",
+      host: "Host",
+      port: "Puerto",
+      user: "Usuario",
+      password: "Contraseña",
+      tipoBD: "Tipo de Base de Datos",
+    },
+    validation: {
+      nameIsRequired: "El nombre es Requerido",
+      dataBaseIsRequired: "El nombre de la Base de Datos es Requerido",
+      hostIsRequired: "El Host es Requerido",
+      portIsRequired: "El Puerto es Requerido",
+      userIsRequired: "El Usuario es Requerido",
+      passwordIsRequired: "La contraseña es Requerida",
+      tipoBDIsRequired: "El tipo de la Base de Datos es Requerido",
+    },
+    messages: {
+      createdSuccess: "La Organización se creó correctamente",
+      updatedSuccess: "La Organización se actualizó correctamente",
+      deletedSuccess: "La Organización se eliminó correctamente",
+      createdError: "Error al crear la Organización",
+      updatedError: "Error al actualizar la Organización",
+      deletedError: "Error al eliminar la Organización",
+
+    },
+  },
   PresentacionType: {
     title: "Tipos de Presentacion",
     subTitle: "Tipos de Presentacion",
