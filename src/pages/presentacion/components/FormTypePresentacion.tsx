@@ -18,7 +18,7 @@ const FormTypePresentacion: React.FC<FormTypeActionsProps> = ({ refetch }) => {
         requestFn: PresentacionApi.postActions,
         options: {
             onError() {
-                toast.error(t(lang.PresentacionType.messages.createdSuccess))
+                toast.error(t(lang.PresentacionType.messages.createdError))
             },
             onSuccess: () => {
                 toast.success(t(lang.PresentacionType.messages.createdSuccess))

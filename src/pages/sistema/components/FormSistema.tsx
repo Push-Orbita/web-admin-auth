@@ -18,7 +18,7 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch }) => {
         requestFn: SistemaApi.postSistema,
         options: {
             onError() {
-                toast.error(t(lang.System.messages.createdSuccess))
+                toast.error(t(lang.System.messages.createdError))
             },
             onSuccess: () => {
                 toast.success(t(lang.System.messages.createdSuccess))
