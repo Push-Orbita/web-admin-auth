@@ -21,6 +21,20 @@
             "element": "HomeAdmin"
         },
         {
+            "label": "Sistemas",
+            "icon": "pi pi-desktop",
+            "path": "/sistema",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V",
+                "R",
+                "D"
+            ],
+            "element": "Sistema"
+        },
+        {
             "label": "Producto",
             "icon": "pi pi-cog",
             "items": [
