@@ -9,6 +9,7 @@ import { SistemaApi } from "../../../services/sistema/sistema.service"
 import FormFields from "./FormFields"
 import { fieldValidations } from "../field/field.validations"
 import { OrganizacionApi } from "../../../services/organizacion/organizacion.service"
+import { OrganizacionPostDTO } from "../../../model/dtos/organizacion/organizacion.dto"
 
 interface FormTypeActionsProps {
     refetch: () => void;
@@ -45,11 +46,14 @@ const FormOrganizacion: React.FC<FormTypeActionsProps> = ({ refetch }) => {
     })
 
 
-    const intialValues: SistemaPostDTO = {
+    const intialValues: OrganizacionPostDTO = {
         nombre: rowData?.nombre ?? "",
-        descripcion: rowData?.descripcion ?? "",
-        icono: rowData?.icono ?? "",
-        url: rowData?.url ?? "",
+        bd: rowData?.bd ?? "",
+        host: rowData?.host ?? "",
+        port: rowData?.port ?? "",
+        usuario: rowData?.usuario ?? "",
+        password: rowData?.password ?? "",
+        tipobd: rowData?.tipobd ?? "",
     }
 
     const onSave = async (values: SistemaPostDTO) => {

@@ -28,7 +28,7 @@ const FormFields: FC = () => {
                     />
                 </div>
                 <div className="col-12 md:col-6 lg:col-4  mb-2">
-                    <FormTextInput label={t(lang.Organization.form.tipoBD)} name={'tipodb'}
+                    <FormTextInput label={t(lang.Organization.form.tipoBD)} name={'tipobd'}
                     />
                 </div>
                 <div className="col-12 md:col-6  mb-2">
