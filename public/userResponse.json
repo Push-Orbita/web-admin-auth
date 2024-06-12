@@ -47,6 +47,20 @@
                 "D"
             ],
             "element": "Organizacion"
+        },
+        {
+            "label": "suscripciones",
+            "icon": "pi pi-gift",
+            "path": "/suscripcion",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V",
+                "R",
+                "D"
+            ],
+            "element": "Suscripcion"
         }
     ]
 }

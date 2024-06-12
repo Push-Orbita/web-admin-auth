@@ -437,5 +437,29 @@ export const es_ar = {
       updatedError: "Error al actualizar la Presentacion",
       deletedError: "Error al eliminar la Presentacion",
     },
+  },
+  Suscripcion: {
+    title: "Suscripción",
+    subTitle: "Sistemas Hablitidos",
+    new: "Nueva Suscripción",
+    edit: "Editar Suscripción",
+    detail: "Detalle de la Suscripción",
+    list: "Lista de Suscripciones",
+    form: {
+      nombre: "Nombre",
+      descripcion: "Descripción",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descripcionIsRequired: "El nombre es requerido",
+    },
+    messages: {
+      createdSuccess: "La Suscripción se creó correctamente",
+      updatedSuccess: "La Suscripción se actualizó correctamente",
+      deletedSuccess: "La Suscripción se eliminó correctamente",
+      createdError: "Error al crear la Suscripción",
+      updatedError: "Error al actualizar la Suscripción",
+      deletedError: "Error al eliminar la Suscripción",
+    },
   }
 };
