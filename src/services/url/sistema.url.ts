@@ -4,6 +4,6 @@ export const SistemaURL = {
     get: `${SISTEMA}/search`,
     getById: `${SISTEMA}/:id`,
     post: `${SISTEMA}`,
-    patch: `${SISTEMA}/2`,
+    patch: `${SISTEMA}/:id`,
     delete: `${SISTEMA}/:id`,
 }

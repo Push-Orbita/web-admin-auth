@@ -33,6 +33,20 @@
                 "D"
             ],
             "element": "Sistema"
+        },
+        {
+            "label": "Organizaciones",
+            "icon": "pi pi-building",
+            "path": "/organizations",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V",
+                "R",
+                "D"
+            ],
+            "element": "Organizacion"
         }
     ]
 }
