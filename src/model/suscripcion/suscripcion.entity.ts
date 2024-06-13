@@ -7,7 +7,7 @@ export interface SuscripcionResponse {
 
 
 export interface SuscripcionEntity {
-    id: number;
-    nombre: string;
-    descripcion: string;
+    id?: number;
+    nombre?: string;
+    descripcion?: string;
 }

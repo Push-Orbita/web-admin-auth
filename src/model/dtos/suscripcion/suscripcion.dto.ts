@@ -4,6 +4,6 @@ export interface SuscripcionPostDTO {
     descripcion: string;
     sistema: number;
 }
-export interface SucripcionDeleteDTO {
+export interface SuscripcionDeleteDTO {
     id: number
 }

@@ -6,9 +6,8 @@ const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
 const Sistema= lazy(() => import('../pages/sistema/Sistema'));
 const Organizacion= lazy(() => import('../pages/organizacion/Organizacion'));
 const Actions = lazy(() => import('../pages/actions/ActionsType'));
-const Iva = lazy(() => import('../pages/afip/iva/IvaType'));
-const Marca = lazy(() => import('../pages/marca/MarcaType'));
-const Presentacion= lazy(() => import('../pages/presentacion/PresentacionType'));
+const Suscripcion = lazy(() => import('../pages/suscripcion/Suscripcion'));
+
 
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
@@ -18,9 +17,8 @@ const componentsMap: ComponentsMap = {
     'Sistema': Sistema,
     'Organizacion': Organizacion,
     'Actions': Actions,
-    'Marca': Marca,
-    'Presentacion':Presentacion,
-    'Iva': Iva,
+    'Suscripcion': Suscripcion,
+   
 
 };
 

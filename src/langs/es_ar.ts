@@ -314,7 +314,7 @@ export const es_ar = {
       percent: "Porcentaje",
     },
     validation: {
-      descriptionIsRequired: "La descripcion es requerida",
+      descriptionIsRequired: "La description es requerida",
       percentIsRequired: "El porcentaje es requerido",
     },
     messages: {
@@ -440,18 +440,20 @@ export const es_ar = {
   },
   Suscripcion: {
     title: "Suscripción",
-    subTitle: "Sistemas Hablitidos",
+    subTitle: "Suscripciones Hablitidas",
     new: "Nueva Suscripción",
     edit: "Editar Suscripción",
     detail: "Detalle de la Suscripción",
     list: "Lista de Suscripciones",
     form: {
-      nombre: "Nombre",
-      descripcion: "Descripción",
+      name: "Nombre",
+      description: "Descripción",
+      system: "Sistema",
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
-      descripcionIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
+      systemIsRequired: "El sistema es requerido",
     },
     messages: {
       createdSuccess: "La Suscripción se creó correctamente",

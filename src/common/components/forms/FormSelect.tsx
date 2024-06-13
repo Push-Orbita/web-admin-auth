@@ -9,16 +9,17 @@ interface Props {
     options: any;
     optionLabel: string;
     onChange?: (value: any) => void;
-    loading?: boolean;
+    isLoading?: boolean;
     [x: string]: string | undefined | any;
 }
-export const FormSelect = ({ label, loading, ...props }: Props) => {
+export const FormSelect = ({ label, isLoading, ...props }: Props) => {
     const [field, meta] = useField(props);
 
     return (
         <>
             <label htmlFor={props.name}>{label}</label>
             <Dropdown
+                disabled={isLoading}
                 inputId={field.value}
                 value={field.value}
                 onChange={field.onChange}
