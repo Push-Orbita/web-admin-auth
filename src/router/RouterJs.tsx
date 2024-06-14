@@ -1,10 +1,11 @@
 import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHook';
+import { SpinnerLoad } from '../layout/components/SpinnerLoad';
 const AuthLogin = lazy(() => import('../pages/authentication/AuthLogin'));
 const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
-const Sistema= lazy(() => import('../pages/sistema/Sistema'));
-const Organizacion= lazy(() => import('../pages/organizacion/Organizacion'));
+const Sistema = lazy(() => import('../pages/sistema/Sistema'));
+const Organizacion = lazy(() => import('../pages/organizacion/Organizacion'));
 const Actions = lazy(() => import('../pages/actions/ActionsType'));
 const Suscripcion = lazy(() => import('../pages/suscripcion/Suscripcion'));
 
@@ -18,7 +19,7 @@ const componentsMap: ComponentsMap = {
     'Organizacion': Organizacion,
     'Actions': Actions,
     'Suscripcion': Suscripcion,
-   
+
 
 };
 
@@ -40,7 +41,10 @@ export const RouterJs = () => {
                     key={modulo.path}
                     path={modulo.path}
                     element={
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<>
+                            <SpinnerLoad />
+                           
+                        </>}>
                             <Component />
                         </Suspense>
                     }
