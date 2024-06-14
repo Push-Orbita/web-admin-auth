@@ -8,6 +8,7 @@ const Sistema = lazy(() => import('../pages/sistema/Sistema'));
 const Organizacion = lazy(() => import('../pages/organizacion/Organizacion'));
 const Actions = lazy(() => import('../pages/actions/ActionsType'));
 const Suscripcion = lazy(() => import('../pages/suscripcion/Suscripcion'));
+const Usuario = lazy(() => import('../pages/usuarios/Usuario'));
 
 
 
@@ -19,8 +20,7 @@ const componentsMap: ComponentsMap = {
     'Organizacion': Organizacion,
     'Actions': Actions,
     'Suscripcion': Suscripcion,
-
-
+    'Usuario': Usuario,
 };
 
 export const RouterJs = () => {
@@ -41,10 +41,11 @@ export const RouterJs = () => {
                     key={modulo.path}
                     path={modulo.path}
                     element={
-                        <Suspense fallback={<>
-                            <SpinnerLoad />
-                           
-                        </>}>
+                        <Suspense fallback={
+                            <>
+                                <SpinnerLoad />
+                            </>
+                        }>
                             <Component />
                         </Suspense>
                     }

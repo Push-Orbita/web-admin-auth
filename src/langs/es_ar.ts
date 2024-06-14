@@ -463,5 +463,33 @@ export const es_ar = {
       updatedError: "Error al actualizar la Suscripción",
       deletedError: "Error al eliminar la Suscripción",
     },
+  },
+  User: {
+    title: "Usuario",
+    subTitle: "Usuarios Habilitados",
+    new: "Nuevo Usuario",
+    edit: "Editar Usuario",
+    detail: "Detalle del Usuario",
+    list: "Lista de Usuarios",
+    form: {
+      name: "Nombre de Usuario",
+      email: "E-Mail",
+      password: "Contraseña",
+      repeatPassword: "Repeteir Contraseña",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
+      systemIsRequired: "El sistema es requerido",
+    },
+    messages: {
+      createdSuccess: "El Usuario se creó correctamente",
+      updatedSuccess: "El Usuario se actualizó correctamente",
+      deletedSuccess: "El Usuario se eliminó correctamente",
+      createdError: "Error al crear el Usuario",
+      updatedError: "Error al actualizar el Usuario",
+      deletedError: "Error al eliminar el Usuario",
+      deletedConfirm: "Esta seguro que desea eliminar este registro?",
+    }
   }
 };

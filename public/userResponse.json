@@ -49,7 +49,7 @@
             "element": "Organizacion"
         },
         {
-            "label": "suscripciones",
+            "label": "Suscripciones",
             "icon": "pi pi-gift",
             "path": "/suscripcion",
             "acciones": [
@@ -61,6 +61,20 @@
                 "D"
             ],
             "element": "Suscripcion"
+        },
+        {
+            "label": "Usuarios",
+            "icon": "pi pi-users",
+            "path": "/usuarios",
+            "acciones": [
+                "A",
+                "B",
+                "M",
+                "V",
+                "R",
+                "D"
+            ],
+            "element": "Usuario"
         }
     ]
 }

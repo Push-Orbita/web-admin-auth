@@ -1,19 +1,19 @@
 import { Form, useFormikContext } from "formik";
 import { t } from "i18next";
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import FormCustomBottons from "../../../common/components/forms/FormCustomBottons";
+import { FormSelect } from "../../../common/components/forms/FormSelect";
 import { FormTextInput } from "../../../common/components/forms/FormTextInput";
+import useQueryApi from "../../../hooks/useQueryApi";
 import { lang } from "../../../langs";
 import { PresentacionPostDTO } from "../../../model/dtos/presentacion/presentacion.dto";
-import useQueryApi from "../../../hooks/useQueryApi";
-import { SistemaApi } from "../../../services/sistema/sistema.service";
-import { FormSelect } from "../../../common/components/forms/FormSelect";
 import { SistemaEntity } from "../../../model/sistema/sistema.entity";
+import { SistemaApi } from "../../../services/sistema/sistema.service";
 
 const FormFields: FC = () => {
     const { handleSubmit } = useFormikContext<PresentacionPostDTO>()
 
-    const { data,isLoading } = useQueryApi<{ data: SistemaEntity[] }>("sistema", SistemaApi.getSistemaSearch);
+    const { data, isLoading } = useQueryApi<{ data: SistemaEntity[] }>("sistema", SistemaApi.getSistemaSearch);
     const [sistemaOptions, setSistemaOptions] = useState<{ nombre: string; value: number; }[]>([]);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const FormFields: FC = () => {
             setSistemaOptions(options);
         }
     }, [data]);
-    
+
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ const FormFields: FC = () => {
                         options={sistemaOptions}
                         optionLabel="nombre"
                         isLoading={isLoading}
-                        
+
                     />
 
                 </div>
