@@ -19,10 +19,10 @@ const FormFields: FC = () => {
                     <FormTextInput label={t(lang.User.form.email)} name={'email'} />
                 </div>
                 <div className="col-12 md:col-6">
-                    <FormTextInput label={t(lang.User.form.password)} name={'password'} />
+                    <FormTextInput label={t(lang.User.form.password)} name={'password'} type="password"/>
                 </div>
                 <div className="col-12 md:col-6">
-                    <FormTextInput label={t(lang.User.form.repeatPassword)} name={'repeatPassword'} />
+                    <FormTextInput label={t(lang.User.form.repeatPassword)} name={'repeatPassword'} type="password"/>
                 </div>
             </div>
             <FormCustomButtons />

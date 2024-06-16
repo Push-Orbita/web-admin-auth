@@ -49,7 +49,7 @@ const FormUsuario: React.FC<FormTypeActionsProps> = ({ refetch }) => {
         nombre: rowData?.nombre ?? "",
         email: rowData?.email ?? "",
         password: rowData?.password ?? "",
-        repeatPassword: rowData?.repeatPassword ?? ""
+        repeatPassword: rowData?.password ?? ""
     }
 
     const onSave = async (values: UsuarioPostDTO) => {
