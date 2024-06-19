@@ -52,15 +52,20 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch }) => {
     }
 
     const onSave = async (values: SistemaPostDTO) => {
-        if (rowData) {
-            const req: SistemaPatchDTO = {
-                id: rowData.id,
-                ...values,
+        try {
+            if (rowData) {
+                const req: SistemaPatchDTO = {
+                    id: rowData.id,
+                    ...values,
+                };
+                await patchSistemas.mutateAsync(req);
+            } else {
+                await postActions.mutateAsync(values);
             }
-            return await patchSistemas.mutateAsync(req)
+        } finally {
+            setRowData(undefined); // Resetea rowData después de guardar
         }
-        await postActions.mutateAsync(values)
-    }
+    };
     return (
         <Formik
             initialValues={intialValues}

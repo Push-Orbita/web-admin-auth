@@ -11,6 +11,8 @@ import { DashboardLayout } from "../../layout/DashboardLayout";
 import { UsuarioApi } from "../../services/usuario/usuario.service";
 import { TableUsuario } from "./components/TableUsuario";
 import FormUsuario from "./components/FormUsuario";
+import { Button } from "primereact/button";
+import { CancelToastButton, ConfirmToastButton } from "../../common/components/ui/CustomButtonToastDelete";
 
 
 const Usuario = () => {
@@ -20,8 +22,6 @@ const Usuario = () => {
         UsuarioApi.getUsuarioSearch
     );
 
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [deleteId, setDeleteId] = useState<number | null>(null);
 
     const deleteUsuario = UseQueryMutation({
         requestFn: UsuarioApi.deleteUsuario,
@@ -37,26 +37,32 @@ const Usuario = () => {
     });
 
     const handleDelete = (id: number) => {
-        setDeleteId(id);
-        setShowConfirmModal(true);
-    };
-
-    const confirmDelete = async () => {
-        if (deleteId !== null) {
-            const req = { id: deleteId };
-            await deleteUsuario.mutateAsync(req);
-            setShowConfirmModal(false);
-            setDeleteId(null);
-        }
-    };
-
-    const cancelDelete = () => {
-        setShowConfirmModal(false);
-        setDeleteId(null);
+        toast((toastParameters) => (
+            <div className="toast">
+                <p>{t(lang.User.messages.deletedConfirm)}</p>
+                <div className="flex justify-end gap-2">
+                    <ConfirmToastButton
+                        onClick={async () => {
+                            await deleteUsuario.mutateAsync({ id });
+                            toast.dismiss(toastParameters.id);
+                        }}
+                    />
+                    <CancelToastButton
+                        onClick={() => {
+                            toast.dismiss(toastParameters.id);
+                        }}
+                    />
+                </div>
+            </div>
+        ), {
+            position: "bottom-center",
+            duration: Infinity,
+        });
     };
 
     return (
         <DashboardLayout>
+
             <div className='text-3xl mt-2 mb-2'>
                 {t(lang.User.title)}
             </div>
@@ -77,17 +83,7 @@ const Usuario = () => {
             <CustomBasicModal title={rowData ? `${t(lang.User.edit)}` : `${t(lang.User.new)}`}>
                 {visible && (<FormUsuario refetch={refetch} />)}
             </CustomBasicModal>
-            {
-                showConfirmModal && (
-                    <ModalDelete
-                        visible={showConfirmModal}
-                        onHide={cancelDelete}
-                        onConfirm={confirmDelete}
-                    >
-                        <p>{t(lang.User.messages.deletedConfirm)}</p>
-                    </ModalDelete>
-                )
-            }
+
         </DashboardLayout>
     );
 };

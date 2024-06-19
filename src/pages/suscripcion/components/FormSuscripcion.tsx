@@ -52,15 +52,20 @@ const FormSuscripcion: React.FC<FormTypeActionsProps> = ({ refetch }) => {
     }
 
     const onSave = async (values: SuscripcionPostDTO) => {
-        if (rowData) {
-            const req: SuscripcionPatchDTO = {
-                id: rowData.id,
-                ...values,
+        try {
+            if (rowData) {
+                const req: SuscripcionPatchDTO = {
+                    id: rowData.id,
+                    ...values,
+                };
+                await patchSuscripcion.mutateAsync(req);
+            } else {
+                await postSuscripcion.mutateAsync(values);
             }
-            return await patchSuscripcion.mutateAsync(req)
+        } finally {
+            setRowData(undefined); // Resetea rowData después de guardar
         }
-        await postSuscripcion.mutateAsync(values)
-    }
+    };
     return (
         <Formik
             initialValues={intialValues}
