@@ -12,7 +12,7 @@ import { PermisosProvider } from './hooks/usePermisos';
 import './i18n';
 import { persistor } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
-import './themes/lara-dark-teal/theme.css';
+import './themes/viva-dark/theme.css';
 // import './themes/nova/theme.css';
 // import { useEffect } from 'react';
 // import { useAppSelector } from './hooks/reduxHook';
