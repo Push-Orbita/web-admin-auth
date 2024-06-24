@@ -36,7 +36,7 @@ const FormFields: FC = () => {
                     />
                 </div>
                 <div className="col-12 md:col-6  mb-2">
-                    <FormTextInput label={t(lang.Organization.form.password)} name={'password'}
+                    <FormTextInput label={t(lang.Organization.form.password)} name={'password'} type="password"
                     />
                 </div>
 

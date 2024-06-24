@@ -6,16 +6,14 @@ import { Toaster } from 'react-hot-toast';
 import { HashRouter } from 'react-router-dom';
 import { PersistGate } from "redux-persist/lib/integration/react";
 import './common/styles/layout/layout.scss';
+import { ToastProvider } from "./context/ui/ToastContext";
 import { ModuleProvider } from './hooks/useModules';
 import { PermisosProvider } from './hooks/usePermisos';
 import './i18n';
 import { persistor } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
-import './themes/lara-light-teal/theme.css';
-// import './themes/nova/theme.css';
-// import { useEffect } from 'react';
-// import { useAppSelector } from './hooks/reduxHook';
-// import { useDispatch } from 'react-redux';
+import './themes/viva-dark/theme.css';
+import { ConfirmDialog } from "primereact/confirmdialog";
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -34,8 +32,11 @@ function App() {
           <PrimeReactProvider >
             <PermisosProvider>
               <ModuleProvider>
-                <Toaster position="bottom-right" />
-                <AppRouter />
+                <ToastProvider>
+                  <Toaster position="bottom-right" />
+                  <ConfirmDialog /> {/* Incluye el componente ConfirmDialog */}
+                  <AppRouter />
+                </ToastProvider>
               </ModuleProvider>
             </PermisosProvider >
           </PrimeReactProvider>

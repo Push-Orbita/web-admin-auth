@@ -1,5 +1,6 @@
 import { useField } from "formik";
 import { Dropdown } from "primereact/dropdown";
+import { Message } from "primereact/message";
 
 interface Props {
     label: string;
@@ -28,11 +29,11 @@ export const FormSelect = ({ label, isLoading, ...props }: Props) => {
                 options={props.options}
                 optionLabel={props.optionLabel}
                 placeholder="Seleccionar" className="w-full" />
-            <small id={props.name} style={{
-                color: 'var(--red-500)'
-            }}>
-                {meta.touched && meta.error ? meta.error : ""}
-            </small>
+            {meta.touched && meta.error ? (
+                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{
+                    marginTop: '5px'
+                }} />
+            ) : null}
         </>
     )
 }
