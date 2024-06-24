@@ -4,34 +4,32 @@ import toast from "react-hot-toast"
 import { useModuleContext } from "../../../hooks/useModules"
 import UseQueryMutation from "../../../hooks/useQueryMutation"
 import { lang } from "../../../langs"
-import { SistemaPatchDTO, SistemaPostDTO } from "../../../model/dtos/sistema/sistema.dto"
-import { SistemaApi } from "../../../services/sistema/sistema.service"
-import FormFields from "./FormFields"
-import { fieldValidations } from "../field/field.validations"
+import { OrganizacionPatchDTO, OrganizacionPostDTO } from "../../../model/dtos/organizacion/organizacion.dto"
 import { OrganizacionApi } from "../../../services/organizacion/organizacion.service"
-import { OrganizacionPostDTO } from "../../../model/dtos/organizacion/organizacion.dto"
+import { fieldValidations } from "../field/field.validations"
+import FormFields from "./FormFields"
 
 interface FormTypeActionsProps {
     refetch: () => void;
 }
 const FormOrganizacion: React.FC<FormTypeActionsProps> = ({ refetch }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
-    const postActions = UseQueryMutation({
+    const postOrganizacion = UseQueryMutation({
         requestFn: OrganizacionApi.postOrganizcion,
         options: {
             onError() {
-                toast.error(t(lang.System.messages.createdError))
+                toast.error(t(lang.Organization.messages.createdError))
             },
             onSuccess: () => {
-                toast.success(t(lang.System.messages.createdSuccess))
+                toast.success(t(lang.Organization.messages.createdSuccess))
                 setVisible(!visible)
                 refetch()
             },
         },
     })
 
-    const patchSistemas = UseQueryMutation({
-        requestFn: SistemaApi.patchSistema,
+    const patchOrganizaciones = UseQueryMutation({
+        requestFn: OrganizacionApi.patchOrganizcion,
         options: {
             onError() {
                 toast.error(t(lang.System.messages.updatedError))
@@ -56,16 +54,22 @@ const FormOrganizacion: React.FC<FormTypeActionsProps> = ({ refetch }) => {
         tipobd: rowData?.tipobd ?? "",
     }
 
-    const onSave = async (values: SistemaPostDTO) => {
-        if (rowData) {
-            const req: SistemaPatchDTO = {
-                id: rowData.id,
-                ...values,
+
+    const onSave = async (values: OrganizacionPostDTO) => {
+        try {
+            if (rowData) {
+                const req: OrganizacionPatchDTO = {
+                    id: rowData.id,
+                    ...values,
+                };
+                await patchOrganizaciones.mutateAsync(req);
+            } else {
+                await postOrganizacion.mutateAsync(values);
             }
-            return await patchSistemas.mutateAsync(req)
+        } finally {
+            setRowData(undefined); // Resetea rowData después de guardar
         }
-        await postActions.mutateAsync(values)
-    }
+    };
     return (
         <Formik
             initialValues={intialValues}

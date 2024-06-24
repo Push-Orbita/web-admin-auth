@@ -6,7 +6,7 @@ import { lang } from "../../../langs";
 interface Props {
     data: any;
     isFetching: boolean;
-    handleDelete: any;
+    handleDelete: (id: number) => void; 
 }
 export const TableUsuario = ({ data, isFetching, handleDelete }: Props) => {
     const columns: ICustomColumnItem[] = [
