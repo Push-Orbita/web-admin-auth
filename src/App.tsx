@@ -13,10 +13,7 @@ import './i18n';
 import { persistor } from "./redux/store/store";
 import { AppRouter } from './router/AppRouter';
 import './themes/viva-dark/theme.css';
-// import './themes/nova/theme.css';
-// import { useEffect } from 'react';
-// import { useAppSelector } from './hooks/reduxHook';
-// import { useDispatch } from 'react-redux';
+import { ConfirmDialog } from "primereact/confirmdialog";
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -37,6 +34,7 @@ function App() {
               <ModuleProvider>
                 <ToastProvider>
                   <Toaster position="bottom-right" />
+                  <ConfirmDialog /> {/* Incluye el componente ConfirmDialog */}
                   <AppRouter />
                 </ToastProvider>
               </ModuleProvider>
