@@ -1,8 +1,9 @@
+import OrganizacionView from "@features/organizacion/OrganizacionView"
 
 const Organizacion = () => {
-  return (
-    <div>Organizacion</div>
-  )
+    return (
+        <OrganizacionView />
+    )
 }
 
 export default Organizacion

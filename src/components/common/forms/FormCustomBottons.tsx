@@ -3,7 +3,7 @@ import { Button } from "primereact/button"
 import { lang } from "../../../langs"
 import { useModuleContext } from "../../../hooks/useModules";
 
-const FormCustomBottons = () => {
+const FormCustomButtons = () => {
     const { setVisible, setRowData } = useModuleContext();
     return (
         <div className="flex justify-content-end flex-wrap gap-3">
@@ -18,4 +18,4 @@ const FormCustomBottons = () => {
     )
 }
 
-export default FormCustomBottons
+export default FormCustomButtons
