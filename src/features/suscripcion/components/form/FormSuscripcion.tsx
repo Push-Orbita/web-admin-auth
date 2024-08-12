@@ -5,27 +5,31 @@ import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
-import { fieldValidations } from "./fieldValidations/fieldvalidations";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
-import { SistemaApi } from "@features/sistema/service/sistema.service";
-import { SistemaPatchDTO, SistemaPostDTO } from "@features/sistema/model/dtos/sistema.dto";
+import { SuscripcionApi } from "@features/suscripcion/service/suscripcion.service";
+import { SuscripcionPatchDTO, SuscripcionPostDTO } from "@features/suscripcion/model/dtos/suscripcion.dto";
 import FormFields from "./FormFields";
+import { fieldValidations } from "./fieldValidations/fieldValidations";
+
+
+
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
 }
-const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
+const FormSuscripcion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
-    const postSistema = UseQueryMutation({
-        requestFn: SistemaApi.postSistema,
+    const postSuscripcion = UseQueryMutation({
+        requestFn: SuscripcionApi.postSuscripcion,
         options: {
             onError: () => {
-                toast.error(t(lang.Sistema.messages.createdError));
+                toast.error(t(lang.Suscripcion.messages.createdError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Sistema.messages.createdSuccess));
+                toast.success(t(lang.Suscripcion.messages.createdSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
@@ -33,14 +37,14 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
         },
     });
 
-    const patchSistema = UseQueryMutation({
-        requestFn: SistemaApi.patchSistema,
+    const patchSuscripcion = UseQueryMutation({
+        requestFn: SuscripcionApi.patchSuscripcion,
         options: {
             onError: () => {
-                toast.error(t(lang.Sistema.messages.updatedError));
+                toast.error(t(lang.Suscripcion.messages.updatedError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Sistema.messages.updatedSuccess));
+                toast.success(t(lang.Suscripcion.messages.updatedSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
@@ -49,18 +53,18 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
     });
 
     const onSave = useCallback(
-        async (values: SistemaPostDTO) => {
+        async (values: SuscripcionPostDTO) => {
             if (rowData) {
-                const req: SistemaPatchDTO = {
+                const req: SuscripcionPatchDTO = {
                     id: rowData.id,
                     ...values,
                 };
-                await patchSistema.mutateAsync(req);
+                await patchSuscripcion.mutateAsync(req);
             } else {
-                await postSistema.mutateAsync(values);
+                await postSuscripcion.mutateAsync(values);
             }
         },
-        [rowData, patchSistema, postSistema]
+        [rowData, patchSuscripcion, postSuscripcion]
     );
 
     useEffect(() => {
@@ -69,11 +73,10 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
         }
     }, [visible, setRowData]);
 
-    const initialValues: SistemaPostDTO = {
+    const initialValues: SuscripcionPostDTO = {
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
-        icono: rowData?.icono ?? "",
-        url: rowData?.icono ?? ""
+        sistema: rowData?.sitema ?? ""
     };
 
     return (
@@ -116,4 +119,4 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
     );
 };
 
-export default FormSistema;
+export default FormSuscripcion;

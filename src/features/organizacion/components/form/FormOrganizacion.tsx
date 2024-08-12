@@ -5,12 +5,14 @@ import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
-import { fieldValidations } from "./fieldValidations/field.validations";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
 import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
 import { OrganizacionPatchDTO, OrganizacionPostDTO } from "@features/organizacion/model/dtos/organizacion.dto";
 import FormFields from "./FormFields";
+import { fieldValidations } from "./fieldValidations/fieldvalidations";
+
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;

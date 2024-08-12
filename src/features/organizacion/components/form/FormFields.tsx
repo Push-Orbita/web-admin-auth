@@ -4,8 +4,8 @@ import { FC } from "react";
 import { lang } from "../../../../langs";
 import { FormTextInput } from "@components/common/forms/FormTextInput";
 import { OrganizacionPostDTO } from "@features/organizacion/model/dtos/organizacion.dto";
-import FormCustomButtons from "@components/common/forms/FormCustomBottons";
 import { Fieldset } from "primereact/fieldset";
+import FormCustomButtons from "@components/common/forms/FormCustomButtons";
 
 
 const FormFields: FC = () => {

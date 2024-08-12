@@ -3,22 +3,18 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHook';
 const AuthLogin = lazy(() => import('../pages/auth/AuthLogin'));
 const Home = lazy(() => import('../pages/home/Home'));
-const ActividadType = lazy(() => import('../pages/actividadType/ActividadType'));
-const EspecieType = lazy(() => import('../pages/especieType/EspecieType'));
-const RazaType = lazy(() => import('../pages/RazaType'));
 const Organizacion = lazy(() => import('../pages/Organizacion'));
 const Sistema = lazy(() => import('../pages/Sistema'));
+const Suscripcion = lazy(() => import('../pages/Suscripcion'));
 
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
     'Home': Home,
-    'ActividadType': ActividadType,
-    'EspecieType': EspecieType,
-    'RazaType': RazaType,
     'Organizacion': Organizacion,
     'Sistema': Sistema,
+    'Suscripcion': Suscripcion,
 };
 
 export const RouterJs = () => {
