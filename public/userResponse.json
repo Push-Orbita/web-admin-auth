@@ -27,49 +27,13 @@
             ]
         },
         {
-            "label": "Parametros de Mascotas",
+            "label": "Organizaciones",
             "items": [
                 {
-                    "label": "Mascotas",
-                    "icon": "pi pi-circle",
-                    "items": [
-                        {
-                            "label": "Tipo de Raza",
-                            "icon": "pi pi-circle",
-                            "to": "/razaType",
-                            "path": "/razaType",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "RazaType"
-                        },
-                        {
-                            "label": "Tipo de Especies",
-                            "icon": "pi pi-circle",
-                            "to": "/especieType",
-                            "path": "/especieType",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "EspecieType"
-                        }
-                    ]
-                },
-                {
-                    "label": "Tipo de Actividad",
-                    "icon": "pi pi-circle",
-                    "to": "/actividadType",
-                    "path": "/actividadType",
+                    "label": "Organización",
+                    "icon": "pi pi-building",
+                    "to": "/organizaciones",
+                    "path": "/organizaciones",
                     "acciones": [
                         "A",
                         "B",
@@ -78,7 +42,47 @@
                         "R",
                         "D"
                     ],
-                    "element": "ActividadType"
+                    "element": "Organizacion"
+                }
+            ]
+        },
+        {
+            "label": "Sistemas",
+            "items": [
+                {
+                    "label": "Sistema",
+                    "icon": "pi pi-desktop",
+                    "to": "/sistemas",
+                    "path": "/sistemas",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Sistema"
+                }
+            ]
+        },
+        {
+            "label": "Suscripciones",
+            "items": [
+                {
+                    "label": "Suscripción",
+                    "icon": "pi pi-credit-card",
+                    "to": "/suscripciones",
+                    "path": "/suscripciones",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Suscripcion"
                 }
             ]
         }

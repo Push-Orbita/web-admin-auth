@@ -1,11 +1,11 @@
 export const es_ar = {
   system: {
-    name: "Ipet",
+    name: "Auth",
   },
   common: {
     welcome: "Bienvenido",
-    appName: "Ipet",
-    messageWelcome: "Bienvenido al sistema de gestion y Ipet",
+    appName: "Auth",
+    messageWelcome: "Bienvenido al sistema de gestion y Auth",
     actions: {
       detail: "Detalles",
       edit: "Editar",
@@ -251,7 +251,7 @@ export const es_ar = {
   },
   login: {
     common: {
-      welcome_message: "¡Bienvenido a Ipet! 👋🏻",
+      welcome_message: "¡Bienvenido a Auth! 👋🏻",
     },
     form: {
       usuario: "Nombre de Usuario",
@@ -530,6 +530,41 @@ export const es_ar = {
     validation: {
       nameIsRequired: "El nombre es requerido",
       descriptionIsRequired: "La descripción es requerida",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },
+  Organizacion: {
+    title: "Organizaciones",
+    subTitle: "Listado de Organizaciones",
+    new: "Nuevo Organización",
+    edit: "Editar Organización",
+    detail: "Detalle de la Organización",
+    list: "Lista de Organizaciones",
+    form: {
+      name: "Nombre",
+      dataBase: "Nombre de la Base de datos",
+      host:"Host",
+      port:"Puerto",
+      user:"Nombre de Usuario de base de Datos",
+      password:"Contraseña",
+      dataBaseType:"Tipo de Base de datos"
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      dataBaseIsRequired: "El Nombre de la base de datos es requerido",
+      hostIsRequired: "El Host es requerido",
+      portIsRequired: "El Puerto es requerido",
+      userIsRequired: "El Nombre de usuario de Base de datos es requerido",
+      passwordIsRequired: "La contraseña es requerida",
+      dataBaseTypeIsRequired: "El tipo de base de datos es requerido",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
