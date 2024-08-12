@@ -6,6 +6,7 @@ export interface UserEntity {
   sistema: string
   activo: boolean
   isLogged: boolean
+  lang: string,
   userModulos: UserModulo[]
 }
 

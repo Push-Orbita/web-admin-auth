@@ -3,7 +3,7 @@ import { Menu } from "primereact/menu";
 import { Menubar } from "primereact/menubar";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from '../../assets/img/auth/logo-push.png';
+import logo from '../../assets/img/auth/ipet.png';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
 import { LogOut } from "../../redux/slices/auth/autSlice";
 
@@ -14,6 +14,7 @@ export const NavBar = () => {
     );
     interface MenuItem {
         label: string;
+        labelButton?: string;
         icon?: string;
         items?: MenuItem[];
         separator?: boolean;
@@ -61,7 +62,7 @@ export const NavBar = () => {
         },
 
     ];
-    const start = <img alt="logo" src={logo} height="40" width={"40"} className="mt-1 ml-2 mr-2"></img>;
+    const start = <img alt="logo" src={logo} height="50" width={"50"} className="mt-1 ml-2 mr-2"></img>;
     const end =
         <>
             <Menu model={items} popup ref={menuLeft} id="popup_menu_left" />

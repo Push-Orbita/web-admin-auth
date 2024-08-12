@@ -1,12 +1,14 @@
 import { Button } from 'primereact/button';
 import { createContext, FunctionComponent, ReactNode, useContext, useState } from 'react';
 import { usePermisos } from './usePermisos';
+
 interface ModuleContextValue {
     startToolbarTemplate: () => JSX.Element;
     visible: boolean;
     setVisible: (visible: boolean) => void;
     rowData: any;
-    setRowData: (data: any) => void; 
+    setRowData: (data: any) => void;
+    resetModuleState: () => void;
 }
 
 // Creando el contexto con tipo predeterminado como null que luego será inicializado
@@ -21,23 +23,25 @@ export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ childre
     const permisos = usePermisos();
 
     const startToolbarTemplate = (): JSX.Element => (
-
         <div className="my-2">
             {permisos.puedeAgregar ? (
                 <Button label="Nuevo" icon="pi pi-plus" className="mr-2" onClick={() => setVisible(true)} />
             ) : null}
         </div>
-
     );
 
-
+    const resetModuleState = () => {
+        setVisible(false);
+        setRowData(null);
+    };
 
     const contextValue: ModuleContextValue = {
         startToolbarTemplate,
         visible,
         setVisible,
         rowData,
-        setRowData
+        setRowData,
+        resetModuleState,
     };
 
     return (

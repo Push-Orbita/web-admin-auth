@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface IUi {
+export interface IUi {
   theme: boolean;
   borderRadius: number;
   elevation: number;
@@ -16,12 +16,12 @@ const initialState: IUi = {
   elevation: 4,
   isLoadingAplications: false,
   isCollapsed: false,
-  isOpenMenu: false,
+  isOpenMenu: true,
   drawerWidth: 240,
 };
 
 export const uiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState,
   reducers: {
     toggleTheme: (state) => {
@@ -35,12 +35,18 @@ export const uiSlice = createSlice({
     },
     setBorderRadius: (state, action: PayloadAction<number>) => {
       state.borderRadius = action.payload;
-    }
+    },
+    toggleMenu: (state) => {
+      state.isOpenMenu = !state.isOpenMenu;
+    },
+    closeMenu: (state) => {
+      state.isOpenMenu = false;
+    },
   },
 });
 
 // Export the actions
-export const { toggleTheme, openMenu, setElevation, setBorderRadius } = uiSlice.actions;
+export const { toggleTheme, openMenu, setElevation, setBorderRadius, toggleMenu, closeMenu } = uiSlice.actions;
 
 // Export the reducer
 export default uiSlice.reducer;

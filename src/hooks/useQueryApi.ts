@@ -1,4 +1,5 @@
-import { SearchParamsDTO } from "../model/common/search-params.dto"
+
+import { SearchParamsDTO } from "@interfaces/dtos/search-params.dto"
 import {
     UseQueryOptions,
     UseQueryResult,

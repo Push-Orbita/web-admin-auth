@@ -1,4 +1,5 @@
-import { UserEntity } from "./user.entity";
+import { UserEntity } from './user.entity';
+
 
 // Define a type for the slice state
 export interface IauthState {

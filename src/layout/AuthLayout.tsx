@@ -14,8 +14,8 @@ export const AuthLayout = ({ Form }: Props) => {
             justifyContent: 'center',
             // backgroundColor: 'black'
         }}>
-            <div className="grid">
-                <div className="grid col-12 sm:h-full md:h-auto justify-content-center" >
+            <div className="grid justify-content-center">
+                <div className="grid col-12 lg:col-4 sm:h-full md:h-auto" >
                     {Form}
                 </div>
             </div>

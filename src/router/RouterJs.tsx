@@ -1,26 +1,20 @@
 import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHook';
-import { SpinnerLoad } from '../layout/components/SpinnerLoad';
-const AuthLogin = lazy(() => import('../pages/authentication/AuthLogin'));
-const HomeAdmin = lazy(() => import('../pages/home/HomeAdmin'));
-const Sistema = lazy(() => import('../pages/sistema/Sistema'));
-const Organizacion = lazy(() => import('../pages/organizacion/Organizacion'));
-const Actions = lazy(() => import('../pages/actions/ActionsType'));
-const Suscripcion = lazy(() => import('../pages/suscripcion/Suscripcion'));
-const Usuario = lazy(() => import('../pages/usuarios/Usuario'));
-
+const AuthLogin = lazy(() => import('../pages/auth/AuthLogin'));
+const Home = lazy(() => import('../pages/home/Home'));
+const ActividadType = lazy(() => import('../pages/actividadType/ActividadType'));
+const EspecieType = lazy(() => import('../pages/especieType/EspecieType'));
+const RazaType = lazy(() => import('../pages/RazaType'));
 
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
-    'HomeAdmin': HomeAdmin,
-    'Sistema': Sistema,
-    'Organizacion': Organizacion,
-    'Actions': Actions,
-    'Suscripcion': Suscripcion,
-    'Usuario': Usuario,
+    'Home': Home,
+    'ActividadType': ActividadType,
+    'EspecieType': EspecieType,
+    'RazaType': RazaType
 };
 
 export const RouterJs = () => {
@@ -41,11 +35,7 @@ export const RouterJs = () => {
                     key={modulo.path}
                     path={modulo.path}
                     element={
-                        <Suspense fallback={
-                            <>
-                                <SpinnerLoad />
-                            </>
-                        }>
+                        <Suspense fallback={<div>Loading...</div>}>
                             <Component />
                         </Suspense>
                     }

@@ -1,7 +1,5 @@
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import { UserEntity } from "./interface/user.entity";
-
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UserEntity } from './interface/user.entity';
 
 // Define the initial state using that type
 const initialStateAuth: UserEntity = {
@@ -12,14 +10,14 @@ const initialStateAuth: UserEntity = {
   isLogged: false,
   tokenUser: '',
   activo: false,
+  lang: 'es',
   userModulos: []
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: initialStateAuth,
   reducers: {
-
     LogOut: () => initialStateAuth,
     setUserToken: (state, action: PayloadAction<UserEntity>) => {
       return {
@@ -35,10 +33,7 @@ export const authSlice = createSlice({
       };
     },
   },
-})
-
-  ;
-
+});
 
 export const { setUserToken, LogOut } = authSlice.actions;
 

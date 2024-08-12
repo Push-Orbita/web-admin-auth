@@ -1,21 +1,31 @@
-import { NavBar } from "./components/NavBar"
+import React from 'react';
+import AppSidebar from "./AppSidebar";
+import { AppTopbar } from "./AppTopbar";
+import { useMenuToggle } from '@hooks/useMenuToggle';
 
-interface Props {
-    children?: React.ReactNode
+interface IProps {
+    children?: React.ReactNode;
 }
-export const DashboardLayout = ({ children }: Props) => {
+
+export const DashboardLayout = ({ children }: IProps) => {
+    const { isOpenMenu, handleToggleMenu } = useMenuToggle();
+
     return (
-        <>
-            <NavBar />
-            <main className='p-input-filled' style={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-                padding: '2rem 1.5rem 2rem 1.5rem',
-                transition: 'margin-left .2s'
-            }}>
-                {children}
-            </main>
-        </>
-    )
-}
+        <div className={`layout-wrapper layout-static p-ripple-disabled ${isOpenMenu ? 'layout-menu-open layout-mobile-active' : 'layout-static-inactive'}`}>
+            <AppTopbar />
+            {isOpenMenu && (
+                <>
+                    <div className="layout-sidebar">
+                        <AppSidebar />
+                    </div>
+                    <div className="layout-mask" onClick={handleToggleMenu}></div>
+                </>
+            )}
+            <div className="layout-main-container">
+                <div className="layout-main">
+                    {children}
+                </div>
+            </div>
+        </div>
+    );
+};

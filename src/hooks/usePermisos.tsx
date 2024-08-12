@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useAppSelector } from './reduxHook';
+
 import { ReactNode } from 'react';
+import { useAppSelector } from './reduxHook';
 
 interface PermisosProviderProps {
   children: ReactNode;
@@ -32,9 +33,9 @@ export const usePermisos = () => useContext(PermisosContext);
 
 // Componente proveedor que englobará partes de tu aplicación
 export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) => {
-    const { userModulos } = useAppSelector(
-        (state) => state.auth
-    );
+  const { userModulos } = useAppSelector(
+    (state) => state.auth
+  );
   const { pathname } = useLocation();
   const [permisos, setPermisos] = useState<Permisos>({
     puedeAgregar: false,
@@ -45,7 +46,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
     puedeReporte: false,
   });
 
-  const verificarAcciones = (items:any, path:any) => {
+  const verificarAcciones = (items: any, path: any) => {
     for (const item of items) {
       if (item.path === path && item.acciones) {
         return {
@@ -59,7 +60,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
       }
       // Si el item tiene sub-items, continuamos la búsqueda de manera recursiva
       if (item.items) {
-        const accionesEncontradas:any = verificarAcciones(item.items, path);
+        const accionesEncontradas: any = verificarAcciones(item.items, path);
         if (accionesEncontradas) return accionesEncontradas;
       }
     }

@@ -8,73 +8,79 @@
     "userModulos": [
         {
             "label": "Inicio",
-            "icon": "pi pi-home",
-            "path": "/home",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "HomeAdmin"
+            "items": [
+                {
+                    "label": "Inicio",
+                    "icon": "pi pi-fw pi-home",
+                    "to": "/home",
+                    "path": "/home",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Home"
+                }
+            ]
         },
         {
-            "label": "Sistemas",
-            "icon": "pi pi-desktop",
-            "path": "/sistema",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "Sistema"
-        },
-        {
-            "label": "Organizaciones",
-            "icon": "pi pi-building",
-            "path": "/organizations",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "Organizacion"
-        },
-        {
-            "label": "Suscripciones",
-            "icon": "pi pi-gift",
-            "path": "/suscripcion",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "Suscripcion"
-        },
-        {
-            "label": "Usuarios",
-            "icon": "pi pi-users",
-            "path": "/usuarios",
-            "acciones": [
-                "A",
-                "B",
-                "M",
-                "V",
-                "R",
-                "D"
-            ],
-            "element": "Usuario"
+            "label": "Parametros de Mascotas",
+            "items": [
+                {
+                    "label": "Mascotas",
+                    "icon": "pi pi-circle",
+                    "items": [
+                        {
+                            "label": "Tipo de Raza",
+                            "icon": "pi pi-circle",
+                            "to": "/razaType",
+                            "path": "/razaType",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "RazaType"
+                        },
+                        {
+                            "label": "Tipo de Especies",
+                            "icon": "pi pi-circle",
+                            "to": "/especieType",
+                            "path": "/especieType",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "EspecieType"
+                        }
+                    ]
+                },
+                {
+                    "label": "Tipo de Actividad",
+                    "icon": "pi pi-circle",
+                    "to": "/actividadType",
+                    "path": "/actividadType",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "ActividadType"
+                }
+            ]
         }
     ]
 }

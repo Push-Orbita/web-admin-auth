@@ -1,11 +1,13 @@
+import { authorize } from "@config/api/axios.config";
+import { useAppSelector } from "@hooks/reduxHook";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { authorize } from "../common/config/axios";
-import { useAppSelector } from "../hooks/reduxHook";
-import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
-import { RouterJs } from './RouterJs';
-import AuthLogin from "../pages/authentication/AuthLogin";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { RouterJs } from "./RouterJs";
+import AuthLogin from "@pages/auth/AuthLogin";
+
+
 
 export const AppRouter = () => {
   const { isLogged, tokenUser } = useAppSelector(
