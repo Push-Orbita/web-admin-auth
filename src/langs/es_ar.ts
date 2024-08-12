@@ -551,11 +551,11 @@ export const es_ar = {
     form: {
       name: "Nombre",
       dataBase: "Nombre de la Base de datos",
-      host:"Host",
-      port:"Puerto",
-      user:"Nombre de Usuario de base de Datos",
-      password:"Contraseña",
-      dataBaseType:"Tipo de Base de datos"
+      host: "Host",
+      port: "Puerto",
+      user: "Nombre de Usuario de base de Datos",
+      password: "Contraseña",
+      dataBaseType: "Tipo de Base de datos"
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
@@ -565,6 +565,35 @@ export const es_ar = {
       userIsRequired: "El Nombre de usuario de Base de datos es requerido",
       passwordIsRequired: "La contraseña es requerida",
       dataBaseTypeIsRequired: "El tipo de base de datos es requerido",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },
+  Sistema: {
+    title: "Sistemas",
+    subTitle: "Listado de Sistemas",
+    new: "Nuevo Sistema",
+    edit: "Editar Sistema",
+    detail: "Detalle del Sistema",
+    list: "Lista de Sistemas",
+    form: {
+      name: "Nombre del Sistema",
+      description: "Descripción del sistema",
+      url: "Url del sistema",
+      icon: "Icono del sistema"
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
+      urlIsRequired: "El url es requerido",
+      iconIsRequired: "El icono es requerido",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
