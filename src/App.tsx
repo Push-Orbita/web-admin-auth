@@ -13,9 +13,9 @@ import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.css';
 import './components/common/style/layout/layout.scss'
 import './i18n';
-import './ui/themes/viva-light/theme.css'
+// import './ui/themes/viva-light/theme.css'
 // import './ui/themes/viva-dark/theme.css'
-// import './ui/themes/lara-dark-teal/theme.css'
+import './ui/themes/lara-dark-teal/theme.css'
 // import './ui/themes/lara-light-teal/theme.css'
 // import './ui/themes/soho-light/theme.css'
 // import './ui/themes/soho-dark/theme.css'

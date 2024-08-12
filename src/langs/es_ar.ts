@@ -544,7 +544,7 @@ export const es_ar = {
   Organizacion: {
     title: "Organizaciones",
     subTitle: "Listado de Organizaciones",
-    new: "Nuevo Organización",
+    new: "Nueva Organización",
     edit: "Editar Organización",
     detail: "Detalle de la Organización",
     list: "Lista de Organizaciones",
