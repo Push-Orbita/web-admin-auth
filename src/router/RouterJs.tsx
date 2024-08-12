@@ -8,6 +8,7 @@ const EspecieType = lazy(() => import('../pages/especieType/EspecieType'));
 const RazaType = lazy(() => import('../pages/RazaType'));
 const Organizacion = lazy(() => import('../pages/Organizacion'));
 const Sistema = lazy(() => import('../pages/Sistema'));
+const Suscripcion = lazy(() => import('../pages/Suscripcion'));
 
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
@@ -19,6 +20,7 @@ const componentsMap: ComponentsMap = {
     'RazaType': RazaType,
     'Organizacion': Organizacion,
     'Sistema': Sistema,
+    'Suscripcion': Suscripcion,
 };
 
 export const RouterJs = () => {

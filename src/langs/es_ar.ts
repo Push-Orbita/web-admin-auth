@@ -605,4 +605,31 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
+  Suscripcion: {
+    title: "Suscripciones",
+    subTitle: "Listado de Suscripciones",
+    new: "Nueva Suscripción",
+    edit: "Editar Suscripción",
+    detail: "Detalle del Suscripción",
+    list: "Lista de Suscripciones",
+    form: {
+      name: "Nombre de la Suscripción",
+      description: "Descripción de la Suscripción",
+      sistema: "Sistema la que pertenece",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
+      sistemaIsRequired: "El sistema es requerido",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },
 };

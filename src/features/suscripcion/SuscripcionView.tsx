@@ -6,33 +6,32 @@ import { t } from "i18next";
 import { confirmDialog } from "primereact/confirmdialog";
 import toast from "react-hot-toast";
 import { lang } from "../../langs";
-import { OrganizacionApi } from "./service/organizacion.service";
-import { TableOrganizacion } from "./components/table/TableOrganizacion";
-import FormOrganizacion from "./components/form/FormOrganizacion";
+import { SuscripcionApi } from "./service/suscripcion.service";
+import { TableSuscripcion } from "./components/table/TableSuscripcion";
+import FormSuscripcion from "./components/form/FormSuscripcion";
 import { useEffect } from "react";
-import { OrganizacionResponse } from "./model/entity/organizacion.entity";
 
 
-const OrganizacionView = () => {
+const SuscripcionView = () => {
   const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-  const { data, isFetching, refetch } = useQueryApi<OrganizacionResponse>(
-    "Organizacion",
-    OrganizacionApi.getOrganizacionSearch
+  const { data, isFetching, refetch } = useQueryApi<Response>(
+    "Suscripcion",
+    SuscripcionApi.getSuscripcionSearch
   );
 
   useEffect(() => {
     resetModuleState();
   }, []);
 
-  const deleteOrganizacion = UseQueryMutation({
-    requestFn: OrganizacionApi.deleteOrganizacion,
+  const deleteSuscripcion = UseQueryMutation({
+    requestFn: SuscripcionApi.deleteSuscripcion,
     options: {
       onError() {
-        toast.error(t(lang.Organizacion.messages.deletedError));
+        toast.error(t(lang.Suscripcion.messages.deletedError));
       },
       onSuccess: () => {
         refetch();
-        toast.success(t(lang.Organizacion.messages.deletedSuccess));
+        toast.success(t(lang.Suscripcion.messages.deletedSuccess));
       },
     },
   });
@@ -46,7 +45,7 @@ const OrganizacionView = () => {
       acceptLabel: t(lang.common.actions.confirm),
       rejectLabel: t(lang.common.actions.cancel),
       accept: async () => {
-        await deleteOrganizacion.mutateAsync({ id });
+        await deleteSuscripcion.mutateAsync({ id });
       },
       reject: () => {
         // Maneja la cancelación si es necesario
@@ -58,14 +57,14 @@ const OrganizacionView = () => {
   return (
     <DashboardLayout>
       <div className='text-3xl mt-2 mb-2'>
-        {t(lang.Organizacion.title)}
+        {t(lang.Suscripcion.title)}
       </div>
       <div className="card">
         {
           visible ? (
             <>
-              <FormOrganizacion
-                title={rowData ? `${t(lang.Organizacion.edit)}` : `${t(lang.Organizacion.new)}`} refetch={refetch}
+              <FormSuscripcion
+                title={rowData ? `${t(lang.Suscripcion.edit)}` : `${t(lang.Suscripcion.new)}`} refetch={refetch}
               />
             </>
           )
@@ -76,7 +75,7 @@ const OrganizacionView = () => {
                   {startToolbarTemplate()}
                 </div>
               </div>
-              <TableOrganizacion
+              <TableSuscripcion
                 data={data ?? []}
                 isFetching={isFetching}
                 handleDelete={handleDelete}
@@ -89,4 +88,4 @@ const OrganizacionView = () => {
   );
 };
 
-export default OrganizacionView;
+export default SuscripcionView;
