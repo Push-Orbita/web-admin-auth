@@ -663,4 +663,29 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-};
+
+  Action: {
+    title: "Tipo de Acciones",
+    subTitle: "Listado de Tipo de Acciones",
+    new: "Nueva Acción",
+    edit: "Editar Acción",
+    detail: "Detalle del Acción",
+    list: "Lista de Acciones",
+    form: {
+      name: "Nombre de la Acción",
+      description: "Sigla de la Acción",
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La sigla es requerida",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },};

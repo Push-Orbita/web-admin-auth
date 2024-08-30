@@ -1,7 +1,8 @@
+import AccionView from "@features/accion/AccionView"
 
 const Accion = () => {
   return (
-    <div>Accion</div>
+    <AccionView />
   )
 }
 
