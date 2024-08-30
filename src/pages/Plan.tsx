@@ -1,6 +1,7 @@
+import PlanView from "@features/plan/PlanView";
 
 const Plan = () => {
-  return <div>Plan</div>;
+    return <PlanView />;
 };
 
 export default Plan;

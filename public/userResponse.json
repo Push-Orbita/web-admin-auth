@@ -84,6 +84,27 @@
                             "element": "Modulos"
                         }
                     ]
+                },
+                {
+                    "label": "Acciones",
+                    "icon": "pi pi-objects-column",
+                    "items": [
+                        {
+                            "label": "Tipo De Acciones",
+                            "icon": "pi pi-sparkles",
+                            "to": "/accion",
+                            "path": "/accion",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Accion"
+                        }
+                    ]
                 }
             ]
         },
