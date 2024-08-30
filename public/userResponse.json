@@ -63,6 +63,27 @@
                         "D"
                     ],
                     "element": "Sistema"
+                },
+                {
+                    "label": "Modulos",
+                    "icon": "pi pi-objects-column",
+                    "items": [
+                        {
+                            "label": "Modulos",
+                            "icon": "pi pi-sparkles",
+                            "to": "/modulos",
+                            "path": "/modulos",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Modulos"
+                        }
+                    ]
                 }
             ]
         },
@@ -83,6 +104,21 @@
                         "D"
                     ],
                     "element": "Suscripcion"
+                },
+                {
+                    "label": "Planes",
+                    "icon": "pi pi-money-bill",
+                    "to": "/plan",
+                    "path": "/plan",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Plan"
                 }
             ]
         }
