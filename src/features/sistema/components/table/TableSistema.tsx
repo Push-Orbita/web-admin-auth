@@ -36,7 +36,7 @@ export const TableSistema = ({ data, isFetching, handleDelete }: Props) => {
                     <p>No hay módulos disponibles.</p>
                 )}
 
-                <h5>Permisos</h5>
+                <h5>Permisos De Acceso</h5>
                 {rowData.permisos && rowData.permisos.length > 0 ? (
                     <DataTable value={rowData.permisos}>
                         <Column field="nombre" header="Nombre del permiso" />
