@@ -66,7 +66,7 @@ const FormFields: FC = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <div className="p-fluid formgrid grid mb-3">
-                <div className="col-12 md:col-6 lg:col-6 mt-4">
+                <div className="col-12 md:col-4 lg:col-4 mt-4">
                     <FormSelect
                         label={t(lang.Contract.form.plan)}
                         name="plan"
@@ -78,7 +78,14 @@ const FormFields: FC = () => {
                         }}
                     />
                 </div>
-                <div className="col-12 md:col-6 lg:col-6 mt-4">
+                <div className="col-12 md:col-4 lg:col-4 mt-4">
+                    <FormDatePicker
+                        label={t(lang.Contract.form.expireDate)}
+                        name="fechaVencimiento"
+                        disabled={true}
+                    />
+                </div>
+                <div className="col-12 md:col-4 lg:col-4 mt-4">
                     <FormSelect
                         label={t(lang.Contract.form.organization)}
                         name="organizacion"
@@ -87,13 +94,7 @@ const FormFields: FC = () => {
                         isLoading={isLoadingOrganizacion}
                     />
                 </div>
-                <div className="col-12 md:col-6 lg:col-6 mt-4">
-                    <FormDatePicker
-                        label={t(lang.Contract.form.expireDate)}
-                        name="fechaVencimiento"
-                        disabled={true}
-                    />
-                </div>
+               
             </div>
             <FormCustomButtons />
         </Form>
