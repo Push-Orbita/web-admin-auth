@@ -5,13 +5,12 @@ import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
-
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
 import { ContratoApi } from "@features/contrato/service/contrato.service";
 import { ContratoPatchDTO, ContratoPostDTO } from "@features/contrato/model/dtos/contrato.dto";
 import FormFields from "./FormFields";
-import { fieldValidations } from "./fieldValidations/field.validations";
+// import { fieldValidations } from "./fieldValidations/field.validations";
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
