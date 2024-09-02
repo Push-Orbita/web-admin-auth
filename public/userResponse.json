@@ -140,6 +140,21 @@
                         "D"
                     ],
                     "element": "Plan"
+                },
+                {
+                    "label": "Contratos",
+                    "icon": "pi pi-money-bill",
+                    "to": "/contrato",
+                    "path": "/contrato",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Contrato"
                 }
             ]
         }
