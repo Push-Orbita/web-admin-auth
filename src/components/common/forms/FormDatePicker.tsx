@@ -15,17 +15,18 @@ interface Props {
 
 export const FormDatePicker = ({ label, dateFormat = 'dd-mm-yy', showIcon = true, disabled = false, ...props }: Props) => {
     const [field, meta, helpers] = useField(props);
-    const value = field.value || new Date();
+    // const value = field.value || new Date();
     return (
         <>
             <label htmlFor={props.name} style={{ paddingTop: '10px' }}>{label}</label>
             <Calendar
                 id={props.name}
-                value={value}
+                value={field.value}
                 onChange={(e) => helpers.setValue(e.value)}
                 onBlur={() => helpers.setTouched(true)}
                 dateFormat={dateFormat}
                 showIcon={showIcon}
+                disabled
                 {...props}
             />
             {meta.touched && meta.error ? (

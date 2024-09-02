@@ -1,7 +1,7 @@
 export type ContratoPatchDTO = Partial<ContratoPostDTO> & { id: number };
 
 export interface ContratoPostDTO {
-    fechaVencimiento: Date,
+    fechaVencimiento:  Date | string,
     plan: number,
     organizacion: number
 }
