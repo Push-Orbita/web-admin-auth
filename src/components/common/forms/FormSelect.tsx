@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { useField, useFormikContext } from "formik";
 import { Dropdown } from "primereact/dropdown";
 import { Message } from "primereact/message";
 
@@ -14,8 +14,22 @@ interface Props {
     disabled?: boolean;
     [x: string]: string | undefined | any;
 }
-export const FormSelect = ({ label, isLoading, disabled = false, ...props }: Props) => {
+export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect, ...props }: Props) => {
     const [field, meta] = useField(props);
+    const { setFieldValue } = useFormikContext();
+
+    const handleChange = (e: any) => {
+        const selectedOption = props.options.find((option: any) => option.value === e.value);
+        if (selectedOption) {
+            if (onOptionSelect) {
+                // Ejecuta la función callback personalizada
+                onOptionSelect(selectedOption, setFieldValue);
+            } else {
+                // Si no se proporciona un callback, usa una función predeterminada
+                setFieldValue(field.name, selectedOption.value);
+            }
+        }
+    };
 
     return (
         <>
@@ -26,7 +40,7 @@ export const FormSelect = ({ label, isLoading, disabled = false, ...props }: Pro
                 disabled={disabled}
                 inputId={field.value}
                 value={field.value}
-                onChange={field.onChange}
+                onChange={handleChange}
                 onBlur={field.onBlur}
                 {...props}
                 options={props.options}
@@ -40,3 +54,4 @@ export const FormSelect = ({ label, isLoading, disabled = false, ...props }: Pro
         </>
     )
 }
+

@@ -6,6 +6,7 @@ export interface OrganizacionResponse {
 }
 
 export interface OrganizacionEntity {
+    id: number;
     nombre?: string;
     bd?: string;
     host?: string;

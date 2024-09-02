@@ -688,4 +688,33 @@ export const es_ar = {
       deletedError: "Error al eliminar el Registro",
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
-  },};
+  },
+  Contract: {
+    title: "Tipo de Contratos",
+    subTitle: "Listado de Tipo de Contratos",
+    new: "Nueva Contrato",
+    edit: "Editar Contrato",
+    detail: "Detalle del Contrato",
+    list: "Lista de Contratos",
+    form: {
+      plan: "Plan a contratar",
+      organization: "Organización",
+      expireDate: "Fecha De expiración",
+    },
+    validation: {
+      planIsRequired: "El el plan es requerido",
+      organizationIsRequired: "La organización es requerida",
+      expireDateIsRequired: "La fecha de expiración es requerida",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  }
+
+};
