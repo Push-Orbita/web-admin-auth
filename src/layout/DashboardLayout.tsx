@@ -11,7 +11,7 @@ export const DashboardLayout = ({ children }: IProps) => {
     const { isOpenMenu, handleToggleMenu } = useMenuToggle();
 
     return (
-        <div className={`layout-wrapper layout-static p-ripple-disabled ${isOpenMenu ? 'layout-menu-open layout-mobile-active' : 'layout-static-inactive'}`}>
+        <div className={`layout-wrapper layout-static ${isOpenMenu ? 'layout-menu-open layout-mobile-active' : 'layout-static-inactive'}`}>
             <AppTopbar />
             {isOpenMenu && (
                 <>

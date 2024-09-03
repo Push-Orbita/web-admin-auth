@@ -23,7 +23,7 @@ export const AuthForm = () => {
             try {
                 // Asegúrate de ajustar la ruta al lugar donde tu archivo está ubicado
                 const response = await axios.get('/userResponse.json');
-                console.log(response.data); // Aquí tienes tus datos
+                // console.log(response.data); // Aquí tienes tus datos
                 dispatch(setUserToken(response.data));
             } catch (error) {
                 console.error('Hubo un error al cargar los datos:', error);
