@@ -49,15 +49,22 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
     });
 
     const onSave = useCallback(
-        async (values: SistemaPostDTO) => {
-            if (rowData) {
-                const req: SistemaPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchSistema.mutateAsync(req);
-            } else {
-                await postSistema.mutateAsync(values);
+        async (values: SistemaPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+            try {
+                if (rowData) {
+                    const req: SistemaPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchSistema.mutateAsync(req);
+                } else {
+
+                    await postSistema.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchSistema, postSistema]
@@ -104,8 +111,7 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>

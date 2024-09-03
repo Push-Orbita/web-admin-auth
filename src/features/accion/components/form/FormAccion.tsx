@@ -49,15 +49,22 @@ const FormAccion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
     });
 
     const onSave = useCallback(
-        async (values: AccionPostDTO) => {
-            if (rowData) {
-                const req: AccionPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchAccion.mutateAsync(req);
-            } else {
-                await postAccion.mutateAsync(values);
+        async (values: AccionPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+            try {
+                if (rowData) {
+                    const req: AccionPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchAccion.mutateAsync(req);
+                } else {
+
+                    await postAccion.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchAccion, postAccion]
@@ -102,8 +109,7 @@ const FormAccion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>

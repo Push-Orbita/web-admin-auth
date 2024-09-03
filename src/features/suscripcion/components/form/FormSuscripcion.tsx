@@ -53,15 +53,22 @@ const FormSuscripcion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Tit
     });
 
     const onSave = useCallback(
-        async (values: SuscripcionPostDTO) => {
-            if (rowData) {
-                const req: SuscripcionPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchSuscripcion.mutateAsync(req);
-            } else {
-                await postSuscripcion.mutateAsync(values);
+        async (values: SuscripcionPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+            try {
+                if (rowData) {
+                    const req: SuscripcionPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchSuscripcion.mutateAsync(req);
+                } else {
+
+                    await postSuscripcion.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchSuscripcion, postSuscripcion]
@@ -107,8 +114,7 @@ const FormSuscripcion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Tit
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>

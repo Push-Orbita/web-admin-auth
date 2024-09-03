@@ -11,6 +11,7 @@ import { PlanApi } from "@features/plan/service/plan.service";
 import { PlanPatchDTO, PlanPostDTO } from "@features/plan/model/dtos/plan.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
@@ -49,15 +50,22 @@ const FormPlan: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' })
     });
 
     const onSave = useCallback(
-        async (values: PlanPostDTO) => {
-            if (rowData) {
-                const req: PlanPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchPlan.mutateAsync(req);
-            } else {
-                await postPlan.mutateAsync(values);
+        async (values: PlanPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+            try {
+                if (rowData) {
+                    const req: PlanPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchPlan.mutateAsync(req);
+                } else {
+
+                    await postPlan.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchPlan, postPlan]
@@ -105,8 +113,7 @@ const FormPlan: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' })
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>
