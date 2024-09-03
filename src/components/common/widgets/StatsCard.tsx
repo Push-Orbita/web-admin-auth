@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 
 interface Props {
     title?: string,
-    quantity?: number | string,
+    quantity?: number,
     icon?: string,
     colorIcon?: ColorOptions,
     backgroundIconColor?: ColorOptions,
@@ -19,7 +19,7 @@ interface Props {
 
 const StatsCard = ({
     title = 'Titulo',
-    quantity = 241,
+    quantity = 0,
     icon = 'pi pi-user',
     colorIcon = 'blue',
     footerInfo = '',
