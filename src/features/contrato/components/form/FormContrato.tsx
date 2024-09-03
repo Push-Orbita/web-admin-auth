@@ -47,17 +47,23 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
             },
         },
     });
-
     const onSave = useCallback(
-        async (values: ContratoPostDTO) => {
-            if (rowData) {
-                const req: ContratoPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchContrato.mutateAsync(req);
-            } else {
-                await postContrato.mutateAsync(values);
+        async (values: ContratoPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+            try {
+                if (rowData) {
+                    const req: ContratoPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchContrato.mutateAsync(req);
+                } else {
+
+                    await postContrato.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchContrato, postContrato]
@@ -102,8 +108,7 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
                 initialValues={initialValues}
                 // validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>

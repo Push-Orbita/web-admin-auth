@@ -12,10 +12,12 @@ import { PersonaApi } from "@features/persona/service/persona.service";
 import { PersonaPatchDTO, PersonaPostDTO } from "@features/persona/model/dtos/persona.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/fieldValidations";
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
 }
+
 const FormPersona: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
@@ -50,15 +52,24 @@ const FormPersona: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
     });
 
     const onSave = useCallback(
-        async (values: PersonaPostDTO) => {
-            if (rowData) {
-                const req: PersonaPatchDTO = {
-                    id: rowData.id,
-                    ...values,
-                };
-                await patchPersona.mutateAsync(req);
-            } else {
-                await postPersona.mutateAsync(values);
+
+        async (values: PersonaPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+
+            try {
+                if (rowData) {
+                    const req: PersonaPatchDTO = {
+                        id: rowData.id,
+                        ...values,
+                    };
+
+                    await patchPersona.mutateAsync(req);
+                } else {
+
+                    await postPersona.mutateAsync(values);
+
+                }
+            } finally {
+                setSubmitting(false);
             }
         },
         [rowData, patchPersona, postPersona]
@@ -105,9 +116,7 @@ const FormPersona: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    
-                    onSave(values);
-                    setSubmitting(false);
+                    onSave(values, setSubmitting);
                 }}
             >
                 <>

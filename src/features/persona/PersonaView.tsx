@@ -64,18 +64,7 @@ const PersonaView = () => {
         <div className='text-3xl mt-2 mb-2'>
           {t(lang.Person.title)}
         </div>
-        <div className="grid">
-          <StatsCard
-            title="Total de Personas"
-            subTitle="Registradas"
-            quantity={data?.data?.length ?? 0}
-            shadow={1}
-            isLoading={isFetching}
-            textColorTitle="primary"
-            colorIcon="primary"
-            backgroundIconColor="primary"
-          />
-        </div>
+
         {
           visible ? (
             <>
@@ -86,6 +75,18 @@ const PersonaView = () => {
           )
             : (
               <div>
+                <div className="grid">
+                  <StatsCard
+                    title="Total de Personas"
+                    subTitle="Registradas"
+                    quantity={data?.data?.length ?? 0}
+                    shadow={2}
+                    isLoading={isFetching}
+                    textColorTitle="primary"
+                    colorIcon="primary"
+                    backgroundIconColor="primary"
+                  />
+                </div>
                 <div className="grid">
                   <div className="col-12">
                     {startToolbarTemplate()}
