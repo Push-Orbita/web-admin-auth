@@ -43,6 +43,21 @@
                         "D"
                     ],
                     "element": "Organizacion"
+                },
+                {
+                    "label": "Personas",
+                    "icon": "pi pi-building",
+                    "to": "/personas",
+                    "path": "/personas",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Persona"
                 }
             ]
         },

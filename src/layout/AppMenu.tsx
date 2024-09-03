@@ -55,7 +55,7 @@ const AppMenu = () => {
     const menu: any[] = transformUserModulosToAppMenuItem(userModulos);
     const dataMenu = addCommandToMenuItems(menu);
 
-    console.log(dataMenu)
+    // console.log(dataMenu)
 
 
 
