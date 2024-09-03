@@ -10,15 +10,18 @@ import { PersonaApi } from "./service/persona.service";
 import { TablePersona } from "./components/table/TablePersona";
 import FormPersona from "./components/form/FormPersona";
 import { useEffect } from "react";
+import StatsCard from "@components/common/widgets/StatsCard";
+import { PersonaResponse } from "./model/entity/persona.entity";
+
 
 
 const PersonaView = () => {
   const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-  const { data, isFetching, refetch } = useQueryApi<Response>(
+  const { data, isFetching, refetch } = useQueryApi<PersonaResponse>(
     "Persona",
     PersonaApi.getPersonaSearch
   );
-
+  console.log(data)
   useEffect(() => {
     resetModuleState();
   }, []);
@@ -56,10 +59,23 @@ const PersonaView = () => {
 
   return (
     <DashboardLayout>
-      <div className='text-3xl mt-2 mb-2'>
-        {t(lang.Person.title)}
-      </div>
+
       <div className="card">
+        <div className='text-3xl mt-2 mb-2'>
+          {t(lang.Person.title)}
+        </div>
+        <div className="grid">
+          <StatsCard
+            title="Total de Personas"
+            subTitle="Registradas"
+            quantity={data?.data?.length ?? 0}
+            shadow={1}
+            isLoading={isFetching}
+            textColorTitle="primary"
+            colorIcon="primary"
+            backgroundIconColor="primary"
+          />
+        </div>
         {
           visible ? (
             <>
@@ -68,20 +84,20 @@ const PersonaView = () => {
               />
             </>
           )
-          : (
-            <div>
-              <div className="grid">
-                <div className="col-12">
-                  {startToolbarTemplate()}
+            : (
+              <div>
+                <div className="grid">
+                  <div className="col-12">
+                    {startToolbarTemplate()}
+                  </div>
                 </div>
+                <TablePersona
+                  data={data ?? []}
+                  isFetching={isFetching}
+                  handleDelete={handleDelete}
+                />
               </div>
-              <TablePersona
-                data={data ?? []}
-                isFetching={isFetching}
-                handleDelete={handleDelete}
-              />
-            </div>
-          )
+            )
         }
       </div>
     </DashboardLayout>

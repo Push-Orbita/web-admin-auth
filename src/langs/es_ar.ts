@@ -728,13 +728,18 @@ export const es_ar = {
       lastName: "Apellido",
       cuil: "Cuil",
       gender: "Genero"
-     
+
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
       lastNameIsRequired: "El apellido es requerido",
       genderIsRequired: "El genero es requerido",
       cuilIsRequired: "El cuil es requerido",
+      cuilMustBeNumber: "El cuil debe ser un numero",
+      cuilMustBePositive: "El cuil debe ser un numero positivo",
+      cuilMustBeInteger: "El cuil debe ser un numero entero",
+      cuilMaxLength: "El cuild debe tener como maximo 11 caracteres",
+      invalidGender: "El genero seleccionado no esta entre las opciones"
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",

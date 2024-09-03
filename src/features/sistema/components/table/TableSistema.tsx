@@ -26,7 +26,9 @@ export const TableSistema = ({ data, isFetching, handleDelete }: Props) => {
     const rowExpansionTemplate = (rowData: any) => {
         return (
             <div className="p-3">
-                <h5>Modulos</h5>
+                <h5 className="font-bold" style={{
+                    color: 'var(--primary-color)'
+                }}>Modulos</h5>
                 {rowData.modulos && rowData.modulos.length > 0 ? (
                     <DataTable value={rowData.modulos}>
                         <Column field="nombre" header="Nombre del modulo" />
@@ -36,7 +38,9 @@ export const TableSistema = ({ data, isFetching, handleDelete }: Props) => {
                     <p>No hay módulos disponibles.</p>
                 )}
 
-                <h5>Permisos De Acceso</h5>
+                <h5 className="font-bold" style={{
+                    color: 'var(--primary-color)'
+                }}>Permisos De Acceso</h5>
                 {rowData.permisos && rowData.permisos.length > 0 ? (
                     <DataTable value={rowData.permisos}>
                         <Column field="nombre" header="Nombre del permiso" />

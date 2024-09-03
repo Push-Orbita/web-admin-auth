@@ -1,11 +1,13 @@
 import { Dialog } from 'primereact/dialog';
 import { useEffect, useState } from 'react';
-import { useModuleContext } from '../../../hooks/useModules';
+
 
 interface IProps {
     children?: React.ReactNode;
     title?: string;
     width?: "small" | "medium" | "large" | "full";
+    isOpen?: boolean;
+    setIsOpen?: any;
 }
 
 const widthMap: Record<NonNullable<IProps['width']>, string> = {
@@ -15,8 +17,8 @@ const widthMap: Record<NonNullable<IProps['width']>, string> = {
     full: '100vw'
 };
 
-export const CustomBasicModal: React.FC<IProps> = ({ children, title, width = 'small' }) => {
-    const { visible, setVisible } = useModuleContext();
+export const CustomBasicModal: React.FC<IProps> = ({ children, title, width = 'small', isOpen = false, setIsOpen }) => {
+    // const { visible, setVisible } = useModuleContext();
     const [dialogWidth, setDialogWidth] = useState<string>(widthMap[width]);
 
     useEffect(() => {
@@ -36,11 +38,11 @@ export const CustomBasicModal: React.FC<IProps> = ({ children, title, width = 's
     }, [width]);
 
     return (
-        <Dialog 
-            header={title} 
-            visible={visible} 
-            style={{ width: dialogWidth }} 
-            onHide={() => setVisible(false)}
+        <Dialog
+            header={title}
+            visible={isOpen}
+            style={{ width: dialogWidth }}
+            onHide={() => setIsOpen(false)}
         >
             <div className="m-0">
                 <div className="col-12">

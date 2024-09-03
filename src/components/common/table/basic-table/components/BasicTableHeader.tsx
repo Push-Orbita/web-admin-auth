@@ -3,17 +3,19 @@ interface Props {
     tableTitle?: string,
     globalFilterFields?: string[],
     filterFields?: string[];
-    onGlobalFilterChange?:any
-    globalFilterValue:any
+    onGlobalFilterChange?: any
+    globalFilterValue: any
 }
-export const BasicTableHeader = ({tableTitle,globalFilterFields,globalFilterValue,onGlobalFilterChange}:Props) => {
-    
+export const BasicTableHeader = ({ tableTitle, globalFilterFields, globalFilterValue, onGlobalFilterChange }: Props) => {
+
     return (
         <>
 
             <div className="flex-1">
                 <div className='flex justify-content-between align-items-center'>
-                    <span className="text-xl">
+                    <span className="text-xl font-bold" style={{
+                        color: 'var(--primary-color)'
+                    }}>
                         {tableTitle}
                     </span>
                     {

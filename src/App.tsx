@@ -16,7 +16,8 @@ import './i18n';
 // import './ui/themes/viva-light/theme.css'
 // import './ui/themes/viva-dark/theme.css'
 // import './ui/themes/lara-dark-teal/theme.css'
-// import './ui/themes/lara-light-teal/theme.css'
+// import './ui/themes/lara-dark-purple/theme.css'
+import './ui/themes/lara-light-teal/theme.css'
 // import './ui/themes/soho-light/theme.css'
 // import './ui/themes/soho-dark/theme.css'
 // import './ui/themes/luna-green/theme.css'
@@ -24,7 +25,7 @@ import './i18n';
 // import './ui/themes/arya-orange/theme.css'
 // import './ui/themes/arya-purple/theme.css'
 // import './ui/themes/fluent-light/theme.css'
-import './ui/themes/mira/theme.css'
+// import './ui/themes/mira/theme.css'
 // import './ui/themes/tailwind-light/theme.css'
 // import './ui/themes/mdc-dark-indigo/theme.css'
 function App() {
