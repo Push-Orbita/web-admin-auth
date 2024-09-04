@@ -1,6 +1,7 @@
+import UsuarioView from "@features/usuario/UsuarioView";
 
 const Usuario = () => {
-    return <div>Usuarios</div>;
+    return <UsuarioView />;
 };
 
 export default Usuario;

@@ -1,4 +1,4 @@
-export const Usuario = "/usuairio";
+export const Usuario = "/usuario";
 
 export const UsuarioURL = {
     get: `${Usuario}/search`,

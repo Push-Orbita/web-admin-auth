@@ -759,7 +759,7 @@ export const es_ar = {
     detail: "Detalle de la usuario",
     list: "Lista de Usuarios",
     form: {
-      name: "Nombre",
+      name: "Nombre de usuario",
       email: "Email",
       password: "Contraseña",
       repeatPassword: "Repetir Contraseña",
