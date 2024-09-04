@@ -22,7 +22,6 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, setIsOpen, selectedUser }
                                     <p><strong>ID:</strong> {user.id}</p>
                                     <p><strong>Usuario:</strong> {user.nombre}</p>
                                     <p><strong>Email:</strong> {user.email}</p>
-                                    {/* Puedes agregar más detalles aquí */}
                                 </Panel>
                             </div>
                         ))}

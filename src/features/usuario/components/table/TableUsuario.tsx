@@ -5,46 +5,49 @@ import { lang } from "../../../../langs";
 import { useState } from "react";
 import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
+import PersonaModal from "../modal/PersonaModal";
 
 interface Props {
     data: any;
     isFetching: boolean;
     handleDelete: any;
 }
-export const TableUsuario = ({ data, isFetching, handleDelete }: Props) => {
-    const columns: ICustomColumnItem[] = [
-        { field: 'nombre', header: 'Usuario', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Usuario', dataType: 'text' },
-        { field: 'email', header: 'Email', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Email', dataType: 'text' },
-    ];
 
-    const [selectedUser, setSelectedUser] = useState<any>(null);
+export const TableUsuario = ({ data, isFetching, handleDelete }: Props) => {
+    const [selectedPerson, setSelectedPerson] = useState<any>(null);
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = (userData: any) => {
-        setSelectedUser(userData);
+        setSelectedPerson(userData);
         setIsOpen(true);
     };
 
     const personTemplate = (rowData: any) => {
-        const userCount = rowData.usuarios ? rowData.usuarios.length : 0;
+        const personExists = rowData.persona && typeof rowData.persona === 'object';
         return (
             <Button
                 rounded
                 className="p-button-rounded p-button-text"
                 onClick={() => openModal(
                     {
-                        persona: rowData.nombre + ' ' + rowData.apellido,
-                        usuario: rowData.usuarios
+                        persona: `${rowData.persona.nombre} ${rowData.persona.apellido}`,
+                        cuil: rowData.persona.cuil,
                     }
                 )}
-                disabled={userCount === 0}
+                disabled={!personExists}
             >
-                <i className="pi pi-users p-overlay-badge" style={{ fontSize: '1.5rem' }}>
-                    <Badge severity="info" value={userCount} />
+                <i className="pi pi-user p-overlay-badge" style={{ fontSize: '1.5rem' }}>
+                    <Badge severity="info" value={personExists ? 1 : 0} />
                 </i>
             </Button>
         );
     };
+
+    const columns: ICustomColumnItem[] = [
+        { field: 'nombre', header: 'Usuario', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Usuario', dataType: 'text' },
+        { field: 'email', header: 'Email', sortable: true, filter: true, filterPlaceholder: 'Buscar Por Email', dataType: 'text' },
+        { field: 'persona', header: 'Persona', body: personTemplate, sortable: false },
+    ];
 
     return (
         <>
@@ -58,6 +61,7 @@ export const TableUsuario = ({ data, isFetching, handleDelete }: Props) => {
                 rowsPerPageOptions={[10, 100, 1000]}
                 rows={10}
             />
+            <PersonaModal isOpen={isOpen} setIsOpen={setIsOpen} selectedPerson={selectedPerson} />
         </>
     );
 };

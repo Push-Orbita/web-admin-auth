@@ -57,10 +57,11 @@ const UsuarioView = () => {
 
   return (
     <DashboardLayout>
-      <div className='text-3xl mt-2 mb-2'>
-        {t(lang.User.title)}
-      </div>
+
       <div className="card">
+        <div className='text-3xl mt-2 mb-2'>
+          {t(lang.User.title)}
+        </div>
         {
           visible ? (
             <>
@@ -69,20 +70,20 @@ const UsuarioView = () => {
               />
             </>
           )
-          : (
-            <div>
-              <div className="grid">
-                <div className="col-12">
-                  {startToolbarTemplate()}
+            : (
+              <div>
+                <div className="grid">
+                  <div className="col-12">
+                    {startToolbarTemplate()}
+                  </div>
                 </div>
+                <TableUsuario
+                  data={data ?? []}
+                  isFetching={isFetching}
+                  handleDelete={handleDelete}
+                />
               </div>
-              <TableUsuario
-                data={data ?? []}
-                isFetching={isFetching}
-                handleDelete={handleDelete}
-              />
-            </div>
-          )
+            )
         }
       </div>
     </DashboardLayout>
