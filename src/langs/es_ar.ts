@@ -750,6 +750,38 @@ export const es_ar = {
       deletedError: "Error al eliminar el Registro",
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
+  },
+  User: {
+    title: "Usuarios",
+    subTitle: "Listado de Usuarios",
+    new: "Nueva Usuario",
+    edit: "Editar Usuario",
+    detail: "Detalle de la usuario",
+    list: "Lista de Usuarios",
+    form: {
+      name: "Nombre de usuario",
+      email: "Email",
+      password: "Contraseña",
+      repeatPassword: "Repetir Contraseña",
+      person: "Persona"
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      emailIsRequired: "El email es requerido",
+      passwordIsRequired: "La contraseña es requerida",
+      repeatPasswordIsRequired: "Se debe repetir la contraseña",
+      personIsRequired: "La persona es requerida",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
   }
+
 
 };

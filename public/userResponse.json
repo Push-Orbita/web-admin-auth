@@ -58,6 +58,21 @@
                         "D"
                     ],
                     "element": "Persona"
+                },
+                {
+                    "label": "Usuarios",
+                    "icon": "pi pi-user",
+                    "to": "/usuarios",
+                    "path": "/usuarios",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Usuario"
                 }
             ]
         },
