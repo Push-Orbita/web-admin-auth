@@ -5,12 +5,11 @@ import toast from "react-hot-toast";
 import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
-
 import { ModuloPatchDTO, ModuloPostDTO } from "@features/modulo/model/dtos/modulo.dto";
 import { ModuloApi } from "@features/modulo/service/modulo.service";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
-import FormFields from "./FormFields"; // Asegúrate de que este archivo esté en la ruta correcta
+import FormFields from "./FormFields";
 
 interface FormTypeActionsProps {
     refetch: () => void;
@@ -57,14 +56,13 @@ const FormModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
                     ...values,
                     body: values.body.map(item => ({
                         ...item,
-                        sistema: values.sistema, // Propaga el valor de `sistema` a cada objeto
+                        sistema: values.sistema,
                     })),
                 };
-
                 if (rowData) {
                     const req: ModuloPatchDTO = {
                         id: rowData.id,
-                        ...valuesToSend.body[0],  // Asume que estás actualizando el primer objeto en el array
+                        ...valuesToSend.body[0],
                     };
                     await patchModulo.mutateAsync(req);
                 } else {
@@ -82,8 +80,6 @@ const FormModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
             setRowData(undefined);
         }
     }, [visible, setRowData]);
-
-    // Asegúrate de extraer el valor correcto de `sistema`, no el objeto entero.
     const initialValues: ModuloPostDTO = {
         body: rowData ? [{
             nombre: rowData.nombre,
@@ -102,7 +98,7 @@ const FormModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
             moduloPadre: 0,
             path: '',
         }],
-        sistema: rowData ? rowData.sistema.id : 0 // Asegúrate de extraer el valor correcto (por ejemplo, id)
+        sistema: rowData ? rowData.sistema.id : 0
     };
     
 

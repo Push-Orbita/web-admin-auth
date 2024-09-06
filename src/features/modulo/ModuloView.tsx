@@ -48,7 +48,6 @@ const ModuloView = () => {
                 await deleteModulo.mutateAsync({ id });
             },
             reject: () => {
-                // Maneja la cancelación si es necesario
             },
         });
     };
