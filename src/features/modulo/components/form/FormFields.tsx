@@ -12,6 +12,7 @@ import useQueryApi from "@hooks/useQueryApi";
 import { SistemaEntity } from "@features/sistema/model/entity/sistema.entity";
 import { SistemaApi } from "@features/sistema/service/sistema.service";
 import { FormSelect } from "@components/common/forms/FormSelect";
+import { iconOptions } from "@components/common/constantes";
 
 interface FormFieldsProps {
     isEditMode: boolean;
@@ -70,7 +71,15 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
                                             <FormTextInput label={t(lang.Module.form.element)} name={`body[${index}].element`} />
                                         </div>
                                         <div className="col-12 md:col-6 lg:col-6 mt-2">
-                                            <FormTextInput label={t(lang.Module.form.icon)} name={`body[${index}].icon`} />
+                                            <FormSelect
+                                                label={t(lang.Module.form.icon)}
+                                                name={`body[${index}].icon`}
+                                                options={iconOptions}
+                                                optionLabel="nombre"
+                                                isLoading={isLoading}
+
+                                            />
+
                                         </div>
                                         <div className="col-12 md:col-6 lg:col-6 mt-2">
                                             <FormTextInput label={t(lang.Module.form.path)} name={`body[${index}].path`} />
