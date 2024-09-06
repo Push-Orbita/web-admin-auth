@@ -4,14 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import AppMenuitem from './AppMenuitem';
 
 
-interface MenuItem {
-    label: string;
-    icon?: string;
-    items?: MenuItem[];
-    separator?: boolean;
-    command?: () => void;
-    path?: string;
-}
+
 
 const transformUserModulosToAppMenuItem = (userModulos: any): any[] => {
     return userModulos.map((modulo: any) => {
