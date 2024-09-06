@@ -39,9 +39,10 @@ export default function CustomExpandTable({
 }: Props) {
     const { setVisible, setRowData } = useModuleContext();
     const permisos = usePermisos();
-    const globalFilterFields = columns.map(column => column.field);
-    const filterFields = columns.map(column => column.field);
     
+    const globalFilterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
+    const filterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
+
     const initialFilters = (): DataTableFilterMeta => {
         const fields = filterFields.reduce((acc, field) => {
             acc[field] = { value: null, matchMode: FilterMatchMode.CONTAINS };
@@ -58,7 +59,12 @@ export default function CustomExpandTable({
     const onGlobalFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         let _filters = { ...filters };
-        _filters['global'].value = value;
+        const globalFilter = _filters['global'];
+
+        if ('value' in globalFilter) {
+            globalFilter.value = value;
+        }
+
         setFilters(_filters);
         setGlobalFilterValue(value);
     };
