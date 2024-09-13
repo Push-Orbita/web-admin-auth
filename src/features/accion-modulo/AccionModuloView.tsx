@@ -6,7 +6,6 @@ import { t } from "i18next";
 import { confirmDialog } from "primereact/confirmdialog";
 import toast from "react-hot-toast";
 import { lang } from "../../langs";
-
 import { TableAccionModulo } from "./components/table/TableAccionModulo";
 import FormAccionModulo from "./components/form/FormAccionModulo";
 import { useEffect } from "react";
@@ -80,6 +79,7 @@ const AccionModuloView = () => {
                                     data={data ?? []}
                                     isFetching={isFetching}
                                     handleDelete={handleDelete}
+                                    refetch={refetch}
                                 />
                             </div>
                         )
