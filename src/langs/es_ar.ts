@@ -829,11 +829,10 @@ export const es_ar = {
 
     },
     validation: {
-      nameIsRequired: "El nombre es requerido",
-      descripcionIsRequired: "El email es requerido",
-      passwordIsRequired: "La contraseña es requerida",
-      repeatPasswordIsRequired: "Se debe repetir la contraseña",
-      personIsRequired: "La persona es requerida",
+      moduleIsRequired: "El modulo es requerido",
+      acctionIsRequired: "La acción es requerida",
+      moduleMustBeDifferentFromZero: "Debe seleccionar un modulo",
+      acctionMustBeDifferentFromZero: "Debe seleccionar una acción",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",

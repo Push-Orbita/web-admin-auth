@@ -10,6 +10,7 @@ import { Message } from "primereact/message";
 import FormFields from "./FormFields";
 import { AccionModuloApi } from "@features/accion-modulo/service/accionModulo.service";
 import { AccionModuloPatchDTO, AccionModuloPostDTO } from "@features/accion-modulo/model/dtos/accionModulo.dto";
+import { fieldValidations } from "./fieldValidations/field.validations";
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
@@ -76,8 +77,8 @@ const FormAccionModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
     }, [visible, setRowData]);
 
     const initialValues: AccionModuloPostDTO = {
-        accion: rowData?.accion ?? "",
-        modulo: rowData?.modulo ?? ""
+        accion: rowData?.accion ?? 0,
+        modulo: rowData?.modulo ?? 0
     };
 
     return (
@@ -106,7 +107,7 @@ const FormAccionModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
             </div>
             <Formik
                 initialValues={initialValues}
-                // validationSchema={fieldValidations}
+                validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
                     onSave(values, setSubmitting);
                 }}

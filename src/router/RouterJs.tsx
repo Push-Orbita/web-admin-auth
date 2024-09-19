@@ -1,5 +1,5 @@
 import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHook';
 const AuthLogin = lazy(() => import('../pages/auth/AuthLogin'));
 const Home = lazy(() => import('../pages/home/Home'));
@@ -35,21 +35,24 @@ export const RouterJs = () => {
     const { userModulos } = useAppSelector((state) => state.auth);
 
     const renderRoutes = (modulos: any) => {
-        return modulos.map((modulo: any) => {
+        return modulos.flatMap((modulo: any) => {
             if (modulo.items && modulo.items.length > 0) {
                 return renderRoutes(modulo.items);
             }
             const Component = componentsMap[modulo.element];
             if (!Component) {
-                console.warn(`No se econtro componente: ${modulo.element}`);
-                return null;
+                console.warn(`No se encontró componente: ${modulo.element}`);
+                return [];
             }
             return (
                 <Route
                     key={modulo.path}
                     path={modulo.path}
                     element={
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<div className="preloader-container">
+                            <div id="preloader5"></div>
+                        </div>
+                        }>
                             <Component />
                         </Suspense>
                     }
@@ -61,7 +64,24 @@ export const RouterJs = () => {
     return (
         <div>
             <Routes>
-                {renderRoutes(userModulos)}
+                {userModulos && userModulos.length > 0 ? (
+                    renderRoutes(userModulos)
+                ) : (
+                    // Ruta por defecto cuando no hay módulos disponibles
+                    <Route path="*" element={<Navigate to="/home" replace />} />
+                )}
+                {/* Ruta por defecto que redirige a HomeAdmin */}
+                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/home" element={
+                    <Suspense fallback={
+                        <div className="preloader-container">
+                            <div id="preloader5"></div>
+                        </div>
+
+                    }>
+                        <Home />
+                    </Suspense>
+                } />
             </Routes>
         </div>
     );

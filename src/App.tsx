@@ -1,21 +1,21 @@
 import { MenuProvider } from "@context/menucontext";
-import { AppRouter } from "@router/AppRouter";
-import { PermisosProvider } from "@hooks/usePermisos";
 import { ModuleProvider } from "@hooks/useModules";
+import { PermisosProvider } from "@hooks/usePermisos";
 import { persistor } from "@redux/store/store";
+import { AppRouter } from "@router/AppRouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import 'primeflex/primeflex.css';
 import { PrimeReactProvider } from 'primereact/api';
-import { Toaster } from 'react-hot-toast';
-import { HashRouter } from 'react-router-dom';
-import { PersistGate } from "redux-persist/lib/integration/react";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import 'primereact/resources/primereact.min.css';
-import 'primeflex/primeflex.css';
-import './components/common/style/layout/layout.scss'
+import { Toaster } from 'react-hot-toast';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from "redux-persist/lib/integration/react";
+import './components/common/style/layout/layout.scss';
 import './i18n';
 // import './ui/themes/viva-light/theme.css'
 // import './ui/themes/viva-dark/theme.css'
-import './ui/themes/lara-dark-teal/theme.css'
+import './ui/themes/lara-dark-teal/theme.css';
 // import './ui/themes/lara-dark-purple/theme.css'
 // import './ui/themes/lara-light-teal/theme.css'
 // import './ui/themes/soho-light/theme.css'
@@ -41,7 +41,7 @@ function App() {
   })
   7
   return (
-    <HashRouter>
+    <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <PersistGate persistor={persistor}>
           <PrimeReactProvider >
@@ -59,7 +59,7 @@ function App() {
           </PrimeReactProvider>
         </PersistGate>
       </QueryClientProvider>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
