@@ -32,9 +32,9 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false, // Refecht cuando se cambia de pantalla
-        staleTime: 1000 * 60 * 5, // 5 minutes
-        cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+        refetchOnWindowFocus: true, // Refecht cuando se cambia de pantalla
+        staleTime: 0,
+        cacheTime: 1000 * 60 * 60 * 0, // 24 hours
         retry: 2, // Reintentar fetches fallidos hasta 2 veces automáticamente
       },
     },

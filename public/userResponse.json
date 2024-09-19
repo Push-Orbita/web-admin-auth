@@ -112,6 +112,21 @@
                                 "D"
                             ],
                             "element": "Modulo"
+                        },
+                        {
+                            "label": "Accion Por Modulo",
+                            "icon": "pi pi-share-alt",
+                            "to": "/accion-modulo",
+                            "path": "/accion-modulo",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "AccionModulo"
                         }
                     ]
                 },

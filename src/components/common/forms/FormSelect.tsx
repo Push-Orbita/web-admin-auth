@@ -45,7 +45,8 @@ export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect,
                 {...props}
                 options={props.options}
                 optionLabel={props.optionLabel}
-                placeholder="Seleccionar" className="w-full" />
+                placeholder="Seleccionar" className="w-full"
+            />
             {meta.touched && meta.error ? (
                 <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{
                     marginTop: '5px'
