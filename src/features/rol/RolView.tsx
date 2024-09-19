@@ -6,32 +6,32 @@ import { t } from "i18next";
 import { confirmDialog } from "primereact/confirmdialog";
 import toast from "react-hot-toast";
 import { lang } from "../../langs";
-import { PlanApi } from "./service/plan.service";
-import { TablePlan } from "./components/table/TablePlan";
-import FormPlan from "./components/form/FormPlan";
+import { RolApi } from "./service/rol.service";
+import { TableRol } from "./components/table/TableRol";
+import FormRol from "./components/form/FormRol";
 import { useEffect } from "react";
 
 
-const PlanView = () => {
+const RolView = () => {
     const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
     const { data, isFetching, refetch } = useQueryApi<Response>(
-        "Plan",
-        PlanApi.getPlanSearch
+        "Rol",
+        RolApi.getRolSearch
     );
 
     useEffect(() => {
         resetModuleState();
     }, []);
 
-    const deletePlan = UseQueryMutation({
-        requestFn: PlanApi.deletePlan,
+    const deleteRol = UseQueryMutation({
+        requestFn: RolApi.deleteRol,
         options: {
             onError() {
-                toast.error(t(lang.Plan.messages.deletedError));
+                toast.error(t(lang.Rol.messages.deletedError));
             },
             onSuccess: () => {
                 refetch();
-                toast.success(t(lang.Plan.messages.deletedSuccess));
+                toast.success(t(lang.Rol.messages.deletedSuccess));
             },
         },
     });
@@ -45,7 +45,7 @@ const PlanView = () => {
             acceptLabel: t(lang.common.actions.confirm),
             rejectLabel: t(lang.common.actions.cancel),
             accept: async () => {
-                await deletePlan.mutateAsync({ id });
+                await deleteRol.mutateAsync({ id });
             },
             reject: () => {
                 // Maneja la cancelación si es necesario
@@ -59,13 +59,13 @@ const PlanView = () => {
 
             <div className="card">
                 <div className='text-3xl mt-2 mb-2'>
-                    {t(lang.Plan.title)}
+                    {t(lang.Rol.title)}
                 </div>
                 {
                     visible ? (
                         <>
-                            <FormPlan
-                                title={rowData ? `${t(lang.Plan.edit)}` : `${t(lang.Plan.new)}`} refetch={refetch}
+                            <FormRol
+                                title={rowData ? `${t(lang.Rol.edit)}` : `${t(lang.Rol.new)}`} refetch={refetch}
                             />
                         </>
                     )
@@ -76,7 +76,7 @@ const PlanView = () => {
                                         {startToolbarTemplate()}
                                     </div>
                                 </div>
-                                <TablePlan
+                                <TableRol
                                     data={data ?? []}
                                     isFetching={isFetching}
                                     handleDelete={handleDelete}
@@ -89,4 +89,4 @@ const PlanView = () => {
     );
 };
 
-export default PlanView;
+export default RolView;

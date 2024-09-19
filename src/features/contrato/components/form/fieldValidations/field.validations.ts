@@ -3,7 +3,11 @@ import { lang } from "../../../../../langs";
 import * as Yup from "yup";
 
 export const fieldValidations = Yup.object().shape({
-    plan: Yup.string().required(t(lang.Contract.validation.planIsRequired.toString())),
-    organizacion: Yup.string().required(t(lang.Contract.validation.organizationIsRequired.toString())),
+    plan: Yup.number()
+        .required(t(lang.ActionModule.validation.moduleIsRequired.toString()))
+        .notOneOf([0], t(lang.ActionModule.validation.moduleMustBeDifferentFromZero.toString())),
+    organizacion: Yup.number()
+        .required(t(lang.ActionModule.validation.moduleIsRequired.toString()))
+        .notOneOf([0], t(lang.ActionModule.validation.moduleMustBeDifferentFromZero.toString())),
     fechaVencimiento: Yup.string().required(t(lang.Contract.validation.expireDateIsRequired.toString())),
 });

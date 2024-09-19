@@ -56,10 +56,11 @@ const ContratoView = () => {
 
     return (
         <DashboardLayout>
-            <div className='text-3xl mt-2 mb-2'>
-                {t(lang.Contract.title)}
-            </div>
+
             <div className="card">
+                <div className='text-3xl mt-2 mb-2'>
+                    {t(lang.Contract.title)}
+                </div>
                 {
                     visible ? (
                         <>

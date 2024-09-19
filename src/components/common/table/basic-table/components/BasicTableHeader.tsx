@@ -22,7 +22,7 @@ export const BasicTableHeader = ({ tableTitle, globalFilterFields, globalFilterV
                         globalFilterFields && globalFilterFields.length > 0 ? (
                             <span className="p-input-icon-left">
                                 <i className="pi pi-search" />
-                                <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Búsqueda palabra clave" />
+                                <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Buscar" />
                             </span>
                         ) : ('')
                     }

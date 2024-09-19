@@ -4,10 +4,9 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "skipLibCheck": true,
     "module": "ESNext",
-    "moduleResolution": "node",                     // Asegúrate de que esto esté configurado como 'node'
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["node", "@types/lodash"],
     "noEmit": true
   },
   "include": ["vite.config.ts"]

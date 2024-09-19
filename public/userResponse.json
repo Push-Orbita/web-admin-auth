@@ -61,18 +61,39 @@
                 },
                 {
                     "label": "Usuarios",
-                    "icon": "pi pi-user",
-                    "to": "/usuarios",
-                    "path": "/usuarios",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Usuario"
+                    "icon": "pi pi-objects-column",
+                    "items": [
+                        {
+                            "label": "Usuarios",
+                            "icon": "pi pi-sparkles",
+                            "to": "/usuarios",
+                            "path": "/usuarios",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Usuario"
+                        },
+                        {
+                            "label": "Rol",
+                            "icon": "pi pi-share-alt",
+                            "to": "/rol",
+                            "path": "/rol",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Rol"
+                        }
+                    ]
                 }
             ]
         },

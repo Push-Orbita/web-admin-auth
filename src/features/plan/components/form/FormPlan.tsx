@@ -82,7 +82,7 @@ const FormPlan: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' })
         descripcion: rowData?.descripcion ?? "",
         duracion: rowData?.duracion ?? "",
         precio: rowData?.precio ?? "",
-        suscripcion: rowData?.suscripcion.id ?? "",
+        suscripcion: rowData?.suscripcion.id ?? 0,
     };
 
     return (

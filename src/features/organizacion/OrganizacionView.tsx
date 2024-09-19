@@ -57,10 +57,10 @@ const OrganizacionView = () => {
 
   return (
     <DashboardLayout>
-      <div className='text-3xl mt-2 mb-2'>
-        {t(lang.Organizacion.title)}
-      </div>
       <div className="card">
+        <div className='text-3xl mt-2 mb-2'>
+          {t(lang.Organizacion.title)}
+        </div>
         {
           visible ? (
             <>
@@ -69,20 +69,20 @@ const OrganizacionView = () => {
               />
             </>
           )
-          : (
-            <div>
-              <div className="grid">
-                <div className="col-12">
-                  {startToolbarTemplate()}
+            : (
+              <div>
+                <div className="grid">
+                  <div className="col-12">
+                    {startToolbarTemplate()}
+                  </div>
                 </div>
+                <TableOrganizacion
+                  data={data ?? []}
+                  isFetching={isFetching}
+                  handleDelete={handleDelete}
+                />
               </div>
-              <TableOrganizacion
-                data={data ?? []}
-                isFetching={isFetching}
-                handleDelete={handleDelete}
-              />
-            </div>
-          )
+            )
         }
       </div>
     </DashboardLayout>
