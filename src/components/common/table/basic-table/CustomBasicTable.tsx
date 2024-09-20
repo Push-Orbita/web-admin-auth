@@ -9,17 +9,21 @@ import { BasicTableHeader } from './components/BasicTableHeader';
 import { ICustomColumnItem } from './interfaces/custombasictable';
 
 interface Props {
-    filterDisplay?: "row" | "menu",
-    rows?: number,
-    rowsPerPageOptions?: number[],
-    tableTitle?: string,
-    globalFilterFields?: string[],
+    filterDisplay?: "row" | "menu";
+    rows?: number;
+    rowsPerPageOptions?: number[];
+    tableTitle?: string;
+    globalFilterFields?: string[];
     filterFields?: string[];
     scrollable?: boolean;
-    data: any,
+    data: any;
     loading: boolean;
-    columns: ICustomColumnItem[],
+    columns: ICustomColumnItem[];
     handleDelete: any;
+    size?: 'small' | 'normal' | 'large';
+    footerColumnGroup?: JSX.Element;
+    headerColumnGroup?: JSX.Element;
+    showGridlines?: boolean;
 }
 
 export default function CustomBasicTable({
@@ -31,11 +35,15 @@ export default function CustomBasicTable({
     loading,
     data,
     columns = [],
-    handleDelete
+    size = 'normal',
+    handleDelete,
+    footerColumnGroup,
+    headerColumnGroup,
+    showGridlines = false
 }: Props) {
     const { setVisible, setRowData } = useModuleContext();
     const permisos = usePermisos();
-    
+
     const globalFilterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
     const filterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
 
@@ -67,13 +75,17 @@ export default function CustomBasicTable({
     const edit = (rowData: any) => {
         setRowData(rowData);
         setVisible(true);
-    }
+    };
 
     const actionBodyTemplate = (rowData: any) => {
         return (
             <>
-                {permisos.puedeModificar ? (<Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />) : ("")}
-                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(rowData.id)} />) : ("")}
+                {permisos.puedeModificar ? (
+                    <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />
+                ) : null}
+                {permisos.puedeBorrar ? (
+                    <Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(rowData.id)} />
+                ) : null}
             </>
         );
     };
@@ -92,6 +104,7 @@ export default function CustomBasicTable({
         <DataTable
             value={data}
             paginator
+            showGridlines={showGridlines}
             rows={rows}
             rowsPerPageOptions={rowsPerPageOptions}
             dataKey="id"
@@ -102,9 +115,12 @@ export default function CustomBasicTable({
             loading={loading}
             header={header}
             globalFilterFields={globalFilterFields}
+            size={size}
             paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
             currentPageReportTemplate="Mostrando {first}-{last} de un total de {totalRecords} registros"
             emptyMessage="No se encontraron datos"
+            footerColumnGroup={footerColumnGroup}
+            headerColumnGroup={headerColumnGroup}
         >
             {columns.map((column) => (
                 <Column
@@ -114,7 +130,8 @@ export default function CustomBasicTable({
                     sortable={column.sortable}
                     filter={column.filter}
                     filterPlaceholder={column.filterPlaceholder}
-                    style={{ minWidth: '12rem' }}
+                    style={column.style ? column.style : { minWidth: '12rem' }}  // Aplicar estilo personalizado o predeterminado
+                    className={column.className}  // Aplicar clase CSS si está definida
                     dataType={column.dataType}
                     body={column.body ? column.body : undefined}
                 />

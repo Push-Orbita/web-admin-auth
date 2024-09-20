@@ -1,15 +1,16 @@
+import { ModuloPatchDTO, ModuloPostDTO } from "@features/modulo/model/dtos/modulo.dto";
+import { ModuloApi } from "@features/modulo/service/modulo.service";
 import { Formik } from "formik";
 import { t } from "i18next";
+import { Button } from "primereact/button";
+import { Message } from "primereact/message";
 import { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
-import { ModuloPatchDTO, ModuloPostDTO } from "@features/modulo/model/dtos/modulo.dto";
-import { ModuloApi } from "@features/modulo/service/modulo.service";
-import { Button } from "primereact/button";
-import { Message } from "primereact/message";
 import FormFields from "./FormFields";
+import { fieldValidations } from "./fieldValidations/field.validations";
 
 interface FormTypeActionsProps {
     refetch: () => void;
@@ -100,7 +101,7 @@ const FormModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
         }],
         sistema: rowData ? rowData.sistema.id : 0
     };
-    
+
 
     return (
         <>
@@ -128,7 +129,7 @@ const FormModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' 
             </div>
             <Formik
                 initialValues={initialValues}
-                // validationSchema={fieldValidations}
+                validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
                     onSave(values, { setSubmitting });
                 }}

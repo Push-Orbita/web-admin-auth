@@ -17,7 +17,6 @@ const FormCustomButtons = () => {
                 onClick={() => {
                     setVisible(false);
                     setRowData(undefined);
-
                 }}
                 className="p-button-text"
                 disabled={isSubmitting}

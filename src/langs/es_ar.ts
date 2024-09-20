@@ -739,7 +739,8 @@ export const es_ar = {
       cuilMustBePositive: "El cuil debe ser un numero positivo",
       cuilMustBeInteger: "El cuil debe ser un numero entero",
       cuilMaxLength: "El cuild debe tener como maximo 11 caracteres",
-      invalidGender: "El genero seleccionado no esta entre las opciones"
+      invalidGender: "El genero seleccionado no esta entre las opciones",
+      cuilInvalid: "El cuil no es valido"
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
@@ -800,11 +801,14 @@ export const es_ar = {
       element: "Elemento a Renderizar"
     },
     validation: {
+      descriptionIsRequired: "La descripción es requerida",
+      systemIsRequired: "El sistema es requerido",
+      labelIsRequired: "El label es requerido",
+      iconIsRequired: "El icono es requerido",
+      pathIsRequired: "El path es requerido",
+      parentModuleIsRequired: "El modulo padre es requerido",
+      elementIsRequired: "El elemento a renderizar es requerido",
       nameIsRequired: "El nombre es requerido",
-      descripcionIsRequired: "El email es requerido",
-      passwordIsRequired: "La contraseña es requerida",
-      repeatPasswordIsRequired: "Se debe repetir la contraseña",
-      personIsRequired: "La persona es requerida",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
@@ -833,6 +837,32 @@ export const es_ar = {
       acctionIsRequired: "La acción es requerida",
       moduleMustBeDifferentFromZero: "Debe seleccionar un modulo",
       acctionMustBeDifferentFromZero: "Debe seleccionar una acción",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },
+  Rol: {
+    title: "Rol",
+    subTitle: "Listado de Rol",
+    new: "Nuevo Rol",
+    edit: "Editar Rol",
+    detail: "Detalle del Rol",
+    list: "Lista de Rol",
+    form: {
+      name: "Nombre de Rol",
+      description: "Descripción",
+
+    },
+    validation: {
+      nameIsRequired: "El nombre es requerido",
+      descriptionIsRequired: "La descripción es requerida",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",

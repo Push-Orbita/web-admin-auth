@@ -5,28 +5,29 @@ import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
+// import { fieldValidations } from "./fieldValidations/fieldvalidations";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
-import { ContratoApi } from "@features/contrato/service/contrato.service";
-import { ContratoPatchDTO, ContratoPostDTO } from "@features/contrato/model/dtos/contrato.dto";
+import { RolApi } from "@features/rol/service/rol.service";
+import { RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
-// import { fieldValidations } from "./fieldValidations/field.validations";
+// import FormFields from "./FormFields";
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
 }
-const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
+const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
-    const postContrato = UseQueryMutation({
-        requestFn: ContratoApi.postContrato,
+    const postRol = UseQueryMutation({
+        requestFn: RolApi.postRol,
         options: {
             onError: () => {
-                toast.error(t(lang.Contract.messages.createdError));
+                toast.error(t(lang.Rol.messages.createdError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Contract.messages.createdSuccess));
+                toast.success(t(lang.Rol.messages.createdSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
@@ -34,40 +35,38 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
         },
     });
 
-    const patchContrato = UseQueryMutation({
-        requestFn: ContratoApi.patchContrato,
+    const patchRol = UseQueryMutation({
+        requestFn: RolApi.patchRol,
         options: {
             onError: () => {
-                toast.error(t(lang.Contract.messages.updatedError));
+                toast.error(t(lang.Rol.messages.updatedError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Contract.messages.updatedSuccess));
+                toast.success(t(lang.Rol.messages.updatedSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
             },
         },
     });
+
     const onSave = useCallback(
-        async (values: ContratoPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+        async (values: RolPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
             try {
                 if (rowData) {
-                    const req: ContratoPatchDTO = {
+                    const req: RolPatchDTO = {
                         id: rowData.id,
                         ...values,
                     };
-
-                    await patchContrato.mutateAsync(req);
+                    await patchRol.mutateAsync(req);
                 } else {
-
-                    await postContrato.mutateAsync(values);
-
+                    await postRol.mutateAsync(values);
                 }
             } finally {
                 setSubmitting(false);
             }
         },
-        [rowData, patchContrato, postContrato]
+        [rowData, patchRol, postRol]
     );
 
     useEffect(() => {
@@ -75,10 +74,10 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
             setRowData(undefined);
         }
     }, [visible, setRowData]);
-    const initialValues: ContratoPostDTO = {
-        fechaVencimiento: rowData?.fechaVencimiento ? new Date(rowData.fechaVencimiento) : '',
-        organizacion: rowData?.organizacion.id ?? 0,
-        plan: rowData?.plan.id ?? 0
+
+    const initialValues: RolPostDTO = {
+        nombre: rowData?.nombre ?? "",
+        descripcion: rowData?.descripcion ?? "",
     };
 
     return (
@@ -120,4 +119,4 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
     );
 };
 
-export default FormContrato;
+export default FormRol;

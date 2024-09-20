@@ -33,13 +33,13 @@ const FormFields: FC = () => {
                         <FormTextInput label={t(lang.Organizacion.form.user)} name={'usuario'} />
                     </div>
                     <div className="col-12 md:col-6 lg:col-6 mb-3">
-                        <FormTextInput label={t(lang.Organizacion.form.password)} name={'password'} />
+                        <FormTextInput label={t(lang.Organizacion.form.password)} name={'password'} type="password" />
                     </div>
                     <div className="col-12 md:col-6 lg:col-6 mb-3">
                         <FormTextInput label={t(lang.Organizacion.form.host)} name={'host'} />
                     </div>
                     <div className="col-12 md:col-6 lg:col-6 mb-3">
-                        <FormTextInput label={t(lang.Organizacion.form.port)} name={'port'} />
+                        <FormTextInput label={t(lang.Organizacion.form.port)} name={'port'} type="number" />
                     </div>
                 </div>
             </Fieldset>

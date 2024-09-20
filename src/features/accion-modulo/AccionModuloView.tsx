@@ -56,10 +56,11 @@ const AccionModuloView = () => {
 
     return (
         <DashboardLayout>
-            <div className='text-3xl mt-2 mb-2'>
-                {t(lang.ActionModule.title)}
-            </div>
+
             <div className="card">
+                <div className='text-3xl mt-2 mb-2'>
+                    {t(lang.ActionModule.title)}
+                </div>
                 {
                     visible ? (
                         <>
@@ -79,7 +80,6 @@ const AccionModuloView = () => {
                                     data={data ?? []}
                                     isFetching={isFetching}
                                     handleDelete={handleDelete}
-                                    refetch={refetch}
                                 />
                             </div>
                         )

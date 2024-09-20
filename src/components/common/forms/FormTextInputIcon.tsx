@@ -1,42 +1,40 @@
-import { useField } from 'formik';
-import { InputText } from 'primereact/inputtext';
+import { useField, FieldHookConfig } from 'formik';
+import { InputText, InputTextProps } from 'primereact/inputtext';
 
-interface Props {
+interface Props extends InputTextProps {
     label: string;
     name: string;
-    type?: 'text' | 'email' | 'password' | 'time' | 'number' | 'date';
-    placeholder?: string;
-    fullWidth?: boolean;
     icon?: string;
-    [x: string]: any;
 }
-export const FormTextInputIcon = ({ label, type = 'text', icon, ...props }: Props) => {
-    const [field, meta] = useField(props);
+
+export const FormTextInputIcon = ({ label, icon, ...props }: Props) => {
+    // Extraer solo las props relevantes para Formik
+    const [field, meta] = useField(props as FieldHookConfig<string>);
+
     return (
-        <><label htmlFor={props.name} style={{ paddingTop: '10px' }}>{label}</label>
+        <div>
+            {label && (
+                <label htmlFor={props.name} style={{ paddingTop: '10px' }}>
+                    {label}
+                </label>
+            )}
             <div className="p-inputgroup flex-1">
-                <span className="p-inputgroup-addon">
-                    <i className={`${icon}`}></i>
-                </span>
-                <InputText id={props.name}
-                    aria-describedby={props.name}
-                    {...field}
-                    {...props}
-                    value={field.value}
-                    type={type}
-                    // placeholder={label}
-                    style={{
-                        borderTopRightRadius: '6px',
-                        borderBottomRightRadius: '6px'
-                    }}
+                {icon && (
+                    <span className="p-inputgroup-addon">
+                        <i className={icon}></i>
+                    </span>
+                )}
+                <InputText
+                    id={props.name}
+                    {...field}  // Solo las props que Formik necesita (name, value, onChange, onBlur)
+                    {...(props as InputTextProps)}  // Pasar el resto de props a InputText, con tipado adecuado
                 />
-              
             </div>
-            <div id={props.name} style={{
-                    color: 'var(--red-500)'
-                }}>
-                    {meta.touched && meta.error ? meta.error : ''}
+            {meta.touched && meta.error ? (
+                <div style={{ color: 'var(--red-500)' }}>
+                    {meta.error}
                 </div>
-        </>
+            ) : null}
+        </div>
     );
 };

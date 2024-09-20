@@ -1,91 +1,41 @@
-import { useModuleContext } from "@hooks/useModules";
-import useQueryApi from "@hooks/useQueryApi";
-import UseQueryMutation from "@hooks/useQueryMutation";
-import { DashboardLayout } from "@layout/DashboardLayout";
+import { GeneroOptions } from "@components/common/constantes";
+import FormCustomButtons from "@components/common/forms/FormCustomButtons";
+import { FormSelect } from "@components/common/forms/FormSelect";
+import { FormTextInput } from "@components/common/forms/FormTextInput";
+import { PersonaPostDTO } from "@features/persona/model/dtos/persona.dto";
+import { Form, useFormikContext } from "formik";
 import { t } from "i18next";
-import { confirmDialog } from "primereact/confirmdialog";
-import toast from "react-hot-toast";
-import { lang } from "../../langs";
-import { ServiceNameApi } from "./service/serviceName.service";
-import { TableServiceName } from "./components/table/TableServiceName";
-import FormServiceName from "./components/form/FormServiceName";
-import { useEffect } from "react";
+import { FC } from "react";
+import { lang } from "../../../../langs";
+import { FormInputMask } from "@components/common/forms/FormInputMask";
 
-
-const ServiceNameView = () => {
-  const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-  const { data, isFetching, refetch } = useQueryApi<Response>(
-    "ServiceName",
-    ServiceNameApi.getServiceNameSearch
-  );
-
-  useEffect(() => {
-    resetModuleState();
-  }, []);
-
-  const deleteServiceName = UseQueryMutation({
-    requestFn: ServiceNameApi.deleteServiceName,
-    options: {
-      onError() {
-        toast.error(t(lang.ServiceName.messages.deletedError));
-      },
-      onSuccess: () => {
-        refetch();
-        toast.success(t(lang.ServiceName.messages.deletedSuccess));
-      },
-    },
-  });
-
-  const handleDelete = (id: number) => {
-    confirmDialog({
-      message: t(lang.common.labels.deleteMessage),
-      header: t(lang.common.labels.deleteMessageTitle),
-      icon: 'pi pi-exclamation-triangle text-yellow-500',
-      acceptClassName: 'p-button-danger',
-      acceptLabel: t(lang.common.actions.confirm),
-      rejectLabel: t(lang.common.actions.cancel),
-      accept: async () => {
-        await deleteServiceName.mutateAsync({ id });
-      },
-      reject: () => {
-        // Maneja la cancelación si es necesario
-      },
-    });
-  };
-
+const FormFields: FC = () => {
+  const { handleSubmit } = useFormikContext<PersonaPostDTO>();
 
   return (
-    <DashboardLayout>
-      <div className='text-3xl mt-2 mb-2'>
-        {t(lang.ServiceName.title)}
+    <Form onSubmit={handleSubmit}>
+      <div className="p-fluid formgrid grid mb-3">
+        <div className="col-12 md:col-6 lg:col-6  mt-2">
+          <FormTextInput label={t(lang.Person.form.name)} name={'nombre'} />
+        </div>
+        <div className="col-12 md:col-6 lg:col-6 mt-2">
+          <FormTextInput label={t(lang.Person.form.lastName)} name={'apellido'} />
+        </div>
+        <div className="col-12 md:col-6 lg:col-6 mt-2">
+          <FormInputMask label={t(lang.Person.form.cuil)} name={'cuil'} mask={'99-99999999-9'} placeholder="00-00000000-0" />
+        </div>
+        <div className="col-12 md:col-6 lg:col-6 mt-2">
+          <FormSelect label={t(lang.Person.form.gender)}
+            name={'genero'}
+            options={GeneroOptions}
+            optionLabel="nombre"
+            optionValue="value"
+          />
+        </div>
       </div>
-      <div className="card">
-        {
-          visible ? (
-            <>
-              <FormServiceName
-                title={rowData ? `${t(lang.ServiceName.edit)}` : `${t(lang.ServiceName.new)}`} refetch={refetch}
-              />
-            </>
-          )
-          : (
-            <div>
-              <div className="grid">
-                <div className="col-12">
-                  {startToolbarTemplate()}
-                </div>
-              </div>
-              <TableServiceName
-                data={data ?? []}
-                isFetching={isFetching}
-                handleDelete={handleDelete}
-              />
-            </div>
-          )
-        }
-      </div>
-    </DashboardLayout>
+      <FormCustomButtons />
+    </Form>
   );
 };
 
-export default ServiceNameView;
+export default FormFields;

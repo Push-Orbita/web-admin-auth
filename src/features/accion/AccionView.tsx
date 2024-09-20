@@ -56,10 +56,10 @@ const AccionView = () => {
 
   return (
     <DashboardLayout>
-      <div className='text-3xl mt-2 mb-2'>
-        {t(lang.Action.title)}
-      </div>
       <div className="card">
+        <div className='text-3xl mt-2 mb-2'>
+          {t(lang.Action.title)}
+        </div>
         {
           visible ? (
             <>
@@ -68,20 +68,20 @@ const AccionView = () => {
               />
             </>
           )
-          : (
-            <div>
-              <div className="grid">
-                <div className="col-12">
-                  {startToolbarTemplate()}
+            : (
+              <div>
+                <div className="grid">
+                  <div className="col-12">
+                    {startToolbarTemplate()}
+                  </div>
                 </div>
+                <TableAccion
+                  data={data ?? []}
+                  isFetching={isFetching}
+                  handleDelete={handleDelete}
+                />
               </div>
-              <TableAccion
-                data={data ?? []}
-                isFetching={isFetching}
-                handleDelete={handleDelete}
-              />
-            </div>
-          )
+            )
         }
       </div>
     </DashboardLayout>
