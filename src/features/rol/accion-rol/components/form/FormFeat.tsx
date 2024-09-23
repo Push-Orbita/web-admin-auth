@@ -1,33 +1,30 @@
 import { Formik } from "formik";
 import { t } from "i18next";
 import toast from "react-hot-toast";
-import { useModuleContext } from "../../../../hooks/useModules";
-import UseQueryMutation from "../../../../hooks/useQueryMutation";
-import { lang } from "../../../../langs";
+import { lang } from "../../../../../langs";
 import { useCallback, useEffect } from "react";
-// import { fieldValidations } from "./fieldValidations/fieldvalidations";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
-import { RolApi } from "@features/rol/service/rol.service";
-import { RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
-import FormFields from "./FormFields";
-import { fieldValidations } from "./fieldValidations/field.validations";
-// import FormFields from "./FormFields";
+import { useModuleContext } from "@hooks/useModules";
+import UseQueryMutation from "@hooks/useQueryMutation";
+import { AccionRolApi } from "../../service/accionRol.service";
+import { AccionRolPatchDTO, AccionRolPostDTO } from "../../model/dtos/accionRol.dto";
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
 }
-const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
+const FormAccionRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
-    const postRol = UseQueryMutation({
-        requestFn: RolApi.postRol,
+    const postAccionRol = UseQueryMutation({
+        requestFn: AccionRolApi.postAccionRol,
         options: {
             onError: () => {
-                toast.error(t(lang.Rol.messages.createdError));
+                toast.error(t(lang.AccionRol.messages.createdError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Rol.messages.createdSuccess));
+                toast.success(t(lang.AccionRol.messages.createdSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
@@ -35,14 +32,14 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         },
     });
 
-    const patchRol = UseQueryMutation({
-        requestFn: RolApi.patchRol,
+    const patchAccionRol = UseQueryMutation({
+        requestFn: AccionRolApi.patchAccionRol,
         options: {
             onError: () => {
-                toast.error(t(lang.Rol.messages.updatedError));
+                toast.error(t(lang.AccionRol.messages.updatedError));
             },
             onSuccess: () => {
-                toast.success(t(lang.Rol.messages.updatedSuccess));
+                toast.success(t(lang.AccionRol.messages.updatedSuccess));
                 setVisible(false);
                 setRowData(undefined);
                 refetch();
@@ -51,22 +48,22 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
     });
 
     const onSave = useCallback(
-        async (values: RolPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+        async (values: AccionRolPostDTO, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
             try {
                 if (rowData) {
-                    const req: RolPatchDTO = {
+                    const req: AccionRolPatchDTO = {
                         id: rowData.id,
                         ...values,
                     };
-                    await patchRol.mutateAsync(req);
+                    await patchAccionRol.mutateAsync(req);
                 } else {
-                    await postRol.mutateAsync(values);
+                    await postAccionRol.mutateAsync(values);
                 }
             } finally {
                 setSubmitting(false);
             }
         },
-        [rowData, patchRol, postRol]
+        [rowData, patchAccionRol, postAccionRol]
     );
 
     useEffect(() => {
@@ -75,11 +72,9 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         }
     }, [visible, setRowData]);
 
-    const initialValues: RolPostDTO = {
-        nombre: rowData?.nombre ?? "",
-        descripcion: rowData?.descripcion ?? "",
-        sistema: rowData?.sistema ?? "",
-        modulosSeleccionados: rowData?.modulosSeleccionados ?? [],
+    const initialValues: AccionRolPostDTO = {
+        rol: rowData?.rol ?? "",
+        accionPorModuloId: rowData?.accionPorModuloId ?? "",
     };
 
     return (
@@ -108,17 +103,17 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
             </div>
             <Formik
                 initialValues={initialValues}
-                validationSchema={fieldValidations}
+                // validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values, setSubmitting);
+                    onSave(values, { setSubmitting });
                 }}
             >
                 <>
-                    <FormFields />
+                    {/* <FormFields /> */}
                 </>
             </Formik>
         </>
     );
 };
 
-export default FormRol;
+export default FormAccionRol;

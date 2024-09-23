@@ -9,7 +9,7 @@ const FormCustomButtons = () => {
     const { isSubmitting } = useFormikContext(); // Obtén el estado de isSubmitting de Formik
 
     return (
-        <div className="flex justify-content-end flex-wrap gap-3">
+        <div className="flex justify-content-end flex-wrap gap-3 mt-3">
             <Button
                 type="button"
                 label={t(lang.common.actions.cancel)}

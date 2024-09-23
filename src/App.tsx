@@ -13,21 +13,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from "redux-persist/lib/integration/react";
 import './components/common/style/layout/layout.scss';
 import './i18n';
-// import './ui/themes/viva-light/theme.css'
-// import './ui/themes/viva-dark/theme.css'
-import './ui/themes/lara-dark-teal/theme.css';
-// import './ui/themes/lara-dark-purple/theme.css'
-// import './ui/themes/lara-light-teal/theme.css'
-// import './ui/themes/soho-light/theme.css'
-// import './ui/themes/soho-dark/theme.css'
-// import './ui/themes/luna-green/theme.css'
-// import './ui/themes/luna-amber/theme.css'
-// import './ui/themes/arya-orange/theme.css'
-// import './ui/themes/arya-purple/theme.css'
-// import './ui/themes/fluent-light/theme.css'
-// import './ui/themes/mira/theme.css'
-// import './ui/themes/tailwind-light/theme.css'
-// import './ui/themes/mdc-dark-indigo/theme.css'
+// import 'primereact/resources/themes/soho-dark/theme.css';
+// import 'primereact/resources/themes/saga-orange/theme.css';
+import 'primereact/resources/themes/rhea/theme.css';
+
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {

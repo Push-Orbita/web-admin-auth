@@ -858,11 +858,38 @@ export const es_ar = {
     form: {
       name: "Nombre de Rol",
       description: "Descripción",
-
+      system: "Sistema",
+      module: "Modulo",
+      acction: "Acción",
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
       descriptionIsRequired: "La descripción es requerida",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
+  },
+  AccionRol: {
+    title: "Acción Por Rol",
+    subTitle: "Listado de Acciones Por Rol",
+    new: "Nueva Acción Por Rol",
+    edit: "Editar Acción Por Rol",
+    detail: "Detalle de las Acciones Por Rol",
+    list: "Lista de Acciones Por Rol",
+    form: {
+      rol: "Rol",
+      acction: "Acción",
+    },
+    validation: {
+      rolIsRequired: "El rol es requerido",
+      acctionIsRequired: "La acción es requerida",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",

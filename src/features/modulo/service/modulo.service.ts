@@ -6,7 +6,7 @@ import { ModuloDeleteDTO, ModuloPatchDTO, ModuloPostDTO } from "../model/dtos/mo
 const url = ModuloURL;
 
 class Modulo {
-    async getModuloSearch(){
+    async getModuloSearch() {
         return await Axios.get(`${url.get}`, {
             cancelToken: cancelTokenSource.token,
         });
@@ -18,13 +18,13 @@ class Modulo {
         });
     }
 
-    async postModulo(req: ModuloPostDTO){
+    async postModulo(req: ModuloPostDTO) {
         return await Axios.post(url.post, req.body, {
             cancelToken: cancelTokenSource.token,
         });
     }
 
-    async patchModulo(req: ModuloPatchDTO){
+    async patchModulo(req: ModuloPatchDTO) {
         return await Axios.patch(replaceParamId(url.patch, req.id), omitId(req), {
             cancelToken: cancelTokenSource.token,
         });
@@ -35,6 +35,13 @@ class Modulo {
             cancelToken: cancelTokenSource.token,
         });
     }
+
+    async getModuloBySystemId(systemId: number) {
+        return await Axios.get(`${url.get}?sistema=${systemId}`, {
+            cancelToken: cancelTokenSource.token,
+        });
+    }
 }
+
 
 export const ModuloApi = new Modulo();
