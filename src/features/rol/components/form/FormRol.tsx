@@ -5,18 +5,18 @@ import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
-// import { fieldValidations } from "./fieldValidations/fieldvalidations";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
 import { RolApi } from "@features/rol/service/rol.service";
-import { RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
+import { AccionesPorRol, RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
-// import FormFields from "./FormFields";
+
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
 }
+
 const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) => {
     const { setRowData, rowData, visible, setVisible } = useModuleContext();
 
@@ -50,17 +50,39 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         },
     });
 
+    // Definir el tipo para las acciones por rol si no está definido
+    type AccionPorRol = {
+        id: number;
+        // otros campos necesarios
+    };
+
+    // Transformar las acciones seleccionadas a la estructura necesaria para "accionesPorRol"
+    const accionesPorRol: AccionPorRol[] = acciones.map(accion => ({
+        ...accion,
+        rol: accion.accionPorModulo.id // asigna el id de accionPorModulo a rol
+    }));
+
+    const transformValues = (values: any): Omit<RolPostDTO, 'accionesSeleccionadas' | 'modulosSeleccionados' | 'sistema'> => {
+        return {
+            nombre: values.nombre,
+            descripcion: values.descripcion,
+            accionesPorRol // Incluye solo las propiedades requeridas
+        };
+    };
+
     const onSave = useCallback(
         async (values: RolPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
             try {
+                const transformedValues = transformValues(values); // Transformar los valores antes de enviar
+                console.log(transformedValues);
                 if (rowData) {
                     const req: RolPatchDTO = {
                         id: rowData.id,
-                        ...values,
+                        ...transformedValues,
                     };
                     await patchRol.mutateAsync(req);
                 } else {
-                    await postRol.mutateAsync(values);
+                    await postRol.mutateAsync(transformedValues);
                 }
             } finally {
                 setSubmitting(false);
@@ -78,8 +100,7 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
     const initialValues: RolPostDTO = {
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
-        sistema: rowData?.sistema ?? "",
-        modulosSeleccionados: rowData?.modulosSeleccionados ?? [],
+        accionesPorRol: rowData?.accionesPorRol ?? [],
     };
 
     return (
