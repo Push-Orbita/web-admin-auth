@@ -8,9 +8,10 @@ import { useCallback, useEffect } from "react";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
 import { RolApi } from "@features/rol/service/rol.service";
-import { AccionesPorRol, RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
+import { RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
+import { AccionPorModulo } from "@features/rol/model/entity/rol.entity";
 
 interface FormTypeActionsProps {
     refetch: () => void;
@@ -50,37 +51,41 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         },
     });
 
-    // Definir el tipo para las acciones por rol si no está definido
+    // Definir el tipo para las acciones por rol
     type AccionPorRol = {
         id: number;
-        // otros campos necesarios
+        accionPorModulo: AccionPorModulo;
     };
 
-    // Transformar las acciones seleccionadas a la estructura necesaria para "accionesPorRol"
-    const accionesPorRol: AccionPorRol[] = acciones.map(accion => ({
-        ...accion,
-        rol: accion.accionPorModulo.id // asigna el id de accionPorModulo a rol
-    }));
+    const transformValues = (values: any & { accionesSeleccionadas: any[] }) => {
+        // Usamos accionesSeleccionadas en lugar de accionesPorRol
+        const accionesPorRol = values.accionesSeleccionadas && values.accionesSeleccionadas.length > 0
+            ? values.accionesSeleccionadas.map((accion: any) => ({
+                accionPorModulo: {
+                    id: accion.id,
+                },
+            }))
+            : [];
 
-    const transformValues = (values: any): Omit<RolPostDTO, 'accionesSeleccionadas' | 'modulosSeleccionados' | 'sistema'> => {
+        console.log('Acciones por rol transformadas:', accionesPorRol);
+
         return {
             nombre: values.nombre,
             descripcion: values.descripcion,
-            accionesPorRol // Incluye solo las propiedades requeridas
+            accionesPorRol,
+            sistema: values.sistema,
+            modulo: values.modulo,
         };
     };
 
     const onSave = useCallback(
-        async (values: RolPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
+        async (values: RolPostDTO & { accionesSeleccionadas: any[] }, setSubmitting: (isSubmitting: boolean) => void) => {
             try {
-                const transformedValues = transformValues(values); // Transformar los valores antes de enviar
-                console.log(transformedValues);
+                console.log('Valores originales:', values);
+                const transformedValues = transformValues(values);
+                console.log('Valores transformados:', transformedValues);
                 if (rowData) {
-                    const req: RolPatchDTO = {
-                        id: rowData.id,
-                        ...transformedValues,
-                    };
-                    await patchRol.mutateAsync(req);
+                    // Código para actualizar (patch)
                 } else {
                     await postRol.mutateAsync(transformedValues);
                 }
@@ -97,11 +102,16 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         }
     }, [visible, setRowData]);
 
-    const initialValues: RolPostDTO = {
+    const initialValues: any & { accionesSeleccionadas: any[] } = {
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
         accionesPorRol: rowData?.accionesPorRol ?? [],
+        accionesSeleccionadas: [],
+        sistema: rowData?.sistema ?? 1,
+        modulo: rowData?.modulo ?? 1,
     };
+
+    console.log('Valores iniciales:', initialValues);
 
     return (
         <>
@@ -131,12 +141,16 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
                 initialValues={initialValues}
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
-                    onSave(values, setSubmitting);
+                    console.log('Valores en el momento de submit:', values);
+                    onSave(values, setSubmitting);    
                 }}
             >
-                <>
-                    <FormFields />
-                </>
+                {({ values }) => (
+                    <>
+                        <FormFields />
+                        <pre>{JSON.stringify(values, null, 2)}</pre>
+                    </>
+                )}
             </Formik>
         </>
     );
