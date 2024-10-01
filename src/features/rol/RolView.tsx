@@ -52,11 +52,8 @@ const RolView = () => {
             },
         });
     };
-
-
     return (
         <DashboardLayout>
-
             <div className="card">
                 <div className='text-3xl mt-2 mb-2'>
                     {t(lang.Rol.title)}

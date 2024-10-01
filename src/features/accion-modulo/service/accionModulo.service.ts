@@ -35,6 +35,12 @@ class AccionModulo {
             cancelToken: cancelTokenSource.token,
         });
     }
+
+    async getAccionModuloByModuloId(moduloId: number) {
+        return await Axios.get(`${url.get}?modulo=${moduloId}`, {
+            cancelToken: cancelTokenSource.token,
+        });
+    }
 }
 
 export const AccionModuloApi = new AccionModulo();
