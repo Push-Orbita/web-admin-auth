@@ -92,6 +92,21 @@
                                 "D"
                             ],
                             "element": "Rol"
+                        },
+                        {
+                            "label": "Permisos",
+                            "icon": "pi pi-share-alt",
+                            "to": "/permisos",
+                            "path": "/permisos",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Permisos"
                         }
                     ]
                 }
