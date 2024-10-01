@@ -53,29 +53,29 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
 
     // Definir el tipo para las acciones por rol
     type AccionPorRol = {
-        id: number;
-        accionPorModulo: AccionPorModulo;
+        rol: number;
+        accionPorModulo: number;
     };
 
     const transformValues = (values: any & { accionesSeleccionadas: any[] }) => {
         // Usamos accionesSeleccionadas en lugar de accionesPorRol
         const accionesPorRol = values.accionesSeleccionadas && values.accionesSeleccionadas.length > 0
             ? values.accionesSeleccionadas.map((accion: any) => ({
-                accionPorModulo: {
-                    id: accion.id,
-                },
+                accionPorModulo: accion.id, // Enviamos el id de accionPorModulo directamente
             }))
             : [];
 
         console.log('Acciones por rol transformadas:', accionesPorRol);
 
-        return {
+        // Retornar solo las propiedades necesarias, eliminando sistema y modulo
+        const result = {
             nombre: values.nombre,
             descripcion: values.descripcion,
-            accionesPorRol,
-            sistema: values.sistema,
-            modulo: values.modulo,
+            accionesPorRol, // Incluimos el campo transformado
         };
+
+        console.log('Valores finales transformados:', result);
+        return result;
     };
 
     const onSave = useCallback(
@@ -86,6 +86,7 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
                 console.log('Valores transformados:', transformedValues);
                 if (rowData) {
                     // Código para actualizar (patch)
+                    await patchRol.mutateAsync(transformedValues);
                 } else {
                     await postRol.mutateAsync(transformedValues);
                 }
@@ -106,9 +107,9 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
         accionesPorRol: rowData?.accionesPorRol ?? [],
-        accionesSeleccionadas: [],
-        sistema: rowData?.sistema ?? 1,
-        modulo: rowData?.modulo ?? 1,
+        accionesSeleccionadas: [], // Inicializamos accionesSeleccionadas vacías
+        sistema: rowData?.sistema ?? 0, // Este campo ya no se enviará
+        modulo: rowData?.modulo ?? 0,  // Este campo ya no se enviará
     };
 
     console.log('Valores iniciales:', initialValues);
@@ -142,7 +143,7 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
                 validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
                     console.log('Valores en el momento de submit:', values);
-                    onSave(values, setSubmitting);    
+                    onSave(values, setSubmitting);
                 }}
             >
                 {({ values }) => (

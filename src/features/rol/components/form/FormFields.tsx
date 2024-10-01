@@ -92,7 +92,7 @@ const FormFields: FC = () => {
             const acciones = accionesData.data.map(item => {
                 const modulo = moduloOptions.find(m => m.value === values.modulo);
                 return {
-                    id: item.accion.id,
+                    id: item.id,
                     nombre: item.accion.nombre,
                     descripcion: item.accion.descripcion,
                     moduloNombre: modulo ? modulo.nombre : '' // Añadir el nombre del módulo
