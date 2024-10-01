@@ -1,20 +1,19 @@
+import FormCustomButtons from "@components/common/forms/FormCustomButtons";
+import { FormSelect } from "@components/common/forms/FormSelect";
+import { OrganizacionEntity } from "@features/organizacion/model/entity/organizacion.entity";
+import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
+import { PermisosPostDTO } from "@features/permisos/model/dtos/permisos.dto";
+import { RolEntity } from "@features/rol/model/entity/rol.entity";
+import { RolApi } from "@features/rol/service/rol.service";
+import { SistemaEntity } from "@features/sistema/model/entity/sistema.entity";
+import { SistemaApi } from "@features/sistema/service/sistema.service";
+import { UsuarioEntity } from "@features/usuario/model/entity/usuario.entity";
+import { UsuarioApi } from "@features/usuario/service/usuario.service";
+import useQueryApi from "@hooks/useQueryApi";
 import { Form, useFormikContext } from "formik";
 import { t } from "i18next";
 import { FC, useEffect, useState } from "react";
 import { lang } from "../../../../langs";
-import { FormTextInput } from "@components/common/forms/FormTextInput";
-import FormCustomButtons from "@components/common/forms/FormCustomButtons";
-import { PermisosPostDTO } from "@features/permisos/model/dtos/permisos.dto";
-import useQueryApi from "@hooks/useQueryApi";
-import { UsuarioEntity } from "@features/usuario/model/entity/usuario.entity";
-import { UsuarioApi } from "@features/usuario/service/usuario.service";
-import { FormSelect } from "@components/common/forms/FormSelect";
-import { SistemaEntity } from "@features/sistema/model/entity/sistema.entity";
-import { SistemaApi } from "@features/sistema/service/sistema.service";
-import { OrganizacionEntity } from "@features/organizacion/model/entity/organizacion.entity";
-import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
-import { RolEntity } from "@features/rol/model/entity/rol.entity";
-import { RolApi } from "@features/rol/service/rol.service";
 
 const FormFields: FC = () => {
     const { handleSubmit } = useFormikContext<PermisosPostDTO>();

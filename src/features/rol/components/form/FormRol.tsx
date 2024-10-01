@@ -100,9 +100,14 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
         accionesPorRol: rowData?.accionesPorRol ?? [],
-        accionesSeleccionadas: [], // Inicializamos accionesSeleccionadas vacías
-        sistema: rowData?.sistema ?? 0, // Este campo ya no se enviará
-        modulo: rowData?.modulo ?? 0,  // Este campo ya no se enviará
+        accionesSeleccionadas: rowData?.accionesPorRol?.map((accion: any) => ({
+            id: accion.accionPorModulo.id,
+            nombre: accion.accionPorModulo.accion.nombre,
+            descripcion: accion.accionPorModulo.accion.descripcion,
+            moduloNombre: accion.accionPorModulo.modulo.nombre
+        })) ?? [],
+        sistema: rowData?.sistema ?? 0,
+        modulo: rowData?.modulo ?? 0,
     };
 
     console.log('Valores iniciales:', initialValues);
@@ -139,9 +144,9 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
                     onSave(values, setSubmitting);
                 }}
             >
-                {({ values }) => (
+                {({ values, setFieldValue }) => (
                     <>
-                        <FormFields />
+                        <FormFields setFieldValue={setFieldValue} />
                         <pre>{JSON.stringify(values, null, 2)}</pre>
                     </>
                 )}
