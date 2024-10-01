@@ -1,17 +1,16 @@
+import { RolPostDTO } from "@features/rol/model/dtos/rol.dto";
+import { RolApi } from "@features/rol/service/rol.service";
 import { Formik } from "formik";
 import { t } from "i18next";
+import { Button } from "primereact/button";
+import { Message } from "primereact/message";
+import { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useModuleContext } from "../../../../hooks/useModules";
 import UseQueryMutation from "../../../../hooks/useQueryMutation";
 import { lang } from "../../../../langs";
-import { useCallback, useEffect } from "react";
-import { Button } from "primereact/button";
-import { Message } from "primereact/message";
-import { RolApi } from "@features/rol/service/rol.service";
-import { RolPatchDTO, RolPostDTO } from "@features/rol/model/dtos/rol.dto";
 import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
-import { AccionPorModulo } from "@features/rol/model/entity/rol.entity";
 
 interface FormTypeActionsProps {
     refetch: () => void;
@@ -50,12 +49,6 @@ const FormRol: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' }) 
             },
         },
     });
-
-    // Definir el tipo para las acciones por rol
-    type AccionPorRol = {
-        rol: number;
-        accionPorModulo: number;
-    };
 
     const transformValues = (values: any & { accionesSeleccionadas: any[] }) => {
         // Usamos accionesSeleccionadas en lugar de accionesPorRol

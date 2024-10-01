@@ -900,6 +900,39 @@ export const es_ar = {
       deletedError: "Error al eliminar el Registro",
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
+  },
+  Permissions: {
+    title: "Permisos",
+    subTitle: "Listado de Permisos",
+    new: "Nuevo Permiso",
+    edit: "Editar Permiso",
+    detail: "Detalle del Permiso",
+    list: "Lista de Permisos",
+    form: {
+      user: "Usuario",
+      system: "Sistema",
+      organization: "Organización",
+      rol: "Rol",
+    },
+    validation: {
+      userIsRequired: "El usuario es requerido",
+      systemIsRequired: "El sistema es requerido",
+      organizationIsRequired: "La organización es requerida",
+      rolIsRequired: "El rol es requerido",
+      userMustBeDifferentFromZero: "Debe seleccionar un usuario",
+      systemMustBeDifferentFromZero: "Debe seleccionar un sistema",
+      organizationMustBeDifferentFromZero: "Debe seleccionar una organización",
+      rolMustBeDifferentFromZero: "Debe seleccionar un rol",
+    },
+    messages: {
+      createdSuccess: "El Registro se creó correctamente",
+      updatedSuccess: "El Registro se actualizó correctamente",
+      deletedSuccess: "El Registro se eliminó correctamente",
+      createdError: "Error al crear el Registro",
+      updatedError: "Error al actualizar el Registro",
+      deletedError: "Error al eliminar el Registro",
+      deletedConfirm: "Esta seguro que desea eliminar el registro?",
+    },
   }
 
 
