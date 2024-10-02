@@ -5,7 +5,7 @@ export interface ICustomColumnItem {
     filter?: boolean,
     filterPlaceholder?: string,
     dataType?: 'text' | 'date' | 'number',
-    body?: (rowData: any) => JSX.Element;
+    body?: any;
     style?: React.CSSProperties;
     [x: string]: string | undefined | any;
 }

@@ -9,11 +9,12 @@ interface Props {
     labelId?: string;
     options: any;
     optionLabel: string;
-    onChange?: (value: any) => void;
+    onOptionSelect?: (option: any, setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void) => void;
     isLoading?: boolean;
     disabled?: boolean;
-    [x: string]: string | undefined | any;
+    [x: string]: any;
 }
+
 export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect, ...props }: Props) => {
     const [field, meta] = useField(props);
     const { setFieldValue } = useFormikContext();
@@ -38,21 +39,18 @@ export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect,
                 filter
                 loading={isLoading}
                 disabled={disabled}
-                inputId={field.value}
-                value={field.value}
+                id={field.name} // Cambié inputId a id para que coincida con el valor del campo
+                value={field.value} // Asegúrate de que `field.value` sea el `value` correcto del Dropdown
                 onChange={handleChange}
                 onBlur={field.onBlur}
-                {...props}
-                options={props.options}
+                options={props.options} // Asegúrate de que las opciones se pasen correctamente
                 optionLabel={props.optionLabel}
-                placeholder="Seleccionar" className="w-full"
+                placeholder={props.placeholder || "Seleccionar"}
+                className="w-full"
             />
             {meta.touched && meta.error ? (
-                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{
-                    marginTop: '5px'
-                }} />
+                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{ marginTop: '5px' }} />
             ) : null}
         </>
-    )
-}
-
+    );
+};
