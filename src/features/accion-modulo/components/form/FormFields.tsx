@@ -10,8 +10,15 @@ import { lang } from "../../../../langs";
 
 const FormFields: FC = () => {
     const { handleSubmit } = useFormikContext<AccionModuloPostDTO>();
+
+
+
     const { options: moduloOptions, isLoading: isLoadingModulo } = useSelectOptions("modulo");
-    const { options: accionOptions, isLoading: isLoadingAccion } = useSelectOptions("accion");
+    const { options: accionOptions, isLoading: isLoadingAccion } = useSelectOptions("accion", (item) => {
+        return `${item.nombre} - ${item.descripcion}`; // Combinas nombre y descripción
+    });
+
+
     return (
         <Form onSubmit={handleSubmit}>
             <div className="p-fluid formgrid grid mb-3">

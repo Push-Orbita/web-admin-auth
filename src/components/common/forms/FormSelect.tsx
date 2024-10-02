@@ -9,24 +9,24 @@ interface Props {
     labelId?: string;
     options: any;
     optionLabel: string;
-    onOptionSelect?: (option: any, setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void) => void;
+    onOptionSelect?: (selectedOption: any, setFieldValue: (field: string, value: any) => void) => void; // Función opcional para manejar la opción seleccionada
     isLoading?: boolean;
     disabled?: boolean;
-    [x: string]: any;
+    [x: string]: string | undefined | any;
 }
 
 export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect, ...props }: Props) => {
-    const [field, meta] = useField(props);
-    const { setFieldValue } = useFormikContext();
+    const [field, meta] = useField(props); // Integración de Formik
+    const { setFieldValue } = useFormikContext(); // Obtener setFieldValue para actualizar los valores del formulario
 
     const handleChange = (e: any) => {
-        const selectedOption = props.options.find((option: any) => option.value === e.value);
+        const selectedOption = props.options.find((option: any) => option.value === e.value); // Encuentra la opción seleccionada
         if (selectedOption) {
             if (onOptionSelect) {
-                // Ejecuta la función callback personalizada
+                // Si se proporciona onOptionSelect, lo ejecuta
                 onOptionSelect(selectedOption, setFieldValue);
             } else {
-                // Si no se proporciona un callback, usa una función predeterminada
+                // Si no hay onOptionSelect, solo se actualiza el valor de Formik
                 setFieldValue(field.name, selectedOption.value);
             }
         }
@@ -39,17 +39,23 @@ export const FormSelect = ({ label, isLoading, disabled = false, onOptionSelect,
                 filter
                 loading={isLoading}
                 disabled={disabled}
-                id={field.name} // Cambié inputId a id para que coincida con el valor del campo
-                value={field.value} // Asegúrate de que `field.value` sea el `value` correcto del Dropdown
-                onChange={handleChange}
-                onBlur={field.onBlur}
-                options={props.options} // Asegúrate de que las opciones se pasen correctamente
-                optionLabel={props.optionLabel}
-                placeholder={props.placeholder || "Seleccionar"}
+                inputId={field.value}
+                value={field.value} // Sincroniza el valor con Formik
+                onChange={handleChange} // Maneja el cambio de opción
+                onBlur={field.onBlur} // Controla el evento onBlur
+                {...props} // Pasa las demás props
+                options={props.options} // Pasa las opciones
+                optionLabel={props.optionLabel} // Indica qué campo debe ser mostrado como label
+                placeholder="Seleccionar"
                 className="w-full"
             />
             {meta.touched && meta.error ? (
-                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{ marginTop: '5px' }} />
+                <Message
+                    id={`${props.name}-help`}
+                    severity="error"
+                    text={meta.error}
+                    style={{ marginTop: '5px' }}
+                />
             ) : null}
         </>
     );

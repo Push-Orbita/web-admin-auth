@@ -1,29 +1,17 @@
+import FormCustomButtons from "@components/common/forms/FormCustomButtons";
+import { FormSelect } from "@components/common/forms/FormSelect";
+import { FormTextInput } from "@components/common/forms/FormTextInput";
+import { PlanPostDTO } from "@features/plan/model/dtos/plan.dto";
+import useSelectOptions from "@hooks/useSelectOptions";
 import { Form, useFormikContext } from "formik";
 import { t } from "i18next";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { lang } from "../../../../langs";
-import { FormTextInput } from "@components/common/forms/FormTextInput";
-import FormCustomButtons from "@components/common/forms/FormCustomButtons";
-import { PlanPostDTO } from "@features/plan/model/dtos/plan.dto";
-import { SuscripcionApi } from "@features/suscripcion/service/suscripcion.service";
-import useQueryApi from "@hooks/useQueryApi";
-import { SuscripcionEntity } from "@features/suscripcion/model/entity/suscripcion.entity";
-import { FormSelect } from "@components/common/forms/FormSelect";
 
 const FormFields: FC = () => {
     const { handleSubmit } = useFormikContext<PlanPostDTO>();
-    const { data, isLoading } = useQueryApi<{ data: SuscripcionEntity[] }>("Suscripcion", SuscripcionApi.getSuscripcionSearch);
-    const [SuscripcionOptions, setSuscripcionOptions] = useState<{ nombre: string; value: number; }[]>([]);
+    const { options: suscripcionOptions, isLoading: isLoadingSuscripcion } = useSelectOptions("suscripcion");
 
-    useEffect(() => {
-        if (data?.data) {
-            const options = data.data.map(Suscripcion => ({
-                nombre: Suscripcion.nombre ?? "Seleccionar",
-                value: Suscripcion.id
-            }));
-            setSuscripcionOptions(options);
-        }
-    }, [data]);
     return (
         <Form onSubmit={handleSubmit}>
             <div className="p-fluid formgrid grid mb-3">
@@ -43,9 +31,9 @@ const FormFields: FC = () => {
                     <FormSelect
                         label={t(lang.Plan.form.subscription)}
                         name="suscripcion"
-                        options={SuscripcionOptions}
+                        options={suscripcionOptions}
                         optionLabel="nombre"
-                        isLoading={isLoading}
+                        isLoading={isLoadingSuscripcion}
                     />
                 </div>
             </div>

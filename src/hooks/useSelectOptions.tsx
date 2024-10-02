@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import useQueryApi from "./useQueryApi";
 import selectEntitiesConfig from "@config/components/selectConfig";
 
@@ -12,7 +12,7 @@ const useSelectOptions = (
     labelBuilder?: (item: any) => string // Función opcional para personalizar los labels
 ) => {
     const [options, setOptions] = useState<Ioptions[]>([]);
-    const entityConfig = selectEntitiesConfig[entityName];
+    const entityConfig = useMemo(() => selectEntitiesConfig[entityName], [entityName]);  // Memoiza la configuración para evitar recrearla en cada render.
 
     const { data, isLoading } = useQueryApi<any>(
         entityName,
@@ -27,9 +27,13 @@ const useSelectOptions = (
                     : item[entityConfig.labelField],
                 value: item[entityConfig.valueField],
             }));
-            setOptions(optionsData);
+
+            // Comparar si las opciones realmente cambiaron antes de llamar a setOptions
+            if (JSON.stringify(optionsData) !== JSON.stringify(options)) {
+                setOptions(optionsData);
+            }
         }
-    }, [data, entityConfig, labelBuilder]);
+    }, [data]);
 
     return { options, isLoading };
 };
