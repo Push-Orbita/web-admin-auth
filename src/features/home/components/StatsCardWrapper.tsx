@@ -12,9 +12,10 @@ interface StatsCardWrapperProps {
     apiCall: () => Promise<any>;
     title: string;
     subTitle: string;
+    icon?: string
 }
 
-const StatsCardWrapper: React.FC<StatsCardWrapperProps> = ({ entityName, apiCall, title, subTitle }) => {
+const StatsCardWrapper: React.FC<StatsCardWrapperProps> = ({ entityName, apiCall, title, subTitle, icon }) => {
     const { data, isLoading } = useQueryApi<ResponseApi<Response>>(entityName, apiCall);
     return (
         <StatsCard
@@ -23,9 +24,10 @@ const StatsCardWrapper: React.FC<StatsCardWrapperProps> = ({ entityName, apiCall
             quantity={data?.metadata?.count ?? 0}
             shadow={2}
             isLoading={isLoading}
-            textColorTitle="primary"
-            colorIcon="primary"
-            backgroundIconColor="primary"
+            textColorTitle="teal"
+            colorIcon="indigo"
+            backgroundIconColor="blue"
+            icon={icon}
         />
     );
 };

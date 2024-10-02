@@ -11,13 +11,14 @@ const HomeView = () => {
                     Inicio
                 </div>
                 <div className="grid">
-                    {statsCardConfig.map(({ entityName, apiCall, title, subTitle }) => (
+                    {statsCardConfig.map(({ entityName, apiCall, title, subTitle, icon }) => (
                         <StatsCardWrapper
                             key={entityName}
                             entityName={entityName}
                             apiCall={apiCall}
                             title={title}
                             subTitle={subTitle}
+                            icon={icon}
                         />
                     ))}
                 </div>

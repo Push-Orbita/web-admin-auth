@@ -16,72 +16,85 @@ export const statsCardConfig = [
         entityName: "Organizacion",
         apiCall: OrganizacionApi.getOrganizacionSearch,
         title: "Total de Organizaciones",
-        subTitle: "Registradas"
+        subTitle: "Registradas",
+        icon: "pi pi-building"
     },
     {
         entityName: "Persona",
         apiCall: PersonaApi.getPersonaSearch,
         title: "Total de Personas",
-        subTitle: "Registradas"
+        subTitle: "Registradas",
+        icon: "pi pi-users"
+
     },
     {
         entityName: "Usuario",
         apiCall: UsuarioApi.getUsuarioSearch,
         title: "Total de Usuarios",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-users"
     },
     {
         entityName: "Rol",
         apiCall: RolApi.getRolSearch,
         title: "Total de Roles",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-sitemap"
     },
     {
         entityName: "Permisos",
         apiCall: PermisosApi.getPermisosSearch,
         title: "Total de Permisos",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-key"
     },
     {
         entityName: "Sistemas",
         apiCall: SistemaApi.getSistemaSearch,
         title: "Total de Sistemas",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-desktop"
     },
     {
         entityName: "Modulos",
         apiCall: ModuloApi.getModuloSearch,
         title: "Total de Modulos",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-sitemap"
     },
     {
         entityName: "AccionPorModulo",
         apiCall: AccionModuloApi.getAccionModuloSearch,
         title: "Total de Acciones por Modulo",
-        subTitle: "Registradas"
+        subTitle: "Registradas",
+        icon: "pi pi-sparkles"
     },
     {
         entityName: "TipoAccion",
         apiCall: AccionApi.getAccionSearch,
         title: "Total de Tipos de Acciones",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-bullseye"
     },
     {
         entityName: "Suscripcion",
         apiCall: SuscripcionApi.getSuscripcionSearch,
         title: "Total de Suscripciones",
-        subTitle: "Registradas"
+        subTitle: "Registradas",
+        icon: "pi pi-briefcase"
     },
     {
         entityName: "Planes",
         apiCall: PlanApi.getPlanSearch,
         title: "Total de Planes",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-money-bill"
     },
     {
         entityName: "Contratos",
         apiCall: ContratoApi.getContratoSearch,
         title: "Total de Contratos",
-        subTitle: "Registrados"
+        subTitle: "Registrados",
+        icon: "pi pi-file"
     },
 ];
