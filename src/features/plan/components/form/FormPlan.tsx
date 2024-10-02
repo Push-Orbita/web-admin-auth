@@ -7,11 +7,11 @@ import { lang } from "../../../../langs";
 import { useCallback, useEffect } from "react";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
+
+import FormFields from "./FormFields";
 import { PlanApi } from "@features/plan/service/plan.service";
 import { PlanPatchDTO, PlanPostDTO } from "@features/plan/model/dtos/plan.dto";
-import FormFields from "./FormFields";
 import { fieldValidations } from "./fieldValidations/field.validations";
-
 interface FormTypeActionsProps {
     refetch: () => void;
     title?: string;
@@ -57,12 +57,9 @@ const FormPlan: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' })
                         id: rowData.id,
                         ...values,
                     };
-
                     await patchPlan.mutateAsync(req);
                 } else {
-
                     await postPlan.mutateAsync(values);
-
                 }
             } finally {
                 setSubmitting(false);
@@ -111,7 +108,7 @@ const FormPlan: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo' })
             </div>
             <Formik
                 initialValues={initialValues}
-                validationSchema={fieldValidations}
+                // validationSchema={fieldValidations}
                 onSubmit={(values, { setSubmitting }) => {
                     onSave(values, setSubmitting);
                 }}

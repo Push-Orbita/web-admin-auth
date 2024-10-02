@@ -46,7 +46,6 @@ const FormFields: FC = () => {
                         options={SuscripcionOptions}
                         optionLabel="nombre"
                         isLoading={isLoading}
-
                     />
                 </div>
             </div>
