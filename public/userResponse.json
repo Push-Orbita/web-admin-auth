@@ -46,7 +46,7 @@
                 },
                 {
                     "label": "Personas",
-                    "icon": "pi pi-building",
+                    "icon": "pi pi-users",
                     "to": "/personas",
                     "path": "/personas",
                     "acciones": [
@@ -65,7 +65,7 @@
                     "items": [
                         {
                             "label": "Usuarios",
-                            "icon": "pi pi-sparkles",
+                            "icon": "pi pi-users",
                             "to": "/usuarios",
                             "path": "/usuarios",
                             "acciones": [
@@ -80,7 +80,7 @@
                         },
                         {
                             "label": "Rol",
-                            "icon": "pi pi-share-alt",
+                            "icon": "pi pi-sitemap",
                             "to": "/rol",
                             "path": "/rol",
                             "acciones": [
@@ -95,7 +95,7 @@
                         },
                         {
                             "label": "Permisos",
-                            "icon": "pi pi-share-alt",
+                            "icon": "pi pi-key",
                             "to": "/permisos",
                             "path": "/permisos",
                             "acciones": [
@@ -136,7 +136,7 @@
                     "items": [
                         {
                             "label": "Modulos",
-                            "icon": "pi pi-sparkles",
+                            "icon": "pi pi-sitemap",
                             "to": "/modulos",
                             "path": "/modulos",
                             "acciones": [
@@ -172,7 +172,7 @@
                     "items": [
                         {
                             "label": "Tipo De Acciones",
-                            "icon": "pi pi-sparkles",
+                            "icon": "pi pi-bullseye",
                             "to": "/accion",
                             "path": "/accion",
                             "acciones": [
@@ -194,7 +194,7 @@
             "items": [
                 {
                     "label": "Suscripción",
-                    "icon": "pi pi-credit-card",
+                    "icon": "pi pi-briefcase",
                     "to": "/suscripciones",
                     "path": "/suscripciones",
                     "acciones": [
@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Contratos",
-                    "icon": "pi pi-money-bill",
+                    "icon": "pi pi-book",
                     "to": "/contrato",
                     "path": "/contrato",
                     "acciones": [

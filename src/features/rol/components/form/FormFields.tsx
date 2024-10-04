@@ -7,7 +7,7 @@ import { SistemaEntity } from "@features/sistema/model/entity/sistema.entity";
 import { SistemaApi } from "@features/sistema/service/sistema.service";
 import { AccionModuloApi } from "@features/accion-modulo/service/accionModulo.service";
 import useQueryApi from "@hooks/useQueryApi";
-import { Form, useFormikContext } from "formik";
+import { Form, FormikProps, useFormikContext } from "formik";
 import { t } from "i18next";
 import { Fieldset } from "primereact/fieldset";
 import { PickList } from 'primereact/picklist';
@@ -27,13 +27,17 @@ interface ActionItem {
     moduloNombre: string; // Nuevo campo para almacenar el nombre del módulo
 }
 
-const FormFields: FC = () => {
-    const { handleSubmit, values, setFieldValue } = useFormikContext<any>();
+
+interface FormFieldsProps {
+    setFieldValue: FormikProps<any>['setFieldValue'];
+}
+
+const FormFields: FC<FormFieldsProps> = ({ setFieldValue }) => {
+    const { handleSubmit, values } = useFormikContext<any>();
     const { data: sistemaData, isLoading: isLoadingSistema } = useQueryApi<{ data: SistemaEntity[] }>("Sistema", SistemaApi.getSistemaSearch);
     const [sistemaOptions, setSistemaOption] = useState<Ioptions[]>([]);
     const [moduloOptions, setModuloOptions] = useState<Ioptions[]>([]);
     const [accionesDisponibles, setAccionesDisponibles] = useState<ActionItem[]>([]);
-    const [accionesSeleccionadas, setAccionesSeleccionadas] = useState<ActionItem[]>([]);
 
     useEffect(() => {
         if (sistemaData?.data) {
@@ -57,13 +61,11 @@ const FormFields: FC = () => {
 
     useEffect(() => {
         if (values.sistema) {
-            // Al cambiar el sistema, limpiamos las opciones de módulos y acciones
             setModuloOptions([]);
             setAccionesDisponibles([]);
-            setAccionesSeleccionadas([]);
-            setFieldValue('modulo', undefined); // Limpia la selección de módulo
-            setFieldValue('accionesSeleccionadas', []); // Limpia la selección de acciones
-            refetchModulo(); // Refresca los módulos para el nuevo sistema
+            setFieldValue('modulo', undefined);
+            setFieldValue('accionesSeleccionadas', []);
+            refetchModulo();
         }
     }, [values.sistema, refetchModulo, setFieldValue]);
 
@@ -95,7 +97,7 @@ const FormFields: FC = () => {
                     id: item.id,
                     nombre: item.accion.nombre,
                     descripcion: item.accion.descripcion,
-                    moduloNombre: modulo ? modulo.nombre : '' // Añadir el nombre del módulo
+                    moduloNombre: modulo ? modulo.nombre : ''
                 };
             });
             setAccionesDisponibles(acciones.map(accion => ({
@@ -112,8 +114,6 @@ const FormFields: FC = () => {
     }, [values.modulo, refetchAcciones]);
 
     const onPickListChange = (event: any) => {
-        setAccionesDisponibles(event.source);
-        setAccionesSeleccionadas(event.target);
         setFieldValue('accionesSeleccionadas', event.target);
     };
 
@@ -152,8 +152,10 @@ const FormFields: FC = () => {
                     <div className="col-12 mt-2">
                         <PickList
                             dataKey="id"
-                            source={accionesDisponibles}
-                            target={accionesSeleccionadas}
+                            source={accionesDisponibles.filter(accion =>
+                                !values.accionesSeleccionadas.some((seleccionada: any) => seleccionada.id === accion.id)
+                            )}
+                            target={values.accionesSeleccionadas}
                             itemTemplate={(item) => (
                                 <div>
                                     <p><strong>{item.nombre}</strong> <em>({item.moduloNombre})</em></p>

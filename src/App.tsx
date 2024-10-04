@@ -15,7 +15,7 @@ import './components/common/style/layout/layout.scss';
 import './i18n';
 // import 'primereact/resources/themes/soho-dark/theme.css';
 // import 'primereact/resources/themes/saga-orange/theme.css';
-import 'primereact/resources/themes/rhea/theme.css';
+import 'primereact/resources/themes/lara-dark-teal/theme.css';
 
 function App() {
   const queryClient = new QueryClient({

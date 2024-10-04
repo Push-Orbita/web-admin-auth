@@ -1,20 +1,16 @@
-import { Form, FieldArray, useFormikContext } from "formik";
-import { t } from "i18next";
-import { FC, useEffect, useState } from "react";
-import { lang } from "../../../../langs";
-import { FormTextInput } from "@components/common/forms/FormTextInput";
-import FormCustomButtons from "@components/common/forms/FormCustomButtons";
-import { ModuloPostDTO } from "@features/modulo/model/dtos/modulo.dto";
-import { Button } from "primereact/button";
-import { Fieldset } from "primereact/fieldset";
-import { Divider } from "primereact/divider";
-import useQueryApi from "@hooks/useQueryApi";
-import { SistemaEntity } from "@features/sistema/model/entity/sistema.entity";
-import { SistemaApi } from "@features/sistema/service/sistema.service";
-import { FormSelect } from "@components/common/forms/FormSelect";
 import { iconOptions } from "@components/common/constantes";
-import { ModuloEntity } from "@features/modulo/model/entity/modulo.entity";
-import { ModuloApi } from "@features/modulo/service/modulo.service";
+import FormCustomButtons from "@components/common/forms/FormCustomButtons";
+import { FormSelect } from "@components/common/forms/FormSelect";
+import { FormTextInput } from "@components/common/forms/FormTextInput";
+import { ModuloPostDTO } from "@features/modulo/model/dtos/modulo.dto";
+import useSelectOptions from "@hooks/useSelectOptions";
+import { FieldArray, Form, useFormikContext } from "formik";
+import { t } from "i18next";
+import { Button } from "primereact/button";
+import { Divider } from "primereact/divider";
+import { Fieldset } from "primereact/fieldset";
+import { FC } from "react";
+import { lang } from "../../../../langs";
 
 interface FormFieldsProps {
     isEditMode: boolean;
@@ -22,29 +18,9 @@ interface FormFieldsProps {
 
 const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
     const { handleSubmit, values } = useFormikContext<ModuloPostDTO>();
-    const { data, isLoading } = useQueryApi<{ data: SistemaEntity[] }>("sistema", SistemaApi.getSistemaSearch);
-    const [sistemaOptions, setSistemaOptions] = useState<{ nombre: string; value: number; }[]>([]);
-    const [moduloOptions, setModuloOptions] = useState<{ nombre: string; value: number; }[]>([]);
-    useEffect(() => {
-        if (data?.data) {
-            const options = data.data.map(persona => ({
-                nombre: persona.nombre ?? "Seleccionar",
-                value: persona.id
-            }));
-            setSistemaOptions(options);
-        }
-    }, [data]);
 
-    const { data: moduloData, isLoading: moduloIsLoading } = useQueryApi<{ data: ModuloEntity[] }>("modulo", ModuloApi.getModuloSearch);
-    useEffect(() => {
-        if (moduloData?.data) {
-            const options = moduloData.data.map(modulo => ({
-                nombre: modulo.nombre ?? "Seleccionar",
-                value: modulo.id
-            }));
-            setModuloOptions(options);
-        }
-    }, [moduloData]);
+    const { options: sistemaOptions, isLoading: isLoadingSistema } = useSelectOptions("sistema");
+    const { options: moduloOptions, isLoading: isLoadingModulo } = useSelectOptions("modulo");
     return (
         <Form onSubmit={handleSubmit}>
             <Fieldset legend="Sistema" className=" mt-3 mb-3">
@@ -55,7 +31,7 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
                             name="sistema"
                             options={sistemaOptions}
                             optionLabel="nombre"
-                            isLoading={isLoading}
+                            isLoading={isLoadingSistema}
 
                         />
                     </div>
@@ -80,7 +56,7 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
                                                 name={`body[${index}].moduloPadre`}
                                                 options={moduloOptions}
                                                 optionLabel="nombre"
-                                                isLoading={moduloIsLoading}
+                                                isLoading={isLoadingModulo}
                                             />
                                         </div>
                                         <div className="col-12 md:col-6 lg:col-6 mt-2">
@@ -95,7 +71,7 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
                                                 name={`body[${index}].icon`}
                                                 options={iconOptions}
                                                 optionLabel="nombre"
-                                                isLoading={isLoading}
+                                                isLoading={false}
 
                                             />
 
