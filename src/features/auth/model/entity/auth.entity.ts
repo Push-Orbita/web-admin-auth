@@ -11,7 +11,7 @@ export interface AuthEntity {
     password: string;
     persona: Persona;
     permiso: Permiso[];
-    userModulos: UserModulo[];
+    userModulos: UserModulos;
     tokens: Tokens;
 }
 
@@ -19,7 +19,7 @@ export interface Permiso {
     id: number;
     sistema: Sistema;
     organizacion: Organizacion;
-    rol: Rol;
+    rol: RolElement;
 }
 
 export interface Organizacion {
@@ -33,7 +33,7 @@ export interface Organizacion {
     tipobd: string;
 }
 
-export interface Rol {
+export interface RolElement {
     id: number;
     nombre: string;
     descripcion: string;
@@ -62,16 +62,27 @@ export interface Tokens {
     refresh_token: string;
 }
 
-export interface UserModulo {
+export interface UserModulos {
+    sistema: SistemaClass;
+    rol: SistemaClass;
+    modulos: Modulo[];
+}
+
+export interface Modulo {
     id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: null;
     nombre: string;
     descripcion: string;
     label: string;
-    element: string;
+    element?: string;
     icon: string;
-    path: string;
-    acciones: Rol[];
+    path?: string;
+    moduloPadre?: number | null;
+    acciones?: RolElement[];
+    children: Modulo[];
 }
+
+export interface SistemaClass {
+    id: number;
+    nombre: string;
+}
+

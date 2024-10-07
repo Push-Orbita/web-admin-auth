@@ -17,13 +17,15 @@ export const AuthForm = () => {
 
     const dispatch = useAppDispatch();
     const initialValues: AuthPostDTO = {
-        email: '',
-        password: ''
+        email: 'nahuel14321@gmail.com',
+        password: 'Pass@12345.',
+        sistemaId: 3
     };
 
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
         try {
             const response = await AuthApi.postAuth(values);
+            console.log(values);
             const responseTransformed = transformJson(response.data);
             const userEntity: UserEntity = {
                 ...responseTransformed,
@@ -36,6 +38,7 @@ export const AuthForm = () => {
             };
             dispatch(setUserToken(userEntity));
             toast.success(t(lang.login.messages.loginSuccess));
+            console.log(responseTransformed);
         } catch (error) {
             console.error('Hubo un error al iniciar sesión:', error);
             toast.error(t(lang.login.messages.loginError));
