@@ -10,11 +10,11 @@ export const fieldValidations = Yup.object().shape({
         Yup.object().shape({
             nombre: Yup.string().required(t(lang.Module.validation.nameIsRequired.toString())),
             descripcion: Yup.string().required(t(lang.Module.validation.descriptionIsRequired.toString())),
-            element: Yup.string().required(t(lang.Module.validation.elementIsRequired.toString())),
+            // element: Yup.string().required(t(lang.Module.validation.elementIsRequired.toString())),
             icon: Yup.string().optional(),
             label: Yup.string().required(t(lang.Module.validation.labelIsRequired.toString())),
             moduloPadre: Yup.number().optional(),
-            path: Yup.string().required(t(lang.Module.validation.pathIsRequired.toString())),
+            // path: Yup.string().required(t(lang.Module.validation.pathIsRequired.toString())),
         })
     ),
 });
