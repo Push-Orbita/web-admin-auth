@@ -49,32 +49,36 @@ interface FrontendModuleItem {
   element: string;
 }
 
-export const transformResponse = (backendData: BackendResponse): FrontendData => {
+export const transformResponse = (backendData: BackendResponse): FrontendData | null => {
+  if (!backendData) {
+    return null; // o un objeto vacío, dependiendo de lo que necesites
+  }
+
   const { persona, permiso, userModulos, tokens } = backendData;
 
   // 1. Construir el nombre completo del usuario
   const userNombre = `${persona.apellido} ${persona.nombre}`;
 
   // 2. Extraer la organización
-  const organizacion = permiso.length > 0 ? permiso[0].organizacion.nombre : '';
+  const organizacion = permiso[0]?.organizacion?.nombre || '';
 
-  // 3. Construir los módulos para el frontend
+  // 3. Construir los módulos para el frontend de manera recursiva
   const transformModulos = (modulos: ModuloBackend[]): FrontendModuleItem[] => {
-    return modulos.map(modulo => ({
+    return modulos?.map(modulo => ({
       label: modulo.label,
       icon: modulo.icon,
       to: modulo.path,
       path: modulo.path,
-      acciones: modulo.acciones.map(accion => accion.descripcion),
+      acciones: modulo.acciones?.map(accion => accion.descripcion) || [],
       element: modulo.nombre,
-      ...(modulo.children.length > 0 ? { items: transformModulos(modulo.children) } : {})
-    }));
+      ...(modulo.children && modulo.children.length > 0 ? { items: transformModulos(modulo.children) } : {})
+    })) || [];
   };
 
   const frontendModulos: FrontendModule[] = [
     {
       label: 'Sistema',
-      items: transformModulos(userModulos.modulos)
+      items: transformModulos(userModulos.modulos || [])
     }
   ];
 
@@ -83,8 +87,8 @@ export const transformResponse = (backendData: BackendResponse): FrontendData =>
     userNombre,
     tokenUser: tokens.access_token,
     organizacion,
-    sistema: 'Facturación PROD',  // Ejemplo estático basado en la respuesta de backend
-    activo: true, // Por defecto lo marcamos como activo
+    sistema: userModulos?.modulos?.[0]?.nombre || 'Sistema desconocido',
+    activo: true,
     userModulos: frontendModulos
   };
 
