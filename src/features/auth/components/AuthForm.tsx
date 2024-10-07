@@ -25,20 +25,9 @@ export const AuthForm = () => {
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
         try {
             const response = await AuthApi.postAuth(values);
-            console.log(values);
-            const responseTransformed = transformJson(response.data);
-            const userEntity: UserEntity = {
-                ...responseTransformed,
-                isLogged: true,
-                lang: 'es',
-                userModulos: responseTransformed.userModulos.map(modulo => ({
-                    ...modulo,
-                    icon: 'icon' in modulo ? String(modulo.icon) : ''
-                }))
-            };
+          
             dispatch(setUserToken(userEntity));
             toast.success(t(lang.login.messages.loginSuccess));
-            console.log(responseTransformed);
         } catch (error) {
             console.error('Hubo un error al iniciar sesión:', error);
             toast.error(t(lang.login.messages.loginError));
