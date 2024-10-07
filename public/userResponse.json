@@ -1,243 +1,181 @@
 {
-    "userNombre": "Guzman Fernando Nahuel",
-    "tokenUser": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdWlsIjoiMjAzODY5MTQwOTYiLCJzeXN0ZW1fbmFtZSI6IlJhcGlkYXRvcyIsImlhdCI6MTcxMTIzNzcxOCwiZXhwIjoxNzExMjM4MDE4fQ.NLwxJ2_CBKlfcMzM20Tn6gzKUMjGNIh2xGaHYlAj_u0",
-    "organizacion": "Push",
-    "plan": "Basico",
-    "sistema": "Admin Orbita",
-    "activo": true,
-    "userModulos": [
-        {
-            "label": "Inicio",
-            "items": [
-                {
-                    "label": "Inicio",
-                    "icon": "pi pi-fw pi-home",
-                    "to": "/home",
-                    "path": "/home",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Home"
-                }
-            ]
+    "id": 5,
+    "nombre": "fhguzman",
+    "email": "nahuel14321@gmail.com",
+    "password": "$2b$10$o9OFb2m.xRiaObtqDKpM3.4ZNJ.gNaMXjJc.L5OIxRTb6AbFVRst.",
+    "persona": {
+      "id": 5,
+      "cuil": "20-38691409-5",
+      "nombre": "Fernando Herrera",
+      "apellido": "Guzman",
+      "genero": "M"
+    },
+    "permiso": [
+      {
+        "id": 9,
+        "sistema": {
+          "id": 3,
+          "nombre": "Admin Orbita",
+          "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+          "url": "www.stockwiseapp.online",
+          "clientId": "2ef18554-8943-45d4-8e3a-ccac31b90e91",
+          "clientSecret": "4157c088-c30c-447e-a0be-082700f00732",
+          "icono": "pi pi-card"
         },
-        {
-            "label": "Organizaciones",
-            "items": [
-                {
-                    "label": "Organización",
-                    "icon": "pi pi-building",
-                    "to": "/organizaciones",
-                    "path": "/organizaciones",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Organizacion"
-                },
-                {
-                    "label": "Personas",
-                    "icon": "pi pi-users",
-                    "to": "/personas",
-                    "path": "/personas",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Persona"
-                },
-                {
-                    "label": "Usuarios",
-                    "icon": "pi pi-objects-column",
-                    "items": [
-                        {
-                            "label": "Usuarios",
-                            "icon": "pi pi-users",
-                            "to": "/usuarios",
-                            "path": "/usuarios",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "Usuario"
-                        },
-                        {
-                            "label": "Rol",
-                            "icon": "pi pi-sitemap",
-                            "to": "/rol",
-                            "path": "/rol",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "Rol"
-                        },
-                        {
-                            "label": "Permisos",
-                            "icon": "pi pi-key",
-                            "to": "/permisos",
-                            "path": "/permisos",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "Permisos"
-                        }
-                    ]
-                }
-            ]
+        "organizacion": {
+          "id": 4,
+          "nombre": "Push",
+          "bd": "facturacion",
+          "host": "10.10.102.2",
+          "port": 30044,
+          "usuario": "root",
+          "password": "$2b$10$TB9XVEEjpRIrPUEHNJpuw.dP3VuhWtFd/nPYsz4HRBIl4hc8AVJLy",
+          "tipobd": "mysql"
         },
-        {
-            "label": "Sistemas",
-            "items": [
-                {
-                    "label": "Sistema",
-                    "icon": "pi pi-desktop",
-                    "to": "/sistemas",
-                    "path": "/sistemas",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Sistema"
-                },
-                {
-                    "label": "Modulos",
-                    "icon": "pi pi-objects-column",
-                    "items": [
-                        {
-                            "label": "Modulos",
-                            "icon": "pi pi-sitemap",
-                            "to": "/modulos",
-                            "path": "/modulos",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "Modulo"
-                        },
-                        {
-                            "label": "Accion Por Modulo",
-                            "icon": "pi pi-share-alt",
-                            "to": "/accion-modulo",
-                            "path": "/accion-modulo",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "AccionModulo"
-                        }
-                    ]
-                },
-                {
-                    "label": "Acciones",
-                    "icon": "pi pi-objects-column",
-                    "items": [
-                        {
-                            "label": "Tipo De Acciones",
-                            "icon": "pi pi-bullseye",
-                            "to": "/accion",
-                            "path": "/accion",
-                            "acciones": [
-                                "A",
-                                "B",
-                                "M",
-                                "V",
-                                "R",
-                                "D"
-                            ],
-                            "element": "Accion"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "label": "Suscripciones",
-            "items": [
-                {
-                    "label": "Suscripción",
-                    "icon": "pi pi-briefcase",
-                    "to": "/suscripciones",
-                    "path": "/suscripciones",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Suscripcion"
-                },
-                {
-                    "label": "Planes",
-                    "icon": "pi pi-money-bill",
-                    "to": "/plan",
-                    "path": "/plan",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Plan"
-                },
-                {
-                    "label": "Contratos",
-                    "icon": "pi pi-book",
-                    "to": "/contrato",
-                    "path": "/contrato",
-                    "acciones": [
-                        "A",
-                        "B",
-                        "M",
-                        "V",
-                        "R",
-                        "D"
-                    ],
-                    "element": "Contrato"
-                }
-            ]
+        "rol": {
+          "id": 23,
+          "nombre": "Administrador Facturacion PROD",
+          "descripcion": "Administardor Facturacion PROD"
         }
-    ]
-}
+      }
+    ],
+    "userModulos": [
+      {
+        "id": 30,
+        "createdAt": "2024-10-02T15:05:14.285Z",
+        "updatedAt": "2024-10-02T15:05:14.285Z",
+        "deletedAt": null,
+        "nombre": "Inicio",
+        "descripcion": "Pagina de inicio despues del login",
+        "label": "Inicio",
+        "element": "Home",
+        "icon": "pi pi-fw pi-home",
+        "path": "/home",
+        "acciones": [
+          {
+            "id": 2,
+            "nombre": "Alta",
+            "descripcion": "A"
+          },
+          {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          },
+          {
+            "id": 4,
+            "nombre": "Modificar",
+            "descripcion": "M"
+          },
+          {
+            "id": 5,
+            "nombre": "Ver",
+            "descripcion": "V"
+          },
+          {
+            "id": 6,
+            "nombre": "Leer",
+            "descripcion": "L"
+          },
+          {
+            "id": 7,
+            "nombre": "Reportes",
+            "descripcion": "R"
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "createdAt": "2024-10-02T15:05:14.288Z",
+        "updatedAt": "2024-10-02T15:05:14.288Z",
+        "deletedAt": null,
+        "nombre": "Organizaciones",
+        "descripcion": "Gestión de organizaciones",
+        "label": "Organización",
+        "element": "Organizacion",
+        "icon": "pi pi-building",
+        "path": "/organizaciones",
+        "acciones": [
+          {
+            "id": 2,
+            "nombre": "Alta",
+            "descripcion": "A"
+          },
+          {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          },
+          {
+            "id": 4,
+            "nombre": "Modificar",
+            "descripcion": "M"
+          },
+          {
+            "id": 5,
+            "nombre": "Ver",
+            "descripcion": "V"
+          },
+          {
+            "id": 6,
+            "nombre": "Leer",
+            "descripcion": "L"
+          },
+          {
+            "id": 7,
+            "nombre": "Reportes",
+            "descripcion": "R"
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "createdAt": "2024-10-02T15:05:14.293Z",
+        "updatedAt": "2024-10-02T15:05:14.293Z",
+        "deletedAt": null,
+        "nombre": "Usuarios",
+        "descripcion": "Gestión de usuarios",
+        "label": "Usuario",
+        "element": "Usuario",
+        "icon": "pi pi-users",
+        "path": "/usuarios",
+        "acciones": [
+          {
+            "id": 2,
+            "nombre": "Alta",
+            "descripcion": "A"
+          },
+          {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          },
+          {
+            "id": 4,
+            "nombre": "Modificar",
+            "descripcion": "M"
+          },
+          {
+            "id": 5,
+            "nombre": "Ver",
+            "descripcion": "V"
+          },
+          {
+            "id": 6,
+            "nombre": "Leer",
+            "descripcion": "L"
+          },
+          {
+            "id": 7,
+            "nombre": "Reportes",
+            "descripcion": "R"
+          }
+        ]
+      }
+    ],
+    "tokens": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdWlsIjoiMjAzODY5MTQwOTYiLCJzeXN0ZW1fbmFtZSI6IlJhcGlkYXRvcyIsImlhdCI6MTcxMTIzNzcxOCwiZXhwIjoxNzExMjM4MDE4fQ.NLwxJ2_CBKlfcMzM20Tn6gzKUMjGNIh2xGaHYlAj_u0",
+      "refresh_token": "7f3baaeb-1e37-4f5b-9233-2f94471bcfcf"
+    }
+  }
+  

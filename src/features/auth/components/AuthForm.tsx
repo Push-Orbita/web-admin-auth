@@ -8,7 +8,8 @@ import { useAppDispatch } from "@hooks/reduxHook"
 import { setUserToken } from "@redux/slices/auth/autSlice"
 import { FormTextInput } from "@components/common/forms/FormTextInput"
 import { lang } from "../../../langs"
-
+import { transformJson } from "./TransFormJson"
+import { UserEntity } from "@redux/slices/auth/interface/user.entity"
 
 
 export const AuthForm = () => {
@@ -24,7 +25,17 @@ export const AuthForm = () => {
                 // Asegúrate de ajustar la ruta al lugar donde tu archivo está ubicado
                 const response = await axios.get('/userResponse.json');
                 // console.log(response.data); // Aquí tienes tus datos
-                dispatch(setUserToken(response.data));
+                const responseTransformed = transformJson(response.data);
+                const userEntity: UserEntity = {
+                    ...responseTransformed,
+                    isLogged: true, // o el valor adecuado
+                    lang: 'es',
+                    userModulos: responseTransformed.userModulos.map(modulo => ({
+                        ...modulo,
+                        icon: modulo.items[0].icon || '' // Asegúrate de que 'icon' esté presente
+                    }))
+                };
+                dispatch(setUserToken(userEntity));
             } catch (error) {
                 console.error('Hubo un error al cargar los datos:', error);
             }
