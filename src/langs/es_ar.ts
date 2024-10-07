@@ -252,6 +252,7 @@ export const es_ar = {
   login: {
     common: {
       welcome_message: "¡Bienvenido a Auth! 👋🏻",
+
     },
     form: {
       usuario: "Nombre de Usuario",
@@ -265,6 +266,9 @@ export const es_ar = {
       errorLogin: "Ha ocurrido un error al iniciar sesión",
       verifyCredentials: "Verifique sus credenciales",
       errorRegister: "Ha ocurrido un error al intentar registrarse",
+      loginSuccess: "Inicio de sesión exitoso",
+      loginError: "Ha ocurrido un error al iniciar sesión",
+      
     },
   },
   newsletter: {
