@@ -1,31 +1,53 @@
+import { FormTextInput } from "@components/common/forms/FormTextInput";
+import { useAppDispatch } from "@hooks/reduxHook";
+import useQueryApi from "@hooks/useQueryApi";
 import { Form, Formik, FormikHelpers } from "formik";
 import { t } from "i18next";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-import { AuthHeader } from "./AuthHeader";
-import { useAppDispatch } from "@hooks/reduxHook";
-import { setUserToken } from "@redux/slices/auth/autSlice";
-import { FormTextInput } from "@components/common/forms/FormTextInput";
-import { lang } from "../../../langs";
-import { AuthApi } from "../service/auth.service";
-import { AuthPostDTO } from "../model/dtos/auth.dto";
 import toast from "react-hot-toast";
+import { lang } from "../../../langs";
+import { AuthPostDTO } from "../model/dtos/auth.dto";
+import { AuthApi } from "../service/auth.service";
+import { AuthHeader } from "./AuthHeader";
 import { transformResponse } from "./transformResponse";
-import { UserEntity } from "@redux/slices/auth/interface/user.entity";
+import { setClientToken } from "@redux/slices/auth/autSlice";
+
 
 export const AuthForm = () => {
     const dispatch = useAppDispatch();
     const initialValues: AuthPostDTO = {
         email: 'nahuel14321@gmail.com',
-        password: 'Pass@12345.',
-        sistemaId: 4
+        password: 'Pass@12345.'
     };
+
+    const getAuthToken = async () => {
+        return await AuthApi.postAuthSistem({
+            clientId: import.meta.env.VITE_APP_CLIENT_ID,
+            clientSecret: import.meta.env.VITE_APP_CLIENT_SECRET
+        });
+    };
+
+    const { data: clientTokenData } = useQueryApi<any>(
+        "Client-token",
+        () => getAuthToken(),
+        {
+            onSuccess: (data: any) => {
+                if (data && data.access_token) {
+                    dispatch(setClientToken(data.access_token));
+                }
+            }
+        }
+    );
+
+    console.log(clientTokenData);
+   
 
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
         try {
-            const response = await AuthApi.postAuth(values);  // Llamada a la API de autenticación
-            const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
-            console.log(response.data)
+            // const response = await AuthApi.postAuth(values, clientTokenData?.access_token);  // Llamada a la API de autenticación
+            // const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
+            // console.log(response.data)
             // Asegúrate de que transformedData cumpla con UserEntity
             // if (transformedData) {
             //     dispatch(setUserToken(transformedData as unknown as UserEntity));

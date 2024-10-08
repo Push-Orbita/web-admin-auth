@@ -28,7 +28,8 @@ function App() {
       },
     },
   })
-  7
+  
+
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>

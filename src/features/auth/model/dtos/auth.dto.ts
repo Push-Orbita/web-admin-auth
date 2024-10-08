@@ -1,5 +1,8 @@
 export interface AuthPostDTO {
     email: string;
     password: string;
-    sistemaId: number;
+}
+export interface AuthSistemPOSTDTO {
+    clientId: string;
+    clientSecret: string;
 }
