@@ -11,11 +11,9 @@ import { Divider } from "primereact/divider";
 import { Fieldset } from "primereact/fieldset";
 import { FC } from "react";
 import { lang } from "../../../../langs";
-
 interface FormFieldsProps {
     isEditMode: boolean;
 }
-
 const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
     const { handleSubmit, values } = useFormikContext<ModuloPostDTO>();
 
@@ -74,7 +72,6 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
                                                 isLoading={false}
 
                                             />
-
                                         </div>
                                         <div className="col-12 md:col-6 lg:col-6 mt-2">
                                             <FormTextInput label={t(lang.Module.form.path)} name={`body[${index}].path`} />
@@ -122,5 +119,4 @@ const FormFields: FC<FormFieldsProps> = ({ isEditMode }) => {
         </Form>
     );
 };
-
 export default FormFields;

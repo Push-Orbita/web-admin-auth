@@ -1,6 +1,7 @@
 export interface UserEntity {
   userNombre: string
   tokenUser: string
+  tokenSistem?: string
   organizacion: string
   plan: string
   sistema: string

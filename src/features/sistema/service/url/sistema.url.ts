@@ -5,5 +5,6 @@ export const SistemaURL = {
     getById: `${Sistema}/:id`,
     post: `${Sistema}`,
     patch: `${Sistema}/:id`,
-    delete: `${Sistema}/:id`
+    delete: `${Sistema}/:id`,
+    postSistem: `${Sistema}/login`,
 };
