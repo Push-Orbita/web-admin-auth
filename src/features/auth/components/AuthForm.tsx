@@ -1,6 +1,7 @@
 import { FormTextInput } from "@components/common/forms/FormTextInput";
-import { useAppDispatch } from "@hooks/reduxHook";
-import useQueryApi from "@hooks/useQueryApi";
+import { useAppDispatch, useAppSelector } from "@hooks/reduxHook";
+import { setUserToken } from "@redux/slices/auth/autSlice";
+import { UserEntity } from "@redux/slices/auth/interface/user.entity";
 import { Form, Formik, FormikHelpers } from "formik";
 import { t } from "i18next";
 import { Button } from "primereact/button";
@@ -11,52 +12,41 @@ import { AuthPostDTO } from "../model/dtos/auth.dto";
 import { AuthApi } from "../service/auth.service";
 import { AuthHeader } from "./AuthHeader";
 import { transformResponse } from "./transformResponse";
-import { setClientToken } from "@redux/slices/auth/autSlice";
-
 
 export const AuthForm = () => {
     const dispatch = useAppDispatch();
+
+    // Obtener el client token de Redux
+    const clientToken = useAppSelector((state) => state.auth.tokenSistem);
+
     const initialValues: AuthPostDTO = {
         email: 'nahuel14321@gmail.com',
         password: 'Pass@12345.'
     };
 
-    const getAuthToken = async () => {
-        return await AuthApi.postAuthSistem({
-            clientId: import.meta.env.VITE_APP_CLIENT_ID,
-            clientSecret: import.meta.env.VITE_APP_CLIENT_SECRET
-        });
-    };
-
-    const { data: clientTokenData } = useQueryApi<any>(
-        "Client-token",
-        () => getAuthToken(),
-        {
-            onSuccess: (data: any) => {
-                if (data && data.access_token) {
-                    dispatch(setClientToken(data.access_token));
-                }
-            }
-        }
-    );
-
-    console.log(clientTokenData);
-   
-
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
         try {
-            // const response = await AuthApi.postAuth(values, clientTokenData?.access_token);  // Llamada a la API de autenticación
-            // const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
-            // console.log(response.data)
-            // Asegúrate de que transformedData cumpla con UserEntity
-            // if (transformedData) {
-            //     dispatch(setUserToken(transformedData as unknown as UserEntity));
-            //     console.log(transformedData as unknown as UserEntity);
-            //     toast.success(t(lang.login.messages.loginSuccess));
-            // } else {
-            //     console.error('transformedData es nulo');
-            //     toast.error(t(lang.login.messages.loginError));
-            // }
+            if (!clientToken) {
+                throw new Error("El token del cliente no está disponible");
+            }
+
+            // Pasar el client token en los headers de la solicitud
+            const response = await AuthApi.postAuth(values, {
+                headers: {
+                    Authorization: `Bearer ${clientToken}`,  // Incluir el Bearer token
+                },
+            });
+
+            const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
+
+            if (transformedData) {
+                dispatch(setUserToken(transformedData as unknown as UserEntity));
+                console.log(transformedData as unknown as UserEntity);
+                toast.success(t(lang.login.messages.loginSuccess));
+            } else {
+                console.error('transformedData es nulo');
+                toast.error(t(lang.login.messages.loginError));
+            }
         } catch (error) {
             console.error('Hubo un error al iniciar sesión:', error);
             toast.error(t(lang.login.messages.loginError));
