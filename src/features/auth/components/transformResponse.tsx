@@ -22,6 +22,7 @@ interface ModuloBackend {
   label: string;
   path: string;
   icon: string;
+  element: string;
   acciones: { descripcion: string }[];
   children: ModuloBackend[];
 }
@@ -70,14 +71,14 @@ export const transformResponse = (backendData: BackendResponse): FrontendData | 
       to: modulo.path,
       path: modulo.path,
       acciones: modulo.acciones?.map(accion => accion.descripcion) || [],
-      element: modulo.nombre,
+      element: modulo.element,
       ...(modulo.children && modulo.children.length > 0 ? { items: transformModulos(modulo.children) } : {})
     })) || [];
   };
 
   const frontendModulos: FrontendModule[] = [
     {
-      label: 'Sistema',
+      label: permiso[0]?.organizacion?.nombre || '',
       items: transformModulos(userModulos.modulos || [])
     }
   ];

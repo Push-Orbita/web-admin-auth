@@ -7,7 +7,6 @@ import { useAppDispatch } from "@hooks/reduxHook";
 import { setUserToken } from "@redux/slices/auth/autSlice";
 import { FormTextInput } from "@components/common/forms/FormTextInput";
 import { lang } from "../../../langs";
-
 import { AuthApi } from "../service/auth.service";
 import { AuthPostDTO } from "../model/dtos/auth.dto";
 import toast from "react-hot-toast";
@@ -26,16 +25,16 @@ export const AuthForm = () => {
         try {
             const response = await AuthApi.postAuth(values);  // Llamada a la API de autenticación
             const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
-
+            console.log(response.data)
             // Asegúrate de que transformedData cumpla con UserEntity
-            if (transformedData) {
-                dispatch(setUserToken(transformedData as unknown as UserEntity));
-                console.log(transformedData as unknown as UserEntity);
-                toast.success(t(lang.login.messages.loginSuccess));
-            } else {
-                console.error('transformedData es nulo');
-                toast.error(t(lang.login.messages.loginError));
-            }
+            // if (transformedData) {
+            //     dispatch(setUserToken(transformedData as unknown as UserEntity));
+            //     console.log(transformedData as unknown as UserEntity);
+            //     toast.success(t(lang.login.messages.loginSuccess));
+            // } else {
+            //     console.error('transformedData es nulo');
+            //     toast.error(t(lang.login.messages.loginError));
+            // }
         } catch (error) {
             console.error('Hubo un error al iniciar sesión:', error);
             toast.error(t(lang.login.messages.loginError));
