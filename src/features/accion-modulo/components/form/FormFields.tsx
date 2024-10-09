@@ -6,6 +6,7 @@ import { Form, useFormikContext } from "formik";
 import { t } from "i18next";
 import { FC } from "react";
 import { lang } from "../../../../langs";
+import { FormMultiSelect } from "@components/common/forms/FormMultiSelect";
 
 
 const FormFields: FC = () => {
@@ -15,9 +16,8 @@ const FormFields: FC = () => {
 
     const { options: moduloOptions, isLoading: isLoadingModulo } = useSelectOptions("modulo");
     const { options: accionOptions, isLoading: isLoadingAccion } = useSelectOptions("accion", (item) => {
-        return `${item.nombre} - ${item.descripcion}`; // Combinas nombre y descripción
+        return `${item.nombre} - ${item.descripcion}`;
     });
-
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ const FormFields: FC = () => {
                     />
                 </div>
                 <div className="col-12 md:col-6 lg:col-6">
-                    <FormSelect
+                    <FormMultiSelect
                         label={t(lang.ActionModule.form.acction)}
                         name="accion"
                         options={accionOptions}

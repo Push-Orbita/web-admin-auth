@@ -47,7 +47,6 @@ const FormAccionModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
             },
         },
     });
-
     const onSave = useCallback(
         async (values: AccionModuloPostDTO, setSubmitting: (isSubmitting: boolean) => void) => {
             try {
@@ -69,7 +68,6 @@ const FormAccionModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
         },
         [rowData, patchAccionModulo, postAccionModulo]
     );
-
     useEffect(() => {
         if (!visible) {
             setRowData(undefined);
@@ -77,10 +75,10 @@ const FormAccionModulo: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
     }, [visible, setRowData]);
 
     const initialValues: AccionModuloPostDTO = {
-        accion: rowData?.accion ?? 0,
-        modulo: rowData?.modulo ?? 0
+        accion: rowData?.accion.id ?? 0,
+        modulo: rowData?.modulo.id ?? 0
     };
-
+    console.log(initialValues);
     return (
         <>
             <div className="grid mb-5">
