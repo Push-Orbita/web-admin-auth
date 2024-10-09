@@ -21,14 +21,16 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: true, // Refecht cuando se cambia de pantalla
+        refetchOnWindowFocus: false, // Refecht cuando se cambia de pantalla
         staleTime: 0,
         cacheTime: 1000 * 60 * 60 * 0, // 24 hours
         retry: 2, // Reintentar fetches fallidos hasta 2 veces automáticamente
+        refetchOnMount: false,
+        refetchOnReconnect: true,
       },
     },
   })
-  
+
 
   return (
     <BrowserRouter>
