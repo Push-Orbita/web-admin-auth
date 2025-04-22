@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useField, useFormikContext } from 'formik';
 import { Editor, EditorTextChangeEvent } from 'primereact/editor';
 
@@ -11,7 +12,15 @@ interface Props {
 
 export const FormEditorInput = ({ label, ...props }: Props) => {
     const [field, meta] = useField(props);
-    const formik = useFormikContext();
+    const { setFieldValue } = useFormikContext();
+    const [editorContent, setEditorContent] = useState("");
+
+    useEffect(() => {
+        if (field.value) {
+
+            setEditorContent(field.value);
+        }
+    }, [field.value]);
 
     return (
         <>
@@ -19,16 +28,16 @@ export const FormEditorInput = ({ label, ...props }: Props) => {
             <Editor
                 id={props.name}
                 name={field.name}
-                value={field.value}
-                onTextChange={(e: EditorTextChangeEvent) => formik.setFieldValue(props.name, e.htmlValue)}
+                value={editorContent} // Aseguramos que el HTML se pase correctamente
+                onTextChange={(e: EditorTextChangeEvent) => setFieldValue(props.name, e.htmlValue)}
                 style={{ height: '320px' }}
             />
 
-            <small id={props.name} style={{
-                color: 'var(--red-500)'
-            }}>
-                {meta.touched && meta.error ? meta.error : ""}
-            </small>
+            {meta.touched && meta.error ? (
+                <small id={props.name} style={{ color: 'var(--red-500)' }}>
+                    {meta.error}
+                </small>
+            ) : null}
         </>
     );
 };

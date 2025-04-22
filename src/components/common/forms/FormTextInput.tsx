@@ -9,29 +9,49 @@ interface Props {
     type?: 'text' | 'email' | 'password' | 'time' | 'number' | 'date';
     placeholder?: string;
     fullWidth?: boolean;
-    uppercase?: boolean;  // Prop para convertir a mayúsculas
-    maxLength?: number;   // Prop para limitar la longitud máxima
+    uppercase?: boolean;
+    pascalCase?: boolean;
+    capitalize?: boolean;
+    maxLength?: number;
     [x: string]: any;
 }
 
 export const FormTextInput = ({
     label,
     type = 'text',
-    uppercase = false,  // Valor por defecto: no convertir a mayúsculas
-    maxLength,          // Valor por defecto: sin límite de longitud
+    uppercase = false,
+    pascalCase = false,
+    capitalize = false,
+    maxLength,
     ...props
 }: Props) => {
     const [field, meta, helpers] = useField(props);
+
+    const toPascalCase = (text: string) => {
+        return text
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+    };
+
+    const toCapitalize = (text: string) => {
+        if (text.length === 0) return text;
+        return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value;
 
         if (uppercase) {
-            value = value.toUpperCase(); // Convertir a mayúsculas si la prop está activa
+            value = value.toUpperCase();
+        } else if (pascalCase) {
+            value = toPascalCase(value);
+        } else if (capitalize) {
+            value = toCapitalize(value);
         }
 
         if (maxLength && value.length > maxLength) {
-            value = value.slice(0, maxLength); // Limitar a maxLength si está definido
+            value = value.slice(0, maxLength);
         }
 
         helpers.setValue(value);
@@ -47,8 +67,7 @@ export const FormTextInput = ({
                 {...props}
                 value={field.value}
                 type={type}
-                onChange={handleChange} // Interceptamos el cambio
-                
+                onChange={handleChange}
             />
             {meta.touched && meta.error ? (
                 <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{ marginTop: '5px' }} />

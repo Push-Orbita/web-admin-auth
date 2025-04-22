@@ -7,6 +7,8 @@ import { useModuleContext } from '../../../../hooks/useModules';
 import { usePermisos } from '../../../../hooks/usePermisos';
 import { BasicTableHeader } from './components/BasicTableHeader';
 import { ICustomColumnItem } from './interfaces/custombasictable';
+import { useSelector } from 'react-redux';
+import { RootState } from '@redux/store/store';
 
 interface Props {
     filterDisplay?: "row" | "menu";
@@ -23,7 +25,6 @@ interface Props {
     size?: 'small' | 'normal' | 'large';
     footerColumnGroup?: JSX.Element;
     headerColumnGroup?: JSX.Element;
-    showGridlines?: boolean;
 }
 
 export default function CustomBasicTable({
@@ -38,12 +39,11 @@ export default function CustomBasicTable({
     size = 'normal',
     handleDelete,
     footerColumnGroup,
-    headerColumnGroup,
-    showGridlines = false
+    headerColumnGroup
 }: Props) {
     const { setVisible, setRowData } = useModuleContext();
     const permisos = usePermisos();
-
+    const { showGridlines } = useSelector((state: RootState) => state.ui);
     const globalFilterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
     const filterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
 
@@ -100,6 +100,9 @@ export default function CustomBasicTable({
         />
     );
 
+    // Verificar si se debe mostrar la columna de acciones
+    const mostrarColumnaAcciones = permisos.puedeModificar || permisos.puedeBorrar;
+
     return (
         <DataTable
             value={data}
@@ -111,7 +114,7 @@ export default function CustomBasicTable({
             filters={filters}
             filterDisplay={filterDisplay}
             scrollable={scrollable}
-            scrollHeight={scrollable ? '70vh' : ''}
+            scrollHeight={scrollable ? '80vh' : ''}
             loading={loading}
             header={header}
             globalFilterFields={globalFilterFields}
@@ -130,13 +133,20 @@ export default function CustomBasicTable({
                     sortable={column.sortable}
                     filter={column.filter}
                     filterPlaceholder={column.filterPlaceholder}
-                    style={column.style ? column.style : { minWidth: '12rem' }}  // Aplicar estilo personalizado o predeterminado
-                    className={column.className}  // Aplicar clase CSS si está definida
+                    style={column.style ? column.style : { minWidth: '12rem' }}
+                    className={column.className}
                     dataType={column.dataType}
                     body={column.body ? column.body : undefined}
                 />
             ))}
-            <Column header='Acciones' body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
+            {mostrarColumnaAcciones && (
+                <Column
+                    header='Acciones'
+                    body={actionBodyTemplate}
+                    exportable={false}
+                    style={{ minWidth: '12rem' }}
+                />
+            )}
         </DataTable>
     );
 }

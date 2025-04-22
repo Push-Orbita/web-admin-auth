@@ -23,6 +23,8 @@ export default defineConfig({
       '@themes': path.resolve(__dirname, './src/ui/themes'),
       '@utilities': path.resolve(__dirname, './src/utilities'),
       '@interfaces': path.resolve(__dirname, './src/interfaces'),
+      '@common': path.resolve(__dirname, './src/common'),
+      '@langs': path.resolve(__dirname, './src/langs'),
     },
   },
 });

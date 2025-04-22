@@ -20,8 +20,8 @@ export const AuthForm = () => {
     const clientToken = useAppSelector((state) => state.auth.tokenSistem);
 
     const initialValues: AuthPostDTO = {
-        email: 'nahuel14321@gmail.com',
-        password: 'Pass@12345.'
+        email: '',
+        password: ''
     };
 
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
@@ -41,7 +41,7 @@ export const AuthForm = () => {
 
             if (transformedData) {
                 dispatch(setUserToken(transformedData as unknown as UserEntity));
-                console.log(transformedData as unknown as UserEntity);
+                // console.log(transformedData as unknown as UserEntity);
                 toast.success(t(lang.login.messages.loginSuccess));
             } else {
                 console.error('transformedData es nulo');

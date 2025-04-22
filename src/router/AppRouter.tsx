@@ -1,58 +1,68 @@
 import { authorize } from "@config/api/axios.config";
 import { useAppDispatch, useAppSelector } from "@hooks/reduxHook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { PublicRoutes } from "./PublicRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { RouterJs } from "./RouterJs";
 import AuthLogin from "@pages/auth/AuthLogin";
-import { AuthApi } from "@features/auth/service/auth.service";
 import useQueryApi from "@hooks/useQueryApi";
 import { setClientToken } from "@redux/slices/auth/autSlice";
+import { AuthApi } from "@features/auth/service/auth.service";
 
 export const AppRouter = () => {
-  const { isLogged, tokenUser } = useAppSelector(
-    (state) => state.auth
-  );
-
+  const { isLogged, tokenUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+
+  // Estado para controlar si se debe ejecutar la petición del token
+  const [shouldFetchToken, setShouldFetchToken] = useState(false);
 
   // Función para obtener el token de autenticación
   const getAuthToken = async () => {
-    return await AuthApi.postAuthSistem({
+    const response = await AuthApi.postAuthSistem({
       clientId: import.meta.env.VITE_APP_CLIENT_ID,
-      clientSecret: import.meta.env.VITE_APP_CLIENT_SECRET
+      clientSecret: import.meta.env.VITE_APP_CLIENT_SECRET,
     });
+
+    return response.data; // 🔥 Ahora devuelve solo los datos
   };
 
-  // Uso de useQueryApi para obtener el token desde la API solo una vez
+  // useQueryApi para obtener el token, controlado por shouldFetchToken
   const { data: clientTokenData } = useQueryApi<any>(
     "Client-token",
     () => getAuthToken(),
-    {},
     {
+      enabled: shouldFetchToken,
+      staleTime: Infinity,
+      cacheTime: Infinity,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
       onSuccess: (data: any) => {
         if (data && data.accessToken) {
           dispatch(setClientToken(data.accessToken));
+          setShouldFetchToken(false);
         } else {
           console.error("Error: La respuesta no contiene accessToken");
         }
       },
       onError: (error) => {
         console.error("Error al obtener el token de cliente:", error);
+        setShouldFetchToken(false);
       },
-      staleTime: Infinity,
-      cacheTime: Infinity,
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
     }
   );
 
-  // Efecto para verificar los datos del token
+
+  // useEffect para activar la obtención del token solo después del deslogueo
+  useEffect(() => {
+    if (!isLogged) {
+      setShouldFetchToken(true); // Activa la bandera solo después de desloguear
+    }
+  }, [isLogged]);
+
   useEffect(() => {
     if (clientTokenData) {
-      console.log('Client Token Data:', clientTokenData);
+      // console.log("Client Token Data:", clientTokenData);
     }
   }, [clientTokenData]);
 

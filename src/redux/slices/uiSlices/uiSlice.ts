@@ -1,23 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IUi {
-  theme: boolean;
+  theme: boolean; // false = light theme, true = dark theme
   borderRadius: number;
   elevation: number;
   isLoadingAplications: boolean;
   isCollapsed: boolean;
   isOpenMenu: boolean;
   drawerWidth: number;
+  isLoading: boolean;
+  showGridlines: boolean;
 }
 
 const initialState: IUi = {
-  theme: false,
+  theme: false, // Comienza con tema claro por defecto
   borderRadius: 1,
   elevation: 4,
   isLoadingAplications: false,
   isCollapsed: false,
   isOpenMenu: true,
   drawerWidth: 240,
+  isLoading: false,
+  showGridlines: true,
 };
 
 export const uiSlice = createSlice({
@@ -26,6 +30,10 @@ export const uiSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state.theme = !state.theme;
+      localStorage.setItem('theme', state.theme ? 'dark' : 'light');
+    },
+    toggleShowGridlines: (state) => {
+      state.showGridlines = !state.showGridlines;
     },
     openMenu: (state) => {
       state.isOpenMenu = !state.isOpenMenu;
@@ -46,7 +54,7 @@ export const uiSlice = createSlice({
 });
 
 // Export the actions
-export const { toggleTheme, openMenu, setElevation, setBorderRadius, toggleMenu, closeMenu } = uiSlice.actions;
+export const { toggleTheme, openMenu, setElevation, setBorderRadius, toggleMenu, closeMenu,toggleShowGridlines } = uiSlice.actions;
 
 // Export the reducer
 export default uiSlice.reducer;
