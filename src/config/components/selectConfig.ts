@@ -1,5 +1,3 @@
-import { CategoriaTypeApi } from "@features/categoria-type/service/categoriaType.service";
-import { TagTypeApi } from "@features/tag-type/service/tagType.service";
 
 
 interface SelectEntityConfig {
@@ -9,17 +7,6 @@ interface SelectEntityConfig {
 }
 
 const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
-
-    categoriaTypeOption: {
-        apiService: CategoriaTypeApi.getAll,
-        labelField: "nombre", // Campo que se mostrará en el select
-        valueField: "id", // Campo que se usará como valor del select
-    },
-    tagTypeOption: {
-        apiService: TagTypeApi.getAll,
-        labelField: "nombre", // Campo que se mostrará en el select
-        valueField: "id", // Campo que se usará como valor del select
-    },
 
 };
 

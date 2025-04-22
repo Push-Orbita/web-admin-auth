@@ -2,7 +2,7 @@ import { useField } from "formik";
 import { Dropdown } from "primereact/dropdown";
 import { IconName, iconOptions } from "@constants/icon-options";
 import DynamicIcon from "../ui/DynamicIcon";
-
+import { useMemo } from "react";
 
 interface FormIconSelectProps {
     name: string;
@@ -14,10 +14,12 @@ const FormIconSelect = ({ name, label }: FormIconSelectProps) => {
 
     const selectedValue = field.value;
 
-    const options = iconOptions.map((icon) => ({
-        label: icon,
-        value: icon,
-    }));
+    const options = useMemo(() => {
+        return iconOptions.map((icon) => ({
+            label: icon,
+            value: icon,
+        }));
+    }, []);
 
     const itemTemplate = (option: any) => (
         <div className="flex align-items-center gap-2">
@@ -33,7 +35,7 @@ const FormIconSelect = ({ name, label }: FormIconSelectProps) => {
 
     return (
         <>
-            <label >{label}</label>
+            <label>{label}</label>
             <Dropdown
                 id={name}
                 name={name}
@@ -43,7 +45,7 @@ const FormIconSelect = ({ name, label }: FormIconSelectProps) => {
                 placeholder="Seleccionar ícono"
                 itemTemplate={itemTemplate}
                 valueTemplate={valueTemplate}
-                className="w-full md:w-20rem"
+                className="w-full"
                 showClear
                 filter
             />

@@ -5,7 +5,7 @@ import { useAppSelector } from '../hooks/reduxHook';
 const AuthLogin = lazy(() => import('../pages/auth/AuthLogin'));
 const Home = lazy(() => import('../pages/home/Home'));
 const ConfiguracionUsuario = lazy(() => import('../pages/usuario/ConfiguracionUsuario'));
-
+const Sistema = lazy(() => import('../pages/sistema/Sistema'));
 
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
@@ -13,6 +13,7 @@ const componentsMap: ComponentsMap = {
     'AuthLogin': AuthLogin,
     'Home': Home,
     'ConfiguracionUsuario': ConfiguracionUsuario,
+    'Sistema': Sistema,
 };
 
 export const RouterJs = () => {

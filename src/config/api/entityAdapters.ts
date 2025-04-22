@@ -1,25 +1,5 @@
-
-import { contactoToTable } from "@features/contacto/adapter/contacto.adapter";
-import { formikToSeccionNormas, seccionNormasToFormik } from "@features/inicio/seccion-normas/model/adapter/seccionNormas.adapter";
-import { formikToProceso, procesoToFormik } from "@features/nosotros/proceso/adapter/proceso.adapter";
-import { noticiaToFormik, formikToNoticia } from "@features/noticia/model/adapter/noticia.adapter";
-
 const entityAdapters = {
-    noticia: {
-        toFormik: noticiaToFormik,
-        toApi: formikToNoticia
-    },
-    seccionNormas: {
-        toFormik: seccionNormasToFormik,
-        toApi: formikToSeccionNormas,
-    },
-    proceso: {
-        toFormik: procesoToFormik,
-        toApi: formikToProceso
-    },
-    contacto: {
-        toTable: contactoToTable
-    }
+
 };
 
 export type ModuleKey = keyof typeof entityAdapters;
@@ -50,6 +30,6 @@ export const getEntityAdapter = (moduleKey: string) => {
 
     return {
         ...defaultAdapter,
-        ...entityAdapters[moduleKey as ModuleKey],
+        ...(entityAdapters[moduleKey as ModuleKey] as Record<string, any> ?? {}),
     };
 };
