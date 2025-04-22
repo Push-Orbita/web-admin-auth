@@ -82,7 +82,7 @@ const FormOrganizacion: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Ti
         nombre: rowData?.nombre ?? "",
         bd: rowData?.bd ?? "",
         host: rowData?.host ?? "",
-        password: rowData?.password ?? "",
+        passwordbd: rowData?.passwordbd ?? "",
         port: rowData?.port ?? "",
         tipobd: rowData?.tipobd ?? "",
         usuario: rowData?.usuario ?? ""

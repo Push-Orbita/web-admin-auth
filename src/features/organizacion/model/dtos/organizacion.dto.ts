@@ -6,7 +6,7 @@ export interface OrganizacionPostDTO {
     host?: string;
     port?: number;
     usuario?: string;
-    password?: string;
+    passwordbd?: string;
     tipobd?: string;
 }
 

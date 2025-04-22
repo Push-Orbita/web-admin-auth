@@ -80,7 +80,7 @@ const FormSistema: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo'
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
         icono: rowData?.icono ?? "",
-        url: rowData?.icono ?? ""
+        url: rowData?.url ?? ""
     };
 
     return (
