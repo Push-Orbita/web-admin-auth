@@ -1,3 +1,4 @@
+import { SistemasApi } from "@features/sistemas/service/sistemas.service";
 
 
 interface SelectEntityConfig {
@@ -7,6 +8,11 @@ interface SelectEntityConfig {
 }
 
 const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
+    sistema: {
+        apiService: SistemasApi.getAll,
+        labelField: "nombre", // Campo que se mostrará en el select
+        valueField: "id", // Campo que se usará como valor del select
+    },
 
 };
 

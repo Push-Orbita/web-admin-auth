@@ -4,8 +4,8 @@ export const es_ar = {
   },
   common: {
     welcome: "Bienvenido",
-    appName: "Auth",
-    messageWelcome: "Bienvenido al sistema de gestion y Auth",
+    appName: "Admin Landing",
+    messageWelcome: "Bienvenido al sistema de gestion de Landing",
     actions: {
       detail: "Detalles",
       edit: "Editar",
@@ -80,6 +80,47 @@ export const es_ar = {
       deleteMessageTitle: "Eliminar registro",
       deleteMessageId: "¿Estás seguro que deseas eliminar el registro con ID: ",
     },
+    validationString: {
+      noEmptySpaces: "El campo no puede contener solo espacios en blanco",
+      noLeadingSpaces: "El campo no puede tener espacios en blanco al inicio",
+      noTrailingSpaces: "El campo no puede tener espacios en blanco al final",
+      fieldRequired: "El campo es obligatorio",
+      minLength: "El campo debe tener al menos {{min}} caracteres",
+      maxLength: "El campo debe tener como máximo {{max}} caracteres",
+      exactLength: "El campo debe tener exactamente {{exactLength}} caracteres",
+      invalidEmail: "El campo debe ser un correo electrónico válido",
+      invalidUrl: "El campo debe ser una URL válida",
+      patternMismatch: "El campo no coincide con el patrón",
+      mustBeUppercase: "El campo debe estar en mayúsculas",
+      mustBeLowercase: "El campo debe estar en minúsculas",
+      mustBeOneOf: "El campo debe ser uno de los siguientes valores: ",
+      cannotBeOneOf: "El campo no puede ser uno de los siguientes valores: ",
+      allowSpecialChars: "El campo no puede contener caracteres especiales",
+      allowNumericOnly: "El campo debe contener solo números",
+      invalidPhone: "El campo debe ser un número de teléfono válido",
+      numericOnly: "El campo debe contener solo números",
+      invalidDate: "La fecha debe ser válida",
+      invalidImage: "Debe ser una imagen valida (jpg|jpeg|png|bmp|webp)",
+    },
+    validationNumber: {
+      mustBePositive: "El campo debe ser un número positivo",
+      mustBeNegative: "El campo debe ser un número negativo",
+      minValue: "El campo debe ser mayor o igual a ",
+      maxValue: "El campo debe ser menor o igual a ",
+      lessThan: "El campo debe ser menor que ",
+      moreThan: "El campo debe ser mayor que ",
+      precision: "El campo debe contener {{precision}} decimales",
+      mustBeInteger: "El campo debe ser un número entero",
+      cannotBeZero: "El campo no puede ser cero",
+      mustBeMultipleOf: "El campo debe ser un múltiplo de ",
+      mustBeInRange: "El campo debe estar en el rango de ",
+      invalidDecimalSeparator: "El campo debe tener un separador decimal válido",
+      invalidThousandSeparator: "El campo debe tener un separador de miles válido",
+    },
+    errors: {
+      createdError: "Error al crear",
+      unknownError: "Error desconocido"
+    }
   },
   toast: {
     success_add: "El registro se dió de alta correctamente.",
@@ -194,8 +235,8 @@ export const es_ar = {
       codeClientSecret: "Código secreto del cliente",
     },
     validations: {
-      systemName: "El nombre del sistema es requerido",
-      font: "La fuente es requerida",
+      systemName: "El nombre del sistema es obligatorio",
+      font: "La fuente es obligatoria",
     },
     messages: {
       error_system: "Ha ocurrido un error al intentar guardar el sistema",
@@ -212,8 +253,8 @@ export const es_ar = {
       description: "Descripción",
     },
     validations: {
-      organism: "El organismo es requerido",
-      description: "La descripción es requerida",
+      organism: "El organismo es obligatorio",
+      description: "La descripción es obligatoria",
     },
     messages: {
       error_organism: "Ha ocurrido un error al intentar guardar el organismo",
@@ -241,7 +282,7 @@ export const es_ar = {
       description: "Descripción",
     },
     validations: {
-      name: "El nombre es requerido",
+      name: "El nombre es obligatorio",
     },
     messages: {
       error_tech: "Ha ocurrido un error al intentar guardar la tecnología",
@@ -251,8 +292,7 @@ export const es_ar = {
   },
   login: {
     common: {
-      welcome_message: "¡Bienvenido a Auth! 👋🏻",
-
+      welcome_message: "¡Bienvenido a Admin-Landing! 👋🏻",
     },
     form: {
       usuario: "Nombre de Usuario",
@@ -266,8 +306,8 @@ export const es_ar = {
       errorLogin: "Ha ocurrido un error al iniciar sesión",
       verifyCredentials: "Verifique sus credenciales",
       errorRegister: "Ha ocurrido un error al intentar registrarse",
-      loginSuccess: "Inicio de sesión exitoso",
-      loginError: "Ha ocurrido un error al iniciar sesión",
+      loginSuccess: "Se inicio sesion Correctamente!",
+      loginError: "No se pudo iniciar sesion",
 
     },
   },
@@ -345,7 +385,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Suscripcion: {
+  suscripcion: {
     title: "Suscripciones",
     subTitle: "Listado de Suscripciones",
     new: "Nueva Suscripción",
@@ -353,13 +393,13 @@ export const es_ar = {
     detail: "Detalle del Suscripción",
     list: "Lista de Suscripciones",
     form: {
-      name: "Nombre de la Suscripción",
-      description: "Descripción de la Suscripción",
+      nombre: "Nombre de la Suscripción",
+      descripcion: "Descripción de la Suscripción",
       sistema: "Sistema la que pertenece",
     },
     validation: {
-      nameIsRequired: "El nombre es requerido",
-      descriptionIsRequired: "La descripción es requerida",
+      nombreIsRequired: "El nombre es requerido",
+      descripcionIsRequired: "La descripción es requerida",
       sistemaIsRequired: "El sistema es requerido",
     },
     messages: {
@@ -456,7 +496,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Person: {
+  persona: {
     title: "Personas",
     subTitle: "Listado de Personas",
     new: "Nueva Persona",
@@ -464,10 +504,10 @@ export const es_ar = {
     detail: "Detalle de la perosna",
     list: "Lista de Personas",
     form: {
-      name: "Nombre",
-      lastName: "Apellido",
+      nombre: "Nombre",
+      apellido: "Apellido",
       cuil: "Cuil",
-      gender: "Genero"
+      genero: "Genero"
 
     },
     validation: {
