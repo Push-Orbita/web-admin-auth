@@ -433,20 +433,20 @@ export const es_ar = {
     },
   },
 
-  Action: {
-    title: "Tipo de Acciones",
-    subTitle: "Listado de Tipo de Acciones",
+  accion: {
+    title: "Acciones",
+    subTitle: "Listado de Acciones",
     new: "Nueva Acción",
     edit: "Editar Acción",
     detail: "Detalle del Acción",
     list: "Lista de Acciones",
     form: {
-      name: "Nombre de la Acción",
-      description: "Sigla de la Acción",
+      nombre: "Nombre de la Acción",
+      descripcion: "Sigla de la Acción",
     },
     validation: {
-      nameIsRequired: "El nombre es requerido",
-      descriptionIsRequired: "La sigla es requerida",
+      nombreIsRequired: "El nombre es requerido",
+      descripcionIsRequired: "La sigla es requerida",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
@@ -458,22 +458,22 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Contract: {
-    title: "Tipo de Contratos",
-    subTitle: "Listado de Tipo de Contratos",
-    new: "Nueva Contrato",
+  contrato: {
+    title: "Contratos",
+    subTitle: "Listado de Contratos",
+    new: "Nuevo Contrato",
     edit: "Editar Contrato",
     detail: "Detalle del Contrato",
     list: "Lista de Contratos",
     form: {
       plan: "Plan a contratar",
-      organization: "Organización",
-      expireDate: "Fecha De expiración",
+      organizacion: "Organización",
+      fechaVencimiento: "Fecha De expiración",
     },
     validation: {
       planIsRequired: "El el plan es requerido",
-      organizationIsRequired: "La organización es requerida",
-      expireDateIsRequired: "La fecha de expiración es requerida",
+      organizacionIsRequired: "La organización es requerida",
+      fechaVencimientoIsRequired: "La fecha de expiración es requerida",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",

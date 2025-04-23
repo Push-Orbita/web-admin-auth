@@ -1,7 +1,7 @@
 import { SistemasApi } from "@features/sistemas/service/sistemas.service";
 import { SuscripcionApi } from "@features/suscripciones/service/suscripcion.service";
-
-
+import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
+import { PlanApi } from "@features/plan/service/plan.service";
 interface SelectEntityConfig {
     apiService: () => Promise<any>; // API que devuelve las opciones
     labelField: string; // Campo que se usará como label en el select
@@ -16,6 +16,16 @@ const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
     },
     suscripcion: {
         apiService: SuscripcionApi.getAll,
+        labelField: "nombre", // Campo que se mostrará en el select
+        valueField: "id", // Campo que se usará como valor del select
+    },
+    organizacion: {
+        apiService: OrganizacionApi.getAll,
+        labelField: "nombre", // Campo que se mostrará en el select
+        valueField: "id", // Campo que se usará como valor del select
+    },
+    plan: {
+        apiService: PlanApi.getAll,
         labelField: "nombre", // Campo que se mostrará en el select
         valueField: "id", // Campo que se usará como valor del select
     },

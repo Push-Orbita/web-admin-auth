@@ -9,7 +9,7 @@ const PlanView = () => {
         { name: "descripcion", type: "text", gridSize: "full", label: "Descripción" },
         { name: "duracion", type: "number", gridSize: "quarter", label: "Duración" },
         { name: "precio", type: "number", gridSize: "quarter", label: "Precio" },
-        { name: "suscripcion", type: "select", selectKey: "suscripcion", gridSize: "medium" }
+        { name: "suscripcion", type: "select", selectKey: "suscripcion", gridSize: "quarter" }
     ];
 
     const columns: ICustomColumnItem[] = [
