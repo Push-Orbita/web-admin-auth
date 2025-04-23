@@ -17,6 +17,7 @@ interface Permisos {
   puedeDetalle: boolean;
   puedeReporte: boolean;
   puedeVerCredenciales: boolean;
+  puedeEditarCredenciales: boolean;
 }
 
 // Crear el contexto con un estado por defecto
@@ -28,6 +29,7 @@ const PermisosContext = createContext<Permisos>({
   puedeDetalle: false,
   puedeReporte: false,
   puedeVerCredenciales: false,
+  puedeEditarCredenciales: false,
 });
 
 // Hook personalizado para usar el contexto de permisos
@@ -47,6 +49,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
     puedeDetalle: false,
     puedeReporte: false,
     puedeVerCredenciales: false,
+    puedeEditarCredenciales: false,
   });
 
   const verificarAcciones = (items: any, path: any) => {
@@ -61,7 +64,6 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
           puedeReporte: item.acciones.includes('R'),
           puedeVerCredenciales: item.acciones.includes('VC'),
           puedeEditarCredenciales: item.acciones.includes('EC'),
-
         };
       }
       // Si el item tiene sub-items, continuamos la búsqueda de manera recursiva
