@@ -30,7 +30,7 @@ export interface FieldConfig {
     disabled?: boolean | ((rowData?: any) => boolean);
     rowData?: any;
     gridSize?: "full" | "medium" | "quarter";
-    hidden?: boolean;
+    hidden?: boolean | ((rowData?: any) => boolean);
     defaultValue?: string | number | boolean | [] | {};
     uppercase?: boolean;
     pascalCase?: boolean;
@@ -97,7 +97,9 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                             disabled, gridSize, hidden, uppercase, pascalCase, capitalize, fields: subFields
                         } = field;
 
-                        if (hidden) {
+                        const isHidden = typeof hidden === "function" ? hidden(rowData) : hidden;
+
+                        if (isHidden) {
                             return <input key={name} type="hidden" name={name} />;
                         }
 

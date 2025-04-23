@@ -15,3 +15,8 @@ export interface SistemasPostDTO {
 export interface SistemasDeleteDTO {
     id: number;
 }
+
+export interface PrivateDataRequest {
+    password: string;
+    sistemaId: number;
+}

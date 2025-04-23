@@ -21,4 +21,3 @@ export const TipoFacturaOptions = Object.keys(TipoFactura)
 // Crear un array con todos los valores del enum TipoFactura
 export const TipoFacturaValues = Object.values(TipoFactura)
     .filter(value => typeof value === 'number'); // Filtrar para obtener solo los valores numéricos
-

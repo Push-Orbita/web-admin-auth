@@ -318,10 +318,10 @@ export const es_ar = {
       descripcion: "Descripción del sistema",
       url: "Url del sistema",
       icon: "Icono del sistema",
-      host: "Host del sistema",
-      port: "Puerto del sistema",
-      usuario: "Usuario del sistema",
-      password: "Contraseña del sistema",
+      host: "Host de la base de datos",
+      port: "Puerto de la base de datos",
+      usuario: "Usuario de la base de datos",
+      password: "Contraseña de la base de datos",
       tipobd: "Tipo de base de datos del sistema"
     },
     validation: {
