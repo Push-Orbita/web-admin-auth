@@ -14,7 +14,9 @@ import { ContratoApi, ContratoService } from "@features/contrato/service/contrat
 import { ContratoEntity } from "@features/contrato/model/entity/contrato.entity";
 import { AccionApi, AccionService } from "@features/accion/service/accion.service";
 import { AccionEntity } from "@features/accion/model/entity/accion.entity";
-
+import { UsuarioApi } from "@features/usuario/service/usuario.service";
+import { UsuarioEntity } from "@features/usuario/model/entity/usuario.entity";
+import { UsuarioService } from "@features/usuario/service/usuario.service";
 // Definir los servicios (el mapa indica el tipo de cada servicio)
 interface ServiceMap {
     sistemas: SistemasService,
@@ -24,6 +26,7 @@ interface ServiceMap {
     plan: PlanService,
     contrato: ContratoService,
     accion: AccionService,
+    usuario: UsuarioService,
 }
 
 // Registro de servicios (instancias reales)
@@ -35,6 +38,7 @@ const serviceRegistry: ServiceMap = {
     plan: PlanApi,
     contrato: ContratoApi,
     accion: AccionApi,
+    usuario: UsuarioApi,
 };
 
 // Definir los posibles módulos
@@ -48,6 +52,7 @@ interface EntityMap {
     plan: PlanEntity,
     contrato: ContratoEntity,
     accion: AccionEntity,
+    usuario: UsuarioEntity,
 }
 
 export type ModuleEntity<M extends ModuleKey> = EntityMap[M];

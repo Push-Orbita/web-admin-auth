@@ -521,7 +521,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  User: {
+  usuario: {
     title: "Usuarios",
     subTitle: "Listado de Usuarios",
     new: "Nueva Usuario",
@@ -529,11 +529,11 @@ export const es_ar = {
     detail: "Detalle de la usuario",
     list: "Lista de Usuarios",
     form: {
-      name: "Nombre de usuario",
+      nombre: "Nombre de usuario",
       email: "Email",
       password: "Contraseña",
       repeatPassword: "Repetir Contraseña",
-      person: "Persona"
+      persona: "Persona"
     },
     validation: {
       nameIsRequired: "El nombre es requerido",
