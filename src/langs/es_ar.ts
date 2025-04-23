@@ -311,7 +311,7 @@ export const es_ar = {
 
     },
   },
-  Organizacion: {
+  organizacion: {
     title: "Organizaciones",
     subTitle: "Listado de Organizaciones",
     new: "Nueva Organización",
@@ -319,22 +319,11 @@ export const es_ar = {
     detail: "Detalle de la Organización",
     list: "Lista de Organizaciones",
     form: {
-      name: "Nombre",
-      dataBase: "Nombre de la Base de datos",
-      host: "Host",
-      port: "Puerto",
-      user: "Nombre de Usuario de base de Datos",
-      password: "Contraseña",
-      dataBaseType: "Tipo de Base de datos"
+      nombre: "Nombre",
+
     },
     validation: {
-      nameIsRequired: "El nombre es requerido",
-      dataBaseIsRequired: "El Nombre de la base de datos es requerido",
-      hostIsRequired: "El Host es requerido",
-      portIsRequired: "El Puerto es requerido",
-      userIsRequired: "El Nombre de usuario de Base de datos es requerido",
-      passwordIsRequired: "La contraseña es requerida",
-      dataBaseTypeIsRequired: "El tipo de base de datos es requerido",
+      nombreIsRequired: "El nombre es requerido",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
@@ -412,7 +401,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Plan: {
+  plan: {
     title: "Planes",
     subTitle: "Listado de Planes",
     new: "Nuevo Plan",
@@ -420,18 +409,18 @@ export const es_ar = {
     detail: "Detalle del Plan",
     list: "Lista de Planes",
     form: {
-      name: "Nombre del Plan",
-      description: "Descripción del Plan",
-      subscription: "Suscripcion a la que pertenece",
-      duration: "Duración en Días",
-      price: "Precio",
+      nombre: "Nombre del Plan",
+      descripcion: "Descripción del Plan",
+      suscripcion: "Suscripción a la que pertenece",
+      duracion: "Duración en Días",
+      precio: "Precio",
     },
     validation: {
-      nameIsRequired: "El nombre es requerido",
-      descriptionIsRequired: "La descripción es requerida",
-      ssubscriptionIsRequired: "La suscripción es requerida",
-      durationIsRequired: "La duración es requerida",
-      priceIsRequired: "El precio es requerido",
+      nombreIsRequired: "El nombre es requerido",
+      descripcionIsRequired: "La descripción es requerida",
+      suscripcionIsRequired: "La suscripción es requerida",
+      duracionIsRequired: "La duración es requerida",
+      precioIsRequired: "El precio es requerido",
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
