@@ -1,0 +1,206 @@
+{
+    "projectType": "react-typescript",
+    "architecture": {
+        "components": {
+            "path": "src/components",
+            "description": "Componentes reutilizables de la aplicación"
+        },
+        "features": {
+            "path": "src/features",
+            "description": "Módulos de funcionalidades específicas",
+            "naming": {
+                "folder": "kebab-case",
+                "component": "PascalCase",
+                "file": "camelCase"
+            }
+        },
+        "pages": {
+            "path": "src/pages",
+            "description": "Páginas principales de la aplicación"
+        },
+        "services": {
+            "path": "src/service",
+            "description": "Servicios y llamadas a API",
+            "baseService": {
+                "path": "src/service/BaseService.ts",
+                "description": "Clase base para servicios que implementa operaciones CRUD"
+            },
+            "registry": {
+                "path": "src/config/api/serviceRegistry.ts",
+                "description": "Registro de servicios para el DynamicCrudPage"
+            }
+        },
+        "redux": {
+            "path": "src/redux",
+            "description": "Gestión del estado global con Redux"
+        },
+        "hooks": {
+            "path": "src/hooks",
+            "description": "Hooks personalizados"
+        },
+        "utilities": {
+            "path": "src/utilities",
+            "description": "Utilidades y funciones auxiliares"
+        },
+        "interfaces": {
+            "path": "src/interfaces",
+            "description": "Interfaces y tipos TypeScript"
+        }
+    },
+    "patterns": {
+        "crud": {
+            "description": "Patrón CRUD para módulos",
+            "structure": {
+                "feature": {
+                    "path": "src/features/{entityName}",
+                    "components": {
+                        "form": {
+                            "path": "components/form",
+                            "files": [
+                                "{entityName}Form.tsx",
+                                "use{EntityName}Form.ts"
+                            ],
+                            "fieldValidations": {
+                                "path": "fieldValidations",
+                                "files": [
+                                    "field.validations.ts"
+                                ]
+                            }
+                        },
+                        "table": {
+                            "path": "components/table",
+                            "files": [
+                                "{entityName}Table.tsx",
+                                "use{EntityName}Table.ts"
+                            ]
+                        }
+                    },
+                    "model": {
+                        "path": "model",
+                        "entity": {
+                            "path": "entity",
+                            "files": [
+                                "{entityName}.entity.ts"
+                            ]
+                        },
+                        "dtos": {
+                            "path": "dtos",
+                            "files": [
+                                "create{EntityName}.dto.ts",
+                                "update{EntityName}.dto.ts"
+                            ]
+                        }
+                    },
+                    "service": {
+                        "path": "service",
+                        "files": [
+                            "{entityName}.service.ts"
+                        ],
+                        "url": {
+                            "path": "url",
+                            "files": [
+                                "{entityName}.url.ts"
+                            ],
+                            "structure": {
+                                "baseUrl": "{entityName} = '/{entityName}'",
+                                "endpoints": {
+                                    "get": "${baseUrl}",
+                                    "getById": "${baseUrl}/:id",
+                                    "post": "${baseUrl}",
+                                    "patch": "${baseUrl}/:id",
+                                    "delete": "${baseUrl}/:id"
+                                }
+                            }
+                        },
+                        "implementation": {
+                            "extends": "BaseService",
+                            "constructor": "super({entityName}URL)",
+                            "export": "{EntityName}Api = new {EntityName}Service()"
+                        },
+                        "registry": {
+                            "import": "import { {EntityName}Api, {EntityName}Service } from '@features/{entityName}/service/{entityName}.service'",
+                            "interface": "{entityName}: {EntityName}Service",
+                            "registry": "{entityName}: {EntityName}Api"
+                        }
+                    },
+                    "view": {
+                        "path": "",
+                        "files": [
+                            "{EntityName}View.tsx"
+                        ],
+                        "structure": {
+                            "imports": [
+                                "fieldValidations from './components/form/fieldValidations/field.validations'",
+                                "DynamicCrudPage from '@components/common/cruds/DynamicCrudPage'",
+                                "FieldConfig from '@components/common/forms/DynamicFormFields'",
+                                "ICustomColumnItem from '@components/common/table/basic-table/interfaces/custombasictable'"
+                            ],
+                            "components": [
+                                "formFields: FieldConfig[]",
+                                "columns: ICustomColumnItem[]"
+                            ],
+                            "implementation": "DynamicCrudPage con moduleKey, formFields, columns y validationSchema"
+                        }
+                    }
+                }
+            },
+            "namingConventions": {
+                "folder": "kebab-case",
+                "component": "PascalCase",
+                "file": "camelCase",
+                "examples": {
+                    "singleWord": {
+                        "folder": "timeline",
+                        "component": "TimeLine",
+                        "file": "timeLine"
+                    },
+                    "multipleWords": {
+                        "folder": "time-line",
+                        "component": "TimeLine",
+                        "file": "timeLine"
+                    }
+                }
+            },
+            "i18n": {
+                "path": "src/langs/es_ar.ts",
+                "structure": {
+                    "{moduleKey}": {
+                        "title": "Título de la página",
+                        "subTitle": "Subtítulo de la página",
+                        "new": "Nuevo {entityName}",
+                        "edit": "Editar {entityName}",
+                        "detail": "Detalle de {entityName}",
+                        "list": "Listado",
+                        "form": {
+                            "{fieldName}": "Etiqueta del campo"
+                        },
+                        "validation": {
+                            "{fieldName}IsRequired": "El campo es obligatorio"
+                        },
+                        "messages": {
+                            "createdSuccess": "El Registro se creó correctamente",
+                            "updatedSuccess": "El Registro se actualizó correctamente",
+                            "deletedSuccess": "El Registro se eliminó correctamente",
+                            "createdError": "Error al crear El Registro",
+                            "updatedError": "Error al actualizar El Registro",
+                            "deletedError": "Error al eliminar El Registro",
+                            "deletedConfirm": "Esta seguro que desea eliminar el registro?",
+                            "serverError": "Error de servidor intentelo mas tarde",
+                            "unknownError": "Error desconocido"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "context": {
+        "i18n": {
+            "path": "src/i18n.ts",
+            "description": "Configuración de internacionalización"
+        },
+        "router": {
+            "path": "src/router",
+            "description": "Configuración de rutas"
+        }
+    }
+} 
