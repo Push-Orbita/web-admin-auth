@@ -24,36 +24,44 @@ const SistemasView = () => {
         { name: "url", type: "text", gridSize: "medium" },
         { name: "icono", type: "icon-select", gridSize: "medium" },
         {
-            name: "host",
-            type: "text",
-            gridSize: "medium",
-            hidden: (rowData: any) => Boolean(rowData)
-        },
-        {
-            name: "port",
-            type: "number",
-            gridSize: "medium",
-            hidden: (rowData: any) => Boolean(rowData)
-        },
-        {
-            name: "usuario",
-            type: "text",
-            gridSize: "medium",
-            hidden: (rowData: any) => Boolean(rowData)
-        },
-        {
-            name: "password",
-            type: "password",
-            gridSize: "medium",
-            hidden: (rowData: any) => Boolean(rowData)
-        },
-        {
-            name: "tipobd",
-            type: "select",
-            gridSize: "medium",
-            options: TYPEBDOptions,
-            defaultValue: 'mysql',
-            hidden: (rowData: any) => Boolean(rowData)
+            name: "credenciales",
+            label: "Credenciales de Acceso",
+            type: "group",
+            toggleable: true,
+            fields: [
+                {
+                    name: "host",
+                    type: "text",
+                    gridSize: "medium",
+                    hidden: (rowData: any) => Boolean(rowData)
+                },
+                {
+                    name: "port",
+                    type: "number",
+                    gridSize: "medium",
+                    hidden: (rowData: any) => Boolean(rowData)
+                },
+                {
+                    name: "usuario",
+                    type: "text",
+                    gridSize: "medium",
+                    hidden: (rowData: any) => Boolean(rowData)
+                },
+                {
+                    name: "password",
+                    type: "password",
+                    gridSize: "medium",
+                    hidden: (rowData: any) => Boolean(rowData)
+                },
+                {
+                    name: "tipobd",
+                    type: "select",
+                    gridSize: "medium",
+                    options: TYPEBDOptions,
+                    defaultValue: 'mysql',
+                    hidden: (rowData: any) => Boolean(rowData)
+                }
+            ]
         },
     ];
 

@@ -21,7 +21,7 @@ import { t } from "i18next";
 export interface FieldConfig {
     name: string;
     label?: string;
-    type: "number" | "text" | "email" | "password" | "date" | "select" | "multiselect" | "editor" | "autocomplete" | "checkbox" | "upload" | "upload-array" | "array" | "icon-select";
+    type: "number" | "text" | "email" | "password" | "date" | "select" | "multiselect" | "editor" | "autocomplete" | "checkbox" | "upload" | "upload-array" | "array" | "icon-select" | "group";
     fields?: FieldConfig[];
     selectKey?: string;
     optionLabel?: string;
@@ -35,6 +35,7 @@ export interface FieldConfig {
     uppercase?: boolean;
     pascalCase?: boolean;
     capitalize?: boolean;
+    toggleable?: boolean;
 }
 
 interface Props {
@@ -75,13 +76,198 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
             });
         }
     }, [fields, rowData, formik]);
-    const resolveLabel = (fieldName: string) =>
-        t(getLangMessage(moduleKey, `form.${fieldName}`)) || "Label";
+
+    const renderField = (field: FieldConfig, parentName?: string) => {
+        const {
+            name, label, type, selectKey, optionLabel, placeholder,
+            disabled, gridSize, hidden, uppercase, pascalCase, capitalize, fields: subFields,
+            toggleable
+        } = field;
+
+        const isHidden = typeof hidden === "function" ? hidden(rowData) : hidden;
+
+        if (isHidden) {
+            return <input key={name} type="hidden" name={parentName ? `${parentName}.${name}` : name} />;
+        }
+
+        const isDisabled = typeof disabled === "function" ? disabled(rowData) : disabled;
+        const columnClass = getGridClass(gridSize);
+        const optionsData = field.options ?? [];
+        const shouldUseSelectKey = !field.options && selectKey;
+        const labelFromLang = t(getLangMessage(moduleKey, `form.${name}`)) || "Label";
+        const fieldName = parentName ? `${parentName}.${name}` : name;
+
+        const renderFieldContent = () => {
+            if (type === "text" || type === "email" || type === "password" || type === "number") {
+                return (
+                    <FormTextInput
+                        label={labelFromLang}
+                        name={fieldName}
+                        type={type}
+                        placeholder={placeholder}
+                        disabled={isDisabled}
+                        uppercase={uppercase}
+                        pascalCase={pascalCase}
+                        capitalize={capitalize}
+                    />
+                );
+            }
+
+            if (type === "select") {
+                const { options, isLoading } = shouldUseSelectKey
+                    ? useSelectOptions(selectKey, item => item[optionLabel ?? "nombre"])
+                    : { options: optionsData, isLoading: false };
+
+                return (
+                    <FormSelect
+                        label={labelFromLang}
+                        name={fieldName}
+                        optionLabel={optionLabel ?? "nombre"}
+                        options={options}
+                        disabled={isDisabled || isLoading}
+                    />
+                );
+            }
+
+            if (type === "multiselect") {
+                const { options, isLoading } = shouldUseSelectKey
+                    ? useSelectOptions(selectKey, item => item[optionLabel ?? "nombre"])
+                    : { options: optionsData, isLoading: false };
+
+                return (
+                    <FormMultiSelect
+                        label={labelFromLang}
+                        name={fieldName}
+                        optionLabel={optionLabel ?? "nombre"}
+                        options={options}
+                        isLoading={isLoading}
+                        disabled={isDisabled}
+                        placeholder={placeholder}
+                    />
+                );
+            }
+
+            if (type === "date") {
+                return <FormDatePicker label={labelFromLang} name={fieldName} disabled={isDisabled} />;
+            }
+
+            if (type === "editor") {
+                return <FormEditorInput label={labelFromLang} name={fieldName} />;
+            }
+
+            if (type === "autocomplete") {
+                const { options } = shouldUseSelectKey
+                    ? useSelectOptions(selectKey, item => item[optionLabel ?? "nombre"])
+                    : { options: optionsData };
+
+                return (
+                    <FormAutoComplete
+                        label={labelFromLang}
+                        name={fieldName}
+                        optionLabel={optionLabel ?? "nombre"}
+                        options={options}
+                    />
+                );
+            }
+
+            if (type === "checkbox") {
+                return <FormCheckbox label={labelFromLang} name={fieldName} />;
+            }
+
+            if (type === "upload") {
+                return <FormFileUpload name={fieldName} label={labelFromLang} accept="image/*" />;
+            }
+
+            if (type === "upload-array") {
+                return <FormFileUploadArray name={fieldName} label={labelFromLang} accept="image/*" />;
+            }
+
+            if (type === "icon-select") {
+                return <FormIconSelect name={fieldName} label={labelFromLang} />;
+            }
+
+            return null;
+        };
+
+        if (type === "group" && Array.isArray(subFields)) {
+            return (
+                <div key={name} className="col-12 mt-3">
+                    <Fieldset legend={label} className="custom-fieldset" toggleable={toggleable}>
+                        <div className="p-fluid formgrid grid">
+                            {subFields.map(subField => renderField(subField, fieldName))}
+                        </div>
+                    </Fieldset>
+                </div>
+            );
+        }
+
+        if (type === "array" && Array.isArray(subFields)) {
+            return (
+                <div key={name} className="col-12 mt-3">
+                    <Fieldset legend={label} className="custom-fieldset">
+                        <FieldArray
+                            name={fieldName}
+                            render={(arrayHelpers) => (
+                                <>
+                                    {!Array.isArray(formik.values[fieldName]) || formik.values[fieldName].length === 0 ? (
+                                        <Message
+                                            className="w-full justify-content-start h-3rem m-2"
+                                            severity="info"
+                                            text={`No hay ${label?.toLowerCase() ?? "elementos"} agregados`}
+                                        />
+                                    ) : (
+                                        formik.values[fieldName].map((_: any, index: number) => (
+                                            <div
+                                                key={index}
+                                                className="p-fluid border-round border-1 surface-border p-3 mb-3"
+                                            >
+                                                <div className="grid">
+                                                    {subFields.map((subField) => (
+                                                        <div key={`${fieldName}[${index}].${subField.name}`} className={getGridClass(subField.gridSize)}>
+                                                            {renderField(subField, `${fieldName}[${index}]`)}
+                                                        </div>
+                                                    ))}
+                                                    <div className="col-12 flex justify-content-end mt-2">
+                                                        <Button
+                                                            icon="pi pi-trash"
+                                                            severity="danger"
+                                                            label="Eliminar"
+                                                            type="button"
+                                                            onClick={() => arrayHelpers.remove(index)}
+                                                            className="p-button-sm w-full md:w-auto"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    )}
+
+                                    <div className="col-12 md:col-4 mt-3">
+                                        <Button
+                                            type="button"
+                                            icon="pi pi-plus"
+                                            label={`Agregar ${label}`}
+                                            onClick={() => arrayHelpers.push({})}
+                                            className="p-button-sm p-button-outlined w-full md:w-auto"
+                                        />
+                                    </div>
+                                </>
+                            )}
+                        />
+                    </Fieldset>
+                </div>
+            );
+        }
+
+        return (
+            <div key={name} className={`${columnClass} mt-2`}>
+                {renderFieldContent()}
+            </div>
+        );
+    };
 
     return (
-
         <>
-
             <Form onSubmit={formik.handleSubmit}>
                 <div className="col-12">
                     <Message
@@ -91,215 +277,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                     />
                 </div>
                 <div className="p-fluid formgrid grid mb-3">
-                    {fields.map(field => {
-                        const {
-                            name, label, type, selectKey, optionLabel, placeholder,
-                            disabled, gridSize, hidden, uppercase, pascalCase, capitalize, fields: subFields
-                        } = field;
-
-                        const isHidden = typeof hidden === "function" ? hidden(rowData) : hidden;
-
-                        if (isHidden) {
-                            return <input key={name} type="hidden" name={name} />;
-                        }
-
-                        const isDisabled = typeof disabled === "function" ? disabled(rowData) : disabled;
-                        const columnClass = getGridClass(gridSize);
-                        const optionsData = field.options ?? [];
-                        const shouldUseSelectKey = !field.options && selectKey;
-                        const labelFromLang = t(getLangMessage(moduleKey, `form.${name}`)) || "Label";
-
-                        if (type === "array" && Array.isArray(subFields)) {
-                            return (
-                                <div key={name} className="col-12 mt-3">
-                                    <Fieldset legend={label} className="custom-fieldset">
-                                        <FieldArray
-                                            name={name}
-                                            render={(arrayHelpers) => (
-                                                <>
-                                                    {!Array.isArray(formik.values[name]) || formik.values[name].length === 0 ? (
-                                                        <Message
-                                                            className="w-full justify-content-start h-3rem m-2"
-                                                            severity="info"
-                                                            text={`No hay ${label?.toLowerCase() ?? "elementos"} agregados`}
-                                                        />
-                                                    ) : (
-                                                        formik.values[name].map((_: any, index: number) => (
-                                                            <div
-                                                                key={index}
-                                                                className="p-fluid border-round border-1 surface-border p-3 mb-3"
-                                                            >
-                                                                {/* Grilla de campos */}
-                                                                <div className="grid">
-                                                                    {subFields.map((subField) => {
-                                                                        const fieldName = `${name}[${index}].${subField.name}`;
-                                                                        const subColumnClass = getGridClass(subField.gridSize);
-                                                                        const { options, isLoading } = subField.selectKey
-                                                                            ? useSelectOptions(
-                                                                                subField.selectKey,
-                                                                                (item) => item[subField.optionLabel ?? "nombre"]
-                                                                            )
-                                                                            : { options: [], isLoading: false };
-                                                                        const isDisabled =
-                                                                            typeof subField.disabled === "function"
-                                                                                ? subField.disabled(rowData)
-                                                                                : subField.disabled;
-
-                                                                        return (
-                                                                            <div key={fieldName} className={subColumnClass}>
-                                                                                {subField.type === "text" ||
-                                                                                    subField.type === "email" ||
-                                                                                    subField.type === "password" ||
-                                                                                    subField.type === "number" ? (
-                                                                                    <FormTextInput
-                                                                                        name={fieldName}
-                                                                                        label={resolveLabel(subField.name)}
-                                                                                        type={subField.type}
-                                                                                        placeholder={subField.placeholder}
-                                                                                        disabled={isDisabled}
-                                                                                        uppercase={subField.uppercase}
-                                                                                        pascalCase={subField.pascalCase}
-                                                                                        capitalize={subField.capitalize}
-                                                                                    />
-                                                                                ) : subField.type === "select" ? (
-                                                                                    <FormSelect
-                                                                                        name={fieldName}
-                                                                                        label={resolveLabel(subField.name)}
-                                                                                        optionLabel={subField.optionLabel ?? "nombre"}
-                                                                                        options={options}
-                                                                                        disabled={isDisabled || isLoading}
-                                                                                    />
-                                                                                ) : subField.type === "multiselect" ? (
-                                                                                    <FormMultiSelect
-                                                                                        label={resolveLabel(subField.name)}
-                                                                                        name={fieldName}
-                                                                                        optionLabel={subField.optionLabel ?? "nombre"}
-                                                                                        options={options}
-                                                                                        isLoading={isLoading}
-                                                                                        disabled={isDisabled}
-                                                                                        placeholder={subField.placeholder}
-                                                                                    />
-                                                                                ) : subField.type === "date" ? (
-                                                                                    <FormDatePicker label={resolveLabel(subField.name)} name={fieldName} disabled={isDisabled} />
-                                                                                ) : subField.type === "editor" ? (
-                                                                                    <FormEditorInput name={fieldName} label={resolveLabel(subField.name)} />
-                                                                                ) : subField.type === "autocomplete" ? (
-                                                                                    <FormAutoComplete
-                                                                                        label={resolveLabel(subField.name)}
-                                                                                        name={fieldName}
-                                                                                        optionLabel={subField.optionLabel ?? "nombre"}
-                                                                                        options={options}
-                                                                                    />
-                                                                                ) : subField.type === "checkbox" ? (
-                                                                                    <FormCheckbox label={resolveLabel(subField.name)} name={fieldName} />
-                                                                                ) : subField.type === "upload" ? (
-                                                                                    <FormFileUpload name={fieldName} label={resolveLabel(subField.name)} accept="image/*" />
-                                                                                ) : subField.type === "upload-array" ? (
-                                                                                    <FormFileUploadArray name={fieldName} label={resolveLabel(subField.name)} accept="image/*" />
-                                                                                ) : subField.type === "icon-select" ? (
-                                                                                    <FormIconSelect name={fieldName} label={resolveLabel(subField.name)} />
-                                                                                ) : (
-                                                                                    <div className="text-red-500">Tipo no soportado: {subField.type}</div>
-                                                                                )}
-                                                                            </div>
-                                                                        );
-                                                                    })}
-
-                                                                    {/* Botón Eliminar debajo alineado a la derecha */}
-                                                                    <div className="col-12 flex justify-content-end mt-2">
-                                                                        <Button
-                                                                            icon="pi pi-trash"
-                                                                            severity="danger"
-                                                                            label="Eliminar"
-                                                                            type="button"
-                                                                            onClick={() => arrayHelpers.remove(index)}
-                                                                            className="p-button-sm w-full md:w-auto"
-                                                                        />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ))
-
-                                                    )}
-
-                                                    {/* Botón agregar */}
-                                                    <div className="col-12 md:col-4 mt-3">
-                                                        <Button
-                                                            type="button"
-                                                            icon="pi pi-plus"
-                                                            label={`Agregar ${label}`}
-                                                            onClick={() => arrayHelpers.push({})}
-                                                            className="p-button-sm p-button-outlined w-full md:w-auto"
-                                                        />
-                                                    </div>
-                                                </>
-                                            )}
-                                        />
-                                    </Fieldset>
-                                </div>
-                            );
-                        }
-
-
-
-                        const { options, isLoading } = shouldUseSelectKey
-                            ? useSelectOptions(selectKey, item => item[optionLabel ?? "nombre"])
-                            : { options: optionsData, isLoading: false };
-
-                        return (
-                            <div key={name} className={`${columnClass} mt-2`}>
-                                {type === "text" || type === "email" || type === "password" || type === "number" ? (
-                                    <FormTextInput
-                                        label={labelFromLang}
-                                        name={name}
-                                        type={type}
-                                        placeholder={placeholder}
-                                        disabled={isDisabled}
-                                        uppercase={uppercase}
-                                        pascalCase={pascalCase}
-                                        capitalize={capitalize}
-                                    />
-                                ) : type === "select" ? (
-                                    <FormSelect
-                                        label={labelFromLang}
-                                        name={name}
-                                        optionLabel={optionLabel ?? "nombre"}
-                                        options={options}
-                                        disabled={isDisabled || isLoading}
-                                    />
-                                ) : type === "multiselect" ? (
-                                    <FormMultiSelect
-                                        label={labelFromLang}
-                                        name={name}
-                                        optionLabel={optionLabel ?? "nombre"}
-                                        options={options}
-                                        isLoading={isLoading}
-                                        disabled={isDisabled}
-                                        placeholder={placeholder}
-                                    />
-                                ) : type === "date" ? (
-                                    <FormDatePicker label={labelFromLang} name={name} disabled={isDisabled} />
-                                ) : type === "editor" ? (
-                                    <FormEditorInput label={labelFromLang} name={name} />
-                                ) : type === "autocomplete" ? (
-                                    <FormAutoComplete
-                                        label={labelFromLang}
-                                        name={name}
-                                        optionLabel={optionLabel ?? "nombre"}
-                                        options={options}
-                                    />
-                                ) : type === "checkbox" ? (
-                                    <FormCheckbox label={labelFromLang} name={name} />
-                                ) : type === "upload" ? (
-                                    <FormFileUpload name={name} label={labelFromLang} accept="image/*" />
-                                ) : type === "upload-array" ? (
-                                    <FormFileUploadArray name={name} label={labelFromLang} accept="image/*" />
-                                ) : type === "icon-select" ? (
-                                    <FormIconSelect name={name} label={labelFromLang} />
-                                ) : null}
-                            </div>
-                        );
-                    })}
+                    {fields.map(field => renderField(field))}
                 </div>
                 <FormCustomButtons onCancel={onCancel} />
             </Form>
