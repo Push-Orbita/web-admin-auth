@@ -10,9 +10,12 @@ interface Props {
     formFields: FieldConfig[];
     columns: ICustomColumnItem[];
     validationSchema?: any;
+    rowExpansionTemplate?: (data: any) => React.ReactNode;
+    showExpandButtons?: boolean;
+    initialData?: any;
 }
 
-const DynamicCrudPage = ({ moduleKey, formFields, columns, validationSchema }: Props) => {
+const DynamicCrudPage = ({ moduleKey, formFields, columns, validationSchema, rowExpansionTemplate, showExpandButtons, initialData }: Props) => {
     const feature = useFeatureModule(moduleKey);
     return (
         <CrudPage
@@ -20,11 +23,13 @@ const DynamicCrudPage = ({ moduleKey, formFields, columns, validationSchema }: P
             FormComponent={DynamicFormFields}
             TableComponent={({ data, isFetching, handleDelete, moduleKey }) => (
                 <DynamicTable
-                    data={data}
+                    data={initialData || data}
                     isFetching={isFetching}
                     columns={columns}
                     handleDelete={handleDelete}
                     moduleKey={moduleKey}
+                    rowExpansionTemplate={rowExpansionTemplate}
+                    showExpandButtons={showExpandButtons}
                 />
             )}
             formFields={formFields}

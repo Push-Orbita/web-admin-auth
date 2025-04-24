@@ -120,7 +120,7 @@ export default function CustomBasicTable({
                 tableTitle={tableTitle}
                 globalFilterValue={globalFilterValue}
             />
-            {rowExpansionTemplate && showExpandButtons && (
+            {rowExpansionTemplate && showExpandButtons && data && data.length > 0 && (
                 <div className="flex gap-2">
                     <Button icon="pi pi-plus" label="Expandir Todo" onClick={handleExpandAll} text />
                     <Button icon="pi pi-minus" label="Colapsar Todo" onClick={handleCollapseAll} text />
@@ -159,8 +159,8 @@ export default function CustomBasicTable({
             onRowCollapse={onRowCollapse}
             rowExpansionTemplate={rowExpansionTemplate}
         >
-            {rowExpansionTemplate && (
-                <Column expander={allowExpansion} style={{ width: '5rem' }} />
+            {rowExpansionTemplate && showExpandButtons && data && data.length > 0 && (
+                <Column expander={true} style={{ width: '5rem' }} />
             )}
             {columns.map((column) => (
                 <Column

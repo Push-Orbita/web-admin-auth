@@ -9,9 +9,11 @@ interface Props {
     handleDelete: any;
     columns: ICustomColumnItem[];
     moduleKey: string;
+    rowExpansionTemplate?: (data: any) => React.ReactNode;
+    showExpandButtons?: boolean;
 }
 
-const DynamicTable = ({ data, isFetching, handleDelete, columns, moduleKey }: Props) => {
+const DynamicTable = ({ data, isFetching, handleDelete, columns, moduleKey, rowExpansionTemplate, showExpandButtons }: Props) => {
     return (
         <CustomBasicTable
             data={data?.data ?? []}
@@ -22,6 +24,8 @@ const DynamicTable = ({ data, isFetching, handleDelete, columns, moduleKey }: Pr
             rowsPerPageOptions={[10, 100, 1000]}
             rows={10}
             tableTitle={t(getLangMessage(moduleKey, "list"))}
+            rowExpansionTemplate={rowExpansionTemplate}
+            showExpandButtons={showExpandButtons}
         />
     );
 };
