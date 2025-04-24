@@ -1,61 +1,63 @@
 import { useField } from 'formik';
-import { AutoComplete } from 'primereact/autocomplete';
-import { useCallback, useMemo, useState, useEffect } from 'react';
+import { TreeSelect, TreeSelectChangeEvent } from 'primereact/treeselect';
+import { TreeNode } from 'primereact/treenode';
+import { useCallback, useEffect, useState } from 'react';
 import selectEntitiesConfig from '@config/components/selectConfig';
 
-interface FormAutoCompleteProps {
+interface FormTreeSelectProps {
     name: string;
     label: string;
-    optionLabel?: string;
-    options?: any[];
+    options?: TreeNode[];
     placeholder?: string;
     disabled?: boolean;
-    multiple?: boolean;
-    forceSelection?: boolean;
-    dropdown?: boolean;
-    minLength?: number;
-    delay?: number;
+    selectionMode?: 'single' | 'multiple' | 'checkbox';
+    display?: 'comma' | 'chip';
+    metaKeySelection?: boolean;
     className?: string;
-    itemTemplate?: (item: any) => React.ReactNode;
-    selectedItemTemplate?: (item: any) => React.ReactNode;
+    filter?: boolean;
+    filterBy?: string;
+    filterMode?: 'lenient' | 'strict';
+    showClear?: boolean;
+    expandedKeys?: any;
+    onToggle?: (e: { value: any }) => void;
+    panelHeaderTemplate?: () => React.ReactNode;
     panelFooterTemplate?: () => React.ReactNode;
     emptyMessage?: string;
     emptyFilterMessage?: string;
     loading?: boolean;
     loadingIcon?: string;
     virtualScrollerOptions?: any;
-    selectionLimit?: number;
     selectKey?: string;
 }
 
-const FormAutoComplete = ({
+const FormTreeSelect = ({
     name,
     label,
-    optionLabel = "nombre",
     options: propOptions,
     placeholder,
     disabled = false,
-    multiple = false,
-    forceSelection = false,
-    dropdown = false,
-    minLength = 1,
-    delay = 300,
+    selectionMode = 'single',
+    display = 'comma',
+    metaKeySelection = true,
     className = "",
-    itemTemplate,
-    selectedItemTemplate,
+    filter = false,
+    filterBy,
+    filterMode = 'lenient',
+    showClear = false,
+    expandedKeys,
+    onToggle,
+    panelHeaderTemplate,
     panelFooterTemplate,
     emptyMessage = "No hay resultados",
     emptyFilterMessage = "No hay resultados que coincidan",
     loading: propLoading = false,
     loadingIcon = "pi pi-spin pi-spinner",
     virtualScrollerOptions,
-    selectionLimit,
     selectKey
-}: FormAutoCompleteProps) => {
+}: FormTreeSelectProps) => {
     const [field, meta, helpers] = useField(name);
     const [loading, setLoading] = useState(false);
-    const [allOptions, setAllOptions] = useState<any[]>([]);
-    const [filteredOptions, setFilteredOptions] = useState<any[]>([]);
+    const [options, setOptions] = useState<TreeNode[]>([]);
 
     const isInvalid = meta.touched && meta.error;
 
@@ -68,8 +70,9 @@ const FormAutoComplete = ({
                     const config = selectEntitiesConfig[selectKey];
                     if (config) {
                         const data = await config.apiService();
-                        setAllOptions(data);
-                        setFilteredOptions(data);
+                        // Convertir los datos a formato TreeNode
+                        const treeData = convertToTreeNodes(data, config.labelField);
+                        setOptions(treeData);
                     }
                 } catch (error) {
                     console.error('Error al cargar datos iniciales:', error);
@@ -77,15 +80,14 @@ const FormAutoComplete = ({
                     setLoading(false);
                 }
             } else if (propOptions) {
-                setAllOptions(propOptions);
-                setFilteredOptions(propOptions);
+                setOptions(propOptions);
             }
         };
 
         loadInitialData();
     }, [selectKey, propOptions]);
 
-    const handleChange = useCallback((e: any) => {
+    const handleChange = useCallback((e: TreeSelectChangeEvent) => {
         helpers.setValue(e.value);
     }, [helpers]);
 
@@ -93,62 +95,46 @@ const FormAutoComplete = ({
         helpers.setTouched(true);
     }, [helpers]);
 
-    const handleSearch = useCallback((event: { query: string }) => {
-        setTimeout(() => {
-            let _filteredOptions;
-
-            if (!event.query.trim().length) {
-                _filteredOptions = [...allOptions];
-            } else {
-                const config = selectKey ? selectEntitiesConfig[selectKey] : null;
-                const labelField = config?.labelField || optionLabel;
-
-                _filteredOptions = allOptions.filter((item) => {
-                    return item[labelField].toLowerCase().includes(event.query.toLowerCase());
-                });
-            }
-
-            setFilteredOptions(_filteredOptions);
-        }, delay);
-    }, [allOptions, selectKey, optionLabel, delay]);
-
-    const currentOptionLabel = useMemo(() => {
-        if (selectKey) {
-            return selectEntitiesConfig[selectKey]?.labelField || optionLabel;
-        }
-        return optionLabel;
-    }, [selectKey, optionLabel]);
+    // Función auxiliar para convertir datos planos a formato TreeNode
+    const convertToTreeNodes = (data: any[], labelField: string): TreeNode[] => {
+        return data.map((item, index) => ({
+            key: item.id?.toString() || index.toString(),
+            label: item[labelField],
+            data: item,
+            children: item.children ? convertToTreeNodes(item.children, labelField) : undefined
+        }));
+    };
 
     return (
         <div className={`field ${className}`}>
             <label htmlFor={name} className={isInvalid ? "p-error" : ""}>
                 {label}
             </label>
-            <AutoComplete
+            <TreeSelect
                 id={name}
                 name={name}
                 value={field.value}
-                suggestions={filteredOptions}
-                completeMethod={handleSearch}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                field={currentOptionLabel}
+                options={options}
                 placeholder={placeholder}
                 disabled={disabled}
-                multiple={multiple}
-                forceSelection={forceSelection}
-                dropdown={dropdown}
-                minLength={minLength}
-                delay={delay}
-                itemTemplate={itemTemplate}
-                selectedItemTemplate={selectedItemTemplate}
+                selectionMode={selectionMode}
+                display={display}
+                metaKeySelection={metaKeySelection}
+                filter={filter}
+                filterBy={filterBy}
+                filterMode={filterMode}
+                showClear={showClear}
+                expandedKeys={expandedKeys}
+                onToggle={onToggle}
+                panelHeaderTemplate={panelHeaderTemplate}
                 panelFooterTemplate={panelFooterTemplate}
                 emptyMessage={emptyMessage}
                 emptyFilterMessage={emptyFilterMessage}
                 loading={loading || propLoading}
                 loadingIcon={loadingIcon}
                 virtualScrollerOptions={virtualScrollerOptions}
-                selectionLimit={selectionLimit}
                 className={`w-full ${isInvalid ? "p-invalid" : ""}`}
             />
             {isInvalid && <small className="p-error">{meta.error}</small>}
@@ -156,4 +142,4 @@ const FormAutoComplete = ({
     );
 };
 
-export default FormAutoComplete;
+export default FormTreeSelect; 

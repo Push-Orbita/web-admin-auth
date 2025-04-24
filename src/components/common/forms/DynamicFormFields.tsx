@@ -4,7 +4,7 @@ import useSelectOptions from "@hooks/useSelectOptions";
 import FormCustomButtons from "./FormCustomButtons";
 import { FormTextInput } from "./FormTextInput";
 import { FormEditorInput } from "./FormEditorInput";
-import { FormAutoComplete } from "./FormAutoComplete";
+
 import { FormCheckbox } from "./FormCheckbox";
 import FormDatePicker from "./FormDatePicker";
 import { Message } from "primereact/message";
@@ -17,11 +17,14 @@ import { Button } from "primereact/button";
 import FormIconSelect from "./FormIconSelect";
 import { getLangMessage } from "@helpers/getLangMessage.helper";
 import { t } from "i18next";
+import FormAutoComplete from "./FormAutoComplete";
+import FormKnob from './FormKnob';
+import FormTreeSelect from './FormTreeSelect';
 
 export interface FieldConfig {
     name: string;
     label?: string;
-    type: "number" | "text" | "email" | "password" | "date" | "select" | "multiselect" | "editor" | "autocomplete" | "checkbox" | "upload" | "upload-array" | "array" | "icon-select" | "group";
+    type: "number" | "text" | "email" | "password" | "date" | "select" | "multiselect" | "editor" | "autocomplete" | "checkbox" | "upload" | "upload-array" | "array" | "icon-select" | "group" | "knob" | "treeselect";
     fields?: FieldConfig[];
     selectKey?: string;
     optionLabel?: string;
@@ -36,6 +39,26 @@ export interface FieldConfig {
     pascalCase?: boolean;
     capitalize?: boolean;
     toggleable?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
+    size?: number;
+    strokeWidth?: number;
+    valueTemplate?: string;
+    textColor?: string;
+    rangeColor?: string;
+    valueColor?: string;
+    selectionMode?: 'single' | 'multiple' | 'checkbox';
+    display?: 'comma' | 'chip';
+    metaKeySelection?: boolean;
+    filter?: boolean;
+    filterBy?: string;
+    filterMode?: 'lenient' | 'strict';
+    showClear?: boolean;
+    expandedKeys?: any;
+    onToggle?: (e: { value: any }) => void;
+    panelHeaderTemplate?: () => React.ReactNode;
+    panelFooterTemplate?: () => React.ReactNode;
 }
 
 interface Props {
@@ -81,7 +104,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
         const {
             name, label, type, selectKey, optionLabel, placeholder,
             disabled, gridSize, hidden, uppercase, pascalCase, capitalize, fields: subFields,
-            toggleable
+            toggleable, min, max, step, size, strokeWidth, valueTemplate, textColor, rangeColor, valueColor
         } = field;
 
         const isHidden = typeof hidden === "function" ? hidden(rowData) : hidden;
@@ -184,6 +207,49 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
 
             if (type === "icon-select") {
                 return <FormIconSelect name={fieldName} label={labelFromLang} />;
+            }
+
+            if (type === "knob") {
+                return (
+                    <FormKnob
+                        name={fieldName}
+                        label={labelFromLang}
+                        min={min}
+                        max={max}
+                        step={step}
+                        size={size}
+                        strokeWidth={strokeWidth}
+                        valueTemplate={valueTemplate}
+                        textColor={textColor}
+                        rangeColor={rangeColor}
+                        valueColor={valueColor}
+                        disabled={isDisabled}
+                    />
+                );
+            }
+
+            if (type === "treeselect") {
+                return (
+                    <FormTreeSelect
+                        name={fieldName}
+                        label={labelFromLang}
+                        options={field.options}
+                        placeholder={placeholder}
+                        disabled={isDisabled}
+                        selectionMode={field.selectionMode}
+                        display={field.display}
+                        metaKeySelection={field.metaKeySelection}
+                        filter={field.filter}
+                        filterBy={field.filterBy}
+                        filterMode={field.filterMode}
+                        showClear={field.showClear}
+                        expandedKeys={field.expandedKeys}
+                        onToggle={field.onToggle}
+                        panelHeaderTemplate={field.panelHeaderTemplate}
+                        panelFooterTemplate={field.panelFooterTemplate}
+                        selectKey={selectKey}
+                    />
+                );
             }
 
             return null;
