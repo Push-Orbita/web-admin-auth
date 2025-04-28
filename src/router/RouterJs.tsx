@@ -14,7 +14,8 @@ const Contrato = lazy(() => import('../pages/contarto/Contrato'));
 const Accion = lazy(() => import('../pages/accion/Accion'));
 const Usuario = lazy(() => import('../pages/usuario/Usuario'));
 const Rol = lazy(() => import('../pages/rol/Rol'));
-const Modulo = lazy(() => import('../pages/modulo/Modulo'))
+const Modulo = lazy(() => import('../pages/modulo/Modulo'));
+const AccionModulo = lazy(() => import('../pages/modulo/AccionModulo'));
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
@@ -30,7 +31,8 @@ const componentsMap: ComponentsMap = {
     'Accion': Accion,
     'Usuario': Usuario,
     'Rol': Rol,
-    'Modulo': Modulo
+    'Modulo': Modulo,
+    'AccionModulo': AccionModulo
 };
 
 export const RouterJs = () => {

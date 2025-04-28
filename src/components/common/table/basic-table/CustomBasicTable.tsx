@@ -46,7 +46,7 @@ export default function CustomBasicTable({
     footerColumnGroup,
     headerColumnGroup,
     rowExpansionTemplate,
-    allowExpansion,
+    // allowExpansion,
     onRowExpand,
     onRowCollapse,
     showExpandButtons = true,
