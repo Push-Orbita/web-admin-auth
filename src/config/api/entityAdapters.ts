@@ -1,12 +1,17 @@
-const entityAdapters = {
+import { formikToModulo, moduloToFormik, ModuloAdapterOptions } from "@features/modulo/model/adapter/modulo.adapter";
 
+const entityAdapters = {
+    modulo: {
+        toFormik: moduloToFormik,
+        toApi: (data: any, options?: ModuloAdapterOptions) => formikToModulo(data, options)
+    },
 };
 
 export type ModuleKey = keyof typeof entityAdapters;
 export const getEntityAdapter = (moduleKey: string) => {
     const defaultAdapter = {
         toFormik: (data: any) => data,
-        toApi: (data: any) => data,
+        toApi: (data: any, options?: any) => data,
         toTable: (input: any) => {
             const normalized = Array.isArray(input)
                 ? input

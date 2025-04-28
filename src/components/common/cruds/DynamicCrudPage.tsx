@@ -30,6 +30,7 @@ const DynamicCrudPage = ({ moduleKey, formFields, columns, validationSchema, row
                     moduleKey={moduleKey}
                     rowExpansionTemplate={rowExpansionTemplate}
                     showExpandButtons={showExpandButtons}
+                    
                 />
             )}
             formFields={formFields}

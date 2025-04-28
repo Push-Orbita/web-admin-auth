@@ -552,32 +552,33 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Module: {
-    title: "Modulo",
-    subTitle: "Listado de Modulos",
-    new: "Nueva Modulo",
-    edit: "Editar Modulo",
-    detail: "Detalle de la Modulos",
-    list: "Lista de Usuarios",
+  modulo: {
+    title: "Módulos",
+    subTitle: "Listado de Módulos",
+    new: "Nuevo Módulo",
+    edit: "Editar Módulo",
+    detail: "Detalle del Módulo",
+    list: "Lista de Módulos",
     form: {
-      name: "Nombre de Modulos",
+      nombre: "Nombre del Módulo",
       descripcion: "Descripción",
-      system: "Sistema",
       label: "Label",
+      element: "Elemento",
       icon: "Icono",
-      path: "Path/Ruta",
-      parentModule: "Modulo Padre",
-      element: "Elemento a Renderizar"
+      path: "Path",
+      moduloPadre: "Módulo Padre",
+      sistema: "Sistema",
+      accionesPorModulo: "Acciones por Módulo"
     },
     validation: {
-      descriptionIsRequired: "La descripción es requerida",
-      systemIsRequired: "El sistema es requerido",
+      nombreIsRequired: "El nombre es requerido",
+      descripcionIsRequired: "La descripción es requerida",
       labelIsRequired: "El label es requerido",
+      elementIsRequired: "El elemento es requerido",
       iconIsRequired: "El icono es requerido",
       pathIsRequired: "El path es requerido",
-      parentModuleIsRequired: "El modulo padre es requerido",
-      elementIsRequired: "El elemento a renderizar es requerido",
-      nameIsRequired: "El nombre es requerido",
+      sistemaIsRequired: "El sistema es requerido",
+      accionesPorModuloIsRequired: "Debe seleccionar al menos una acción"
     },
     messages: {
       createdSuccess: "El Registro se creó correctamente",
@@ -586,10 +587,10 @@ export const es_ar = {
       createdError: "Error al crear el Registro",
       updatedError: "Error al actualizar el Registro",
       deletedError: "Error al eliminar el Registro",
-      deletedConfirm: "Esta seguro que desea eliminar el registro?",
-    },
+      deletedConfirm: "¿Está seguro que desea eliminar el registro?"
+    }
   },
-  ActionModule: {
+  accionModulo: {
     title: "Acción Por Modulo",
     subTitle: "Listado de Acciones Por Modulos",
     new: "Nueva Acción Por Modulo",
@@ -617,7 +618,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Rol: {
+  rol: {
     title: "Rol",
     subTitle: "Listado de Rol",
     new: "Nuevo Rol",
@@ -645,7 +646,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  AccionRol: {
+  accionRol: {
     title: "Acción Por Rol",
     subTitle: "Listado de Acciones Por Rol",
     new: "Nueva Acción Por Rol",
@@ -703,6 +704,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   }
+
 
 
 };

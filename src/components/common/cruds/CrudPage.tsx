@@ -80,11 +80,9 @@ export const CrudPage = ({
 
     // Maneja el submit adaptando los valores al formato esperado por la API
     const handleSubmit = (values: any, formikHelpers: FormikHelpers<any>) => {
-        const adaptedValues = adapter.toApi(values);
+        const adaptedValues = adapter.toApi(values, { isPatch: !!rowData });
         return formHandler(adaptedValues, formikHelpers);
     };
-
-
 
     return (
         <DashboardLayout>

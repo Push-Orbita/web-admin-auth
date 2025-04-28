@@ -5,6 +5,7 @@ import { omitId, replaceParamId } from "@utilities/replace-param.utils";
 export interface BaseEntity {
     id: number;
 }
+
 export class BaseService<T extends BaseEntity> {
     protected urls: {
         get: string;
@@ -35,9 +36,12 @@ export class BaseService<T extends BaseEntity> {
     };
 
     update = async (data: Partial<T> & { id: number }): Promise<T> => {
-        const response = await Axios.patch<T>(replaceParamId(this.urls.patch, data.id), omitId(data), {
-            cancelToken: cancelTokenSource.token,
-        });
+        const { id, ...rest } = data;
+        const response = await Axios.patch<T>(
+            replaceParamId(this.urls.patch, id),
+            rest,
+            { cancelToken: cancelTokenSource.token }
+        );
         return response.data;
     };
 
@@ -46,5 +50,4 @@ export class BaseService<T extends BaseEntity> {
             cancelToken: cancelTokenSource.token,
         });
     };
-
 }

@@ -12,9 +12,102 @@ validationSchema: El esquema de validación
 5. ¿Qué validaciones necesitas para los campos?
 Con esta información podré crear el módulo completo siguiendo la estructura que hemos definido.
 
-1. rol
-2. rol
-3. nombre, descripcion
-4.  nombre, descripcion, accionesPorRol es el rowexpand
+1. modulo
+2. modulo
+3. [
+  {
+    "nombre": "string",
+    "descripcion": "string",
+    "label": "string",
+    "element": "string",
+    "icon": "string",
+    "path": "string",
+    "moduloPadre": 0,
+    "sistema": 0,
+    "accionesPorModulo": [
+      {
+        "modulo": 0,
+        "accion": 0
+      }
+    ]
+  }
+]
+para acciones por modulo tienes que usar el formfield array solo necesita accion que es un select que esta como selectkey="accion"
+Y para editar y que formik tome bien los datos dentro de model crea la carpeta adapter con el modulo.adapter.ts y te doy este ejemlplo mas la respuesta que viene del backend en el punto 4. 
+Ejemplo 
+export const noticiaToFormik = (rowData: NoticiaEntity): NoticiaPostDTO => {
+    return {
+        titulo: rowData?.titulo ?? "",
+        bajada: rowData?.bajada ?? "",
+        noticia: rowData?.noticia ?? "",
+        autor: rowData?.autor ?? "",
+        estado: rowData?.estado ?? "",
+        fecha: rowData?.fecha ?? "",
+        imgMiniatura: rowData?.imgMiniatura ?? "",
+        imgPortada: rowData?.imgPortada ?? "",
+        tags: rowData?.tags?.map(tag => tag?.tag?.id).filter((id): id is number => !!id) ?? [],
+        categoria: rowData?.categoria?.id ?? 0,
+        pagina: 5 // Si viene del back, lo tomas, si no, default
+    };
+};
+
+export const formikToNoticia = (values: NoticiaPostDTO) => {
+    return {
+        titulo: values.titulo,
+        bajada: values.bajada,
+        noticia: values.noticia,
+        autor: values.autor,
+        estado: values.estado,
+        fecha: values.fecha,
+        imgMiniatura: values.imgMiniatura,
+        imgPortada: values.imgPortada,
+        categoria: values.categoria,  // Solo el id directo
+        pagina: 5,
+        tags: values.tags // Array plano de IDs
+    };
+};
+
+4.  esta es la respuesta  [
+    {
+      "id": 1,
+      "nombre": "Productos",
+      "descripcion": "string",
+      "label": "string",
+      "element": "Producto",
+      "icon": "pi pi-box",
+      "path": "/producto",
+      "moduloPadre": null,
+      "sistema": {
+        "id": 1,
+        "nombre": "Facturación",
+        "descripcion": "Sistema de gestion integral para negocios",
+        "url": "pi pi-card",
+        "icono": "pi pi-card"
+      },
+      "accionesPorModulo": [
+        {
+          "id": 1,
+          "accion": {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          }
+        },
+        {
+          "id": 16,
+          "accion": {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          }
+        },
+        {
+          "id": 21,
+          "accion": {
+            "id": 1,
+            "nombre": "Baja",
+            "descripcion": "B"
+          }
+        }, puedes hacerlo como rowExpand
 5. nombre= string obligatorio
 
