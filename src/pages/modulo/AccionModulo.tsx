@@ -1,10 +1,7 @@
-import React from 'react'
-
+import AccionModuloView from '@features/accion-modulo/AccionModuloView'
 const AccionModulo = () => {
     return (
-        <div>
-            asdasd
-        </div>
+        <AccionModuloView />
     )
 }
 

@@ -1,3 +1,4 @@
+import { accionModuloToFormik, formikToAccionModulo } from "@features/accion-modulo/model/adapter/accionModulo.adapter";
 import { formikToModulo, moduloToFormik, ModuloAdapterOptions } from "@features/modulo/model/adapter/modulo.adapter";
 
 const entityAdapters = {
@@ -5,6 +6,10 @@ const entityAdapters = {
         toFormik: moduloToFormik,
         toApi: (data: any, options?: ModuloAdapterOptions) => formikToModulo(data, options)
     },
+    accionModulo: {
+        toFormik: accionModuloToFormik,
+        toApi: formikToAccionModulo,
+    }
 };
 
 export type ModuleKey = keyof typeof entityAdapters;
