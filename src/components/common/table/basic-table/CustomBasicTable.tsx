@@ -121,7 +121,7 @@ export default function CustomBasicTable({
                 globalFilterValue={globalFilterValue}
             />
             {rowExpansionTemplate && showExpandButtons && data && data.length > 0 && (
-                <div className="flex gap-2">
+                <div className="flex gap-2 ml-5">
                     <Button icon="pi pi-plus" label="Expandir Todo" onClick={handleExpandAll} text />
                     <Button icon="pi pi-minus" label="Colapsar Todo" onClick={handleCollapseAll} text />
                 </div>

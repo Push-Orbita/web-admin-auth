@@ -16,10 +16,15 @@ export interface RolEntity {
 
 export interface AccionesPorRol {
     id: number;
-    nombre: string;
-    descripcion: string;
-    permisosDeAcceso: PermisosDeAcceso[];
-    metadata: Metadata;
+    accionPorModulo: {
+        modulo: {
+            nombre: string;
+        };
+        accion: {
+            nombre: string;
+            descripcion: string;
+        };
+    };
 }
 
 export interface PermisosDeAcceso {

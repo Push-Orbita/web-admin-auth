@@ -1,6 +1,7 @@
 import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
 import { FieldConfig } from "@components/common/forms/DynamicFormFields";
 import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
+import { Tag } from 'primereact/tag';
 import { fieldValidations } from './components/form/fieldValidations/field.validations';
 
 const ModuloView = () => {
@@ -85,28 +86,34 @@ const ModuloView = () => {
             sortable: true,
             filter: true,
             body: (rowData: any) => <div>{rowData?.sistema?.nombre || "-"}</div>
-        },
-        {
-            field: "accionesPorModulo",
-            header: "Acciones",
-            sortable: false,
-            filter: false,
-            body: (rowData: any) => {
-                if (!rowData?.accionesPorModulo || !Array.isArray(rowData.accionesPorModulo) || rowData.accionesPorModulo.length === 0) {
-                    return <div>-</div>;
-                }
-                return (
-                    <div className="flex flex-wrap gap-1">
-                        {rowData.accionesPorModulo.map((accion: any) => (
-                            <span key={accion.id} className="p-1 bg-primary-100 text-primary-900 rounded">
-                                {accion?.accion?.nombre || "-"}
-                            </span>
-                        ))}
-                    </div>
-                );
-            }
         }
     ];
+
+    const renderRowExpand = (rowData: any) => {
+        if (!rowData?.accionesPorModulo || !Array.isArray(rowData.accionesPorModulo) || rowData.accionesPorModulo.length === 0) {
+            return (
+                <div className="p-4">
+                    <p>No hay acciones disponibles para este módulo.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="p-4">
+                <h3 className="text-lg font-semibold mb-3">Acciones del Módulo</h3>
+                <div className="flex flex-wrap gap-2">
+                    {rowData.accionesPorModulo.map((accion: any) => (
+                        <Tag
+                            key={accion.id}
+                            value={accion?.accion?.nombre || "-"}
+                            severity="warning"
+                            className="text-sm"
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    };
 
     return (
         <DynamicCrudPage
@@ -114,6 +121,8 @@ const ModuloView = () => {
             formFields={formFields}
             columns={columns}
             validationSchema={fieldValidations}
+            rowExpansionTemplate={renderRowExpand}
+            showExpandButtons={true}
         />
     );
 };

@@ -1,9 +1,7 @@
 import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
 import { FieldConfig } from "@components/common/forms/DynamicFormFields";
 import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
-import { Card } from 'primereact/card';
-import { Divider } from 'primereact/divider';
-import { AccionesPorRol, PermisosDeAcceso, RolEntity } from "./model/entity/rol.entity";
+import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
 
 const RolView = () => {
     const formFields: FieldConfig[] = [
@@ -18,16 +16,30 @@ const RolView = () => {
     ];
 
     const renderRowExpand = (rowData: RolEntity) => {
+        if (!rowData?.accionesPorRol || !Array.isArray(rowData.accionesPorRol)) {
+            return (
+                <div className="p-4">
+                    <p>No hay acciones disponibles para este rol.</p>
+                </div>
+            );
+        }
+
         return (
             <div className="p-4">
                 <h3 className="text-lg font-semibold mb-3">Acciones Permitidas por Módulo</h3>
                 <ul className="list-disc pl-5 space-y-2">
-                    {rowData.accionesPorRol.map((accion: any, index: number) => (
-                        <li key={index} className="text-sm">
-                            <span className="font-medium">{accion.accionPorModulo.modulo.nombre}:</span>
-                            <span className="ml-2">{accion.accionPorModulo.accion.nombre} ({accion.accionPorModulo.accion.descripcion})</span>
-                        </li>
-                    ))}
+                    {rowData.accionesPorRol.map((accion: AccionesPorRol, index: number) => {
+                        const moduloNombre = accion?.accionPorModulo?.modulo?.nombre || 'Módulo no especificado';
+                        const accionNombre = accion?.accionPorModulo?.accion?.nombre || 'Acción no especificada';
+                        const accionDescripcion = accion?.accionPorModulo?.accion?.descripcion || '';
+
+                        return (
+                            <li key={index} className="text-sm">
+                                <span className="font-medium">{moduloNombre}:</span>
+                                <span className="ml-2">{accionNombre} {accionDescripcion && `(${accionDescripcion})`}</span>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         );
