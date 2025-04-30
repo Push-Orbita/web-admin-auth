@@ -1,28 +1,26 @@
-import { PersonaApi } from "@features/persona/service/persona.service";
-import { PersonaService } from "@features/persona/service/persona.service";
+import { AccionModuloEntity } from "@features/accion-modulo/model/entity/accionModulo.entity";
+import { AccionModuloApi, AccionModuloService } from "@features/accion-modulo/service/accionModulo.service";
+import { AccionEntity } from "@features/accion/model/entity/accion.entity";
+import { AccionApi, AccionService } from "@features/accion/service/accion.service";
+import { ContratoEntity } from "@features/contrato/model/entity/contrato.entity";
+import { ContratoApi, ContratoService } from "@features/contrato/service/contrato.service";
+import { ModuloEntity, PermisoEntity } from "@features/modulo/model/entity/modulo.entity";
+import { ModuloApi, ModuloService } from "@features/modulo/service/modulo.service";
+import { OrganizacionEntity } from "@features/organizacion/model/entity/organizacion.entity";
+import { OrganizacionApi, OrganizacionService } from "@features/organizacion/service/organizacion.service";
+import { PermisosApi, PermisosService } from "@features/permisos/service/permisos.service";
 import { PersonaEntity } from "@features/persona/model/entity/persona.entity";
+import { PersonaApi, PersonaService } from "@features/persona/service/persona.service";
+import { PlanEntity } from "@features/plan/model/entity/plan.entity";
+import { PlanApi, PlanService } from "@features/plan/service/plan.service";
+import { RolEntity } from "@features/rol/model/entity/rol.entity";
+import { RolApi, RolService } from "@features/rol/service/rol.service";
 import { SistemasEntity } from "@features/sistemas/model/entity/sistema.entity";
 import { SistemasApi, SistemasService } from "@features/sistemas/service/sistemas.service";
 import { SuscripcionEntity } from "@features/suscripciones/model/entity/suscripcion.entity";
 import { SuscripcionApi, SuscripcionService } from "@features/suscripciones/service/suscripcion.service";
-import { OrganizacionApi, OrganizacionService } from "@features/organizacion/service/organizacion.service";
-import { OrganizacionEntity } from "@features/organizacion/model/entity/organizacion.entity";
-import { PlanService } from "@features/plan/service/plan.service";
-import { PlanApi } from "@features/plan/service/plan.service";
-import { PlanEntity } from "@features/plan/model/entity/plan.entity";
-import { ContratoApi, ContratoService } from "@features/contrato/service/contrato.service";
-import { ContratoEntity } from "@features/contrato/model/entity/contrato.entity";
-import { AccionApi, AccionService } from "@features/accion/service/accion.service";
-import { AccionEntity } from "@features/accion/model/entity/accion.entity";
-import { UsuarioApi } from "@features/usuario/service/usuario.service";
 import { UsuarioEntity } from "@features/usuario/model/entity/usuario.entity";
-import { UsuarioService } from "@features/usuario/service/usuario.service";
-import { RolApi, RolService } from "@features/rol/service/rol.service";
-import { RolEntity } from "@features/rol/model/entity/rol.entity";
-import { ModuloApi, ModuloService } from "@features/modulo/service/modulo.service";
-import { ModuloEntity } from "@features/modulo/model/entity/modulo.entity";
-import { AccionModuloApi, AccionModuloService } from "@features/accion-modulo/service/accionModulo.service";
-import { AccionModuloEntity } from "@features/accion-modulo/model/entity/accionModulo.entity";
+import { UsuarioApi, UsuarioService } from "@features/usuario/service/usuario.service";
 
 // Definir los servicios (el mapa indica el tipo de cada servicio)
 interface ServiceMap {
@@ -37,6 +35,7 @@ interface ServiceMap {
     rol: RolService,
     modulo: ModuloService,
     accionModulo: AccionModuloService,
+    permisos: PermisosService
 }
 
 // Registro de servicios (instancias reales)
@@ -52,6 +51,7 @@ const serviceRegistry: ServiceMap = {
     rol: RolApi,
     modulo: ModuloApi,
     accionModulo: AccionModuloApi,
+    permisos: PermisosApi,
 };
 
 // Definir los posibles módulos
@@ -69,6 +69,7 @@ interface EntityMap {
     rol: RolEntity,
     modulo: ModuloEntity,
     accionModulo: AccionModuloEntity,
+    permisos: PermisoEntity
 }
 
 export type ModuleEntity<M extends ModuleKey> = EntityMap[M];

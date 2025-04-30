@@ -5,6 +5,9 @@ import { PlanApi } from "@features/plan/service/plan.service";
 import { AccionApi } from "@features/accion/service/accion.service";
 import { PersonaApi } from "@features/persona/service/persona.service";
 import { ModuloApi } from "@features/modulo/service/modulo.service";
+import Rol from "@pages/rol/Rol";
+import { RolApi } from "@features/rol/service/rol.service";
+import { UsuarioApi } from "@features/usuario/service/usuario.service";
 interface SelectEntityConfig {
     apiService: () => Promise<any>; // API que devuelve las opciones
     labelField: string; // Campo que se usará como label en el select
@@ -44,6 +47,16 @@ const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
     },
     modulo: {
         apiService: ModuloApi.getAll,
+        labelField: "nombre", // Campo que se mostrará en el select
+        valueField: "id", // Campo que se usará como valor del select
+    },
+    rol: {
+        apiService: RolApi.getAll,
+        labelField: "nombre", // Campo que se mostrará en el select
+        valueField: "id", // Campo que se usará como valor del select
+    },
+    usuario: {
+        apiService: UsuarioApi.getAll,
         labelField: "nombre", // Campo que se mostrará en el select
         valueField: "id", // Campo que se usará como valor del select
     }

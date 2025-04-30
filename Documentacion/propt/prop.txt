@@ -12,26 +12,18 @@ validationSchema: El esquema de validación
 5. ¿Qué validaciones necesitas para los campos?
 Con esta información podré crear el módulo completo siguiendo la estructura que hemos definido.
 
-1. accionModulo
-2. accuionModulo
+1. permisos
+2. permisos
 3. {
-  "modulo": 0,
-  "accion": [
-    0
-  ]
+  "usuario": 0, = un slect con key "usuario"
+  "sistema": 0, = un slect con key "sistema"
+  "organizacion": 0, = un slect con key "organizacion"
+  "rol": = un select con key "rol"
 }
-El modulo es un select comun tambien con el select key = "modulo"
-para acciones  tienes que usar el form multi select solo necesita accion que es un select que esta como selectkey="accion"
-Y para editar y que formik tome bien los datos dentro de model crea la carpeta adapter con el modulo.adapter.ts y te doy este ejemlplo mas la respuesta que viene del backend en el punto 4. 
-Ejemplo 
-export const noticiaToFormik = (rowData: NoticiaEntity): NoticiaPostDTO => {
-    return {
-       
-        tags: rowData?.tags?.map(tag => tag?.tag?.id).filter((id): id is number => !!id) ?? [],
-        
-    };
-};
+4. "usuario"
+  "sistema"
+  "organizacion"
 
 
-5. modulo = string obligatorio
+5. usuario es obligatorio
 

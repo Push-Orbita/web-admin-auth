@@ -671,7 +671,7 @@ export const es_ar = {
       deletedConfirm: "Esta seguro que desea eliminar el registro?",
     },
   },
-  Permissions: {
+  permisos: {
     title: "Permisos",
     subTitle: "Listado de Permisos",
     new: "Nuevo Permiso",
@@ -679,9 +679,9 @@ export const es_ar = {
     detail: "Detalle del Permiso",
     list: "Lista de Permisos",
     form: {
-      user: "Usuario",
-      system: "Sistema",
-      organization: "Organización",
+      usuario: "Usuario",
+      sistema: "Sistema",
+      organizacion: "Organización",
       rol: "Rol",
     },
     validation: {
