@@ -7,39 +7,26 @@ import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { adaptarModulosParaTreeSelect } from "./model/adapter/rol.adapter";
 import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
-import { Dropdown } from "primereact/dropdown";
-import { SistemasApi } from "@features/sistemas/service/sistemas.service";
+
 
 const RolView = () => {
     const [modulosTree, setModulosTree] = useState<TreeNode[]>([]);
-    const [sistemas, setSistemas] = useState<any[]>([]);
-    const [sistemaSeleccionado, setSistemaSeleccionado] = useState<number | null>(null);
-
-    const cargarSistemas = useCallback(async () => {
-        try {
-            const response = await SistemasApi.getAll();
-            setSistemas(response);
-        } catch (error) {
-            console.error('Error al cargar sistemas:', error);
-            toast.error('Error al cargar los sistemas');
-        }
-    }, []);
 
     const cargarModulos = useCallback(async () => {
         try {
-            const searchParams = sistemaSeleccionado ? { sistema: sistemaSeleccionado } : undefined;
-            const response = await ModuloApi.getAll(searchParams);
-            const modulosAdaptados = adaptarModulosParaTreeSelect(response);
-            setModulosTree(modulosAdaptados);
+            const response = await ModuloApi.getAll();
+            if ('data' in response && Array.isArray(response.data)) {
+                const modulosAdaptados = adaptarModulosParaTreeSelect(response.data);
+                setModulosTree(modulosAdaptados);
+            } else {
+                console.error('Formato de respuesta inválido:', response);
+                toast.error('Error en el formato de los datos');
+            }
         } catch (error) {
             console.error('Error al cargar módulos:', error);
             toast.error('Error al cargar los módulos');
         }
-    }, [sistemaSeleccionado]);
-
-    useEffect(() => {
-        cargarSistemas();
-    }, [cargarSistemas]);
+    }, []);
 
     useEffect(() => {
         cargarModulos();
@@ -106,27 +93,13 @@ const RolView = () => {
     };
 
     return (
-        <div className="card">
-            <div className="flex justify-content-end mb-3">
-                <Dropdown
-                    value={sistemaSeleccionado}
-                    options={sistemas}
-                    onChange={(e) => setSistemaSeleccionado(e.value)}
-                    optionLabel="nombre"
-                    optionValue="id"
-                    placeholder="Seleccionar Sistema"
-                    className="w-full md:w-14rem"
-                    showClear
-                />
-            </div>
-            <DynamicCrudPage
-                moduleKey="rol"
-                formFields={formFields}
-                columns={columns}
-                rowExpansionTemplate={renderRowExpand}
-                showExpandButtons={true}
-            />
-        </div>
+        <DynamicCrudPage
+            moduleKey="rol"
+            formFields={formFields}
+            columns={columns}
+            rowExpansionTemplate={renderRowExpand}
+            showExpandButtons={true}
+        />
     );
 };
 
