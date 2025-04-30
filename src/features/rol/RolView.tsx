@@ -1,13 +1,73 @@
 import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
 import { FieldConfig } from "@components/common/forms/DynamicFormFields";
 import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
+import { ModuloApi } from "@features/modulo/service/modulo.service";
+import { TreeNode } from "primereact/treenode";
+import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { adaptarModulosParaTreeSelect } from "./model/adapter/rol.adapter";
 import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
+import { Dropdown } from "primereact/dropdown";
+import { SistemasApi } from "@features/sistemas/service/sistemas.service";
 
 const RolView = () => {
+    const [modulosTree, setModulosTree] = useState<TreeNode[]>([]);
+    const [sistemas, setSistemas] = useState<any[]>([]);
+    const [sistemaSeleccionado, setSistemaSeleccionado] = useState<number | null>(null);
+
+    const cargarSistemas = useCallback(async () => {
+        try {
+            const response = await SistemasApi.getAll();
+            setSistemas(response);
+        } catch (error) {
+            console.error('Error al cargar sistemas:', error);
+            toast.error('Error al cargar los sistemas');
+        }
+    }, []);
+
+    const cargarModulos = useCallback(async () => {
+        try {
+            const searchParams = sistemaSeleccionado ? { sistema: sistemaSeleccionado } : undefined;
+            const response = await ModuloApi.getAll(searchParams);
+            const modulosAdaptados = adaptarModulosParaTreeSelect(response);
+            setModulosTree(modulosAdaptados);
+        } catch (error) {
+            console.error('Error al cargar módulos:', error);
+            toast.error('Error al cargar los módulos');
+        }
+    }, [sistemaSeleccionado]);
+
+    useEffect(() => {
+        cargarSistemas();
+    }, [cargarSistemas]);
+
+    useEffect(() => {
+        cargarModulos();
+    }, [cargarModulos]);
+
     const formFields: FieldConfig[] = [
-        { name: "nombre", type: "text", gridSize: "medium" },
-        { name: "descripcion", type: "text", gridSize: "medium" },
-        { name: "accionesPorRol", type: "array", gridSize: "full" }
+        {
+            name: "nombre",
+            type: "text",
+            gridSize: "medium"
+        },
+        {
+            name: "descripcion",
+            type: "text",
+            gridSize: "medium"
+        },
+        {
+            name: "accionesPorRol",
+            type: "treeselect",
+            label: "Acciones",
+            options: modulosTree,
+            selectionMode: "checkbox",
+            display: "chip",
+            filter: true,
+            filterMode: "lenient",
+            showClear: true,
+            gridSize: "full"
+        }
     ];
 
     const columns: ICustomColumnItem[] = [
@@ -46,13 +106,27 @@ const RolView = () => {
     };
 
     return (
-        <DynamicCrudPage
-            moduleKey="rol"
-            formFields={formFields}
-            columns={columns}
-            rowExpansionTemplate={renderRowExpand}
-            showExpandButtons={true}
-        />
+        <div className="card">
+            <div className="flex justify-content-end mb-3">
+                <Dropdown
+                    value={sistemaSeleccionado}
+                    options={sistemas}
+                    onChange={(e) => setSistemaSeleccionado(e.value)}
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccionar Sistema"
+                    className="w-full md:w-14rem"
+                    showClear
+                />
+            </div>
+            <DynamicCrudPage
+                moduleKey="rol"
+                formFields={formFields}
+                columns={columns}
+                rowExpansionTemplate={renderRowExpand}
+                showExpandButtons={true}
+            />
+        </div>
     );
 };
 

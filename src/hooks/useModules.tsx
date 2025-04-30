@@ -24,9 +24,9 @@ export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ childre
 
     const startToolbarTemplate = (): JSX.Element => (
         <div className="my-2">
-            {permisos.puedeAgregar ? (
-                <Button label="Nuevo" icon="pi pi-plus" className="mr-2" onClick={() => setVisible(true)} />
-            ) : null}
+
+            <Button label="Nuevo" icon="pi pi-plus" className="mr-2" onClick={() => setVisible(true)} />
+
         </div>
     );
 

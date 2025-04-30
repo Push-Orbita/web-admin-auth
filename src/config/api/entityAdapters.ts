@@ -1,5 +1,13 @@
 import { accionModuloToFormik, formikToAccionModulo } from "@features/accion-modulo/model/adapter/accionModulo.adapter";
 import { formikToModulo, moduloToFormik, ModuloAdapterOptions } from "@features/modulo/model/adapter/modulo.adapter";
+import { permisosToTable } from "@features/permisos/model/adapter/permisos.adapter";
+import { formikToPlan, planToFormik } from "@features/plan/model/adapter/plan.adapter";
+
+export interface EntityAdapter {
+    toFormik: (data: any) => any;
+    toApi: (data: any, options?: { isPatch?: boolean }) => any;
+    toTable?: (data: any[]) => any[];
+}
 
 const entityAdapters = {
     modulo: {
@@ -9,6 +17,13 @@ const entityAdapters = {
     accionModulo: {
         toFormik: accionModuloToFormik,
         toApi: formikToAccionModulo,
+    },
+    permisos: {
+        toTable: permisosToTable
+    },
+    plan: {
+        toFormik: planToFormik,
+        toApi: formikToPlan
     }
 };
 
@@ -16,7 +31,7 @@ export type ModuleKey = keyof typeof entityAdapters;
 export const getEntityAdapter = (moduleKey: string) => {
     const defaultAdapter = {
         toFormik: (data: any) => data,
-        toApi: (data: any, options?: any) => data,
+        toApi: (data: any, options?: { isPatch?: boolean }) => data,
         toTable: (input: any) => {
             const normalized = Array.isArray(input)
                 ? input
