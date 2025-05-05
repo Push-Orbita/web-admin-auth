@@ -17,7 +17,7 @@ const RolView = () => {
             const response = await ModuloApi.getAll();
             if ('data' in response && Array.isArray(response.data)) {
                 const modulosAdaptados = adaptarModulosParaTreeSelect(response.data);
-                setModulosTree(modulosAdaptados);
+                setModulosTree(modulosAdaptados);  
             } else {
                 console.error('Formato de respuesta inválido:', response);
                 toast.error('Error en el formato de los datos');

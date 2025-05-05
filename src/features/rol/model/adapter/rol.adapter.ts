@@ -1,20 +1,12 @@
 import { RolEntity } from '../entity/rol.entity';
 import { CreateRolDto, UpdateRolDto } from '../dtos/rol.dto';
 import { TreeNode } from 'primereact/treenode';
-import { ModuloEntity, AccionPorModuloEntity } from '@features/modulo/model/entity/modulo.entity';
+import { ModuloEntity } from '@features/modulo/model/entity/modulo.entity';
 
 export interface RolAdapterOptions {
     isPatch?: boolean;
 }
 
-interface AccionPorModulo {
-    id: number;
-    accion: {
-        id: number;
-        nombre: string;
-        descripcion: string;
-    };
-}
 
 // Usamos ModuloEntity en lugar de nuestra interfaz personalizada
 export const adaptarModulosParaTreeSelect = (modulos: ModuloEntity[]): TreeNode[] => {
