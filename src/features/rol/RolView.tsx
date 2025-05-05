@@ -11,13 +11,14 @@ import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
 
 const RolView = () => {
     const [modulosTree, setModulosTree] = useState<TreeNode[]>([]);
+    const [loadingTree, setLoadingTree] = useState(true); // 👈 indicador de carga
 
     const cargarModulos = useCallback(async () => {
         try {
             const response = await ModuloApi.getAll();
             if ('data' in response && Array.isArray(response.data)) {
                 const modulosAdaptados = adaptarModulosParaTreeSelect(response.data);
-                setModulosTree(modulosAdaptados);  
+                setModulosTree(modulosAdaptados);
             } else {
                 console.error('Formato de respuesta inválido:', response);
                 toast.error('Error en el formato de los datos');
@@ -25,12 +26,16 @@ const RolView = () => {
         } catch (error) {
             console.error('Error al cargar módulos:', error);
             toast.error('Error al cargar los módulos');
+        } finally {
+            setLoadingTree(false); // 👈 fin de carga
         }
     }, []);
 
     useEffect(() => {
         cargarModulos();
     }, [cargarModulos]);
+
+
 
     const formFields: FieldConfig[] = [
         {
@@ -93,13 +98,17 @@ const RolView = () => {
     };
 
     return (
-        <DynamicCrudPage
-            moduleKey="rol"
-            formFields={formFields}
-            columns={columns}
-            rowExpansionTemplate={renderRowExpand}
-            showExpandButtons={true}
-        />
+        <>
+
+            <DynamicCrudPage
+                moduleKey="rol"
+                formFields={formFields}
+                columns={columns}
+                rowExpansionTemplate={renderRowExpand}
+                showExpandButtons={true}
+            />
+
+        </>
     );
 };
 

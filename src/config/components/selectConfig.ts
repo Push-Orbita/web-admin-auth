@@ -1,24 +1,26 @@
-import { SistemasApi } from "@features/sistemas/service/sistemas.service";
-import { SuscripcionApi } from "@features/suscripciones/service/suscripcion.service";
-import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
-import { PlanApi } from "@features/plan/service/plan.service";
 import { AccionApi } from "@features/accion/service/accion.service";
+import { ModuloService } from "@features/modulo/service/modulo.service";
+import { OrganizacionApi } from "@features/organizacion/service/organizacion.service";
 import { PersonaApi } from "@features/persona/service/persona.service";
-import { ModuloApi } from "@features/modulo/service/modulo.service";
-import Rol from "@pages/rol/Rol";
+import { PlanApi } from "@features/plan/service/plan.service";
 import { RolApi } from "@features/rol/service/rol.service";
+import { SistemasApi } from "@features/sistemas/service/sistemas.service";
+
+import { SuscripcionApi } from "@features/suscripciones/service/suscripcion.service";
 import { UsuarioApi } from "@features/usuario/service/usuario.service";
-interface SelectEntityConfig {
-    apiService: () => Promise<any>; // API que devuelve las opciones
-    labelField: string; // Campo que se usará como label en el select
-    valueField: string; // Campo que se usará como value en el select
+
+export interface SelectEntityConfig {
+    apiService: () => Promise<any>;
+    getById?: (id: number) => Promise<any>;
+    labelField?: string;
+    valueField?: string;
 }
 
 const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
     sistema: {
         apiService: SistemasApi.getAll,
-        labelField: "nombre", // Campo que se mostrará en el select
-        valueField: "id", // Campo que se usará como valor del select
+        labelField: 'nombre',
+        valueField: 'id'
     },
     suscripcion: {
         apiService: SuscripcionApi.getAll,
@@ -46,9 +48,10 @@ const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
         valueField: "id", // Campo que se usará como valor del select
     },
     modulo: {
-        apiService: ModuloApi.getAll,
-        labelField: "nombre", // Campo que se mostrará en el select
-        valueField: "id", // Campo que se usará como valor del select
+        apiService: () => new ModuloService().getAll(),
+        getById: (id: number) => new ModuloService().getById(id),
+        labelField: 'nombre',
+        valueField: 'id'
     },
     rol: {
         apiService: RolApi.getAll,
@@ -60,7 +63,6 @@ const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
         labelField: "nombre", // Campo que se mostrará en el select
         valueField: "id", // Campo que se usará como valor del select
     }
-
 };
 
 export default selectEntitiesConfig;

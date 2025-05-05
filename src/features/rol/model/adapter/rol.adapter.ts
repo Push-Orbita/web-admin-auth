@@ -1,7 +1,5 @@
-import { RolEntity } from '../entity/rol.entity';
-import { CreateRolDto, UpdateRolDto } from '../dtos/rol.dto';
-import { TreeNode } from 'primereact/treenode';
 import { ModuloEntity } from '@features/modulo/model/entity/modulo.entity';
+import { TreeNode } from 'primereact/treenode';
 
 export interface RolAdapterOptions {
     isPatch?: boolean;
@@ -58,28 +56,38 @@ export const adaptarModulosParaTreeSelect = (modulos: ModuloEntity[]): TreeNode[
     }));
 };
 
-export const rolToFormik = (rowData: RolEntity): any => {
+export const rolToFormik = (rowData: any): any => {
+    const accionesSeleccionadas = rowData?.accionesPorRol?.reduce((acc: any, ar: any) => {
+        const id = ar.accionPorModulo?.id;
+        if (id) {
+            acc[`accion-${id}`] = { checked: true, partialChecked: false };
+        }
+        return acc;
+    }, {} as Record<string, { checked: boolean; partialChecked: boolean }>);
+
     return {
         nombre: rowData?.nombre ?? "",
         descripcion: rowData?.descripcion ?? "",
-        accionesPorRol: rowData?.accionesPorRol?.map(ar => ar.accionPorModulo) ?? []
+        accionesPorRol: accionesSeleccionadas ?? {}
     };
 };
 
-export const formikToRol = (values: any, options: RolAdapterOptions = {}): CreateRolDto | UpdateRolDto => {
-    const { isPatch = false } = options;
+export const formikToRol = (values: any): any | any => {
+    // const { isPatch = false } = options;
+
+    // Transformar las acciones seleccionadas del objeto a array de ids
+    const accionesPorRol = Object.keys(values.accionesPorRol || {})
+        .filter(key => key.startsWith("accion-") && values.accionesPorRol[key]?.checked)
+        .map(key => {
+            const id = parseInt(key.replace("accion-", ""));
+            return { accionPorModulo: id };
+        });
 
     const rolData = {
         nombre: values.nombre,
         descripcion: values.descripcion,
-        accionesPorRol: values.accionesPorRol.map((id: number) => ({
-            accionPorModulo: id
-        }))
+        accionesPorRol
     };
-
-    if (isPatch) {
-        return rolData;
-    }
 
     return rolData;
 };

@@ -97,12 +97,14 @@ const FormTreeSelect = ({
 
     // Función auxiliar para convertir datos planos a formato TreeNode
     const convertToTreeNodes = (data: any[], labelField: string): TreeNode[] => {
+        console.log(data);
         return data.map((item, index) => ({
             key: item.id?.toString() || index.toString(),
             label: item[labelField],
             data: item,
             children: item.children ? convertToTreeNodes(item.children, labelField) : undefined
         }));
+
     };
 
     return (
@@ -131,10 +133,6 @@ const FormTreeSelect = ({
                 panelHeaderTemplate={panelHeaderTemplate}
                 panelFooterTemplate={panelFooterTemplate}
                 emptyMessage={emptyMessage}
-                emptyFilterMessage={emptyFilterMessage}
-                loading={loading || propLoading}
-                loadingIcon={loadingIcon}
-                virtualScrollerOptions={virtualScrollerOptions}
                 className={`w-full ${isInvalid ? "p-invalid" : ""}`}
             />
             {isInvalid && <small className="p-error">{meta.error}</small>}

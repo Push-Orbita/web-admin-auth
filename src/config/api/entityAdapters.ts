@@ -2,6 +2,8 @@ import { accionModuloToFormik, formikToAccionModulo } from "@features/accion-mod
 import { formikToModulo, moduloToFormik, ModuloAdapterOptions } from "@features/modulo/model/adapter/modulo.adapter";
 import { permisosToTable } from "@features/permisos/model/adapter/permisos.adapter";
 import { formikToPlan, planToFormik } from "@features/plan/model/adapter/plan.adapter";
+import { formikToRol } from "@features/rol/model/adapter/rol.adapter";
+import { rolToFormik } from "@features/rol/model/adapter/rol.adapter";
 
 export interface EntityAdapter {
     toFormik: (data: any) => any;
@@ -24,6 +26,10 @@ const entityAdapters = {
     plan: {
         toFormik: planToFormik,
         toApi: formikToPlan
+    },
+    rol: {
+        toFormik: rolToFormik,
+        toApi: formikToRol
     }
 };
 

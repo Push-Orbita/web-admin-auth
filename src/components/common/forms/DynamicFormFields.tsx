@@ -59,6 +59,10 @@ export interface FieldConfig {
     onToggle?: (e: { value: any }) => void;
     panelHeaderTemplate?: () => React.ReactNode;
     panelFooterTemplate?: () => React.ReactNode;
+    dependsOn?: {
+        field: string;
+        value?: any;
+    };
 }
 
 interface Props {
@@ -104,7 +108,8 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
         const {
             name, label, type, selectKey, optionLabel, placeholder,
             disabled, gridSize, hidden, uppercase, pascalCase, capitalize, fields: subFields,
-            toggleable, min, max, step, size, strokeWidth, valueTemplate, textColor, rangeColor, valueColor
+            toggleable, min, max, step, size, strokeWidth, valueTemplate, textColor, rangeColor, valueColor,
+            dependsOn
         } = field;
 
         const isHidden = typeof hidden === "function" ? hidden(rowData) : hidden;
@@ -120,6 +125,10 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
         const labelFromLang = t(getLangMessage(moduleKey, `form.${name}`)) || "Label";
         const fieldName = parentName ? `${parentName}.${name}` : name;
 
+        const dependencyValue = dependsOn ? formik.values[dependsOn.field] : undefined;
+        const isDependencyDisabled = dependsOn && !dependencyValue;
+        const finalDisabled = isDisabled || isDependencyDisabled;
+
         const renderFieldContent = () => {
             if (type === "text" || type === "email" || type === "password" || type === "number") {
                 return (
@@ -128,7 +137,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         name={fieldName}
                         type={type}
                         placeholder={placeholder}
-                        disabled={isDisabled}
+                        disabled={finalDisabled}
                         uppercase={uppercase}
                         pascalCase={pascalCase}
                         capitalize={capitalize}
@@ -138,7 +147,14 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
 
             if (type === "select") {
                 const { options, isLoading } = shouldUseSelectKey
-                    ? useSelectOptions(selectKey, item => item[optionLabel ?? "nombre"])
+                    ? useSelectOptions(
+                        selectKey,
+                        item => item[optionLabel ?? "nombre"],
+                        dependsOn ? {
+                            field: dependsOn.field,
+                            value: dependencyValue
+                        } : undefined
+                    )
                     : { options: optionsData, isLoading: false };
 
                 return (
@@ -147,7 +163,8 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         name={fieldName}
                         optionLabel={optionLabel ?? "nombre"}
                         options={options}
-                        disabled={isDisabled || isLoading}
+                        disabled={finalDisabled || isLoading}
+                        placeholder={isDependencyDisabled ? `Seleccione primero ${t(getLangMessage(moduleKey, `form.${dependsOn.field}`))}` : placeholder}
                     />
                 );
             }
@@ -164,14 +181,14 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         optionLabel={optionLabel ?? "nombre"}
                         options={options}
                         isLoading={isLoading}
-                        disabled={isDisabled}
+                        disabled={finalDisabled}
                         placeholder={placeholder}
                     />
                 );
             }
 
             if (type === "date") {
-                return <FormDatePicker label={labelFromLang} name={fieldName} disabled={isDisabled} />;
+                return <FormDatePicker label={labelFromLang} name={fieldName} disabled={finalDisabled} />;
             }
 
             if (type === "editor") {
@@ -223,7 +240,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         textColor={textColor}
                         rangeColor={rangeColor}
                         valueColor={valueColor}
-                        disabled={isDisabled}
+                        disabled={finalDisabled}
                     />
                 );
             }
@@ -235,7 +252,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         label={labelFromLang}
                         options={field.options}
                         placeholder={placeholder}
-                        disabled={isDisabled}
+                        disabled={finalDisabled}
                         selectionMode={field.selectionMode}
                         display={field.display}
                         metaKeySelection={field.metaKeySelection}
@@ -249,6 +266,7 @@ const DynamicFormFields: FC<Props> = ({ fields, rowData, onCancel, title = "Tít
                         panelFooterTemplate={field.panelFooterTemplate}
                         selectKey={selectKey}
                     />
+
                 );
             }
 
