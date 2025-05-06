@@ -12,11 +12,11 @@ import { AuthPostDTO } from "../model/dtos/auth.dto";
 import { AuthApi } from "../service/auth.service";
 import { AuthHeader } from "./AuthHeader";
 import { transformResponse } from "./transformResponse";
+import { useNavigate } from "react-router-dom";
 
 export const AuthForm = () => {
     const dispatch = useAppDispatch();
-
-    // Obtener el client token de Redux
+    const navigate = useNavigate();
     const clientToken = useAppSelector((state) => state.auth.tokenSistem);
 
     const initialValues: AuthPostDTO = {
@@ -27,29 +27,29 @@ export const AuthForm = () => {
     const handleSubmit = async (values: AuthPostDTO, { setSubmitting }: FormikHelpers<AuthPostDTO>) => {
         try {
             if (!clientToken) {
-                throw new Error("El token del cliente no está disponible");
+                toast.error("El token del cliente no está disponible");
+                return;
             }
 
-            // Pasar el client token en los headers de la solicitud
             const response = await AuthApi.postAuth(values, {
                 headers: {
-                    Authorization: `Bearer ${clientToken}`,  // Incluir el Bearer token
+                    Authorization: `Bearer ${clientToken}`,
                 },
             });
 
-            const transformedData = transformResponse(response.data);  // Transforma la respuesta del backend al formato que necesita tu frontend
+            const transformedData = transformResponse(response.data);
 
             if (transformedData) {
-                dispatch(setUserToken(transformedData as unknown as UserEntity));
-                // console.log(transformedData as unknown as UserEntity);
+                await dispatch(setUserToken(transformedData as unknown as UserEntity));
                 toast.success(t(lang.login.messages.loginSuccess));
+                navigate('/home');
             } else {
-                console.error('transformedData es nulo');
                 toast.error(t(lang.login.messages.loginError));
             }
-        } catch (error) {
-            console.error('Hubo un error al iniciar sesión:', error);
-            toast.error(t(lang.login.messages.loginError));
+        } catch (error: any) {
+            console.error('Error al iniciar sesión:', error);
+            const errorMessage = error.response?.data?.message || t(lang.login.messages.loginError);
+            toast.error(errorMessage);
         } finally {
             setSubmitting(false);
         }
@@ -60,21 +60,41 @@ export const AuthForm = () => {
             <div className="flex flex-column justify-content-center flex-wrap w-full gap-2">
                 <AuthHeader />
             </div>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+            <Formik
+                initialValues={initialValues}
+                onSubmit={handleSubmit}
+                validateOnBlur={false}
+                validateOnChange={false}
+            >
                 {({ isSubmitting }) => (
                     <Form>
                         <div className="grid col-12">
                             <div className="p-fluid formgrid grid">
                                 <div className="field col-12">
-                                    <FormTextInput label={t(lang.login.form.usuario)} name={'email'} />
+                                    <FormTextInput
+                                        label={t(lang.login.form.usuario)}
+                                        name={'email'}
+                                        autoComplete="username"
+                                    />
                                 </div>
                                 <div className="field col-12">
-                                    <FormTextInput type={'password'} label={t(lang.login.form.password)} name={'password'} />
+                                    <FormTextInput
+                                        type={'password'}
+                                        label={t(lang.login.form.password)}
+                                        name={'password'}
+                                        autoComplete="current-password"
+                                    />
                                 </div>
                             </div>
                             <div className="grid col-12 mt-5">
                                 <div className="flex flex-column justify-content-center flex-wrap w-full gap-2">
-                                    <Button type="submit" className="uppercase" label={t(lang.common.actions.enter)} disabled={isSubmitting} />
+                                    <Button
+                                        type="submit"
+                                        className="uppercase"
+                                        label={t(lang.common.actions.enter)}
+                                        disabled={isSubmitting}
+                                        loading={isSubmitting}
+                                    />
                                 </div>
                             </div>
                         </div>

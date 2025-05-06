@@ -8,6 +8,9 @@ interface Props {
     children: React.ReactElement;
 }
 
+// Lista de rutas públicas que siempre están disponibles para usuarios autenticados
+const PUBLIC_AUTHENTICATED_ROUTES = ['/configuracion-usuario', '/home'];
+
 export const PrivateRoutes = React.memo(({ children }: Props) => {
     const { isLogged, tokenUser, userModulos } = useAppSelector((state) => state.auth);
     const location = useLocation();
@@ -20,6 +23,11 @@ export const PrivateRoutes = React.memo(({ children }: Props) => {
 
     // Verificar si el usuario tiene acceso al módulo actual
     const hasAccessToModule = () => {
+        // Si la ruta está en la lista de rutas públicas, permitir el acceso
+        if (PUBLIC_AUTHENTICATED_ROUTES.includes(location.pathname)) {
+            return true;
+        }
+
         if (!userModulos || userModulos.length === 0) return false;
 
         const checkModuleAccess = (modules: any[]): boolean => {
