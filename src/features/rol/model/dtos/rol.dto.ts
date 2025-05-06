@@ -1,4 +1,4 @@
-import { RolEntity } from '../entity/rol.entity';
+import { Rol } from '@features/permisos/model/entity/permisos.entity';
 
 export interface CreateRolDto {
     nombre: string;
@@ -19,7 +19,7 @@ export interface CreatePermisosDeAccesoDto {
 
 export interface UpdateRolDto extends Partial<CreateRolDto> { }
 
-export interface RolResponseDto extends RolEntity { }
+export interface RolResponseDto extends Rol { }
 
 export interface RolListResponseDto {
     data: RolResponseDto[];

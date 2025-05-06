@@ -6,24 +6,15 @@ export const fieldValidations = Yup.object().shape({
     nombre: stringValidation({
         isRequired: true,
         min: 2,
-        max: 50,
-        trim: true
-    }),
-    apellido: stringValidation({
-        isRequired: true,
-        min: 2,
-        max: 50,
+        max: 100,
         trim: true
     }),
     email: stringValidation({
         isRequired: true,
-        email: true,
-        trim: true
+        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
     }),
     password: stringValidation({
         isRequired: true,
-        min: 6,
-        max: 20,
         min: 8,
         max: 50,
         trim: true
@@ -35,7 +26,7 @@ export const fieldValidations = Yup.object().shape({
         trim: true
     }).oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir'),
     persona: numberValidation({
-        required: true,
+        isRequired: true,
         positive: true
     })
 }); 

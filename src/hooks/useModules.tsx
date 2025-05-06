@@ -1,6 +1,5 @@
 import { Button } from 'primereact/button';
 import { createContext, FunctionComponent, ReactNode, useContext, useState } from 'react';
-import { useAppSelector } from '@redux/store';
 
 interface ModuleContextValue {
     startToolbarTemplate: () => JSX.Element;
@@ -23,7 +22,9 @@ export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ childre
 
     const startToolbarTemplate = (): JSX.Element => (
         <div className="my-2">
+
             <Button label="Nuevo" icon="pi pi-plus" className="mr-2" onClick={() => setVisible(true)} />
+
         </div>
     );
 
@@ -56,8 +57,3 @@ export const useModuleContext = (): ModuleContextValue => {
     }
     return context;
 }
-
-export const useModules = () => {
-    const { userModulos } = useAppSelector((state: any) => state.auth);
-    return { userModulos };
-};

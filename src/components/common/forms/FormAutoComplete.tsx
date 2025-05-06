@@ -45,15 +45,14 @@ const FormAutoComplete = ({
     selectedItemTemplate,
     panelFooterTemplate,
     emptyMessage = "No hay resultados",
-    emptyFilterMessage = "No hay resultados que coincidan",
-    loading: propLoading = false,
+    // emptyFilterMessage = "No hay resultados que coincidan",
+    // loading: propLoading = false,
     loadingIcon = "pi pi-spin pi-spinner",
     virtualScrollerOptions,
     selectionLimit,
     selectKey
 }: FormAutoCompleteProps) => {
     const [field, meta, helpers] = useField(name);
-    const [loading, setLoading] = useState(false);
     const [allOptions, setAllOptions] = useState<any[]>([]);
     const [filteredOptions, setFilteredOptions] = useState<any[]>([]);
 
@@ -63,7 +62,6 @@ const FormAutoComplete = ({
     useEffect(() => {
         const loadInitialData = async () => {
             if (selectKey) {
-                setLoading(true);
                 try {
                     const config = selectEntitiesConfig[selectKey];
                     if (config) {
@@ -73,8 +71,6 @@ const FormAutoComplete = ({
                     }
                 } catch (error) {
                     console.error('Error al cargar datos iniciales:', error);
-                } finally {
-                    setLoading(false);
                 }
             } else if (propOptions) {
                 setAllOptions(propOptions);
@@ -144,7 +140,8 @@ const FormAutoComplete = ({
                 selectedItemTemplate={selectedItemTemplate}
                 panelFooterTemplate={panelFooterTemplate}
                 emptyMessage={emptyMessage}
-                loading={loading || propLoading}
+                // emptyFilterMessage={emptyFilterMessage}
+                // loading={loading || propLoading}
                 loadingIcon={loadingIcon}
                 virtualScrollerOptions={virtualScrollerOptions}
                 selectionLimit={selectionLimit}

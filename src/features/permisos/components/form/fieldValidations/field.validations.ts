@@ -1,11 +1,21 @@
+import { numberValidation } from '@components/common/forms/validations/number.validations';
 import * as Yup from 'yup';
 
 export const fieldValidations = Yup.object().shape({
-    usuario: Yup.number().positive(),
-    sistema: Yup.number().positive(),
-    organizacion: Yup.number().positive(),
-    rol: Yup.number().positive(),
-    nombre: Yup.string().required("El nombre es requerido"),
-    descripcion: Yup.string().required("La descripción es requerida"),
-    codigo: Yup.string().required("El código es requerido")
+    usuario: numberValidation({
+        isRequired: true,
+        positive: true
+    }),
+    sistema: numberValidation({
+        isRequired: true,
+        positive: true
+    }),
+    organizacion: numberValidation({
+        isRequired: true,
+        positive: true
+    }),
+    rol: numberValidation({
+        isRequired: true,
+        positive: true
+    })
 }); 
