@@ -11,7 +11,6 @@ import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
 
 const RolView = () => {
     const [modulosTree, setModulosTree] = useState<TreeNode[]>([]);
-    const [loadingTree, setLoadingTree] = useState(true); // 👈 indicador de carga
 
     const cargarModulos = useCallback(async () => {
         try {
@@ -26,8 +25,6 @@ const RolView = () => {
         } catch (error) {
             console.error('Error al cargar módulos:', error);
             toast.error('Error al cargar los módulos');
-        } finally {
-            setLoadingTree(false); // 👈 fin de carga
         }
     }, []);
 

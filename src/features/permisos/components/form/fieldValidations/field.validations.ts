@@ -3,19 +3,19 @@ import * as Yup from 'yup';
 
 export const fieldValidations = Yup.object().shape({
     usuario: numberValidation({
-        required: true,
+        isRequired: true,
         positive: true
     }),
     sistema: numberValidation({
-        required: true,
+        isRequired: true,
         positive: true
     }),
     organizacion: numberValidation({
-        required: true,
+        isRequired: true,
         positive: true
     }),
     rol: numberValidation({
-        required: true,
+        isRequired: true,
         positive: true
     })
 }); 

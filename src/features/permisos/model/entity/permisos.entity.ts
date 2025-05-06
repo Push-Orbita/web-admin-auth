@@ -99,7 +99,7 @@ interface Organizacion {
     nombre: string;
 }
 
-interface Rol {
+export interface Rol {
     id: number;
     nombre: string;
     descripcion: string;

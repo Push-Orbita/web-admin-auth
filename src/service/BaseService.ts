@@ -1,5 +1,5 @@
 import { Axios, cancelTokenSource } from "@config/api/axios.config";
-import { omitId, replaceParamId } from "@utilities/replace-param.utils";
+import { replaceParamId } from "@utilities/replace-param.utils";
 
 // Definir una interfaz base que garantice `id`
 export interface BaseEntity {

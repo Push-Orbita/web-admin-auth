@@ -23,10 +23,6 @@ interface FormTreeSelectProps {
     panelHeaderTemplate?: () => React.ReactNode;
     panelFooterTemplate?: () => React.ReactNode;
     emptyMessage?: string;
-    emptyFilterMessage?: string;
-    loading?: boolean;
-    loadingIcon?: string;
-    virtualScrollerOptions?: any;
     selectKey?: string;
 }
 
@@ -49,14 +45,9 @@ const FormTreeSelect = ({
     panelHeaderTemplate,
     panelFooterTemplate,
     emptyMessage = "No hay resultados",
-    emptyFilterMessage = "No hay resultados que coincidan",
-    loading: propLoading = false,
-    loadingIcon = "pi pi-spin pi-spinner",
-    virtualScrollerOptions,
     selectKey
 }: FormTreeSelectProps) => {
     const [field, meta, helpers] = useField(name);
-    const [loading, setLoading] = useState(false);
     const [options, setOptions] = useState<TreeNode[]>([]);
 
     const isInvalid = meta.touched && meta.error;
@@ -65,19 +56,16 @@ const FormTreeSelect = ({
     useEffect(() => {
         const loadInitialData = async () => {
             if (selectKey) {
-                setLoading(true);
                 try {
                     const config = selectEntitiesConfig[selectKey];
                     if (config) {
                         const data = await config.apiService();
                         // Convertir los datos a formato TreeNode
-                        const treeData = convertToTreeNodes(data, config.labelField);
+                        const treeData = convertToTreeNodes(data, config.labelField || 'nombre');
                         setOptions(treeData);
                     }
                 } catch (error) {
                     console.error('Error al cargar datos iniciales:', error);
-                } finally {
-                    setLoading(false);
                 }
             } else if (propOptions) {
                 setOptions(propOptions);
