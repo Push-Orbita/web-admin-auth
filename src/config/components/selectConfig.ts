@@ -49,7 +49,6 @@ const selectEntitiesConfig: Record<string, SelectEntityConfig> = {
     },
     modulo: {
         apiService: () => new ModuloService().getAll(),
-        getById: (id: number) => new ModuloService().getById(id),
         labelField: 'nombre',
         valueField: 'id'
     },
