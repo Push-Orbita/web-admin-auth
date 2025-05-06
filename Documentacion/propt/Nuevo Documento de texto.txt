@@ -1,0 +1,22 @@
+prop
+
+
+crear un nuevo módulo siguiendo las reglas que hemos definido. Primero, necesitamos saber qué entidad vamos a crear.
+Basado en las reglas, necesitamos los siguientes props:
+entityName: El nombre de la entidad en kebab-case (por ejemplo: "time-line", "usuarios")
+moduleKey: La clave del módulo para el DynamicCrudPage
+formFields: Los campos del formulario
+columns: Las columnas de la tabla
+validationSchema: El esquema de validación
+¿Podrías proporcionarme estos datos para el nuevo módulo que quieres crear? Específicamente:
+¿Cuál es el nombre de la entidad que quieres crear?
+¿Cuáles son los campos que necesitas en el formulario?
+¿Qué columnas necesitas en la tabla?
+¿Qué validaciones necesitas para los campos?
+Con esta información podré crear el módulo completo siguiendo la estructura que hemos definido.
+
+1. numeroWs
+2. numeroWs
+3. numero
+4.  numero
+5. numero= string obligatorio

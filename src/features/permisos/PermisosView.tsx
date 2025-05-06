@@ -1,92 +1,139 @@
-import { useModuleContext } from "@hooks/useModules";
-import useQueryApi from "@hooks/useQueryApi";
-import UseQueryMutation from "@hooks/useQueryMutation";
-import { DashboardLayout } from "@layout/DashboardLayout";
-import { t } from "i18next";
-import { confirmDialog } from "primereact/confirmdialog";
-import toast from "react-hot-toast";
-import { lang } from "../../langs";
-import { PermisosApi } from "./service/permisos.service";
-import { TablePermisos } from "./components/table/TablePermisos";
+import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
+import { FieldConfig } from "@components/common/forms/DynamicFormFields";
+import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
+import { Panel } from 'primereact/panel';
+import { fieldValidations } from "./components/form/fieldValidations/field.validations";
 
-import { useEffect } from "react";
-import FormPermisos from "./components/form/FormFeat";
-
+interface UsuarioPermisos {
+    id: number;
+    nombre: string;
+    email: string;
+    permisos: {
+        sistema: {
+            id: number;
+            nombre: string;
+            descripcion: string;
+            url: string;
+            icono: string;
+        };
+        organizacion: {
+            id: number;
+            nombre: string;
+        };
+        rol: {
+            id: number;
+            nombre: string;
+            descripcion: string;
+        };
+    }[];
+}
 
 const PermisosView = () => {
-    const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-    const { data, isFetching, refetch } = useQueryApi<Response>(
-        "Permisos",
-        PermisosApi.getPermisosSearch
-    );
-
-    useEffect(() => {
-        resetModuleState();
-    }, []);
-
-    const deletePermisos = UseQueryMutation({
-        requestFn: PermisosApi.deletePermisos,
-        options: {
-            onError() {
-                toast.error(t(lang.Permissions.messages.deletedError));
-            },
-            onSuccess: () => {
-                refetch();
-                toast.success(t(lang.Permissions.messages.deletedSuccess));
-            },
+    const formFields: FieldConfig[] = [
+        {
+            name: "usuario",
+            type: "select",
+            gridSize: "medium",
+            selectKey: "usuario",
         },
-    });
+        {
+            name: "sistema",
+            type: "select",
+            gridSize: "medium",
+            selectKey: "sistema",
+        },
+        {
+            name: "organizacion",
+            type: "select",
+            gridSize: "medium",
+            selectKey: "organizacion",
+        },
+        {
+            name: "rol",
+            type: "select",
+            gridSize: "medium",
+            selectKey: "rol",
+        }
+    ];
 
-    const handleDelete = (id: number) => {
-        confirmDialog({
-            message: t(lang.common.labels.deleteMessage),
-            header: t(lang.common.labels.deleteMessageTitle),
-            icon: 'pi pi-exclamation-triangle text-yellow-500',
-            acceptClassName: 'p-button-danger',
-            acceptLabel: t(lang.common.actions.confirm),
-            rejectLabel: t(lang.common.actions.cancel),
-            accept: async () => {
-                await deletePermisos.mutateAsync({ id });
-            },
-            reject: () => {
-                // Maneja la cancelación si es necesario
-            },
-        });
+    const columns: ICustomColumnItem[] = [
+        {
+            field: "nombre",
+            header: "Usuario",
+            sortable: true,
+            filter: true,
+        },
+        {
+            field: "email",
+            header: "Email",
+            sortable: true,
+            filter: true,
+        }
+    ];
+
+    const getColumnClass = (totalItems: number) => {
+        if (totalItems === 1) return 'col-12';
+        if (totalItems === 2) return 'col-12 md:col-6';
+        return 'col-12 md:col-6 lg:col-4';
     };
 
-
-    return (
-        <DashboardLayout>
-            <div className="card">
-                <div className='text-3xl mt-2 mb-2'>
-                    {t(lang.Permissions.title)}
-                </div>
-                {
-                    visible ? (
-                        <>
-                            <FormPermisos
-                                title={rowData ? `${t(lang.Permissions.edit)}` : `${t(lang.Permissions.new)}`} refetch={refetch}
-                            />
-                        </>
-                    )
-                        : (
-                            <div>
+    const rowExpansionTemplate = (data: UsuarioPermisos) => {
+        return (
+            <div className="p-3">
+                <div className="grid">
+                    {data.permisos.map((permiso, index) => (
+                        <div key={index} className={`${getColumnClass(data.permisos.length)} mb-3`}>
+                            <Panel
+                                header={
+                                    <div className="flex align-items-center">
+                                        <i className={`${permiso.sistema.icono} mr-2 text-xl text-primary`}></i>
+                                        <span className="text-xl font-bold">{permiso.sistema.nombre}</span>
+                                    </div>
+                                }
+                                className="shadow-1 border-round-xl h-full"
+                                toggleable
+                            >
                                 <div className="grid">
+                                    <div className="col-12 mb-3">
+                                        <div className="flex align-items-center mb-2">
+                                            <i className="pi pi-building mr-2 text-primary"></i>
+                                            <span className="font-medium text-lg">Organización</span>
+                                        </div>
+                                        <div className="surface-100 p-3 border-round-lg">
+                                            <span className="text-lg font-medium">{permiso.organizacion.nombre}</span>
+                                        </div>
+                                    </div>
                                     <div className="col-12">
-                                        {startToolbarTemplate()}
+                                        <div className="flex align-items-center mb-2">
+                                            <i className="pi pi-users mr-2 text-primary"></i>
+                                            <span className="font-medium text-lg">Rol</span>
+                                        </div>
+                                        <div className="surface-100 p-3 border-round-lg">
+                                            <div className="flex flex-column">
+                                                <span className="text-lg font-medium mb-2">{permiso.rol.nombre}</span>
+                                                <span className="text-sm text-500">{permiso.rol.descripcion}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <TablePermisos
-                                    data={data ?? []}
-                                    isFetching={isFetching}
-                                    handleDelete={handleDelete}
-                                />
-                            </div>
-                        )
-                }
+                            </Panel>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </DashboardLayout>
+        );
+    };
+
+    return (
+        <DynamicCrudPage
+            moduleKey="permisos"
+            formFields={formFields}
+            columns={columns}
+            validationSchema={fieldValidations}
+            rowExpansionTemplate={rowExpansionTemplate}
+            showExpandButtons={true}
+        />
     );
 };
 
-export default PermisosView;
+export default PermisosView; 

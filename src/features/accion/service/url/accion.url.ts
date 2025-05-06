@@ -6,4 +6,4 @@ export const AccionURL = {
     post: `${Accion}`,
     patch: `${Accion}/:id`,
     delete: `${Accion}/:id`
-};
+}; 

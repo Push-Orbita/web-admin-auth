@@ -1,8 +1,16 @@
-import HomeView from "@features/home/HomeView";
+import { DashboardLayout } from "@layout/DashboardLayout";
 
 const Home = () => {
     return (
-        <HomeView />
+        <DashboardLayout>
+            <div className="grid">
+                <div className="col-12">
+                    <div className="card">
+                        Inicio
+                    </div>
+                </div>
+            </div>
+        </DashboardLayout>
     )
 };
 

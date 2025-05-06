@@ -1,17 +1,18 @@
-import { AxiosError, AxiosResponse } from "axios";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 
-interface UseAxiosMutationProps<TData> {
-  requestFn: (data: TData) => Promise<AxiosResponse<TData, AxiosError>>;
-  options?: UseMutationOptions<AxiosResponse<TData>, AxiosError, any>;
+// La `requestFn` ahora es una función que recibe datos (`TVariables`) y devuelve directamente `TData`
+// ya no AxiosResponse
+interface UseQueryMutationProps<TData, TVariables> {
+  requestFn: (data: any) => Promise<any>;
+  options?: UseMutationOptions<TData, AxiosError, TVariables>;
 }
-const UseQueryMutation = ({
+
+const UseQueryMutation = <TData, TVariables>({
   requestFn,
   options,
-}: UseAxiosMutationProps<any>) => {
-  return useMutation<AxiosResponse<any>, any, any>(requestFn, {
-    ...options, // Pasar las opciones adicionales
-  });
+}: UseQueryMutationProps<TData, TVariables>) => {
+  return useMutation<TData, AxiosError, TVariables>(requestFn, options);
 };
 
 export default UseQueryMutation;

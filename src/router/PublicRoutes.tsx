@@ -1,15 +1,21 @@
 import * as React from "react";
-import { Navigate } from "react-router-dom";
-
+import { Navigate, useLocation } from "react-router-dom";
+import { useAppSelector } from "@hooks/reduxHook";
 
 interface Props {
     children: React.ReactElement;
-    isAutenticated: boolean;
 }
 
-export const PublicRoutes = React.memo(({ children, isAutenticated }: Props) => {
-    //verifico el estado del usuario isAutenticated y seteo las pantalla  publicas que pueden acceder sin estar autenticado
-    return isAutenticated
-        ? <Navigate to="/home" />
-        : children
-})
+export const PublicRoutes = React.memo(({ children }: Props) => {
+    const { isLogged, tokenUser } = useAppSelector((state) => state.auth);
+    const location = useLocation();
+
+    // Si el usuario está autenticado y tiene token, redirigir a home
+    if (isLogged && tokenUser) {
+        // Guardamos la ruta original para redirigir después del login
+        const from = location.state?.from?.pathname || "/home";
+        return <Navigate to={from} replace />;
+    }
+
+    return children;
+});

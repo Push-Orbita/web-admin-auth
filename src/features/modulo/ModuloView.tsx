@@ -1,90 +1,130 @@
-import { useModuleContext } from "@hooks/useModules";
-import useQueryApi from "@hooks/useQueryApi";
-import UseQueryMutation from "@hooks/useQueryMutation";
-import { DashboardLayout } from "@layout/DashboardLayout";
-import { t } from "i18next";
-import { confirmDialog } from "primereact/confirmdialog";
-import toast from "react-hot-toast";
-import { lang } from "../../langs";
-import { ModuloApi } from "./service/modulo.service";
-import { TableModulo } from "./components/table/TableModulo";
-import FormModulo from "./components/form/FormModulo";
-import { useEffect } from "react";
-
+import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
+import { FieldConfig } from "@components/common/forms/DynamicFormFields";
+import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
+import { Tag } from 'primereact/tag';
+import { fieldValidations } from './components/form/fieldValidations/field.validations';
 
 const ModuloView = () => {
-    const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-    const { data, isFetching, refetch } = useQueryApi<Response>(
-        "Modulo",
-        ModuloApi.getModuloSearch
-    );
+    const formFields: FieldConfig[] = [
+        { name: "nombre", type: "text", gridSize: "medium", label: "Nombre" },
+        { name: "descripcion", type: "text", gridSize: "medium", label: "Descripción" },
+        { name: "label", type: "text", gridSize: "medium", label: "Label" },
+        { name: "element", type: "text", gridSize: "medium", label: "Element" },
+        { name: "icon", type: "text", gridSize: "medium", label: "Icono" },
+        { name: "path", type: "text", gridSize: "medium", label: "Path" },
+        { name: "moduloPadre", type: "select", selectKey: "modulo", gridSize: "medium", label: "Módulo Padre" },
+        { name: "sistema", type: "select", gridSize: "medium", label: "Sistema", selectKey: "sistema" },
+        {
+            name: "accionesPorModulo",
+            type: "multiselect",
+            gridSize: "full",
+            label: "Acciones por Módulo",
+            selectKey: "accion",
+            optionLabel: "nombre"
+        }
+    ];
 
-    useEffect(() => {
-        resetModuleState();
-    }, []);
-
-    const deleteModulo = UseQueryMutation({
-        requestFn: ModuloApi.deleteModulo,
-        options: {
-            onError() {
-                toast.error(t(lang.Module.messages.deletedError));
-            },
-            onSuccess: () => {
-                refetch();
-                toast.success(t(lang.Module.messages.deletedSuccess));
-            },
+    const columns: ICustomColumnItem[] = [
+        {
+            field: "nombre",
+            header: "Nombre",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.nombre || "-"}</div>
         },
-    });
+        {
+            field: "descripcion",
+            header: "Descripción",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.descripcion || "-"}</div>
+        },
+        {
+            field: "label",
+            header: "Label",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.label || "-"}</div>
+        },
+        {
+            field: "element",
+            header: "Element",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.element || "-"}</div>
+        },
+        {
+            field: "icon",
+            header: "Icono",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.icon || "-"}</div>
+        },
+        {
+            field: "path",
+            header: "Path",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.path || "-"}</div>
+        },
+        {
+            field: "moduloPadre",
+            header: "Módulo Padre",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => {
+                if (!rowData?.moduloPadre) return <div>-</div>;
+                if (typeof rowData.moduloPadre === 'object') {
+                    return <div>{rowData.moduloPadre.nombre || "-"}</div>;
+                }
+                return <div>{rowData.moduloPadre || "-"}</div>;
+            }
+        },
+        {
+            field: "sistema",
+            header: "Sistema",
+            sortable: true,
+            filter: true,
+            body: (rowData: any) => <div>{rowData?.sistema?.nombre || "-"}</div>
+        }
+    ];
 
-    const handleDelete = (id: number) => {
-        confirmDialog({
-            message: t(lang.common.labels.deleteMessage),
-            header: t(lang.common.labels.deleteMessageTitle),
-            icon: 'pi pi-exclamation-triangle text-yellow-500',
-            acceptClassName: 'p-button-danger',
-            acceptLabel: t(lang.common.actions.confirm),
-            rejectLabel: t(lang.common.actions.cancel),
-            accept: async () => {
-                await deleteModulo.mutateAsync({ id });
-            },
-            reject: () => {
-            },
-        });
+    const renderRowExpand = (rowData: any) => {
+        if (!rowData?.accionesPorModulo || !Array.isArray(rowData.accionesPorModulo) || rowData.accionesPorModulo.length === 0) {
+            return (
+                <div className="p-4">
+                    <p>No hay acciones disponibles para este módulo.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="p-4">
+                <h3 className="text-lg font-semibold mb-3">Acciones del Módulo</h3>
+                <div className="flex flex-wrap gap-2">
+                    {rowData.accionesPorModulo.map((accion: any) => (
+                        <Tag
+                            key={accion.id}
+                            value={accion?.accion?.nombre || "-"}
+                            severity="warning"
+                            className="text-sm"
+                        />
+                    ))}
+                </div>
+            </div>
+        );
     };
 
-
     return (
-        <DashboardLayout>
-            <div className="card">
-                <div className='text-3xl mt-2 mb-2'>
-                    {t(lang.Module.title)}
-                </div>
-                {
-                    visible ? (
-                        <>
-                            <FormModulo
-                                title={rowData ? `${t(lang.Module.edit)}` : `${t(lang.Module.new)}`} refetch={refetch}
-                            />
-                        </>
-                    )
-                        : (
-                            <div>
-                                <div className="grid">
-                                    <div className="col-12">
-                                        {startToolbarTemplate()}
-                                    </div>
-                                </div>
-                                <TableModulo
-                                    data={data ?? []}
-                                    isFetching={isFetching}
-                                    handleDelete={handleDelete}
-                                />
-                            </div>
-                        )
-                }
-            </div>
-        </DashboardLayout>
+        <DynamicCrudPage
+            moduleKey="modulo"
+            formFields={formFields}
+            columns={columns}
+            validationSchema={fieldValidations}
+            rowExpansionTemplate={renderRowExpand}
+            showExpandButtons={true}
+        />
     );
 };
 
-export default ModuloView;
+export default ModuloView; 

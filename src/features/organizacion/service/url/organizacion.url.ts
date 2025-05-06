@@ -6,4 +6,4 @@ export const OrganizacionURL = {
     post: `${Organizacion}`,
     patch: `${Organizacion}/:id`,
     delete: `${Organizacion}/:id`
-};
+}; 

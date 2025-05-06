@@ -1,27 +1,23 @@
-
-import { SearchParamsDTO } from "@interfaces/dtos/search-params.dto"
 import {
     UseQueryOptions,
     UseQueryResult,
     useQuery,
-} from "@tanstack/react-query"
-import { AxiosError, AxiosResponse } from "axios"
+} from "@tanstack/react-query";
+import { AxiosError } from "axios";
 
-type ServiceApi<T> = (
-    params?: SearchParamsDTO
-) => Promise<AxiosResponse<T, any>>
+// ✅ El ServiceApi ahora es una función que devuelve directamente `T[]` (no AxiosResponse)
+type ServiceApi<T> = () => Promise<T[]>;
 
 const useQueryApi = <T>(
     queryKey: string,
-    serviceApi: ServiceApi<T>,
-    params?: SearchParamsDTO,
-    queryOptions?: UseQueryOptions<T, AxiosError>
-): UseQueryResult<T, AxiosError> => {
-    return useQuery<T, AxiosError>(
-        [queryKey, params],
-        () => serviceApi(params).then((res) => res.data),
+    serviceApi: ServiceApi<T>,  // ✅ Directamente `() => Promise<T[]>`
+    queryOptions?: UseQueryOptions<T[], AxiosError>
+): UseQueryResult<T[], AxiosError> => {
+    return useQuery<T[], AxiosError>(
+        [queryKey],
+        serviceApi,  // ✅ No necesita transformación de `res.data`, ya lo hace el servicio
         queryOptions
-    )
-}
+    );
+};
 
-export default useQueryApi
+export default useQueryApi;

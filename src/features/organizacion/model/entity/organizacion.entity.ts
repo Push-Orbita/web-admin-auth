@@ -7,11 +7,5 @@ export interface OrganizacionResponse {
 
 export interface OrganizacionEntity {
     id: number;
-    nombre?: string;
-    bd?: string;
-    host?: string;
-    port?: number;
-    usuario?: string;
-    password?: string;
-    tipobd?: string;
-}
+    nombre: string;
+} 

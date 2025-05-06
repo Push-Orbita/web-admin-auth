@@ -9,14 +9,5 @@ export interface UsuarioEntity {
     id: number;
     nombre: string;
     email: string;
-    password: string;
-    persona?: Persona;
-}
-
-export interface Persona {
-    id: number;
-    cuil: string;
-    nombre: string;
-    apellido: string;
-    genero: string;
-}
+    persona: number;
+} 

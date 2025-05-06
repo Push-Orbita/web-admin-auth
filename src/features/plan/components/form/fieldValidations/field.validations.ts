@@ -1,13 +1,32 @@
-import { t } from "i18next";
-import { lang } from "../../../../../langs";
-import * as Yup from "yup";
+import { stringValidation } from '@components/common/forms/validations/string.validations';
+import { numberValidation } from '@components/common/forms/validations/number.validations';
+import * as Yup from 'yup';
 
 export const fieldValidations = Yup.object().shape({
-    nombre: Yup.string().required(t(lang.Plan.validation.nameIsRequired.toString())).trim(),
-    descripcion: Yup.string().required(t(lang.Plan.validation.descriptionIsRequired.toString())).trim(),
-    duracion: Yup.number().required(t(lang.Plan.validation.durationIsRequired.toString())),
-    precio: Yup.number().required(t(lang.Plan.validation.priceIsRequired.toString())).transform(value => value.replace(/[^0-9]/g, '')),
-    suscripcion: Yup.number()
-        .required(t(lang.ActionModule.validation.moduleIsRequired.toString()))
-        .notOneOf([0], t(lang.ActionModule.validation.moduleMustBeDifferentFromZero.toString())),
-});
+    nombre: stringValidation({
+        isRequired: true,
+        min: 2,
+        max: 100,
+        trim: true
+    }),
+    descripcion: stringValidation({
+        isRequired: true,
+        min: 10,
+        max: 500,
+        trim: true
+    }),
+    duracion: numberValidation({
+        required: true,
+        positive: true,
+        min: 1
+    }),
+    precio: numberValidation({
+        required: true,
+        positive: true,
+        min: 0
+    }),
+    suscripcion: numberValidation({
+        required: true,
+        positive: true
+    })
+}); 

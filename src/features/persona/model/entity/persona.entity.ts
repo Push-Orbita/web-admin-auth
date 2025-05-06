@@ -7,16 +7,8 @@ export interface PersonaResponse {
 
 export interface PersonaEntity {
     id: number;
-    cuil: string;
     nombre: string;
     apellido: string;
+    cuil: string;
     genero: string;
-    usuarios?: Usuario[] | undefined | null;
-}
-
-export interface Usuario {
-    id?: number;
-    nombre?: string;
-    email?: string;
-    password?: string;
-}
+} 

@@ -1,13 +1,17 @@
-import { t } from "i18next";
-import { lang } from "../../../../../langs";
-import * as Yup from "yup";
+import { stringValidation } from '@components/common/forms/validations/string.validations';
+import { numberValidation } from '@components/common/forms/validations/number.validations';
+import * as Yup from 'yup';
 
 export const fieldValidations = Yup.object().shape({
-    plan: Yup.number()
-        .required(t(lang.ActionModule.validation.moduleIsRequired.toString()))
-        .notOneOf([0], t(lang.ActionModule.validation.moduleMustBeDifferentFromZero.toString())),
-    organizacion: Yup.number()
-        .required(t(lang.ActionModule.validation.moduleIsRequired.toString()))
-        .notOneOf([0], t(lang.ActionModule.validation.moduleMustBeDifferentFromZero.toString())),
-    fechaVencimiento: Yup.string().required(t(lang.Contract.validation.expireDateIsRequired.toString())),
-});
+    fechaVencimiento: stringValidation({
+        isRequired: true,
+    }),
+    plan: numberValidation({
+        isRequired: true,
+        positive: true
+    }),
+    organizacion: numberValidation({
+        isRequired: true,
+        positive: true
+    })
+}); 

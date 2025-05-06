@@ -6,4 +6,4 @@ export const ModuloURL = {
     post: `${Modulo}`,
     patch: `${Modulo}/:id`,
     delete: `${Modulo}/:id`
-};
+}; 

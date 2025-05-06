@@ -6,4 +6,4 @@ export const ContratoURL = {
     post: `${Contrato}`,
     patch: `${Contrato}/:id`,
     delete: `${Contrato}/:id`
-};
+}; 

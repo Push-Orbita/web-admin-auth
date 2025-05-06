@@ -1,5 +1,3 @@
-export type PermisosPatchDTO = Partial<PermisosPostDTO> & { id: number };
-
 export interface PermisosPostDTO {
     usuario: number;
     sistema: number;
@@ -7,7 +5,8 @@ export interface PermisosPostDTO {
     rol: number;
 }
 
+export type PermisosPatchDTO = Partial<PermisosPostDTO> & { id: number };
+
 export interface PermisosDeleteDTO {
     id: number;
-}
-
+} 

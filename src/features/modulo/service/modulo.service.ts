@@ -1,47 +1,11 @@
-import { Axios, cancelTokenSource } from "@config/api/axios.config";
-import { omitId, replaceParamId } from "@utilities/replace-param.utils";
-import { ModuloURL } from "./url/modulo.url";
-import { ModuloDeleteDTO, ModuloPatchDTO, ModuloPostDTO } from "../model/dtos/modulo.dto";
+import { BaseService } from '../../../service/BaseService';
+import { ModuloEntity } from '../model/entity/modulo.entity';
+import { ModuloURL } from './url/modulo.url';
 
-const url = ModuloURL;
-
-class Modulo {
-    async getModuloSearch() {
-        return await Axios.get(`${url.get}`, {
-            cancelToken: cancelTokenSource.token,
-        });
-    }
-
-    async getModuloById(ModuloId: number) {
-        return await Axios.get(replaceParamId(url.getById, ModuloId), {
-            cancelToken: cancelTokenSource.token,
-        });
-    }
-
-    async postModulo(req: ModuloPostDTO) {
-        return await Axios.post(url.post, req.body, {
-            cancelToken: cancelTokenSource.token,
-        });
-    }
-
-    async patchModulo(req: ModuloPatchDTO) {
-        return await Axios.patch(replaceParamId(url.patch, req.id), omitId(req), {
-            cancelToken: cancelTokenSource.token,
-        });
-    }
-
-    async deleteModulo(ModuloId: ModuloDeleteDTO) {
-        return await Axios.delete(replaceParamId(url.delete, ModuloId.id), {
-            cancelToken: cancelTokenSource.token,
-        });
-    }
-
-    async getModuloBySystemId(systemId: number) {
-        return await Axios.get(`${url.get}?sistema=${systemId}`, {
-            cancelToken: cancelTokenSource.token,
-        });
+export class ModuloService extends BaseService<ModuloEntity> {
+    constructor() {
+        super(ModuloURL);
     }
 }
 
-
-export const ModuloApi = new Modulo();
+export const ModuloApi = new ModuloService(); 

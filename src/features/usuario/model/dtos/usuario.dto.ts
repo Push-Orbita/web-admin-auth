@@ -1,5 +1,3 @@
-export type UsuarioPatchDTO = Partial<UsuarioPostDTO> & { id: number };
-
 export interface UsuarioPostDTO {
     nombre: string;
     email: string;
@@ -8,7 +6,8 @@ export interface UsuarioPostDTO {
     persona: number;
 }
 
+export type UsuarioPatchDTO = Partial<UsuarioPostDTO> & { id: number };
+
 export interface UsuarioDeleteDTO {
     id: number;
-}
-
+} 

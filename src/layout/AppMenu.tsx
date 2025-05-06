@@ -4,8 +4,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import AppMenuitem from './AppMenuitem';
 
 
-
-
 const transformUserModulosToAppMenuItem = (userModulos: any): any[] => {
     return userModulos.map((modulo: any) => {
         const transformedItem: any = {
@@ -21,8 +19,6 @@ const transformUserModulosToAppMenuItem = (userModulos: any): any[] => {
         return transformedItem;
     });
 };
-
-
 const AppMenu = () => {
     const { userModulos } = useAppSelector((state: any) => state.auth);
     const navigate = useNavigate();
@@ -30,7 +26,6 @@ const AppMenu = () => {
     const handleMenuItemClick = (path: string) => {
         navigate(path, { replace: true });
     };
-
     const addCommandToMenuItems = (menuItems: any[], pathLabel: string = ''): any[] => {
         return menuItems.map((item) => {
             const newItem = { ...item };
@@ -44,14 +39,8 @@ const AppMenu = () => {
             return newItem;
         });
     };
-
     const menu: any[] = transformUserModulosToAppMenuItem(userModulos);
     const dataMenu = addCommandToMenuItems(menu);
-
-    // console.log(dataMenu)
-
-
-
     return (
         <MenuProvider>
             <ul className="layout-menu">

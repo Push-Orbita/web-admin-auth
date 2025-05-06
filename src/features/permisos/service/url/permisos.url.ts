@@ -6,4 +6,4 @@ export const PermisosURL = {
     post: `${Permisos}`,
     patch: `${Permisos}/:id`,
     delete: `${Permisos}/:id`
-};
+}; 

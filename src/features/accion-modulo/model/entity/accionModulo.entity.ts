@@ -7,28 +7,42 @@ export interface AccionModuloResponse {
 
 export interface AccionModuloEntity {
     id: number;
-    modulo: Modulo;
-    accion: Accion;
-    accionesPorRol: AccionesPorRol[];
-}
-
-export interface Accion {
-    id: number;
-    nombre: string;
-    descripcion: string;
-}
-
-export interface AccionesPorRol {
-    id: number;
-    rol: Accion;
-}
-
-export interface Modulo {
-    id: number;
-    nombre: string;
-    descripcion: string;
-    label: string;
-    element: string;
-    icon: string;
-    path: string;
-}
+    modulo: {
+        id: number;
+        nombre: string;
+        descripcion: string;
+        label: string;
+        element: string;
+        icon: string;
+        path: string;
+        moduloPadre: string;
+        sistema: {
+            id: number;
+            nombre: string;
+            descripcion: string;
+            url: string;
+            icono: string;
+        };
+        suscripcion: {
+            id: number;
+            nombre: string;
+            descripcion: string;
+            sistema: string;
+        };
+        accionesPorModulo: string;
+    };
+    accion: {
+        id: number;
+        nombre: string;
+        descripcion: string;
+    };
+    accionesPorRol: Array<{
+        id: number;
+        rol: {
+            id: number;
+            nombre: string;
+            descripcion: string;
+        };
+        accionPorModulo: string;
+    }>;
+} 

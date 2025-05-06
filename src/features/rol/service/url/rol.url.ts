@@ -6,4 +6,4 @@ export const RolURL = {
     post: `${Rol}`,
     patch: `${Rol}/:id`,
     delete: `${Rol}/:id`
-};
+}; 

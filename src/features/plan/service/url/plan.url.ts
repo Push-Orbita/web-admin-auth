@@ -6,4 +6,4 @@ export const PlanURL = {
     post: `${Plan}`,
     patch: `${Plan}/:id`,
     delete: `${Plan}/:id`
-};
+}; 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useField } from 'formik';
 import { Calendar } from 'primereact/calendar';
 import { Message } from 'primereact/message';
@@ -5,35 +6,66 @@ import { Message } from 'primereact/message';
 interface Props {
     label: string;
     name: string;
-    placeholder?: string;
-    dateFormat?: string;
     showIcon?: boolean;
-    fullWidth?: boolean;
+    showTime?: boolean;
+    timeOnly?: boolean;
     disabled?: boolean;
+    dateFormat?: 'dd/mm/yy' | 'mm/dd/yy' | 'yy-mm-dd' | 'dd-mm-yy';
     [x: string]: any;
 }
 
-export const FormDatePicker = ({ label, dateFormat = 'dd-mm-yy', showIcon = true, disabled = false, ...props }: Props) => {
+const FormDatePicker = ({
+    label,
+    showIcon = true,
+    showTime = false,
+    timeOnly = false,
+    disabled = false,
+    dateFormat = 'dd-mm-yy',
+    ...props
+}: Props) => {
     const [field, meta, helpers] = useField(props);
-    // const value = field.value || new Date();
+    const [dateValue, setDateValue] = useState<Date | null>(null);
+    useEffect(() => {
+        if (field.value) {
+            const parsedDate = new Date(field.value);
+            if (!isNaN(parsedDate.getTime())) {
+                setDateValue(parsedDate);
+            } else {
+                setDateValue(null);
+            }
+        }
+    }, [field.value]);
+
+    const handleChange = (e: any) => {
+        setDateValue(e.value);
+        helpers.setValue(e.value);
+    };
+
     return (
         <>
-            <label htmlFor={props.name} style={{ paddingTop: '10px' }}>{label}</label>
+            <label htmlFor={props.name}>{label}</label>
             <Calendar
                 id={props.name}
-                value={field.value}
-                onChange={(e) => helpers.setValue(e.value)}
-                onBlur={() => helpers.setTouched(true)}
-                dateFormat={dateFormat}
+                value={dateValue}
+                onChange={handleChange}
+                onBlur={field.onBlur}
                 showIcon={showIcon}
-                disabled
+                showTime={showTime}
+                timeOnly={timeOnly}
+                disabled={disabled}
+                dateFormat={dateFormat}
                 {...props}
             />
             {meta.touched && meta.error ? (
-                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{
-                    marginTop: '5px'
-                }} />
+                <Message
+                    id={`${props.name}-help`}
+                    severity="error"
+                    text={meta.error}
+                    style={{ marginTop: '5px' }}
+                />
             ) : null}
         </>
     );
-};
+}
+
+export default FormDatePicker;

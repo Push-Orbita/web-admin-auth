@@ -7,6 +7,6 @@ export interface AccionResponse {
 
 export interface AccionEntity {
     id: number;
-    nombre?: string;
-    descripcion?: string;
-}
+    nombre: string;
+    descripcion: string;
+} 

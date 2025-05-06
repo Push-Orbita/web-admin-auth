@@ -2,11 +2,25 @@ import { FilterMatchMode } from 'primereact/api';
 import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
 import { DataTable, DataTableExpandedRows, DataTableFilterMeta, DataTableValueArray } from 'primereact/datatable';
-import { useState, ReactNode } from 'react';
+import { useState, ReactNode, useEffect } from 'react';
 import { useModuleContext } from '../../../../hooks/useModules';
 import { usePermisos } from '../../../../hooks/usePermisos';
 import { BasicTableHeader } from './components/BasicTableHeader';
 import { ICustomColumnItem } from './interfaces/custombasictable';
+import { RootState } from '@redux/store/store';
+import { useSelector } from 'react-redux';
+
+interface ExtendedColumnItem extends ICustomColumnItem {
+    filterField?: string;
+    filterFunction?: (value: any, filter: string) => boolean;
+    showFilterMenu?: boolean;
+    filterMatchMode?: FilterMatchMode;
+}
+
+interface TableData {
+    id: number | string;
+    [key: string]: any;
+}
 
 interface Props {
     filterDisplay?: "row" | "menu",
@@ -16,14 +30,14 @@ interface Props {
     globalFilterFields?: string[],
     filterFields?: string[];
     scrollable?: boolean;
-    data: any,
+    data: TableData[],
     loading: boolean;
-    columns: ICustomColumnItem[],
-    handleDelete: any;
+    columns: ExtendedColumnItem[],
+    handleDelete: (id: number | string) => Promise<void>;
     size?: 'small' | 'normal' | 'large'
-    rowExpansionTemplate: (rowData: any) => ReactNode;
-    isRowExpandable: (rowData: any) => boolean;
-    showGridlines?: boolean
+    rowExpansionTemplate: (rowData: TableData) => ReactNode;
+    isRowExpandable: (rowData: TableData) => boolean;
+    showGridlines?: boolean;
 }
 
 export default function CustomExpandTable({
@@ -38,18 +52,21 @@ export default function CustomExpandTable({
     handleDelete,
     rowExpansionTemplate,
     isRowExpandable,
-    showGridlines = false,
     size = 'normal'
 }: Props) {
     const { setVisible, setRowData } = useModuleContext();
     const permisos = usePermisos();
-
+    const { showGridlines } = useSelector((state: RootState) => state.ui);
     const globalFilterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
     const filterFields = columns.map(column => column.field).filter((field): field is string => field !== undefined);
 
     const initialFilters = (): DataTableFilterMeta => {
         const fields = filterFields.reduce((acc, field) => {
-            acc[field] = { value: null, matchMode: FilterMatchMode.CONTAINS };
+            const column = columns.find(col => col.field === field);
+            acc[field] = {
+                value: null,
+                matchMode: column?.filterMatchMode || FilterMatchMode.CONTAINS
+            };
             return acc;
         }, {} as DataTableFilterMeta);
         fields.global = { value: null, matchMode: FilterMatchMode.CONTAINS };
@@ -78,11 +95,35 @@ export default function CustomExpandTable({
         setVisible(true);
     }
 
-    const actionBodyTemplate = (rowData: any) => {
+    const actionBodyTemplate = (rowData: TableData) => {
+        const handleDeleteClick = async (id: number | string) => {
+            try {
+                await handleDelete(id);
+            } catch (error) {
+                console.error('Error al eliminar:', error);
+            }
+        };
+
         return (
             <>
-                {permisos.puedeModificar ? (<Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => edit(rowData)} />) : ("")}
-                {permisos.puedeBorrar ? (<Button icon="pi pi-trash" rounded outlined severity="danger" onClick={() => handleDelete(rowData.id)} />) : ("")}
+                {permisos.puedeModificar && (
+                    <Button
+                        icon="pi pi-pencil"
+                        rounded
+                        outlined
+                        className="mr-2"
+                        onClick={() => edit(rowData)}
+                    />
+                )}
+                {permisos.puedeBorrar && (
+                    <Button
+                        icon="pi pi-trash"
+                        rounded
+                        outlined
+                        severity="danger"
+                        onClick={() => handleDeleteClick(rowData.id)}
+                    />
+                )}
             </>
         );
     };
@@ -97,10 +138,18 @@ export default function CustomExpandTable({
         />
     );
 
+    useEffect(() => {
+        if (!data || data.length === 0) {
+            setFilters(initialFilters());
+            setGlobalFilterValue('');
+            setExpandedRows(undefined);
+        }
+    }, [data]);
+
     return (
         <DataTable
             showGridlines={showGridlines}
-            value={data}
+            value={Array.isArray(data) ? data : []}
             paginator
             rows={rows}
             rowsPerPageOptions={rowsPerPageOptions}
@@ -132,6 +181,10 @@ export default function CustomExpandTable({
                     style={{ minWidth: '12rem' }}
                     dataType={column.dataType}
                     body={column.body ? column.body : undefined}
+                    filterField={column.filterField}
+                    filterFunction={column.filterFunction}
+                    showFilterMenu={column.showFilterMenu}
+                    filterMatchMode={column.filterMatchMode}
                 />
             ))}
             <Column header='Acciones' body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>

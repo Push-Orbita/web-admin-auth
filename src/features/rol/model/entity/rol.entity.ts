@@ -5,30 +5,52 @@ export interface RolResponse {
     metadata: MetadataEntity;
 }
 
-export interface AccionPorModulo {
-    id: number;
-    modulo: Modulo;
-    accion: RolEntity;
-}
-
-export interface AccionesPorRol {
-    id: number;
-    accionPorModulo: AccionPorModulo;
-}
 
 export interface RolEntity {
     id: number;
     nombre: string;
     descripcion: string;
-    accionesPorRol?: AccionesPorRol[];
+    accionesPorRol: AccionesPorRol[];
+    metadata: Metadata;
 }
 
-export interface Modulo {
+export interface AccionesPorRol {
     id: number;
-    nombre: string;
-    descripcion: string;
-    label: string;
-    element: string;
-    icon: string;
-    path: string;
+    accionPorModulo: {
+        modulo: {
+            nombre: string;
+        };
+        accion: {
+            nombre: string;
+            descripcion: string;
+        };
+    };
 }
+
+export interface PermisosDeAcceso {
+    id: number;
+    nombre: Nombre;
+    descripcion: Descripcion;
+    metadata: Metadata;
+}
+
+export enum Nombre {
+    Crear = "crear",
+    Eliminar = "eliminar",
+    Leer = "leer",
+    Modificar = "modificar"
+}
+
+export enum Descripcion {
+    PermiteCrearRegistros = "Permite crear registros",
+    PermiteEliminarRegistros = "Permite eliminar registros",
+    PermiteLeerRegistros = "Permite leer registros",
+    PermiteModificarRegistros = "Permite modificar registros"
+}
+
+export interface Metadata {
+    fechaCreacion: string;
+    fechaModificacion: string;
+    usuarioCreacion: string;
+    usuarioModificacion: string;
+} 

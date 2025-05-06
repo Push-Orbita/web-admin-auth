@@ -1,0 +1,4793 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "nombre": "Productos",
+            "descripcion": "string",
+            "label": "string",
+            "element": "Producto",
+            "icon": "pi pi-box",
+            "path": "/producto",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 1,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 10,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 11,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 12,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 34,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 138,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 139,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 140,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 141,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 142,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 143,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 179,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "nombre": "string33",
+            "descripcion": "string33",
+            "label": "string",
+            "element": "string",
+            "icon": "string",
+            "path": "string",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 9,
+            "nombre": "string44",
+            "descripcion": "string44",
+            "label": "string",
+            "element": "string",
+            "icon": "string",
+            "path": "string",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 10,
+            "nombre": "test44",
+            "descripcion": "test44",
+            "label": "test44",
+            "element": "test44",
+            "icon": "test44",
+            "path": "test44",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 11,
+            "nombre": "test45",
+            "descripcion": "test45",
+            "label": "test45",
+            "element": "test45",
+            "icon": "test45",
+            "path": "test45",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 12,
+            "nombre": "test46",
+            "descripcion": "test46",
+            "label": "test46",
+            "element": "test46",
+            "icon": "test46",
+            "path": "test46",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 21,
+            "nombre": "test456",
+            "descripcion": "test456",
+            "label": "test456",
+            "element": "test456",
+            "icon": "test456",
+            "path": "test456",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 22,
+            "nombre": "test456test456",
+            "descripcion": "test456test456",
+            "label": "test456test456",
+            "element": "test456test456",
+            "icon": "test456test456",
+            "path": "test456test456",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 25,
+            "nombre": "Venta",
+            "descripcion": "Modulo de ventas y facturacion",
+            "label": "Ventas",
+            "element": "Venta",
+            "icon": "pi pi-shopping-cart",
+            "path": "/venta",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 26,
+            "nombre": "Presonal",
+            "descripcion": "Presonal",
+            "label": "Presonal",
+            "element": "Presonal",
+            "icon": "pi pi-amazon",
+            "path": "Presonal",
+            "moduloPadre": null,
+            "sistema": null,
+            "accionesPorModulo": []
+        },
+        {
+            "id": 27,
+            "nombre": "ModuloPrueba",
+            "descripcion": "Estoy esaf",
+            "label": "string",
+            "element": "string",
+            "icon": "string",
+            "path": "string",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 29,
+            "nombre": "ModuloPrueb34a",
+            "descripcion": "Estoy esaf",
+            "label": "string",
+            "element": "string",
+            "icon": "string",
+            "path": "string",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 1,
+                "nombre": "Facturación",
+                "descripcion": "Sistema de gestion integral para negocios",
+                "url": "pi pi-card",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 16,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "nombre": "Inicio",
+            "descripcion": "Pagina de inicio despues del login",
+            "label": "Inicio",
+            "element": "Home",
+            "icon": "pi pi-home",
+            "path": "/home",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 17,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 18,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 19,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "nombre": "Cientes",
+            "descripcion": "Modulo de clientes",
+            "label": "Gestion de Cliente",
+            "element": "Cliente",
+            "icon": "pi pi-id-card",
+            "path": "/cliente",
+            "moduloPadre": {
+                "id": 89,
+                "nombre": "Cliente DW F.PROD",
+                "descripcion": "Cliente DW F.PROD",
+                "label": "Clientes",
+                "element": "",
+                "icon": "pi pi-users",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 20,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 21,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 22,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 23,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 24,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 25,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 26,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "nombre": "Proveedores",
+            "descripcion": "modulo de Proovedores",
+            "label": "Gestion de Proovedor",
+            "element": "Proveedor",
+            "icon": "pi pi-truck",
+            "path": "/proveedor",
+            "moduloPadre": {
+                "id": 90,
+                "nombre": "Proveedor DW F.PROD",
+                "descripcion": "Proveedor DW F.PROD",
+                "label": "Proveedores",
+                "element": "",
+                "icon": "pi pi-truck",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 27,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 28,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 30,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 31,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 32,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 33,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "nombre": "Facturación",
+            "descripcion": "Desplegable de las opciones",
+            "label": "Facturación",
+            "element": " ",
+            "icon": "pi pi-receipt",
+            "path": " ",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 34,
+            "nombre": "AFIP",
+            "descripcion": "DropDown afip",
+            "label": "AFIP",
+            "element": "",
+            "icon": "pi pi-align-justify",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 35,
+            "nombre": "Condición IVA",
+            "descripcion": "Condicion iva afip",
+            "label": "Gestión Condición IVA",
+            "element": "CondicionIva",
+            "icon": "pi pi-backward",
+            "path": "/Condicioniva",
+            "moduloPadre": {
+                "id": 34,
+                "nombre": "AFIP",
+                "descripcion": "DropDown afip",
+                "label": "AFIP",
+                "element": "",
+                "icon": "pi pi-align-justify",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 35,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 36,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 37,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 38,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "nombre": "Tipos de Iva",
+            "descripcion": "Tipos de Iva AFIP",
+            "label": "Gestion de IVA",
+            "element": "Iva",
+            "icon": "pi pi-apple",
+            "path": "/iva",
+            "moduloPadre": {
+                "id": 34,
+                "nombre": "AFIP",
+                "descripcion": "DropDown afip",
+                "label": "AFIP",
+                "element": "",
+                "icon": "pi pi-align-justify",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 39,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 40,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 41,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 42,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "nombre": "Organización",
+            "descripcion": "Modulo de organizaciones ",
+            "label": "Organización",
+            "element": "Organizacion",
+            "icon": "pi pi-building",
+            "path": "/Organizacion",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 51,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 52,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 53,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 54,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 55,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 56,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "nombre": "Personas",
+            "descripcion": "modulo de personas",
+            "label": "Personas",
+            "element": "Persona",
+            "icon": "pi pi-user",
+            "path": "/personas",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 57,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 58,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 59,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 60,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 61,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 62,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "nombre": "Suscripción",
+            "descripcion": "Suscripción",
+            "label": "Suscripción",
+            "element": "Suscripcion",
+            "icon": "pi pi-amazon",
+            "path": "/suscripciones",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 119,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 120,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 121,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 122,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 124,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 125,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "nombre": "Sistema",
+            "descripcion": "Sistema",
+            "label": "Sistema",
+            "element": "Sistema",
+            "icon": "pi pi-desktop",
+            "path": "/sistemas",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 94,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 95,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 96,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 97,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 98,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 99,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 407,
+                    "accion": {
+                        "id": 9,
+                        "nombre": "Ver Credenciales",
+                        "descripcion": "VC"
+                    }
+                },
+                {
+                    "id": 408,
+                    "accion": {
+                        "id": 10,
+                        "nombre": "Editar Credenciales",
+                        "descripcion": "EC"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "nombre": "Planes",
+            "descripcion": "Planes",
+            "label": "Planes",
+            "element": "Plan",
+            "icon": "pi pi-money-bill",
+            "path": "/plan",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 126,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 127,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 128,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 129,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 130,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 131,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "nombre": "Contratos",
+            "descripcion": "Contratos",
+            "label": "Contratos",
+            "element": "Contrato",
+            "icon": "pi pi-arrows-alt",
+            "path": "/contrato",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 132,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 133,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 134,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 135,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 136,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 137,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "nombre": "Inicio Auth",
+            "descripcion": "Inicio Auth",
+            "label": "Inicio",
+            "element": "Home",
+            "icon": "pi pi-home",
+            "path": "/home",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 43,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 44,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 45,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 46,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 49,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 50,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "nombre": "Usuarios AUTH",
+            "descripcion": "Usuarios AUTH",
+            "label": "Usuarios",
+            "element": "",
+            "icon": "pi pi-users",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 67,
+            "nombre": "Modulos AUTH",
+            "descripcion": "Modulos AUTH",
+            "label": "Modulos",
+            "element": "",
+            "icon": "pi pi-moon",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 68,
+            "nombre": "Acciones AUTH",
+            "descripcion": "Acciones AUTH",
+            "label": "Acciones",
+            "element": "",
+            "icon": "pi pi-face-smile",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 69,
+            "nombre": "Rol Module Auth",
+            "descripcion": "Rol Module Auth",
+            "label": "Rol",
+            "element": "Rol",
+            "icon": "pi pi-chevron-left",
+            "path": "/rol",
+            "moduloPadre": {
+                "id": 66,
+                "nombre": "Usuarios AUTH",
+                "descripcion": "Usuarios AUTH",
+                "label": "Usuarios",
+                "element": "",
+                "icon": "pi pi-users",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 63,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 76,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 77,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 78,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 79,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 80,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 81,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 83,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 84,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 85,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 86,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 87,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "nombre": "Usuarios Module Auth",
+            "descripcion": "Usuarios Module Auth",
+            "label": "Usuarios",
+            "element": "Usuario",
+            "icon": "pi pi-address-book",
+            "path": "/usuarios",
+            "moduloPadre": {
+                "id": 66,
+                "nombre": "Usuarios AUTH",
+                "descripcion": "Usuarios AUTH",
+                "label": "Usuarios",
+                "element": "",
+                "icon": "pi pi-users",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 70,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 71,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 72,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 73,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 74,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 75,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "nombre": "Permisos Module Auth",
+            "descripcion": "Permisos Module Auth",
+            "label": "Permisos ",
+            "element": "Permisos",
+            "icon": "pi pi-ellipsis-v",
+            "path": "/permisos",
+            "moduloPadre": {
+                "id": 66,
+                "nombre": "Usuarios AUTH",
+                "descripcion": "Usuarios AUTH",
+                "label": "Usuarios",
+                "element": "",
+                "icon": "pi pi-users",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 82,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 88,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 89,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 90,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 91,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 92,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 93,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "nombre": "Modulos Module Auth",
+            "descripcion": "Modulos Module Auth",
+            "label": "Modulos",
+            "element": "Modulo",
+            "icon": "pi pi-clone",
+            "path": "/modulos",
+            "moduloPadre": {
+                "id": 67,
+                "nombre": "Modulos AUTH",
+                "descripcion": "Modulos AUTH",
+                "label": "Modulos",
+                "element": "",
+                "icon": "pi pi-moon",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 100,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 101,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 102,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 103,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 104,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 105,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 73,
+            "nombre": "Tipo De Acciones Module Auth",
+            "descripcion": "Tipo De Acciones Module Auth",
+            "label": "Tipo De Acciones",
+            "element": "Accion",
+            "icon": "pi pi-clipboard",
+            "path": "/accion",
+            "moduloPadre": {
+                "id": 68,
+                "nombre": "Acciones AUTH",
+                "descripcion": "Acciones AUTH",
+                "label": "Acciones",
+                "element": "",
+                "icon": "pi pi-face-smile",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 112,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 113,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 114,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 115,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 117,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 118,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "nombre": "Accion Por Modulo Module Auth",
+            "descripcion": "Accion Por Modulo Module Auth",
+            "label": "Acción Por Modulo",
+            "element": "AccionModulo",
+            "icon": "pi pi-code",
+            "path": "/accion-modulo",
+            "moduloPadre": {
+                "id": 67,
+                "nombre": "Modulos AUTH",
+                "descripcion": "Modulos AUTH",
+                "label": "Modulos",
+                "element": "",
+                "icon": "pi pi-moon",
+                "path": ""
+            },
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 106,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 107,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 108,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 109,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 110,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 111,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "nombre": "test Multi SElect",
+            "descripcion": "test Multi SElect",
+            "label": "test Multi SElect",
+            "element": "test Multi SElect",
+            "icon": "pi pi-amazon",
+            "path": "test Multi SElect",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 76,
+            "nombre": "Cliente Viandapp",
+            "descripcion": "Cliente Viandapp",
+            "label": "Cliente",
+            "element": "Cliente",
+            "icon": "pi pi-user-plus",
+            "path": "/cliente",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 6,
+                "nombre": "ViandAPP",
+                "descripcion": "Sistema de gestion integral de viandas",
+                "url": "pi pi-truck",
+                "icono": "pi pi-truck"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 180,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 181,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 182,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 183,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 184,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 185,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "nombre": "Mensaje WhatsApp",
+            "descripcion": "Mensaje WhatsApp",
+            "label": "Configuración WhatsApp",
+            "element": "Mensaje",
+            "icon": "pi pi-times",
+            "path": "/mensaje-ws",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 6,
+                "nombre": "ViandAPP",
+                "descripcion": "Sistema de gestion integral de viandas",
+                "url": "pi pi-truck",
+                "icono": "pi pi-truck"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 186,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 187,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 188,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 189,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 190,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 191,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 78,
+            "nombre": "Difusion",
+            "descripcion": "Difusión de mensajes de whatsapp",
+            "label": "Difundir mensaje",
+            "element": "Difusion",
+            "icon": "pi pi-megaphone",
+            "path": "/difusion",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 6,
+                "nombre": "ViandAPP",
+                "descripcion": "Sistema de gestion integral de viandas",
+                "url": "pi pi-truck",
+                "icono": "pi pi-truck"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 192,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 193,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 194,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 195,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 196,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 197,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "nombre": "Venta Sistema facturacion prod",
+            "descripcion": "Modulo de ventas y facturacion",
+            "label": "Nueva Venta",
+            "element": "Venta",
+            "icon": "pi pi-shopping-cart",
+            "path": "/venta",
+            "moduloPadre": {
+                "id": 33,
+                "nombre": "Facturación",
+                "descripcion": "Desplegable de las opciones",
+                "label": "Facturación",
+                "element": " ",
+                "icon": "pi pi-receipt",
+                "path": " "
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 234,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 235,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 236,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 237,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 238,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 239,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "nombre": "Método de pago",
+            "descripcion": "Modulo de métodos de pago ",
+            "label": "Nuevo Metodo de Pago",
+            "element": "MetodoPago",
+            "icon": "pi pi-credit-card",
+            "path": "/metodoPago",
+            "moduloPadre": {
+                "id": 33,
+                "nombre": "Facturación",
+                "descripcion": "Desplegable de las opciones",
+                "label": "Facturación",
+                "element": " ",
+                "icon": "pi pi-receipt",
+                "path": " "
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 198,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 199,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 200,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 201,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 202,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 203,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "nombre": "Productos DW",
+            "descripcion": "El desplegable de los módulos de productos",
+            "label": "Productos",
+            "element": "",
+            "icon": "pi pi-gift",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 390,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 391,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 392,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 393,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 394,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 395,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 83,
+            "nombre": "Productos F.PROD",
+            "descripcion": "Modulo para la gestión de productos ",
+            "label": "Productos",
+            "element": "Producto",
+            "icon": "pi pi-gift",
+            "path": "/producto",
+            "moduloPadre": {
+                "id": 82,
+                "nombre": "Productos DW",
+                "descripcion": "El desplegable de los módulos de productos",
+                "label": "Productos",
+                "element": "",
+                "icon": "pi pi-gift",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 204,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 205,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 206,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 207,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 208,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 209,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "nombre": "Gestion de Categorias",
+            "descripcion": "Modulo para la gestión de productos",
+            "label": "Gestión de Categorías",
+            "element": "Categoria",
+            "icon": "pi pi-tags",
+            "path": "/categoria",
+            "moduloPadre": {
+                "id": 82,
+                "nombre": "Productos DW",
+                "descripcion": "El desplegable de los módulos de productos",
+                "label": "Productos",
+                "element": "",
+                "icon": "pi pi-gift",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 210,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 211,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 212,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 213,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 214,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 215,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "nombre": "Gestion de Marcas",
+            "descripcion": "Modulo para la gestión de productos",
+            "label": "Gestión de Marcas",
+            "element": "Marca",
+            "icon": "",
+            "path": "/marca",
+            "moduloPadre": {
+                "id": 82,
+                "nombre": "Productos DW",
+                "descripcion": "El desplegable de los módulos de productos",
+                "label": "Productos",
+                "element": "",
+                "icon": "pi pi-gift",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 216,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 217,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 218,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 219,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 220,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 221,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 86,
+            "nombre": "Gestión de Presentaciones",
+            "descripcion": "Gestión de Presentaciones",
+            "label": "Gestión de Presentaciones",
+            "element": "Presentacion",
+            "icon": "pi pi-star",
+            "path": "/presentacion",
+            "moduloPadre": {
+                "id": 82,
+                "nombre": "Productos DW",
+                "descripcion": "El desplegable de los módulos de productos",
+                "label": "Productos",
+                "element": "",
+                "icon": "pi pi-gift",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 222,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 223,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 224,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 225,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 226,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 227,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "nombre": "Configuración DW F.PROD",
+            "descripcion": "Configuración DW F.PROD",
+            "label": "Configuración",
+            "element": "",
+            "icon": "pi pi-cog",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 4,
+                "nombre": "AUTH PROD",
+                "descripcion": "Sistema de autenticación integrada",
+                "url": "www.pushsoftware.com.ar/web-admin-auth",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 88,
+            "nombre": "Configuración de Ventas",
+            "descripcion": "Configuración de Ventas",
+            "label": "Configuración de Ventas",
+            "element": "ConfiguracionVenta",
+            "icon": "pi pi-address-book",
+            "path": "/configuracionVenta",
+            "moduloPadre": {
+                "id": 87,
+                "nombre": "Configuración DW F.PROD",
+                "descripcion": "Configuración DW F.PROD",
+                "label": "Configuración",
+                "element": "",
+                "icon": "pi pi-cog",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 228,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 229,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 230,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 231,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 232,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 233,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 89,
+            "nombre": "Cliente DW F.PROD",
+            "descripcion": "Cliente DW F.PROD",
+            "label": "Clientes",
+            "element": "",
+            "icon": "pi pi-users",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 90,
+            "nombre": "Proveedor DW F.PROD",
+            "descripcion": "Proveedor DW F.PROD",
+            "label": "Proveedores",
+            "element": "",
+            "icon": "pi pi-truck",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 91,
+            "nombre": "Caja DW F.PROD",
+            "descripcion": "Caja DW F.PROD",
+            "label": "Caja",
+            "element": "",
+            "icon": "pi pi-wallet",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 92,
+            "nombre": "Administración de Caja F.PROD",
+            "descripcion": "modulo para gestionar la caja y balances del día ",
+            "label": "Administración de Caja",
+            "element": "Caja",
+            "icon": "pi pi-money-bill",
+            "path": "/caja",
+            "moduloPadre": {
+                "id": 91,
+                "nombre": "Caja DW F.PROD",
+                "descripcion": "Caja DW F.PROD",
+                "label": "Caja",
+                "element": "",
+                "icon": "pi pi-wallet",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 240,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 241,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 242,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 243,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 244,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 245,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 93,
+            "nombre": "Tablas AFIP",
+            "descripcion": "Tablas AFIP",
+            "label": "Tablas AFIP",
+            "element": "TablasAfip",
+            "icon": "pi pi-address-book",
+            "path": "/tablas-afip",
+            "moduloPadre": {
+                "id": 34,
+                "nombre": "AFIP",
+                "descripcion": "DropDown afip",
+                "label": "AFIP",
+                "element": "",
+                "icon": "pi pi-align-justify",
+                "path": ""
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 246,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 247,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 248,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 94,
+            "nombre": "Tipo de movimientos",
+            "descripcion": "Tipo de movimientos",
+            "label": "Tipo de movimientos",
+            "element": "TipoMovimiento",
+            "icon": "pi pi-th-large",
+            "path": "/tipo-movimiento",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 249,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 250,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 251,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 252,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 253,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 254,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 95,
+            "nombre": "Clientes Refsa Facturas DW",
+            "descripcion": "DW de clientes",
+            "label": "Gestión de Clientes",
+            "element": "",
+            "icon": "pi pi-user",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": []
+        },
+        {
+            "id": 96,
+            "nombre": "Clientes Refsa Facturas",
+            "descripcion": "Modulo donde se cargan los Clientes Refsa Facturas",
+            "label": "Clientes",
+            "element": "Cliente",
+            "icon": "pi pi-users",
+            "path": "/cliente",
+            "moduloPadre": {
+                "id": 95,
+                "nombre": "Clientes Refsa Facturas DW",
+                "descripcion": "DW de clientes",
+                "label": "Gestión de Clientes",
+                "element": "",
+                "icon": "pi pi-user",
+                "path": ""
+            },
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 255,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 256,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 257,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 258,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 259,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 260,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 97,
+            "nombre": "Inicio Refsa Facturas",
+            "descripcion": "Inicio Refsa Facturas",
+            "label": "Inicio",
+            "element": "HomeAdmin",
+            "icon": "pi pi-home",
+            "path": "/home",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 261,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 262,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 263,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 98,
+            "nombre": "Gestión de Facturas DW",
+            "descripcion": "Gestión de Facturas DW",
+            "label": "Gestión de Facturas",
+            "element": "",
+            "icon": "pi pi-th-large",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 271,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 99,
+            "nombre": "Carga de Facturas",
+            "descripcion": "Carga de Facturas",
+            "label": "Carga de Facturas",
+            "element": "CargaFactura",
+            "icon": "pi pi-receipt",
+            "path": "/carga-factura",
+            "moduloPadre": {
+                "id": 98,
+                "nombre": "Gestión de Facturas DW",
+                "descripcion": "Gestión de Facturas DW",
+                "label": "Gestión de Facturas",
+                "element": "",
+                "icon": "pi pi-th-large",
+                "path": ""
+            },
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 264,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 265,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 266,
+                    "accion": {
+                        "id": 8,
+                        "nombre": "cancelar factura",
+                        "descripcion": "CLA"
+                    }
+                },
+                {
+                    "id": 267,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 268,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 269,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 270,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 100,
+            "nombre": "Registro de Pagos",
+            "descripcion": "Registro de Pagos",
+            "label": "Registro de Pagos",
+            "element": "RegistroPago",
+            "icon": "pi pi-money-bill",
+            "path": "/registro-pago",
+            "moduloPadre": {
+                "id": 98,
+                "nombre": "Gestión de Facturas DW",
+                "descripcion": "Gestión de Facturas DW",
+                "label": "Gestión de Facturas",
+                "element": "",
+                "icon": "pi pi-th-large",
+                "path": ""
+            },
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 272,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 273,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 274,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 275,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 276,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 277,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 101,
+            "nombre": "Estado de Factura",
+            "descripcion": "Estado de Factura",
+            "label": "Estado de la Factura",
+            "element": "EstadoFactura",
+            "icon": "pi pi-tags",
+            "path": "/estado-factura",
+            "moduloPadre": {
+                "id": 98,
+                "nombre": "Gestión de Facturas DW",
+                "descripcion": "Gestión de Facturas DW",
+                "label": "Gestión de Facturas",
+                "element": "",
+                "icon": "pi pi-th-large",
+                "path": ""
+            },
+            "sistema": {
+                "id": 7,
+                "nombre": "Refsa Facturas",
+                "descripcion": "web para la gestion y administracion de clientes facturas y sus pagos",
+                "url": "www.refsatel.online",
+                "icono": "IoConstruct"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 278,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 279,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 280,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 281,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 282,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 283,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 102,
+            "nombre": "Inicio Cloronor",
+            "descripcion": "Inicio del sistema",
+            "label": "Inicio",
+            "element": "Home",
+            "icon": "pi pi-home",
+            "path": "/home",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 302,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 303,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 103,
+            "nombre": "News Letter Cloronor DW",
+            "descripcion": "Drop down de noticias",
+            "label": "Noticias",
+            "element": "",
+            "icon": "pi pi-paperclip",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 304,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 305,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 104,
+            "nombre": "Noticias Cloronor",
+            "descripcion": "Modulo para la gestión de noticias de cloronor ",
+            "label": "Noticias",
+            "element": "Noticia",
+            "icon": "pi pi-address-book",
+            "path": "/noticia",
+            "moduloPadre": {
+                "id": 103,
+                "nombre": "News Letter Cloronor DW",
+                "descripcion": "Drop down de noticias",
+                "label": "Noticias",
+                "element": "",
+                "icon": "pi pi-paperclip",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 284,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 285,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 286,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 287,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 288,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 289,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 105,
+            "nombre": "Categorías de Noticias Cloronor",
+            "descripcion": "Modulo para la gestión de Categorías de las Noticias ",
+            "label": "Categorías de Noticias",
+            "element": "TypeCategoria",
+            "icon": "pi pi-bookmark",
+            "path": "/tipo-categoria",
+            "moduloPadre": {
+                "id": 103,
+                "nombre": "News Letter Cloronor DW",
+                "descripcion": "Drop down de noticias",
+                "label": "Noticias",
+                "element": "",
+                "icon": "pi pi-paperclip",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 290,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 291,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 292,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 293,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 294,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 295,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 106,
+            "nombre": "Tag de Noticias Cloronor",
+            "descripcion": "Modulo para la gestión de Tag de Noticias Cloronor",
+            "label": "Etiquetas de Noticias",
+            "element": "TypeTag",
+            "icon": "pi pi-bookmark-fill",
+            "path": "/type-tag",
+            "moduloPadre": {
+                "id": 103,
+                "nombre": "News Letter Cloronor DW",
+                "descripcion": "Drop down de noticias",
+                "label": "Noticias",
+                "element": "",
+                "icon": "pi pi-paperclip",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 296,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 297,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 298,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 299,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 300,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 301,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 107,
+            "nombre": "Pagina de Inicio DW",
+            "descripcion": "DropDown Del contenido de la pagina de inicio",
+            "label": "Gestión Del Inicio",
+            "element": "",
+            "icon": "pi pi-file",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 306,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 307,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 108,
+            "nombre": "Pagina de Nosotros DW",
+            "descripcion": "DropDown Del contenido de la pagina de Nosotros",
+            "label": "Gestión De Nosotros",
+            "element": "",
+            "icon": "pi pi-building",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 308,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 309,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 109,
+            "nombre": "Pagina de Productos DW",
+            "descripcion": "DropDown Del contenido de la pagina de Productos",
+            "label": "Gestión De Productos",
+            "element": "Producto",
+            "icon": "pi pi-sparkles",
+            "path": "/producto",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 310,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 311,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 384,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 385,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 386,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 387,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 388,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 389,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 110,
+            "nombre": "Pagina de Inversiones DW",
+            "descripcion": "DropDown Del contenido de la pagina de Inversiones",
+            "label": "Gestión De Inversiones",
+            "element": "",
+            "icon": "pi pi-dollar",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 314,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 315,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 111,
+            "nombre": "Pagina de Contacto",
+            "descripcion": "gestion del contenido de la pagina de Contacto",
+            "label": "Gestión De Contacto",
+            "element": "Contacto",
+            "icon": "pi pi-envelope",
+            "path": "/contacto",
+            "moduloPadre": {
+                "id": 123,
+                "nombre": "Gestion de contacto e email",
+                "descripcion": "Gestion de contacto e email",
+                "label": "Gestión de contactos",
+                "element": "",
+                "icon": "pi pi-address-book",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 316,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 317,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 366,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 367,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 368,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 369,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 370,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 371,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 112,
+            "nombre": "Sección Destacada Cloronor Admin",
+            "descripcion": "Administra el contenido del componente hxagonsection",
+            "label": "Sección Destacada",
+            "element": "SeccionDestacada",
+            "icon": "pi pi-asterisk",
+            "path": "/seccion-destacada",
+            "moduloPadre": {
+                "id": 107,
+                "nombre": "Pagina de Inicio DW",
+                "descripcion": "DropDown Del contenido de la pagina de inicio",
+                "label": "Gestión Del Inicio",
+                "element": "",
+                "icon": "pi pi-file",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 318,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 319,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 320,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 321,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 322,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 323,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 113,
+            "nombre": "Sección Bento Grid Cloronor Admin",
+            "descripcion": "Administra el contenido del componente  Bento Grid",
+            "label": "Sección Bento",
+            "element": "SeccionBento",
+            "icon": "pi pi-objects-column",
+            "path": "/seccion-bento",
+            "moduloPadre": {
+                "id": 107,
+                "nombre": "Pagina de Inicio DW",
+                "descripcion": "DropDown Del contenido de la pagina de inicio",
+                "label": "Gestión Del Inicio",
+                "element": "",
+                "icon": "pi pi-file",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 324,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 325,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 326,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 327,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 328,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 329,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 114,
+            "nombre": "Sección Normas de Calidad Cloronor Admin",
+            "descripcion": "Administra el contenido del componente Sección Normas de Calidad",
+            "label": "Sección Normas de Calidad",
+            "element": "SeccionNormas",
+            "icon": "pi pi-list-check",
+            "path": "/seccion-normas",
+            "moduloPadre": {
+                "id": 107,
+                "nombre": "Pagina de Inicio DW",
+                "descripcion": "DropDown Del contenido de la pagina de inicio",
+                "label": "Gestión Del Inicio",
+                "element": "",
+                "icon": "pi pi-file",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 330,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 331,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 332,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 333,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 334,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 335,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 115,
+            "nombre": "Sección Marcas Cloronor Admin",
+            "descripcion": "Administra el contenido del componente carousel de marcas",
+            "label": "Sección Marcas/Sponsors",
+            "element": "SeccionMarca",
+            "icon": "pi pi-ticket",
+            "path": "/seccion-marca",
+            "moduloPadre": {
+                "id": 107,
+                "nombre": "Pagina de Inicio DW",
+                "descripcion": "DropDown Del contenido de la pagina de inicio",
+                "label": "Gestión Del Inicio",
+                "element": "",
+                "icon": "pi pi-file",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 336,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 337,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 338,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 339,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 340,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 341,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 116,
+            "nombre": "Sección Comentarios de clientes Cloronor Admin",
+            "descripcion": "Administra el contenido del componente  de Comentarios de clientes",
+            "label": "Sección Comentarios",
+            "element": "SeccionComentarios",
+            "icon": "pi pi-comments",
+            "path": "/seccion-comentarios",
+            "moduloPadre": {
+                "id": 107,
+                "nombre": "Pagina de Inicio DW",
+                "descripcion": "DropDown Del contenido de la pagina de inicio",
+                "label": "Gestión Del Inicio",
+                "element": "",
+                "icon": "pi pi-file",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 342,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 343,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 344,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 345,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 346,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 347,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 117,
+            "nombre": "Misión/Visión Landing Cloronor",
+            "descripcion": "Modulo de gestion de contenido de la seccion de Mision Vision de la landing de cloronor",
+            "label": "Misión/Visión",
+            "element": "MisionVision",
+            "icon": "pi pi-address-book",
+            "path": "/mision-vision",
+            "moduloPadre": {
+                "id": 108,
+                "nombre": "Pagina de Nosotros DW",
+                "descripcion": "DropDown Del contenido de la pagina de Nosotros",
+                "label": "Gestión De Nosotros",
+                "element": "",
+                "icon": "pi pi-building",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 354,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 355,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 356,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 357,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 358,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 359,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 118,
+            "nombre": "Timeline Landing Cloronor",
+            "descripcion": "Modulo de gestion de contenido de la seccion de linea del tiempo",
+            "label": "Linea de Tiempo",
+            "element": "TimeLine",
+            "icon": "pi pi-times",
+            "path": "/time-line",
+            "moduloPadre": {
+                "id": 108,
+                "nombre": "Pagina de Nosotros DW",
+                "descripcion": "DropDown Del contenido de la pagina de Nosotros",
+                "label": "Gestión De Nosotros",
+                "element": "",
+                "icon": "pi pi-building",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 348,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 349,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 350,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 351,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 352,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 353,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 119,
+            "nombre": "Nuestro Proceso Admin Cloronor",
+            "descripcion": "Modulo para la gestión del contenido de los procesos ",
+            "label": "Nuestro Proceso",
+            "element": "Proceso",
+            "icon": "pi pi-bolt",
+            "path": "/procesos",
+            "moduloPadre": {
+                "id": 108,
+                "nombre": "Pagina de Nosotros DW",
+                "descripcion": "DropDown Del contenido de la pagina de Nosotros",
+                "label": "Gestión De Nosotros",
+                "element": "",
+                "icon": "pi pi-building",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 360,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 361,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 362,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 363,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 364,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 365,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "nombre": "Inversiones Cloronor Landing",
+            "descripcion": "Modulo para la gestión de las noticias de inversiones",
+            "label": "Inversiones",
+            "element": "Inversiones",
+            "icon": "pi pi-chart-line",
+            "path": "/inversiones",
+            "moduloPadre": {
+                "id": 110,
+                "nombre": "Pagina de Inversiones DW",
+                "descripcion": "DropDown Del contenido de la pagina de Inversiones",
+                "label": "Gestión De Inversiones",
+                "element": "",
+                "icon": "pi pi-dollar",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 378,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 379,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 380,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 381,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 382,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 383,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 121,
+            "nombre": "Hero Page Cloronor Landing",
+            "descripcion": "gestion de la portada de la pagina de inversiones",
+            "label": "Portada",
+            "element": "HeroPageInversiones",
+            "icon": "pi pi-image",
+            "path": "/hero-page-inversiones",
+            "moduloPadre": {
+                "id": 110,
+                "nombre": "Pagina de Inversiones DW",
+                "descripcion": "DropDown Del contenido de la pagina de Inversiones",
+                "label": "Gestión De Inversiones",
+                "element": "",
+                "icon": "pi pi-dollar",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 372,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 373,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 374,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 375,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 376,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 377,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 122,
+            "nombre": "Footer admin landing cloronor",
+            "descripcion": "Gestion del footer",
+            "label": "Footer",
+            "element": "Footer",
+            "icon": "pi pi-bars",
+            "path": "/footer",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 396,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 397,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 398,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 123,
+            "nombre": "Gestion de contacto e email",
+            "descripcion": "Gestion de contacto e email",
+            "label": "Gestión de contactos",
+            "element": "",
+            "icon": "pi pi-address-book",
+            "path": "",
+            "moduloPadre": null,
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 399,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 400,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 124,
+            "nombre": "Gestion de contacto WS",
+            "descripcion": "Gestion de contacto WS",
+            "label": "Gestion de contacto WS",
+            "element": "NumeroWs",
+            "icon": "pi pi-phone",
+            "path": "/numero-ws",
+            "moduloPadre": {
+                "id": 123,
+                "nombre": "Gestion de contacto e email",
+                "descripcion": "Gestion de contacto e email",
+                "label": "Gestión de contactos",
+                "element": "",
+                "icon": "pi pi-address-book",
+                "path": ""
+            },
+            "sistema": {
+                "id": 8,
+                "nombre": "Administrador Landing Cloronor S.A",
+                "descripcion": "Administrador del contenido de la landing page de Cloronor S.A",
+                "url": "https://www.cloronor.com.ar/",
+                "icono": "IoNuclear"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 401,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 402,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 403,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 404,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 405,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                },
+                {
+                    "id": 406,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 125,
+            "nombre": "Nuevo Modulo",
+            "descripcion": "string",
+            "label": "string",
+            "element": "string",
+            "icon": "string",
+            "path": "string",
+            "moduloPadre": {
+                "id": 8,
+                "nombre": "string33",
+                "descripcion": "string33",
+                "label": "string",
+                "element": "string",
+                "icon": "string",
+                "path": "string"
+            },
+            "sistema": {
+                "id": 3,
+                "nombre": "Facturación PROD",
+                "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
+                "url": "www.stockwiseapp.online",
+                "icono": "pi pi-card"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 409,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 410,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 126,
+            "nombre": "test-refactori",
+            "descripcion": "test-refactori",
+            "label": "test-refactori",
+            "element": "test-refactori",
+            "icon": "test-refactori",
+            "path": "test-refactori",
+            "moduloPadre": {
+                "id": 1,
+                "nombre": "Productos",
+                "descripcion": "string",
+                "label": "string",
+                "element": "Producto",
+                "icon": "pi pi-box",
+                "path": "/producto"
+            },
+            "sistema": {
+                "id": 10,
+                "nombre": "testqqq",
+                "descripcion": "asd",
+                "url": "www.stockwiseapp.online",
+                "icono": "IoAccessibility"
+            },
+            "accionesPorModulo": [
+                {
+                    "id": 411,
+                    "accion": {
+                        "id": 2,
+                        "nombre": "Alta",
+                        "descripcion": "A"
+                    }
+                },
+                {
+                    "id": 412,
+                    "accion": {
+                        "id": 1,
+                        "nombre": "Baja",
+                        "descripcion": "B"
+                    }
+                },
+                {
+                    "id": 413,
+                    "accion": {
+                        "id": 6,
+                        "nombre": "Leer",
+                        "descripcion": "L"
+                    }
+                },
+                {
+                    "id": 414,
+                    "accion": {
+                        "id": 4,
+                        "nombre": "Modificar",
+                        "descripcion": "M"
+                    }
+                },
+                {
+                    "id": 415,
+                    "accion": {
+                        "id": 5,
+                        "nombre": "Ver",
+                        "descripcion": "V"
+                    }
+                },
+                {
+                    "id": 416,
+                    "accion": {
+                        "id": 7,
+                        "nombre": "Reportes",
+                        "descripcion": "R"
+                    }
+                }
+            ]
+        }
+    ],
+        "metadata": {
+        "count": 86,
+            "pageNumber": 1,
+                "pageSize": 10,
+                    "totalPages": 9
+    }
+}

@@ -1,89 +1,115 @@
-import { useModuleContext } from "@hooks/useModules";
-import useQueryApi from "@hooks/useQueryApi";
-import UseQueryMutation from "@hooks/useQueryMutation";
-import { DashboardLayout } from "@layout/DashboardLayout";
-import { t } from "i18next";
-import { confirmDialog } from "primereact/confirmdialog";
+import DynamicCrudPage from "@components/common/cruds/DynamicCrudPage";
+import { FieldConfig } from "@components/common/forms/DynamicFormFields";
+import { ICustomColumnItem } from "@components/common/table/basic-table/interfaces/custombasictable";
+import { ModuloApi } from "@features/modulo/service/modulo.service";
+import { TreeNode } from "primereact/treenode";
+import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { lang } from "../../langs";
-import { RolApi } from "./service/rol.service";
-import { TableRol } from "./components/table/TableRol";
-import FormRol from "./components/form/FormRol";
-import { useEffect } from "react";
+import { adaptarModulosParaTreeSelect } from "./model/adapter/rol.adapter";
+import { AccionesPorRol, RolEntity } from "./model/entity/rol.entity";
 
 
 const RolView = () => {
-    const { rowData, startToolbarTemplate, visible, resetModuleState } = useModuleContext();
-    const { data, isFetching, refetch } = useQueryApi<Response>(
-        "Rol",
-        RolApi.getRolSearch
-    );
+    const [modulosTree, setModulosTree] = useState<TreeNode[]>([]);
+    const [loadingTree, setLoadingTree] = useState(true); // 👈 indicador de carga
 
-    useEffect(() => {
-        resetModuleState();
+    const cargarModulos = useCallback(async () => {
+        try {
+            const response = await ModuloApi.getAll();
+            if ('data' in response && Array.isArray(response.data)) {
+                const modulosAdaptados = adaptarModulosParaTreeSelect(response.data);
+                setModulosTree(modulosAdaptados);
+            } else {
+                console.error('Formato de respuesta inválido:', response);
+                toast.error('Error en el formato de los datos');
+            }
+        } catch (error) {
+            console.error('Error al cargar módulos:', error);
+            toast.error('Error al cargar los módulos');
+        } finally {
+            setLoadingTree(false); // 👈 fin de carga
+        }
     }, []);
 
-    const deleteRol = UseQueryMutation({
-        requestFn: RolApi.deleteRol,
-        options: {
-            onError() {
-                toast.error(t(lang.Rol.messages.deletedError));
-            },
-            onSuccess: () => {
-                refetch();
-                toast.success(t(lang.Rol.messages.deletedSuccess));
-            },
-        },
-    });
+    useEffect(() => {
+        cargarModulos();
+    }, [cargarModulos]);
 
-    const handleDelete = (id: number) => {
-        confirmDialog({
-            message: t(lang.common.labels.deleteMessage),
-            header: t(lang.common.labels.deleteMessageTitle),
-            icon: 'pi pi-exclamation-triangle text-yellow-500',
-            acceptClassName: 'p-button-danger',
-            acceptLabel: t(lang.common.actions.confirm),
-            rejectLabel: t(lang.common.actions.cancel),
-            accept: async () => {
-                await deleteRol.mutateAsync({ id });
-            },
-            reject: () => {
-                // Maneja la cancelación si es necesario
-            },
-        });
-    };
-    return (
-        <DashboardLayout>
-            <div className="card">
-                <div className='text-3xl mt-2 mb-2'>
-                    {t(lang.Rol.title)}
+
+
+    const formFields: FieldConfig[] = [
+        {
+            name: "nombre",
+            type: "text",
+            gridSize: "medium"
+        },
+        {
+            name: "descripcion",
+            type: "text",
+            gridSize: "medium"
+        },
+        {
+            name: "accionesPorRol",
+            type: "treeselect",
+            label: "Acciones",
+            options: modulosTree,
+            selectionMode: "checkbox",
+            display: "chip",
+            filter: true,
+            filterMode: "lenient",
+            showClear: true,
+            gridSize: "full"
+        }
+    ];
+
+    const columns: ICustomColumnItem[] = [
+        { field: "nombre", header: "Nombre", sortable: true, filter: true, filterPlaceholder: "Buscar por nombre" },
+        { field: "descripcion", header: "Descripción", sortable: true, filter: true }
+    ];
+
+    const renderRowExpand = (rowData: RolEntity) => {
+        if (!rowData?.accionesPorRol || !Array.isArray(rowData.accionesPorRol)) {
+            return (
+                <div className="p-4">
+                    <p>No hay acciones disponibles para este rol.</p>
                 </div>
-                {
-                    visible ? (
-                        <>
-                            <FormRol
-                                title={rowData ? `${t(lang.Rol.edit)}` : `${t(lang.Rol.new)}`} refetch={refetch}
-                            />
-                        </>
-                    )
-                        : (
-                            <div>
-                                <div className="grid">
-                                    <div className="col-12">
-                                        {startToolbarTemplate()}
-                                    </div>
-                                </div>
-                                <TableRol
-                                    data={data ?? []}
-                                    isFetching={isFetching}
-                                    handleDelete={handleDelete}
-                                />
-                            </div>
-                        )
-                }
+            );
+        }
+
+        return (
+            <div className="p-4">
+                <h3 className="text-lg font-semibold mb-3">Acciones Permitidas por Módulo</h3>
+                <ul className="list-disc pl-5 space-y-2">
+                    {rowData.accionesPorRol.map((accion: AccionesPorRol, index: number) => {
+                        const moduloNombre = accion?.accionPorModulo?.modulo?.nombre || 'Módulo no especificado';
+                        const accionNombre = accion?.accionPorModulo?.accion?.nombre || 'Acción no especificada';
+                        const accionDescripcion = accion?.accionPorModulo?.accion?.descripcion || '';
+
+                        return (
+                            <li key={index} className="text-sm">
+                                <span className="font-medium">{moduloNombre}:</span>
+                                <span className="ml-2">{accionNombre} {accionDescripcion && `(${accionDescripcion})`}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
-        </DashboardLayout>
+        );
+    };
+
+    return (
+        <>
+
+            <DynamicCrudPage
+                moduleKey="rol"
+                formFields={formFields}
+                columns={columns}
+                rowExpansionTemplate={renderRowExpand}
+                showExpandButtons={true}
+            />
+
+        </>
     );
 };
 
-export default RolView;
+export default RolView; 

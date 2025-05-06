@@ -1,15 +1,29 @@
-export type RolPatchDTO = Partial<RolPostDTO> & { id: number };
+import { Rol, AccionesPorRol, PermisosDeAcceso } from '../entity/rol.entity';
 
-
-export interface RolDeleteDTO {
-    id: number;
-}
-export interface RolPostDTO {
+export interface CreateRolDto {
     nombre: string;
     descripcion: string;
-    accionesPorRol: AccionesPorRol[];
+    accionesPorRol: CreateAccionesPorRolDto[];
 }
 
-export interface AccionesPorRol {
-    accionPorModulo: number;
+export interface CreateAccionesPorRolDto {
+    nombre: string;
+    descripcion: string;
+    permisosDeAcceso: CreatePermisosDeAccesoDto[];
 }
+
+export interface CreatePermisosDeAccesoDto {
+    nombre: string;
+    descripcion: string;
+}
+
+export interface UpdateRolDto extends Partial<CreateRolDto> { }
+
+export interface RolResponseDto extends Rol { }
+
+export interface RolListResponseDto {
+    data: RolResponseDto[];
+    total: number;
+    page: number;
+    limit: number;
+} 

@@ -1,0 +1,141 @@
+{
+    "custom url": {
+        "prefix": "createApiUrl",
+        "body": [
+            "export const ${1:ModuleName} = \"/${2:module-name}\";",
+            "",
+            "export const ${1/(.*)/${1:capitalize}/}URL = {",
+            "    get: `${$1}/search`,",
+            "    getById: `${$1}/:id`,",
+            "    post: `${$1}`,",
+            "    patch: `${$1}/:id`,",
+            "    delete: `${$1}/:id`",
+            "};"
+        ],
+        "description": "Snippet para generar las URLs de una entidad personalizada"
+    },
+    "custom ts service": {
+        "prefix": "createApiService",
+        "body": [
+            "import { Axios, cancelTokenSource } from \"@config/api/axios.config\";",
+            "import { omitId, replaceParamId } from \"@utilities/replace-param.utils\";",
+            "import { ${1:ServiceName}URL } from \"./url/${2:service-inport}.url\";",
+            "import { ${1}DeleteDTO, ${1}PatchDTO, ${1}PostDTO } from \"../model/dtos/${2:service-inport}.dto\";",
+            "",
+            "const url = ${1}URL;",
+            "",
+            "class ${1} {",
+            "    async get${1}Search(){",
+            "        return await Axios.get(`${url.get}`, {",
+            "            cancelToken: cancelTokenSource.token,",
+            "        });",
+            "    }",
+            "",
+            "    async get${1}ById(${1:/downcase}Id: number) {",
+            "        return await Axios.get(replaceParamId(url.getById, ${1:/downcase}Id), {",
+            "            cancelToken: cancelTokenSource.token,",
+            "        });",
+            "    }",
+            "",
+            "    async post${1}(req: ${1}PostDTO){",
+            "        return await Axios.post(url.post, req, {",
+            "            cancelToken: cancelTokenSource.token,",
+            "        });",
+            "    }",
+            "",
+            "    async patch${1}(req: ${1}PatchDTO){",
+            "        return await Axios.patch(replaceParamId(url.patch, req.id), omitId(req), {",
+            "            cancelToken: cancelTokenSource.token,",
+            "        });",
+            "    }",
+            "",
+            "    async delete${1}(${1:/downcase}Id: ${1}DeleteDTO) {",
+            "        return await Axios.delete(replaceParamId(url.delete, ${1:/downcase}Id.id), {",
+            "            cancelToken: cancelTokenSource.token,",
+            "        });",
+            "    }",
+            "}",
+            "",
+            "export const ${1}Api = new ${1}();"
+        ],
+        "description": "Snippet para reemplazar todas las instancias de ServiceName con un nombre nuevo"
+    },
+    "custom dto types": {
+        "prefix": "createDtoBasic",
+        "body": [
+            "export type ${1:DtoName}PatchDTO = Partial<${1}PostDTO> & { id: number };",
+            "",
+            "export interface ${1}PostDTO {",
+            "    nombre: string;",
+            "    descripcion: string;",
+            "}",
+            "",
+            "export interface ${1}DeleteDTO {",
+            "    id: number;",
+            "}"
+        ],
+        "description": "Snippet para crear tipos e interfaces de DTO, reemplazando DtoName con un nuevo nombre"
+    },
+    "custom response interfaces": {
+        "prefix": "createEntityBasic",
+        "body": [
+            "import { MetadataEntity } from \"@interfaces/entity/MetadataEntity.entity\";",
+            "",
+            "export interface ${1:EntityName}Response {",
+            "    data: ${1}Entity[];",
+            "    metadata: MetadataEntity;",
+            "}",
+            "",
+            "export interface ${1}Entity {",
+            "    id: number;",
+            "    nombre?: string;",
+            "    descripcion?: string;",
+            "}"
+        ],
+        "description": "Snippet para crear las interfaces de respuesta, reemplazando EntityName con un nuevo nombre"
+    },
+    "custom field validations": {
+        "prefix": "createFieldValidations",
+        "body": [
+            "import { t } from \"i18next\";",
+            "import { lang } from \"../../../../../langs\";",
+            "import * as Yup from \"yup\";",
+            "",
+            "export const fieldValidations = Yup.object().shape({",
+            "    nombre: Yup.string().required(t(lang.${1:ServiceName}.validation.nameIsRequired.toString())),",
+            "    descripcion: Yup.string().required(t(lang.${1}.validation.descriptionIsRequired.toString())),",
+            "});"
+        ],
+        "description": "Snippet para crear validaciones de campos con Yup, reemplazando EspecieType con un nuevo nombre"
+    },
+    "createBaseService": {
+        "prefix": "createBaseService",
+        "body": [
+            "import { BaseService } from '../../../../service/BaseService';",
+            "",
+            "export class ${1:Feat}Service extends BaseService<${1:Feat}Entity> {",
+            "    constructor() {",
+            "        super(${2:FeatURL});",
+            "    }",
+            "}",
+            "",
+            "export const ${1:Feat}Api = new ${1:Feat}Service();"
+        ],
+        "description": "Snippet para crear un servicio basado en BaseService"
+    },
+    "createValidation": {
+        "prefix": "createValidation",
+        "body": [
+            "import { stringValidation } from \"@components/common/forms/validations/string.validations\";",
+            "import * as Yup from \"yup\";",
+            "",
+            "export const fieldValidations = Yup.object().shape({",
+            "    ${1:text}: stringValidation({",
+            "        isRequired: ${2:true},",
+            "        min: ${3:3}",
+            "    }),",
+            "});"
+        ],
+        "description": "Snippet para crear validaciones con Yup y stringValidation"
+    }
+}

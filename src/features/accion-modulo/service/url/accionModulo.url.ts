@@ -6,4 +6,4 @@ export const AccionModuloURL = {
     post: `${AccionModulo}`,
     patch: `${AccionModulo}/:id`,
     delete: `${AccionModulo}/:id`
-};
+}; 

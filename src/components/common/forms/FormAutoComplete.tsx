@@ -1,59 +1,159 @@
 import { useField } from 'formik';
 import { AutoComplete } from 'primereact/autocomplete';
-import { Message } from 'primereact/message';
+import { useCallback, useMemo, useState, useEffect } from 'react';
+import selectEntitiesConfig from '@config/components/selectConfig';
 
-interface Props {
-    label: string;
+interface FormAutoCompleteProps {
     name: string;
+    label: string;
+    optionLabel?: string;
+    options?: any[];
     placeholder?: string;
-    options: any;
-    optionLabel: string;
-    onChange?: (value: any) => void;
-    isLoading?: boolean;
     disabled?: boolean;
-    size?: 'p-inputtext-sm' | 'p-inputtext-lg' | 'normal';
-    textSize?: 'text-xs' | 'text-sm' | 'text-base' | 'text-lg' | 'text-xl';
-    onInputChange?: (e: any) => void; // Método para manejar la búsqueda dinámica
-    [x: string]: any;
+    multiple?: boolean;
+    forceSelection?: boolean;
+    dropdown?: boolean;
+    minLength?: number;
+    delay?: number;
+    className?: string;
+    itemTemplate?: (item: any) => React.ReactNode;
+    selectedItemTemplate?: (item: any) => React.ReactNode;
+    panelFooterTemplate?: () => React.ReactNode;
+    emptyMessage?: string;
+    emptyFilterMessage?: string;
+    loading?: boolean;
+    loadingIcon?: string;
+    virtualScrollerOptions?: any;
+    selectionLimit?: number;
+    selectKey?: string;
 }
 
-export const FormAutoComplete = ({
+const FormAutoComplete = ({
+    name,
     label,
-    isLoading,
+    optionLabel = "nombre",
+    options: propOptions,
+    placeholder,
     disabled = false,
-    size = 'normal',
-    textSize = 'text-base',
-    onInputChange,
-    ...props
-}: Props) => {
-    const [field, meta, helpers] = useField(props);
+    multiple = false,
+    forceSelection = false,
+    dropdown = false,
+    minLength = 1,
+    delay = 300,
+    className = "",
+    itemTemplate,
+    selectedItemTemplate,
+    panelFooterTemplate,
+    emptyMessage = "No hay resultados",
+    emptyFilterMessage = "No hay resultados que coincidan",
+    loading: propLoading = false,
+    loadingIcon = "pi pi-spin pi-spinner",
+    virtualScrollerOptions,
+    selectionLimit,
+    selectKey
+}: FormAutoCompleteProps) => {
+    const [field, meta, helpers] = useField(name);
+    const [loading, setLoading] = useState(false);
+    const [allOptions, setAllOptions] = useState<any[]>([]);
+    const [filteredOptions, setFilteredOptions] = useState<any[]>([]);
 
-    const handleChange = (e: { value: any }) => {
+    const isInvalid = meta.touched && meta.error;
+
+    // Cargar datos iniciales cuando el componente se monta
+    useEffect(() => {
+        const loadInitialData = async () => {
+            if (selectKey) {
+                setLoading(true);
+                try {
+                    const config = selectEntitiesConfig[selectKey];
+                    if (config) {
+                        const data = await config.apiService();
+                        setAllOptions(data);
+                        setFilteredOptions(data);
+                    }
+                } catch (error) {
+                    console.error('Error al cargar datos iniciales:', error);
+                } finally {
+                    setLoading(false);
+                }
+            } else if (propOptions) {
+                setAllOptions(propOptions);
+                setFilteredOptions(propOptions);
+            }
+        };
+
+        loadInitialData();
+    }, [selectKey, propOptions]);
+
+    const handleChange = useCallback((e: any) => {
         helpers.setValue(e.value);
-        if (props.onChange) {
-            props.onChange(e);
+    }, [helpers]);
+
+    const handleBlur = useCallback(() => {
+        helpers.setTouched(true);
+    }, [helpers]);
+
+    const handleSearch = useCallback((event: { query: string }) => {
+        setTimeout(() => {
+            let _filteredOptions;
+
+            if (!event.query.trim().length) {
+                _filteredOptions = [...allOptions];
+            } else {
+                const config = selectKey ? selectEntitiesConfig[selectKey] : null;
+                const labelField = config?.labelField || optionLabel;
+
+                _filteredOptions = allOptions.filter((item) => {
+                    return item[labelField].toLowerCase().includes(event.query.toLowerCase());
+                });
+            }
+
+            setFilteredOptions(_filteredOptions);
+        }, delay);
+    }, [allOptions, selectKey, optionLabel, delay]);
+
+    const currentOptionLabel = useMemo(() => {
+        if (selectKey) {
+            return selectEntitiesConfig[selectKey]?.labelField || optionLabel;
         }
-    };
+        return optionLabel;
+    }, [selectKey, optionLabel]);
 
     return (
-        <>
-            <label className={textSize} htmlFor={props.name}>{label}</label>
+        <div className={`field ${className}`}>
+            <label htmlFor={name} className={isInvalid ? "p-error" : ""}>
+                {label}
+            </label>
             <AutoComplete
-                disabled={disabled}
+                id={name}
+                name={name}
                 value={field.value}
-                suggestions={props.options}
-                completeMethod={onInputChange} // Método para cargar las opciones dinámicamente
-                field={props.optionLabel}
+                suggestions={filteredOptions}
+                completeMethod={handleSearch}
                 onChange={handleChange}
-                onBlur={field.onBlur}
-                placeholder={props.placeholder}
-                dropdown={true} // Agrega un icono de dropdown para sugerencias
-                className={`w-full ${size}`}
-                {...props}
+                onBlur={handleBlur}
+                field={currentOptionLabel}
+                placeholder={placeholder}
+                disabled={disabled}
+                multiple={multiple}
+                forceSelection={forceSelection}
+                dropdown={dropdown}
+                minLength={minLength}
+                delay={delay}
+                itemTemplate={itemTemplate}
+                selectedItemTemplate={selectedItemTemplate}
+                panelFooterTemplate={panelFooterTemplate}
+                emptyMessage={emptyMessage}
+                emptyFilterMessage={emptyFilterMessage}
+                loading={loading || propLoading}
+                loadingIcon={loadingIcon}
+                virtualScrollerOptions={virtualScrollerOptions}
+                selectionLimit={selectionLimit}
+                className={`w-full ${isInvalid ? "p-invalid" : ""}`}
             />
-            {meta.touched && meta.error ? (
-                <Message id={`${props.name}-help`} severity="error" text={meta.error} style={{ marginTop: '5px' }} />
-            ) : null}
-        </>
+            {isInvalid && <small className="p-error">{meta.error}</small>}
+        </div>
     );
 };
+
+export default FormAutoComplete;

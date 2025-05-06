@@ -1,4 +1,4 @@
-export const Persona = "/Persona";
+export const Persona = "/persona";
 
 export const PersonaURL = {
     get: `${Persona}/search`,
@@ -6,4 +6,4 @@ export const PersonaURL = {
     post: `${Persona}`,
     patch: `${Persona}/:id`,
     delete: `${Persona}/:id`
-};
+}; 

@@ -1,181 +1,261 @@
 {
-    "id": 5,
-    "nombre": "fhguzman",
-    "email": "nahuel14321@gmail.com",
-    "password": "$2b$10$o9OFb2m.xRiaObtqDKpM3.4ZNJ.gNaMXjJc.L5OIxRTb6AbFVRst.",
-    "persona": {
-      "id": 5,
-      "cuil": "20-38691409-5",
-      "nombre": "Fernando Herrera",
-      "apellido": "Guzman",
-      "genero": "M"
-    },
-    "permiso": [
-      {
-        "id": 9,
-        "sistema": {
-          "id": 3,
-          "nombre": "Admin Orbita",
-          "descripcion": "Sistema de gestion integral para negocios PRODUCCIÓN",
-          "url": "www.stockwiseapp.online",
-          "clientId": "2ef18554-8943-45d4-8e3a-ccac31b90e91",
-          "clientSecret": "4157c088-c30c-447e-a0be-082700f00732",
-          "icono": "pi pi-card"
-        },
-        "organizacion": {
-          "id": 4,
-          "nombre": "Push",
-          "bd": "facturacion",
-          "host": "10.10.102.2",
-          "port": 30044,
-          "usuario": "root",
-          "password": "$2b$10$TB9XVEEjpRIrPUEHNJpuw.dP3VuhWtFd/nPYsz4HRBIl4hc8AVJLy",
-          "tipobd": "mysql"
-        },
-        "rol": {
-          "id": 23,
-          "nombre": "Administrador Facturacion PROD",
-          "descripcion": "Administardor Facturacion PROD"
-        }
-      }
-    ],
+    "userNombre": "Guzman Fernando Nahuel",
+    "tokenUser": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdWlsIjoiMjAzODY5MTQwOTYiLCJzeXN0ZW1fbmFtZSI6IlJhcGlkYXRvcyIsImlhdCI6MTcxMTIzNzcxOCwiZXhwIjoxNzExMjM4MDE4fQ.NLwxJ2_CBKlfcMzM20Tn6gzKUMjGNIh2xGaHYlAj_u0",
+    "organizacion": "Push",
+    "plan": "Basico",
+    "sistema": "Admin Orbita",
+    "activo": true,
     "userModulos": [
-      {
-        "id": 30,
-        "createdAt": "2024-10-02T15:05:14.285Z",
-        "updatedAt": "2024-10-02T15:05:14.285Z",
-        "deletedAt": null,
-        "nombre": "Inicio",
-        "descripcion": "Pagina de inicio despues del login",
-        "label": "Inicio",
-        "element": "Home",
-        "icon": "pi pi-fw pi-home",
-        "path": "/home",
-        "acciones": [
-          {
-            "id": 2,
-            "nombre": "Alta",
-            "descripcion": "A"
-          },
-          {
-            "id": 1,
-            "nombre": "Baja",
-            "descripcion": "B"
-          },
-          {
-            "id": 4,
-            "nombre": "Modificar",
-            "descripcion": "M"
-          },
-          {
-            "id": 5,
-            "nombre": "Ver",
-            "descripcion": "V"
-          },
-          {
-            "id": 6,
-            "nombre": "Leer",
-            "descripcion": "L"
-          },
-          {
-            "id": 7,
-            "nombre": "Reportes",
-            "descripcion": "R"
-          }
-        ]
-      },
-      {
-        "id": 31,
-        "createdAt": "2024-10-02T15:05:14.288Z",
-        "updatedAt": "2024-10-02T15:05:14.288Z",
-        "deletedAt": null,
-        "nombre": "Organizaciones",
-        "descripcion": "Gestión de organizaciones",
-        "label": "Organización",
-        "element": "Organizacion",
-        "icon": "pi pi-building",
-        "path": "/organizaciones",
-        "acciones": [
-          {
-            "id": 2,
-            "nombre": "Alta",
-            "descripcion": "A"
-          },
-          {
-            "id": 1,
-            "nombre": "Baja",
-            "descripcion": "B"
-          },
-          {
-            "id": 4,
-            "nombre": "Modificar",
-            "descripcion": "M"
-          },
-          {
-            "id": 5,
-            "nombre": "Ver",
-            "descripcion": "V"
-          },
-          {
-            "id": 6,
-            "nombre": "Leer",
-            "descripcion": "L"
-          },
-          {
-            "id": 7,
-            "nombre": "Reportes",
-            "descripcion": "R"
-          }
-        ]
-      },
-      {
-        "id": 32,
-        "createdAt": "2024-10-02T15:05:14.293Z",
-        "updatedAt": "2024-10-02T15:05:14.293Z",
-        "deletedAt": null,
-        "nombre": "Usuarios",
-        "descripcion": "Gestión de usuarios",
-        "label": "Usuario",
-        "element": "Usuario",
-        "icon": "pi pi-users",
-        "path": "/usuarios",
-        "acciones": [
-          {
-            "id": 2,
-            "nombre": "Alta",
-            "descripcion": "A"
-          },
-          {
-            "id": 1,
-            "nombre": "Baja",
-            "descripcion": "B"
-          },
-          {
-            "id": 4,
-            "nombre": "Modificar",
-            "descripcion": "M"
-          },
-          {
-            "id": 5,
-            "nombre": "Ver",
-            "descripcion": "V"
-          },
-          {
-            "id": 6,
-            "nombre": "Leer",
-            "descripcion": "L"
-          },
-          {
-            "id": 7,
-            "nombre": "Reportes",
-            "descripcion": "R"
-          }
-        ]
-      }
-    ],
-    "tokens": {
-      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdWlsIjoiMjAzODY5MTQwOTYiLCJzeXN0ZW1fbmFtZSI6IlJhcGlkYXRvcyIsImlhdCI6MTcxMTIzNzcxOCwiZXhwIjoxNzExMjM4MDE4fQ.NLwxJ2_CBKlfcMzM20Tn6gzKUMjGNIh2xGaHYlAj_u0",
-      "refresh_token": "7f3baaeb-1e37-4f5b-9233-2f94471bcfcf"
-    }
-  }
-  
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Inicio ok ",
+                    "icon": "pi pi-fw pi-home",
+                    "to": "/home",
+                    "path": "/home",
+                    "acciones": [
+                        "A",
+                        "B",
+                        "M",
+                        "V",
+                        "R",
+                        "D"
+                    ],
+                    "element": "Home" 
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Cientes ok",
+                    "icon": "pi pi-users",
+                    "items": [
+                        {
+                            "label": "Gestion de Cliente",
+                            "icon": "pi pi-id-card",
+                            "to": "/cliente",
+                            "path": "/cliente",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Cliente"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Proovedores ok",
+                    "icon": "pi pi-sitemap",
+                    "items": [
+                        {
+                            "label": "Gestion de Proovedor",
+                            "icon": "pi pi-id-truck",
+                            "to": "/proveedor",
+                            "path": "/proveedor",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Proveedor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Facturación ok",
+                    "icon": "pi pi-fw pi-receipt",
+                    "items": [
+                        {
+                            "label": "Nueva Venta",
+                            "icon": "pi pi-shopping-cart",
+                            "to": "/venta",
+                            "path": "/venta",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Venta"
+                        },
+                        {
+                            "label": "Nuevo Metodo de Pago",
+                            "icon": "pi pi-credit-card",
+                            "to": "/metodoPago",
+                            "path": "/metodoPago",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "MetodoPago"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Productos",
+                    "icon": "pi pi-barcode",
+                    "items": [
+                        {
+                            "label": "Gestion de Producto",
+                            "icon": "pi pi-gift",
+                            "to": "/producto",
+                            "path": "/producto",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Producto"
+                        },
+                        {
+                            "label": "Gestion de Categorias",
+                            "icon": "pi pi-tags",
+                            "to": "/categoria",
+                            "path": "/categoria",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Categoria"
+                        },
+                        {
+                            "label": "Gestion de Marcas",
+                            "icon": "pi pi-bolt",
+                            "to": "/marca",
+                            "path": "/marca",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Marca"
+                        },
+                        {
+                            "label": "Gestion de Presentaciones",
+                            "icon": "pi pi-star",
+                            "to": "/presentacion",
+                            "path": "/presentacion",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Presentacion"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "AFIP ok",
+                    "icon": "pi pi-circle",
+                    "items": [
+                        {
+                            "label": "Gestion de Iva ok",
+                            "icon": "pi pi-desktop",
+                            "to": "/iva",
+                            "path": "/iva",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "Iva"
+                        },
+                        {
+                            "label": "Gestion de Condcion Iva ok",
+                            "icon": "pi pi-tags",
+                            "to": "/Condicioniva",
+                            "path": "/Condicioniva",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "CondicionIva"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "items": [
+                {
+                    "label": "Configuración",
+                    "icon": "pi pi-cog",
+                    "items": [
+                        {
+                            "label": "Configuracion de Ventas",
+                            "icon": "pi pi-id-card",
+                            "to": "/configuracionVenta",
+                            "path": "/configuracionVenta",
+                            "acciones": [
+                                "A",
+                                "B",
+                                "M",
+                                "V",
+                                "R",
+                                "D"
+                            ],
+                            "element": "ConfiguracionVenta"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
