@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserEntity } from './interface/user.entity';
 
-// Define the initial state using that type
+// Define el estado inicial
 const initialStateAuth: UserEntity = {
   userNombre: '',
   organizacion: '',
@@ -37,9 +37,13 @@ export const authSlice = createSlice({
         userModulos: action.payload.userModulos
       };
     },
+    clearTokens: (state) => {
+      state.tokenUser = '';
+      state.tokenSistem = '';
+    }
   },
 });
 
-export const { setUserToken, LogOut, setClientToken } = authSlice.actions;
+export const { setUserToken, LogOut, setClientToken, clearTokens } = authSlice.actions;
 
 export default authSlice.reducer;
