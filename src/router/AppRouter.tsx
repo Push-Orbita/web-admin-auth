@@ -1,18 +1,18 @@
 import { authorize } from "@config/api/axios.config";
-import { AuthApi } from "@features/auth/service/auth.service";
 import { useAppDispatch, useAppSelector } from "@hooks/reduxHook";
-import useQueryApi from "@hooks/useQueryApi";
-import AuthLogin from "@pages/auth/AuthLogin";
-import { LogOut, setClientToken } from "@redux/slices/auth/autSlice";
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
+import { PrivateRoutes } from "./PrivateRoutes";
 import { RouterJs } from "./RouterJs";
+import AuthLogin from "@pages/auth/AuthLogin";
+import useQueryApi from "@hooks/useQueryApi";
+import { setClientToken, LogOut } from "@redux/slices/auth/autSlice";
+import { AuthApi } from "@features/auth/service/auth.service";
+import { toast } from "react-hot-toast";
 
 export const AppRouter = () => {
-  const { tokenUser, tokenSistem } = useAppSelector((state) => state.auth);
+  const { isLogged, tokenUser, tokenSistem } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export const AppRouter = () => {
   };
 
   // useQueryApi para obtener el token
-  const { refetch: refetchClientToken } = useQueryApi<any>(
+  const { data: clientTokenData, refetch: refetchClientToken } = useQueryApi<any>(
     "Client-token",
     () => getAuthToken(),
     {

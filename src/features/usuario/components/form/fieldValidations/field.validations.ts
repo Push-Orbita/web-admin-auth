@@ -12,6 +12,7 @@ export const fieldValidations = Yup.object().shape({
     email: stringValidation({
         isRequired: true,
         pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: { pattern: 'El email debe ser válido' }
     }),
     password: stringValidation({
         isRequired: true,
@@ -26,7 +27,7 @@ export const fieldValidations = Yup.object().shape({
         trim: true
     }).oneOf([Yup.ref('password')], 'Las contraseñas deben coincidir'),
     persona: numberValidation({
-        isRequired: true,
+        required: true,
         positive: true
     })
 }); 

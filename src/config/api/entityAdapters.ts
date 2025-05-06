@@ -37,7 +37,7 @@ export type ModuleKey = keyof typeof entityAdapters;
 export const getEntityAdapter = (moduleKey: string) => {
     const defaultAdapter = {
         toFormik: (data: any) => data,
-        toApi: (data: any, _options?: { isPatch?: boolean }) => data,
+        toApi: (data: any) => data,
         toTable: (input: any) => {
             const normalized = Array.isArray(input)
                 ? input

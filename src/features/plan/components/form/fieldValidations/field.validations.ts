@@ -16,17 +16,17 @@ export const fieldValidations = Yup.object().shape({
         trim: true
     }),
     duracion: numberValidation({
-        isRequired: true,
+        required: true,
         positive: true,
         min: 1
     }),
     precio: numberValidation({
-        isRequired: true,
+        required: true,
         positive: true,
         min: 0
     }),
     suscripcion: numberValidation({
-        isRequired: true,
+        required: true,
         positive: true
     })
 }); 

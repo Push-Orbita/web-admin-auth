@@ -1,5 +1,6 @@
 import { Button } from 'primereact/button';
 import { createContext, FunctionComponent, ReactNode, useContext, useState } from 'react';
+import { usePermisos } from './usePermisos';
 
 interface ModuleContextValue {
     startToolbarTemplate: () => JSX.Element;
@@ -19,6 +20,7 @@ interface ModuleProviderProps {
 export const ModuleProvider: FunctionComponent<ModuleProviderProps> = ({ children }) => {
     const [visible, setVisible] = useState<boolean>(false);
     const [rowData, setRowData] = useState<any>(null);
+    const permisos = usePermisos();
 
     const startToolbarTemplate = (): JSX.Element => (
         <div className="my-2">

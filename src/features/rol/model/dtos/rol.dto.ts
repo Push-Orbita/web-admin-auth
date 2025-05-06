@@ -1,4 +1,4 @@
-import { Rol } from '@features/permisos/model/entity/permisos.entity';
+import { Rol, AccionesPorRol, PermisosDeAcceso } from '../entity/rol.entity';
 
 export interface CreateRolDto {
     nombre: string;
