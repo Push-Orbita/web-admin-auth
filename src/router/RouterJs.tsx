@@ -2,6 +2,8 @@ import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import '../components/common/ui/style.css';
 import { useAppSelector } from '../hooks/reduxHook';
+import { UserModulo } from '@redux/slices/auth/interface/user.entity';
+
 const AuthLogin = lazy(() => import('../pages/auth/AuthLogin'));
 const Home = lazy(() => import('../pages/home/Home'));
 const ConfiguracionUsuario = lazy(() => import('../pages/usuario/ConfiguracionUsuario'));
@@ -16,7 +18,7 @@ const Usuario = lazy(() => import('../pages/usuario/Usuario'));
 const Rol = lazy(() => import('../pages/rol/Rol'));
 const Modulo = lazy(() => import('../pages/modulo/Modulo'));
 const AccionModulo = lazy(() => import('../pages/modulo/AccionModulo'));
-const Permisos = lazy(() => import('../pages/usuario/Permisos'))
+const Permisos = lazy(() => import('../pages/usuario/Permisos'));
 
 type ComponentsMap = Record<string, LazyExoticComponent<ComponentType<any>>>;
 const componentsMap: ComponentsMap = {
@@ -37,66 +39,66 @@ const componentsMap: ComponentsMap = {
     'Permisos': Permisos
 };
 
+const LoadingFallback = () => (
+    <div className="preloader-container">
+        <div id="preloader5"></div>
+    </div>
+);
+
 export const RouterJs = () => {
     const { userModulos } = useAppSelector((state) => state.auth);
 
-    const renderRoutes = (modulos: any) => {
-        return modulos.flatMap((modulo: any) => {
+    const renderRoutes = (modulos: UserModulo[]): JSX.Element[] => {
+        if (!modulos || !Array.isArray(modulos)) return [];
+
+        return modulos.flatMap((modulo: UserModulo): JSX.Element[] => {
             if (modulo.items && modulo.items.length > 0) {
                 return renderRoutes(modulo.items);
+            }
+            if (!modulo.element || !modulo.path) {
+                console.warn(`Módulo sin elemento o ruta: ${modulo.label}`);
+                return [];
             }
             const Component = componentsMap[modulo.element];
             if (!Component) {
                 console.warn(`No se encontró componente: ${modulo.element}`);
                 return [];
             }
-            return (
+            return [
                 <Route
                     key={modulo.path}
                     path={modulo.path}
                     element={
-                        <Suspense fallback={<div className="preloader-container">
-                            <div id="preloader5"></div>
-                        </div>
-                        }>
+                        <Suspense fallback={<LoadingFallback />}>
                             <Component />
                         </Suspense>
                     }
                 />
-            );
+            ];
         });
     };
 
     return (
         <div>
             <Routes>
-                {userModulos && userModulos.length > 0 ? (
-                    renderRoutes(userModulos)
-                ) : (
-                    // Ruta por defecto cuando no hay módulos disponibles
-                    <Route path="*" element={<Navigate to="/home" replace />} />
-                )}
-                {/* Ruta por defecto que redirige a Home */}
-                <Route path="/" element={<Navigate to="/home" replace />} />
-                <Route path="/home" element={
-                    <Suspense fallback={
-                        <div className="preloader-container">
-                            <div id="preloader5"></div>
-                        </div>
+                {/* Rutas dinámicas basadas en módulos */}
+                {Array.isArray(userModulos) && userModulos.length > 0 && renderRoutes(userModulos)}
 
-                    }>
-                        <Home />
-                    </Suspense>
-                } />
+                {/* Rutas públicas que siempre están disponibles */}
                 <Route path="/configuracion-usuario" element={
-                    <Suspense fallback={
-                        <div className="preloader-container">
-                            <div id="preloader5"></div>
-                        </div>
-                    }>
+                    <Suspense fallback={<LoadingFallback />}>
                         <ConfiguracionUsuario />
                     </Suspense>
                 } />
+                <Route path="/home" element={
+                    <Suspense fallback={<LoadingFallback />}>
+                        <Home />
+                    </Suspense>
+                } />
+                <Route path="/" element={<Navigate to="/home" replace />} />
+
+                {/* Ruta por defecto para cualquier otra ruta */}
+                <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
         </div>
     );
