@@ -1,8 +1,7 @@
 import * as Yup from "yup";
 
 export const fieldValidations = Yup.object().shape({
-    // nombre: stringValidation({
-    //     isRequired: true,
-    //     min: 3
-    // }),
+    nombre: Yup.string().required("El nombre es requerido"),
+    descripcion: Yup.string().required("La descripción es requerida"),
+    codigo: Yup.string().required("El código es requerido")
 });
