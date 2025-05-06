@@ -12,8 +12,18 @@ export interface IUi {
   showGridlines: boolean;
 }
 
+// Función para obtener el tema inicial del localStorage o del sistema
+const getInitialTheme = (): boolean => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    return savedTheme === 'dark';
+  }
+  // Si no hay tema guardado, usar la preferencia del sistema
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
+
 const initialState: IUi = {
-  theme: false, // Comienza con tema claro por defecto
+  theme: getInitialTheme(),
   borderRadius: 1,
   elevation: 4,
   isLoadingAplications: false,
@@ -30,6 +40,7 @@ export const uiSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state.theme = !state.theme;
+      // Guardar en localStorage
       localStorage.setItem('theme', state.theme ? 'dark' : 'light');
     },
     toggleShowGridlines: (state) => {
@@ -54,7 +65,7 @@ export const uiSlice = createSlice({
 });
 
 // Export the actions
-export const { toggleTheme, openMenu, setElevation, setBorderRadius, toggleMenu, closeMenu,toggleShowGridlines } = uiSlice.actions;
+export const { toggleTheme, openMenu, setElevation, setBorderRadius, toggleMenu, closeMenu, toggleShowGridlines } = uiSlice.actions;
 
 // Export the reducer
 export default uiSlice.reducer;
