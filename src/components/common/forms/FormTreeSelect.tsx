@@ -1,8 +1,6 @@
-import { useField } from 'formik';
-import { TreeSelect, TreeSelectChangeEvent } from 'primereact/treeselect';
+import { TreeSelect } from 'primereact/treeselect';
 import { TreeNode } from 'primereact/treenode';
-import { useCallback, useEffect, useState } from 'react';
-import selectEntitiesConfig from '@config/components/selectConfig';
+import { useEffect, useState } from 'react';
 
 interface FormTreeSelectProps {
     name: string;
@@ -12,130 +10,51 @@ interface FormTreeSelectProps {
     disabled?: boolean;
     selectionMode?: 'single' | 'multiple' | 'checkbox';
     display?: 'comma' | 'chip';
-    metaKeySelection?: boolean;
     className?: string;
     filter?: boolean;
-    filterBy?: string;
     filterMode?: 'lenient' | 'strict';
     showClear?: boolean;
-    expandedKeys?: any;
-    onToggle?: (e: { value: any }) => void;
-    panelHeaderTemplate?: () => React.ReactNode;
-    panelFooterTemplate?: () => React.ReactNode;
-    emptyMessage?: string;
-    emptyFilterMessage?: string;
-    loading?: boolean;
-    loadingIcon?: string;
-    virtualScrollerOptions?: any;
-    selectKey?: string;
+    gridSize?: string;
 }
 
-const FormTreeSelect = ({
+export const FormTreeSelect = ({
     name,
     label,
-    options: propOptions,
+    options,
     placeholder,
     disabled = false,
-    selectionMode = 'single',
-    display = 'comma',
-    metaKeySelection = true,
-    className = "",
+    selectionMode = "single",
+    display = "chip",
+    className,
     filter = false,
-    filterBy,
-    filterMode = 'lenient',
+    filterMode = "lenient",
     showClear = false,
-    expandedKeys,
-    onToggle,
-    panelHeaderTemplate,
-    panelFooterTemplate,
-    emptyMessage = "No hay resultados",
-    emptyFilterMessage = "No hay resultados que coincidan",
-    loading: propLoading = false,
-    loadingIcon = "pi pi-spin pi-spinner",
-    virtualScrollerOptions,
-    selectKey
+    gridSize = "medium"
 }: FormTreeSelectProps) => {
-    const [field, meta, helpers] = useField(name);
-    const [loading, setLoading] = useState(false);
-    const [options, setOptions] = useState<TreeNode[]>([]);
+    const [suggestions, setSuggestions] = useState<TreeNode[]>([]);
 
-    const isInvalid = meta.touched && meta.error;
-
-    // Cargar datos iniciales cuando el componente se monta
     useEffect(() => {
-        const loadInitialData = async () => {
-            if (selectKey) {
-                setLoading(true);
-                try {
-                    const config = selectEntitiesConfig[selectKey];
-                    if (config) {
-                        const data = await config.apiService();
-                        // Convertir los datos a formato TreeNode
-                        const treeData = convertToTreeNodes(data, config.labelField);
-                        setOptions(treeData);
-                    }
-                } catch (error) {
-                    console.error('Error al cargar datos iniciales:', error);
-                } finally {
-                    setLoading(false);
-                }
-            } else if (propOptions) {
-                setOptions(propOptions);
-            }
-        };
-
-        loadInitialData();
-    }, [selectKey, propOptions]);
-
-    const handleChange = useCallback((e: TreeSelectChangeEvent) => {
-        helpers.setValue(e.value);
-    }, [helpers]);
-
-    const handleBlur = useCallback(() => {
-        helpers.setTouched(true);
-    }, [helpers]);
-
-    // Función auxiliar para convertir datos planos a formato TreeNode
-    const convertToTreeNodes = (data: any[], labelField: string): TreeNode[] => {
-        console.log(data);
-        return data.map((item, index) => ({
-            key: item.id?.toString() || index.toString(),
-            label: item[labelField],
-            data: item,
-            children: item.children ? convertToTreeNodes(item.children, labelField) : undefined
-        }));
-
-    };
+        if (options) {
+            setSuggestions(options);
+        }
+    }, [options]);
 
     return (
-        <div className={`field ${className}`}>
-            <label htmlFor={name} className={isInvalid ? "p-error" : ""}>
-                {label}
-            </label>
+        <div className={`field col-${gridSize}`}>
+            {label && <label htmlFor={name}>{label}</label>}
             <TreeSelect
                 id={name}
                 name={name}
-                value={field.value}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                options={options}
+                options={suggestions}
                 placeholder={placeholder}
-                disabled={disabled}
+                className={className}
                 selectionMode={selectionMode}
                 display={display}
-                metaKeySelection={metaKeySelection}
                 filter={filter}
-                filterBy={filterBy}
                 filterMode={filterMode}
                 showClear={showClear}
-                expandedKeys={expandedKeys}
-                onToggle={onToggle}
-                panelHeaderTemplate={panelHeaderTemplate}
-                panelFooterTemplate={panelFooterTemplate}
-                emptyMessage={emptyMessage}
-                className={`w-full ${isInvalid ? "p-invalid" : ""}`}
+                disabled={disabled}
             />
-            {isInvalid && <small className="p-error">{meta.error}</small>}
         </div>
     );
 };

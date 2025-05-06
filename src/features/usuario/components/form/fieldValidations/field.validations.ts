@@ -6,16 +6,24 @@ export const fieldValidations = Yup.object().shape({
     nombre: stringValidation({
         isRequired: true,
         min: 2,
-        max: 100,
+        max: 50,
+        trim: true
+    }),
+    apellido: stringValidation({
+        isRequired: true,
+        min: 2,
+        max: 50,
         trim: true
     }),
     email: stringValidation({
         isRequired: true,
-        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: { pattern: 'El email debe ser válido' }
+        email: true,
+        trim: true
     }),
     password: stringValidation({
         isRequired: true,
+        min: 6,
+        max: 20,
         min: 8,
         max: 50,
         trim: true

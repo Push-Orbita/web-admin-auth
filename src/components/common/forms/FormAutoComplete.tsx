@@ -144,7 +144,6 @@ const FormAutoComplete = ({
                 selectedItemTemplate={selectedItemTemplate}
                 panelFooterTemplate={panelFooterTemplate}
                 emptyMessage={emptyMessage}
-                emptyFilterMessage={emptyFilterMessage}
                 loading={loading || propLoading}
                 loadingIcon={loadingIcon}
                 virtualScrollerOptions={virtualScrollerOptions}
