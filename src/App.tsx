@@ -27,7 +27,7 @@ function App() {
         refetchOnWindowFocus: false,
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 60 * 0,
-        retry: 2,
+        retry: 3,
         refetchOnMount: false,
         refetchOnReconnect: true,
       },
@@ -37,7 +37,6 @@ function App() {
   const isDarkTheme = useSelector((state: RootState) => state.ui.theme);
 
   useEffect(() => {
-    // Remover todos los temas existentes
     const existingThemes = document.querySelectorAll('link[href*="primereact/resources/themes"]');
     existingThemes.forEach(theme => theme.remove());
 
