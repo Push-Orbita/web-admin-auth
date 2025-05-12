@@ -15,7 +15,7 @@ const PUBLIC_AUTHENTICATED_ROUTES = ['/configuracion-usuario', '/home'];
 
 export const PrivateRoutes = React.memo(({ children }: Props) => {
     const authState = useAppSelector((state) => state.auth);
-    const { isLogged, tokenUser, userModulos, refreshToken } = authState;
+    const { isLogged, tokenUser, userModulos } = authState;
     const dispatch = useAppDispatch();
     const location = useLocation();
     const [isCheckingAuth, setIsCheckingAuth] = useState(true);
@@ -124,7 +124,7 @@ export const PrivateRoutes = React.memo(({ children }: Props) => {
                     refreshToken: newRefreshToken,
                     isLogged: true
                 }));
-            } catch (error) {
+            } catch (error: any) {
                 console.error('Error al refrescar el token:', error);
 
                 // Verificamos si hay un error de autenticación (401) y tenemos refresh token

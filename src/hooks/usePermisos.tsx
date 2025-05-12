@@ -52,7 +52,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
     puedeEditarCredenciales: false,
   });
 
-  const verificarAcciones = useCallback((items: any, path: any) => {
+  const verificarAcciones = useCallback((items: any[], path: string): Permisos | null => {
     if (!items || items.length === 0) return null;
 
     for (const item of items) {
@@ -70,7 +70,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
       }
       // Si el item tiene sub-items, continuamos la búsqueda de manera recursiva
       if (item.items && item.items.length > 0) {
-        const accionesEncontradas = verificarAcciones(item.items, path);
+        const accionesEncontradas: Permisos | null = verificarAcciones(item.items, path);
         if (accionesEncontradas) return accionesEncontradas;
       }
     }
@@ -85,7 +85,7 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
       if (acciones) {
         // Verificamos si realmente hay cambios antes de actualizar el estado
         const permisosHanCambiado = Object.keys(acciones).some(
-          key => acciones[key] !== permisos[key]
+          (key: string) => acciones[key as keyof Permisos] !== permisos[key as keyof Permisos]
         );
 
         if (permisosHanCambiado) {
