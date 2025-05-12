@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@hooks/reduxHook";
 import useQueryApi from "@hooks/useQueryApi";
 import AuthLogin from "@pages/auth/AuthLogin";
 import { LogOut, setClientToken } from "@redux/slices/auth/autSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -12,16 +12,20 @@ import { PublicRoutes } from "./PublicRoutes";
 import { RouterJs } from "./RouterJs";
 
 export const AppRouter = () => {
-  const { tokenUser, tokenSistem } = useAppSelector((state) => state.auth);
+  const { tokenUser, tokenSistem, refreshToken } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const checkingSystemToken = useRef(false);
 
   // Estado para controlar si se debe ejecutar la petición del token
   const [shouldFetchToken, setShouldFetchToken] = useState(false);
 
   // Función para obtener el token de autenticación
   const getAuthToken = async () => {
+    if (checkingSystemToken.current) return null;
+
     try {
+      checkingSystemToken.current = true;
       const response = await AuthApi.postAuthSistem({
         clientId: import.meta.env.VITE_APP_CLIENT_ID,
         clientSecret: import.meta.env.VITE_APP_CLIENT_SECRET,
@@ -32,6 +36,26 @@ export const AppRouter = () => {
       dispatch(LogOut());
       navigate("/login");
       return null;
+    } finally {
+      checkingSystemToken.current = false;
+    }
+  };
+
+  // Verificar si el token del sistema está por expirar
+  const isSystemTokenExpired = () => {
+    if (!tokenSistem) return true;
+
+    try {
+      const tokenData = JSON.parse(atob(tokenSistem.split('.')[1]));
+      const expirationTime = tokenData.exp * 1000; // Convertir a milisegundos
+      const currentTime = Date.now();
+      const timeUntilExpiration = expirationTime - currentTime;
+
+      // Considerar expirado si faltan menos de 5 minutos
+      return timeUntilExpiration < 1000 * 60 * 5;
+    } catch (e) {
+      console.warn("Error al decodificar el token del sistema:", e);
+      return true;
     }
   };
 
@@ -66,8 +90,8 @@ export const AppRouter = () => {
 
   // Efecto para manejar el token del sistema
   useEffect(() => {
-    // Si no hay token del sistema y no estamos intentando obtenerlo
-    if (!tokenSistem && !shouldFetchToken) {
+    // Si no hay token del sistema o está expirado, y no estamos intentando obtenerlo
+    if ((!tokenSistem || isSystemTokenExpired()) && !shouldFetchToken && !checkingSystemToken.current) {
       setShouldFetchToken(true);
     }
   }, [tokenSistem, shouldFetchToken]);
@@ -75,17 +99,22 @@ export const AppRouter = () => {
   // Efecto para configurar el token en axios
   useEffect(() => {
     if (tokenUser) {
-      authorize(tokenUser).catch(() => {
-        dispatch(LogOut());
-        navigate("/login");
+      authorize(tokenUser).catch((error) => {
+        console.error("Error al configurar el token en axios:", error);
+
+        // No hacer logout inmediatamente, permitir a PrivateRoutes intentar refrescar el token primero
+        if (error.response?.status === 401 && !refreshToken) {
+          dispatch(LogOut());
+          navigate("/login");
+        }
       });
     }
-  }, [tokenUser, dispatch, navigate]);
+  }, [tokenUser, dispatch, navigate, refreshToken]);
 
   // Efecto para manejar la reconexión
   useEffect(() => {
     const handleOnline = () => {
-      if (!tokenSistem) {
+      if (!tokenSistem || isSystemTokenExpired()) {
         refetchClientToken();
       }
     };
@@ -97,18 +126,10 @@ export const AppRouter = () => {
   // Efecto para verificar el token del sistema periódicamente
   useEffect(() => {
     const checkTokenInterval = setInterval(() => {
-      if (tokenSistem) {
-        // Verificar si el token está próximo a expirar (por ejemplo, 5 minutos antes)
-        const tokenData = JSON.parse(atob(tokenSistem.split('.')[1]));
-        const expirationTime = tokenData.exp * 1000; // Convertir a milisegundos
-        const currentTime = Date.now();
-        const timeUntilExpiration = expirationTime - currentTime;
-
-        if (timeUntilExpiration < 1000 * 60 * 5) { // 5 minutos
-          refetchClientToken();
-        }
+      if (isSystemTokenExpired() && !checkingSystemToken.current) {
+        refetchClientToken();
       }
-    }, 1000 * 60); // Verificar cada minuto
+    }, 1000 * 60 * 5); // Verificar cada 5 minutos
 
     return () => clearInterval(checkTokenInterval);
   }, [tokenSistem, refetchClientToken]);

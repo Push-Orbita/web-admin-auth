@@ -21,6 +21,21 @@ class Auth {
             cancelToken: cancelTokenSource.token,
         });
     }
+
+    async refreshToken(accessToken: string) {
+        return await AuthAxios.post(url.refreshToken, {}, {
+            cancelToken: cancelTokenSource.token,
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+    }
+
+    async refreshWithRefreshToken(refreshToken: string) {
+        return await AuthAxios.post(url.refreshWithRefreshToken, { refreshToken }, {
+            cancelToken: cancelTokenSource.token
+        });
+    }
 }
 
 export const AuthApi = new Auth();

@@ -9,6 +9,7 @@ const initialStateAuth: UserEntity = {
   sistema: '',
   isLogged: false,
   tokenUser: '',
+  refreshToken: '',
   tokenSistem: '',
   activo: false,
   lang: 'es',
@@ -29,7 +30,8 @@ export const authSlice = createSlice({
         userNombre: action.payload.userNombre,
         organizacion: action.payload.organizacion,
         tokenUser: action.payload.tokenUser,
-        tokenSistem: action.payload.tokenSistem,
+        refreshToken: action.payload.refreshToken || state.refreshToken,
+        tokenSistem: action.payload.tokenSistem || state.tokenSistem,
         sistema: action.payload.sistema,
         isLogged: true,
         activo: action.payload.activo,
@@ -39,6 +41,7 @@ export const authSlice = createSlice({
     },
     clearTokens: (state) => {
       state.tokenUser = '';
+      state.refreshToken = '';
       state.tokenSistem = '';
     }
   },

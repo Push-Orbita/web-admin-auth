@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { ReactNode } from 'react';
@@ -52,7 +52,9 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
     puedeEditarCredenciales: false,
   });
 
-  const verificarAcciones = (items: any, path: any) => {
+  const verificarAcciones = useCallback((items: any, path: any) => {
+    if (!items || items.length === 0) return null;
+
     for (const item of items) {
       if (item.path === path && item.acciones) {
         return {
@@ -67,24 +69,37 @@ export const PermisosProvider: React.FC<PermisosProviderProps> = ({ children }) 
         };
       }
       // Si el item tiene sub-items, continuamos la búsqueda de manera recursiva
-      if (item.items) {
-        const accionesEncontradas: any = verificarAcciones(item.items, path);
+      if (item.items && item.items.length > 0) {
+        const accionesEncontradas = verificarAcciones(item.items, path);
         if (accionesEncontradas) return accionesEncontradas;
       }
     }
     // Si no se encuentra nada, se retorna null
     return null;
-  };
+  }, []);
 
   useEffect(() => {
-    const acciones = verificarAcciones(userModulos, pathname);
-    if (acciones) {
-      setPermisos(acciones);
+    // Solo actualizamos los permisos si hay userModulos y una ruta válida
+    if (userModulos && userModulos.length > 0 && pathname) {
+      const acciones = verificarAcciones(userModulos, pathname);
+      if (acciones) {
+        // Verificamos si realmente hay cambios antes de actualizar el estado
+        const permisosHanCambiado = Object.keys(acciones).some(
+          key => acciones[key] !== permisos[key]
+        );
+
+        if (permisosHanCambiado) {
+          setPermisos(acciones);
+        }
+      }
     }
-  }, [pathname, userModulos]);
+  }, [pathname, userModulos, verificarAcciones, permisos]);
+
+  // Memorizamos el valor del contexto para evitar renderizaciones innecesarias
+  const contextValue = useMemo(() => permisos, [permisos]);
 
   return (
-    <PermisosContext.Provider value={permisos}>
+    <PermisosContext.Provider value={contextValue}>
       {children}
     </PermisosContext.Provider>
   );

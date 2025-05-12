@@ -1,7 +1,8 @@
 import axios from "axios"
 import { toast } from "react-hot-toast"
 import { store } from "@redux/store/store"
-import { clearTokens, LogOut } from "@redux/slices/auth/autSlice"
+import { clearTokens, LogOut, setUserToken } from "@redux/slices/auth/autSlice"
+import { AuthApi } from "@features/auth/service/auth.service"
 
 export const Axios = axios.create({
     baseURL: `${import.meta.env.VITE_APP_API_URL}`,
@@ -39,21 +40,50 @@ Axios.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config
+        const state = store.getState()
+        const tokenUser = state.auth.tokenUser
 
-        // Si el error es 401 y no es una petición de refresh
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        // Si el error es 401, no es una petición de refresh y hay token
+        if (
+            error.response?.status === 401 &&
+            !originalRequest._retry &&
+            tokenUser &&
+            !originalRequest.url.includes('/auth/refresh-token')
+        ) {
             originalRequest._retry = true
 
             try {
-                // Aquí puedes implementar la lógica de refresh token si lo necesitas
-                // Por ahora, simplemente cerramos la sesión
+                // Intentar refrescar el token usando el access token
+                const response = await AuthApi.refreshToken(tokenUser)
+                const newToken = response.data.tokens?.access_token
+
+                // Si no hay nuevo token, cerrar sesión y cortar ciclo
+                if (!newToken) {
+                    store.dispatch(clearTokens())
+                    store.dispatch(LogOut())
+                    toast.error("No se pudo refrescar el token. Por favor, inicia sesión nuevamente.")
+                    window.location.href = '/login'
+                    return Promise.reject('No se recibió nuevo token')
+                }
+
+                // Actualizar el token en el store
+                store.dispatch(setUserToken({
+                    ...state.auth,
+                    tokenUser: newToken
+                }))
+
+                // Actualizar el token en los headers
+                originalRequest.headers.Authorization = `Bearer ${newToken}`
+                Axios.defaults.headers.common["Authorization"] = `Bearer ${newToken}`;
+
+                // Reintentar la petición original
+                return Axios(originalRequest)
+            } catch (refreshError) {
+                // Si falla el refresh, cerrar sesión
                 store.dispatch(clearTokens())
                 store.dispatch(LogOut())
                 toast.error("Tu sesión ha expirado. Por favor, inicia sesión nuevamente.")
                 window.location.href = '/login'
-            } catch (refreshError) {
-                store.dispatch(clearTokens())
-                store.dispatch(LogOut())
                 return Promise.reject(refreshError)
             }
         }

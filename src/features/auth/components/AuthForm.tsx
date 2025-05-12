@@ -40,7 +40,10 @@ export const AuthForm = () => {
             const transformedData = transformResponse(response.data);
 
             if (transformedData) {
-                await dispatch(setUserToken(transformedData as unknown as UserEntity));
+                await dispatch(setUserToken({
+                    ...transformedData,
+                    refreshToken: transformedData.refreshToken || response.data.tokens.refresh_token
+                } as unknown as UserEntity));
                 toast.success(t(lang.login.messages.loginSuccess));
                 navigate('/home');
             } else {

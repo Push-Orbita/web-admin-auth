@@ -17,8 +17,8 @@ const persistUiConfig = {
 const persistAuthConfig = {
   key: "auth",
   storage: sessionStorage, // Usa sessionStorage para datos sensibles
-  whitelist: ['userNombre', 'organizacion', 'sistema', 'activo', 'lang', 'userModulos'], // Solo persistir estos campos
-  blacklist: ['tokenUser', 'tokenSistem'], // No persistir tokens
+  whitelist: ['userNombre', 'organizacion', 'sistema', 'activo', 'lang', 'userModulos', 'tokenUser', 'tokenSistem'], // Persistir también los tokens
+  // blacklist: ['tokenUser', 'tokenSistem'], // Ya no excluimos los tokens
 };
 
 export const store = configureStore({

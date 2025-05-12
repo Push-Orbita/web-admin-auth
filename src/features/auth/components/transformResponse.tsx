@@ -14,6 +14,7 @@ interface BackendResponse {
   };
   tokens: {
     access_token: string;
+    refresh_token: string;
   };
 }
 
@@ -30,6 +31,7 @@ interface ModuloBackend {
 interface FrontendData {
   userNombre: string;
   tokenUser: string;
+  refreshToken?: string;
   organizacion: string;
   sistema: string;
   activo: boolean;
@@ -87,6 +89,7 @@ export const transformResponse = (backendData: BackendResponse): FrontendData | 
   const transformedData: FrontendData = {
     userNombre,
     tokenUser: tokens.access_token,
+    refreshToken: tokens.refresh_token,
     organizacion,
     sistema: userModulos?.modulos?.[0]?.nombre || 'Sistema desconocido',
     activo: true,
