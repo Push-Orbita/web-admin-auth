@@ -76,7 +76,7 @@ const FormContrato: React.FC<FormTypeActionsProps> = ({ refetch, title = 'Titulo
         }
     }, [visible, setRowData]);
     const initialValues: ContratoPostDTO = {
-        fechaVencimiento: rowData?.fechaVencimiento ? new Date(rowData.fechaVencimiento) : '',
+        fechaVencimiento: new Date(),
         organizacion: rowData?.organizacion.id ?? 0,
         plan: rowData?.plan.id ?? 0
     };

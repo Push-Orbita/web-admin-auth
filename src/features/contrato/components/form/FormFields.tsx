@@ -38,14 +38,13 @@ const FormFields: FC = () => {
                         options={planOptions}
                         optionLabel="nombre"
                         isLoading={isLoadingPlan}
-                        onOptionSelect={handlePlanSelection} // Pasa la función para manejar la selección
+                    // onOptionSelect={handlePlanSelection} // Pasa la función para manejar la selección
                     />
                 </div>
                 <div className="col-12 md:col-4 lg:col-4 mt-4">
                     <FormDatePicker
                         label={t(lang.Contract.form.expireDate)}
                         name="fechaVencimiento"
-                        disabled={true} // Este campo se llena automáticamente al seleccionar un plan
                     />
                 </div>
                 <div className="col-12 md:col-4 lg:col-4 mt-4">
